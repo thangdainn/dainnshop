@@ -19,7 +19,8 @@
                         <h5>Product Category</h5>
                     </div>
                     <ul class="sidebar_categories">
-                        <li class="active"><a href="#"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>Shop</a></li>
+                        <li class="active"><a href="#"><span><i class="fa fa-angle-double-right" 
+                            aria-hidden="true"></i></span>Shop</a></li>
                         <li><a href="#">Men</a></li>
                         <li>
                             <a href="#">
@@ -134,11 +135,11 @@
 
                             <!-- Product Grid -->
 
-                            <div class="product-grid row">
+                            <div class="product-grid">
 
                                 <!-- Product 1 -->
 
-                                <div class="product-item men col-3" style="padding-left: 0px; padding-right:0px">
+                                <div class="product-item men">
                                     <div class="product discount product_filter">
                                         <div class="product_image">
                                             <img src="public/user/home/images/product_1.png" alt="">
@@ -155,7 +156,7 @@
 
                                 <!-- Product 2 -->
 
-                                <div class="product-item women col-3" style="padding-left: 0px; padding-right:0px">
+                                <div class="product-item women">
                                     <div class="product product_filter">
                                         <div class="product_image">
                                             <img src="public/user/home/images/product_2.png" alt="">
@@ -172,7 +173,7 @@
 
                                 <!-- Product 3 -->
 
-                                <div class="product-item women  col-3" style="padding-left: 0px; padding-right:0px">
+                                <div class="product-item women">
                                     <div class="product product_filter">
                                         <div class="product_image">
                                             <img src="public/user/home/images/product_3.png" alt="">
@@ -188,7 +189,7 @@
 
                                 <!-- Product 4 -->
 
-                                <div class="product-item accessories col-3" style="padding-left: 0px; padding-right:0px">
+                                <div class="product-item accessories">
                                     <div class="product product_filter">
                                         <div class="product_image">
                                             <img src="public/user/home/images/product_4.png" alt="">
@@ -204,7 +205,7 @@
                                 </div>
 
                                 <!-- Product 5 -->
-                                <div class="product-item accessories col-3" style="padding-left: 0px; padding-right:0px">
+                                <div class="product-item accessories">
                                     <div class="product product_filter">
                                         <div class="product_image">
                                             <img src="public/user/home/images/product_4.png" alt="">

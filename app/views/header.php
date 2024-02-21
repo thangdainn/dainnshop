@@ -23,7 +23,7 @@ Session::init();
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/home/styles/main_styles.css">
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/home/styles/categories_responsive.css">
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/home/styles/contact_responsive.css">
-    
+
 </head>
 
 <body>
@@ -113,9 +113,8 @@ Session::init();
                                 <ul class="navbar_menu">
                                     <li><a href="<?php echo BASE_URL ?>">home</a></li>
                                     <li><a href="<?php echo BASE_URL ?>/shop">shop</a></li>
-                                    <!-- <li><a href="#">promotion</a></li> -->
-                                    <!-- <li><a href="#">pages</a></li> -->
-                                    <li><a href="#">blog</a></li>
+                                    <li><a href="#">purchase order</a></li>
+                                    <li><a href="#">about</a></li>
                                     <li><a href="<?php echo BASE_URL ?>/contacts">contact</a></li>
                                 </ul>
                                 <ul class="navbar_user">
