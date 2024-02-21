@@ -111,7 +111,7 @@ Session::init();
                             </div>
                             <nav class="navbar">
                                 <ul class="navbar_menu">
-                                    <li><a href="<?php echo BASE_URL ?>/">home</a></li>
+                                    <li><a href="<?php echo BASE_URL ?>">home</a></li>
                                     <li><a href="<?php echo BASE_URL ?>/shop">shop</a></li>
                                     <!-- <li><a href="#">promotion</a></li> -->
                                     <!-- <li><a href="#">pages</a></li> -->
