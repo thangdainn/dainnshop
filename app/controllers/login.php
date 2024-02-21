@@ -7,7 +7,7 @@ class login extends Controller
     {
         $message = array();
         $data = array();
-        Session::checkSession();
+        // Session::checkSession();
 
         parent::__construct();
     }
@@ -28,7 +28,7 @@ class login extends Controller
     }
     public function dashboard()
     {
-        // Session::checkSession();
+        Session::checkSession();
         $this->load->view("header");
         $this->load->view("cpanel/home");
         $this->load->view("footer");
@@ -45,7 +45,8 @@ class login extends Controller
                 Session::init();
                 Session::set('login', true);
                 Session::set('email', $check['email']);
-                Session::set('fullName', $check['fullname']);
+                // Session::set('fullName', $check['fullname']);
+                Session::set('fullName', "dao duc thang");
                 Session::set('roleId', $check['group_id']);
                 header('Location:' . BASE_URL . '/');
             } else {

@@ -1,3 +1,7 @@
+<?php
+Session::init();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,16 +46,51 @@
 
                                     <li class="account">
                                         <a href="#">
-                                            <?php if(Session::isLogin()) {
-                                                echo "Hi, ".Session::get("fullName");
-                                            }?>
-                                            <!-- My Account -->
+
+                                            <?php
+                                            // Kiểm tra xem người dùng đã đăng nhập chưa
+                                            if (Session::isLogin()) {
+                                                // Lấy tên đầy đủ của người dùng và hiển thị nó
+                                                $fullName = Session::getFullName();
+                                                echo "Welcome, $fullName";
+                                            } else {
+                                                echo "My Account";
+                                            }
+                                            ?>
                                             <i class="fa fa-angle-down"></i>
                                         </a>
-                                        <ul class="account_selection">
+                                        <?php
+                                        if (Session::isLogin()) {
+                                        ?>
+                                            <ul class="account_selection">
+                                                <li><a href="<?php echo BASE_URL . '/auth/user_info' ?>"><i class=" fa fa-user" aria-hidden="true"></i>
+                                                        Thông tin</a>
+                                                </li>
+                                                <li><a href="<?php echo BASE_URL . '/auth/change_password' ?>"><i class=" fa fa-user" aria-hidden="true"></i>
+                                                        Đổi mật khẩu</a>
+                                                </li>
+                                                <li><a href="<?php echo BASE_URL ?>/login/logout"><i class="fa fa-arrow-left" aria-hidden="true"></i>
+                                                        Đăng xuất</a>
+                                                </li>
+                                            </ul>
+                                        <?php
+                                        } else {
+                                        ?>
+                                            <ul class="account_selection">
+                                                <li><a href="<?php echo BASE_URL ?>/login" onclick="onLogin()"><i class="fa fa-sign-in" aria-hidden="true"></i>
+                                                        Đăng nhập</a></li>
+                                                <li><a href="#" onclick="onRegister()"><i class="fa fa-user-plus" aria-hidden="true"></i>
+                                                        Đăng kí</a>
+                                                </li>
+                                            </ul>
+                                        <?php
+                                        }
+                                        ?>
+
+                                        <!-- <ul class="account_selection">
                                             <li><a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i>Sign In</a></li>
                                             <li><a href="#"><i class="fa fa-user-plus" aria-hidden="true"></i>Register</a></li>
-                                        </ul>
+                                        </ul> -->
                                     </li>
                                 </ul>
                             </div>

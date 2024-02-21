@@ -39,12 +39,13 @@ class Session
 
     public static function isLogin()
     {
-        self::init();
+        // self::init();
         return self::get("login") == true ? true : false;
     }
 
-    public static function getFullName(){
-        self::init();
+    public static function getFullName()
+    {
+        // self::init();
         return self::get("fullName");
     }
 }
