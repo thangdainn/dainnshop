@@ -36,13 +36,13 @@
 
 </div>
 
-<script src="<?php echo BASE_URL ?>/public/client/home/js/jquery-3.2.1.min.js"></script>
-<script src="<?php echo BASE_URL ?>/public/client/home/styles/bootstrap4/popper.js"></script>
-<script src="<?php echo BASE_URL ?>/public/client/home/styles/bootstrap4/bootstrap.min.js"></script>
-<script src="<?php echo BASE_URL ?>/public/client/home/plugins/Isotope/isotope.pkgd.min.js"></script>
-<script src="<?php echo BASE_URL ?>/public/client/home/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
-<script src="<?php echo BASE_URL ?>/public/client/home/plugins/easing/easing.js"></script>
-<script src="<?php echo BASE_URL ?>/public/client/home/js/custom.js"></script>
+<script src="<?php echo BASE_URL ?>/public/user/home/js/jquery-3.2.1.min.js"></script>
+<script src="<?php echo BASE_URL ?>/public/user/home/styles/bootstrap4/popper.js"></script>
+<script src="<?php echo BASE_URL ?>/public/user/home/styles/bootstrap4/bootstrap.min.js"></script>
+<script src="<?php echo BASE_URL ?>/public/user/home/plugins/Isotope/isotope.pkgd.min.js"></script>
+<script src="<?php echo BASE_URL ?>/public/user/home/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+<script src="<?php echo BASE_URL ?>/public/user/home/plugins/easing/easing.js"></script>
+<script src="<?php echo BASE_URL ?>/public/user/home/js/custom.js"></script>
 <script src="<?php echo BASE_URL ?>/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
 <script src="<?php echo BASE_URL ?>/js/categories_custom.js"></script>
 </body>

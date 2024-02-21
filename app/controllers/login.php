@@ -62,6 +62,6 @@ class login extends Controller
     {
         Session::init();
         Session::destroy();
-        header('Location:' . BASE_URL . '/login');
+        header('Location:' . BASE_URL . '/');
     }
 }
