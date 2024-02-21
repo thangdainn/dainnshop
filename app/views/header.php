@@ -13,14 +13,17 @@ Session::init();
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="public/user/home/styles/bootstrap4/bootstrap.min.css">
     <link href="public/user/home/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="public/user/home/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
-    <link rel="stylesheet" type="text/css" href="public/user/home/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
-    <link rel="stylesheet" type="text/css" href="public/user/home/plugins/OwlCarousel2-2.2.1/animate.css">
-    <link rel="stylesheet" type="text/css" href="public/user/home/styles/main_styles.css">
-    <link rel="stylesheet" type="text/css" href="public/user/home/styles/responsive.css">
-    <link rel="stylesheet" type="text/css" href="public/user/home/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
-    <link rel="stylesheet" type="text/css" href="public/user/home/styles/categories_styles.css">
-    <link rel="stylesheet" type="text/css" href="public/user/home/styles/categories_responsive.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/home/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/home/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/home/plugins/OwlCarousel2-2.2.1/animate.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/home/styles/responsive.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/home/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/home/styles/contact_styles.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/home/styles/categories_styles.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/home/styles/main_styles.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/home/styles/categories_responsive.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/home/styles/contact_responsive.css">
+    
 </head>
 
 <body>
@@ -45,7 +48,7 @@ Session::init();
                                     <!-- My Account -->
 
                                     <li class="account" style="min-width: 150px">
-                                        <a href="#">
+                                        <a href="" id="prevent-default">
 
                                             <?php
                                             if (Session::isLogin()) {
@@ -78,7 +81,7 @@ Session::init();
                                                 <li><a href="<?php echo BASE_URL ?>/login" onclick="onLogin()"><i class="fa fa-sign-in" aria-hidden="true"></i>
                                                         Login</a></li>
                                                 <li><a href="#" onclick="onRegister()"><i class="fa fa-user-plus" aria-hidden="true"></i>
-                                                        Sign In</a>
+                                                        Register</a>
                                                 </li>
                                             </ul>
                                         <?php
@@ -113,7 +116,7 @@ Session::init();
                                     <!-- <li><a href="#">promotion</a></li> -->
                                     <!-- <li><a href="#">pages</a></li> -->
                                     <li><a href="#">blog</a></li>
-                                    <li><a href="contact.html">contact</a></li>
+                                    <li><a href="<?php echo BASE_URL ?>/contacts">contact</a></li>
                                 </ul>
                                 <ul class="navbar_user">
                                     <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
@@ -135,3 +138,9 @@ Session::init();
             </div>
 
         </header>
+        <script>
+            let btnAcc = document.getElementById('prevent-default');
+            btnAcc.addEventListener('click', (e) => {
+                e.preventDefault();
+            })
+        </script>

@@ -45,6 +45,10 @@
 <script src="<?php echo BASE_URL ?>/public/user/home/js/custom.js"></script>
 <script src="<?php echo BASE_URL ?>/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
 <script src="<?php echo BASE_URL ?>/js/categories_custom.js"></script>
+<script src="<?php echo BASE_URL ?>/js/contact_custom.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>
+
+
 </body>
 
 </html>

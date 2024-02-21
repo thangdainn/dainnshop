@@ -36,7 +36,7 @@
 			<div class="wrap-login100">
 				<form action="<?php echo BASE_URL ?>/login/authentication" class="login100-form validate-form" method="post">
 					<span class="login100-form-title p-b-26">
-						Administration
+						Welcome
 					</span>
 					<span class="login100-form-title p-b-48">
 						<i class="zmdi zmdi-font"></i>
@@ -65,13 +65,17 @@
 					</div>
 
 					<div class="text-center p-t-115">
-						<!-- <span class="txt1">
+						<span class="txt1">
 							Don’t have an account?
-						</span> -->
-
+						</span>
+						<a class="txt2" href="#">
+							Sign Up
+						</a>
+						<br>
 						<a class="txt2" href="#">
 							Forgot Password?
 						</a>
+
 					</div>
 				</form>
 			</div>
