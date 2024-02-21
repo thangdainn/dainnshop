@@ -6,7 +6,7 @@ Session::init();
 <html lang="en">
 
 <head>
-    <title>Colo Shop</title>
+    <title>Dainn Shop</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Colo Shop Template">
@@ -50,9 +50,9 @@ Session::init();
                                             <?php
                                             if (Session::isLogin()) {
                                                 $fullName = Session::getFullName();
-                                                echo "Xin chào, $fullName";
+                                                echo "Welcome, $fullName";
                                             } else {
-                                                echo "Tài khoản";
+                                                echo "My Account";
                                             }
                                             ?>
                                             <i class="fa fa-angle-down"></i>
@@ -62,13 +62,13 @@ Session::init();
                                         ?>
                                             <ul class="account_selection">
                                                 <li><a href="<?php echo BASE_URL . '/auth/user_info' ?>"><i class=" fa fa-user" aria-hidden="true"></i>
-                                                        Thông tin</a>
+                                                        Information</a>
                                                 </li>
                                                 <li><a href="<?php echo BASE_URL . '/auth/change_password' ?>"><i class=" fa fa-user" aria-hidden="true"></i>
-                                                        Đổi mật khẩu</a>
+                                                        Change Password</a>
                                                 </li>
                                                 <li><a href="<?php echo BASE_URL ?>/login/logout"><i class="fa fa-arrow-left" aria-hidden="true"></i>
-                                                        Đăng xuất</a>
+                                                        Logout</a>
                                                 </li>
                                             </ul>
                                         <?php
@@ -76,9 +76,9 @@ Session::init();
                                         ?>
                                             <ul class="account_selection">
                                                 <li><a href="<?php echo BASE_URL ?>/login" onclick="onLogin()"><i class="fa fa-sign-in" aria-hidden="true"></i>
-                                                        Đăng nhập</a></li>
+                                                        Login</a></li>
                                                 <li><a href="#" onclick="onRegister()"><i class="fa fa-user-plus" aria-hidden="true"></i>
-                                                        Đăng kí</a>
+                                                        Sign In</a>
                                                 </li>
                                             </ul>
                                         <?php
@@ -104,7 +104,7 @@ Session::init();
                     <div class="row">
                         <div class="col-lg-12 text-right">
                             <div class="logo_container">
-                                <a href="<?php echo BASE_URL ?>">colo<span>shop</span></a>
+                                <a href="<?php echo BASE_URL ?>">dainn<span>shop</span></a>
                             </div>
                             <nav class="navbar">
                                 <ul class="navbar_menu">
