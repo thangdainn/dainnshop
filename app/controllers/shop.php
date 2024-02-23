@@ -9,13 +9,19 @@ class shop extends Controller
         parent::__construct();
     }
 
-    public function index(){
+    public function index()
+    {
         $this->shop();
     }
     public function shop()
     {
         $this->load->view("header");
-        $this->load->view("cpanel/shop");
+        $cateModel = $this->load->model("CategoryModel");
+        $data['categories'] = $cateModel->findAll();
+        $brandModel = $this->load->model("BrandModel");
+        $data['brands'] = $brandModel->findAll();
+
+        $this->load->view("cpanel/shop", $data);
         $this->load->view("footer");
     }
     public function notFound()

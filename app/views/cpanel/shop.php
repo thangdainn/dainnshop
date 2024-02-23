@@ -19,17 +19,15 @@
                         <h5>Product Category</h5>
                     </div>
                     <ul class="sidebar_categories">
-                        <li class="active"><a href="#"><span><i class="fa fa-angle-double-right" 
-                            aria-hidden="true"></i></span>Shop</a></li>
-                        <li><a href="#">Men</a></li>
-                        <li>
-                            <a href="#">
-                                Women
-                            </a>
-                        </li>
-                        <li><a href="#">Accessories</a></li>
-                        <li><a href="#">New Arrivals</a></li>
-                        <li><a href="#">Collection</a></li>
+                        <li class="active"><a href="#"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>All</a></li>
+
+                        <?php
+                        foreach ($categories as $key => $cate) {
+                        ?>
+                            <li><a href="#"><?php echo $cate['name'] ?></a></li>
+                        <?php
+                        }
+                        ?>
                     </ul>
                 </div>
 
@@ -43,6 +41,22 @@
                     </p>
                     <div id="slider-range"></div>
                     <div class="filter_button"><span>filter</span></div>
+                </div>
+
+                <!-- Brands -->
+                <div class="sidebar_section">
+                    <div class="sidebar_title">
+                        <h5>Brands</h5>
+                    </div>
+                    <ul class="checkboxes">
+                        <?php
+                        foreach ($brands as $key => $brand) {
+                        ?>
+                            <li><i class="fa fa-square-o" aria-hidden="true"></i><span><?php echo $brand['name'] ?></span></li>
+                        <?php
+                        }
+                        ?>
+                    </ul>
                 </div>
 
                 <!-- Sizes -->
