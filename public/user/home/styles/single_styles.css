@@ -43,55 +43,13 @@ COLOR PALETTE
 2. Body and some general stuff
 *********************************/
 
-.section_title {
-  display: inline-block;
-  text-align: center;
-}
-.section_title h2 {
-  display: inline-block;
-}
-.section_title::after {
-  display: block;
-  position: absolute;
-  top: calc(100% + 13px);
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  -moz-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  -o-transform: translateX(-50%);
-  transform: translateX(-50%);
-  width: 60px;
-  height: 5px;
-  background: #fe4c50;
-  content: "";
-}
-.product_details_title p {
+/* .product_details_title p {
   color: #;
-}
+} */
 
 /*********************************
 4. Breadcrumbs
 *********************************/
-
-.breadcrumbs {
-  width: 100%;
-  height: 60px;
-  border-bottom: solid 1px #ebebeb;
-  margin-bottom: 79px;
-}
-.breadcrumbs ul li {
-  display: inline-block;
-  margin-right: 17px;
-}
-.breadcrumbs ul li.active a {
-  color: #b9b4c7;
-}
-.breadcrumbs ul li i {
-  margin-right: 17px;
-}
-.breadcrumbs ul li a {
-  color: #51545f;
-}
 
 /*********************************
 5. Single Product Section
@@ -191,14 +149,14 @@ COLOR PALETTE
   line-height: 30px;
   margin-top: 21px;
 }
-.product_price {
+/* .product_price {
   display: inline-block;
   font-size: 24px;
   color: #fe4c50;
   font-weight: 500;
   line-height: 30px;
   margin-top: 2px;
-}
+} */
 .star_rating {
   display: inline-block;
   margin-left: 33px;
@@ -259,7 +217,7 @@ COLOR PALETTE
 .minus:hover {
   color: #b5aec4;
 }
-.add_to_cart_button {
+.add_to_cart_btn {
   width: 160px;
   margin-left: 19px;
   font-size: 12px !important;
@@ -487,120 +445,6 @@ COLOR PALETTE
 9. Benefit
 *********************************/
 
-.benefit {
-  margin-top: 74px;
-}
-.benefit_row {
-  padding-left: 15px;
-  padding-right: 15px;
-}
-.benefit_col {
-  padding-left: 0px;
-  padding-right: 0px;
-}
-.benefit_item {
-  height: 100px;
-  background: #f3f3f3;
-  border-right: solid 1px #ffffff;
-  padding-left: 25px;
-}
-.benefit_col:last-child .benefit_item {
-  border-right: none;
-}
-.benefit_icon i {
-  font-size: 30px;
-  color: #fe4c50;
-}
-.benefit_content {
-  padding-left: 22px;
-}
-.benefit_content h6 {
-  text-transform: uppercase;
-  line-height: 18px;
-  font-weight: 500;
-  margin-bottom: 0px;
-}
-.benefit_content p {
-  font-size: 12px;
-  line-height: 18px;
-  margin-bottom: 0px;
-  color: #51545f;
-}
-
 /*********************************
 10. Newsletter
 *********************************/
-
-.newsletter {
-  width: 100%;
-  background: #f2f2f2;
-  margin-top: 81px;
-}
-.newsletter_text {
-  height: 120px;
-}
-.newsletter_text h4 {
-  margin-bottom: 0px;
-  line-height: 24px;
-}
-.newsletter_text p {
-  margin-bottom: 0px;
-  line-height: 1.7;
-  color: #51545f;
-}
-.newsletter_form {
-  height: 120px;
-}
-#newsletter_email {
-  width: 300px;
-  height: 46px;
-  background: #ffffff;
-  border: none;
-  padding-left: 20px;
-}
-#newsletter_email:focus {
-  border: solid 1px #7f7f7f !important;
-  box-shadow: none !important;
-}
-:focus {
-  outline: none !important;
-}
-::-webkit-input-placeholder {
-  font-size: 14px !important;
-  font-weight: 400;
-  color: #b9b4c7 !important;
-}
-:-moz-placeholder /* older Firefox*/ {
-  font-size: 14px !important;
-  font-weight: 400;
-  color: #b9b4c7 !important;
-}
-::-moz-placeholder /* Firefox 19+ */ {
-  font-size: 14px !important;
-  font-weight: 400;
-  color: #b9b4c7 !important;
-}
-:-ms-input-placeholder {
-  font-size: 14px !important;
-  font-weight: 400;
-  color: #b9b4c7 !important;
-}
-::input-placeholder {
-  font-size: 14px !important;
-  font-weight: 400;
-  color: #b9b4c7 !important;
-}
-.newsletter_submit_btn {
-  width: 160px;
-  height: 46px;
-  border: none;
-  background: #fe4c50;
-  color: #ffffff;
-  font-size: 14px;
-  font-weight: 500;
-  text-transform: uppercase;
-  cursor: pointer;
-}
-.newsletter_submit_btn:hover {
-  background: #fe7c7f;
-}

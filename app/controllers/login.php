@@ -26,13 +26,13 @@ class login extends Controller
         $this->load->view("cpanel/login");
         // $this->load->view("footer");
     }
-    public function dashboard()
-    {
-        Session::checkSession();
-        $this->load->view("header");
-        $this->load->view("cpanel/home");
-        $this->load->view("footer");
-    }
+    // public function dashboard()
+    // {
+    //     Session::checkSession();
+    //     $this->load->view("header");
+    //     $this->load->view("cpanel/home");
+    //     $this->load->view("footer");
+    // }
 
     public function authentication()
     {

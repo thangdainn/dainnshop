@@ -11,19 +11,22 @@ Session::init();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Colo Shop Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="public/user/home/styles/bootstrap4/bootstrap.min.css">
-    <link href="public/user/home/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/home/styles/bootstrap4/bootstrap.min.css">
+    <link href="<?php echo BASE_URL ?>/public/user/home/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/home/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/home/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/home/plugins/OwlCarousel2-2.2.1/animate.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL ?>/public/user/home/plugins/themify-icons/themify-icons.css">
+
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/home/styles/responsive.css">
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/home/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/home/styles/single_styles.css">
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/home/styles/contact_styles.css">
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/home/styles/categories_styles.css">
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/home/styles/main_styles.css">
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/home/styles/categories_responsive.css">
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/home/styles/contact_responsive.css">
-
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/home/styles/single_responsive.css">
 </head>
 
 <body>
@@ -88,10 +91,6 @@ Session::init();
                                         }
                                         ?>
 
-                                        <!-- <ul class="account_selection">
-                                            <li><a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i>Sign In</a></li>
-                                            <li><a href="#"><i class="fa fa-user-plus" aria-hidden="true"></i>Register</a></li>
-                                        </ul> -->
                                     </li>
                                 </ul>
                             </div>
@@ -137,9 +136,67 @@ Session::init();
             </div>
 
         </header>
+
+
+        <!-- Hamburger Menu -->
+
+        <div class="hamburger_menu">
+            <div class="hamburger_close"><i class="fa fa-times" aria-hidden="true"></i></div>
+            <div class="hamburger_menu_content text-right">
+                <ul class="menu_top_nav">
+                    <li class="menu_item has-children">
+                        <a href="#">
+                            <?php
+                            if (Session::isLogin()) {
+                                $fullName = Session::getFullName();
+                                echo "Welcome, $fullName";
+                            } else {
+                                echo "My Account";
+                            }
+                            ?>
+                            <i class="fa fa-angle-down"></i>
+                        </a>
+                        <?php
+                        if (Session::isLogin()) {
+                        ?>
+                            <ul class="menu_selection">
+                                <li><a href="<?php echo BASE_URL . '/auth/user_info' ?>"><i class=" fa fa-user" aria-hidden="true"></i>
+                                        Information</a>
+                                </li>
+                                <li><a href="<?php echo BASE_URL . '/auth/change_password' ?>"><i class=" fa fa-user" aria-hidden="true"></i>
+                                        Change Password</a>
+                                </li>
+                                <li><a href="<?php echo BASE_URL ?>/login/logout"><i class="fa fa-arrow-left" aria-hidden="true"></i>
+                                        Logout</a>
+                                </li>
+                            </ul>
+                        <?php
+                        } else {
+                        ?>
+                            <ul class="menu_selection">
+                                <li><a href="<?php echo BASE_URL ?>/login" onclick="onLogin()"><i class="fa fa-sign-in" aria-hidden="true"></i>
+                                        Login</a></li>
+                                <li><a href="#" onclick="onRegister()"><i class="fa fa-user-plus" aria-hidden="true"></i>
+                                        Register</a>
+                                </li>
+                            </ul>
+                        <?php
+                        }
+                        ?>
+
+                    </li>
+                    <li class="menu_item"><a href="<?php echo BASE_URL ?>">home</a></li>
+                    <li class="menu_item"><a href="<?php echo BASE_URL ?>/shop">shop</a></li>
+                    <li class="menu_item"><a href="<?php echo BASE_URL ?>">purchase order</a></li>
+                    <li class="menu_item"><a href="<?php echo BASE_URL ?>">about</a></li>
+                    <li class="menu_item"><a href="<?php echo BASE_URL ?>/contacts">contacts</a></li>
+                </ul>
+            </div>
+        </div>
         <script>
             let btnAcc = document.getElementById('prevent-default');
             btnAcc.addEventListener('click', (e) => {
                 e.preventDefault();
             })
         </script>
+        <div class="fs_menu_overlay"></div>

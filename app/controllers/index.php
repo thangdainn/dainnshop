@@ -9,7 +9,8 @@ class index extends Controller
         parent::__construct();
     }
 
-    public function index(){
+    public function index()
+    {
         $this->homePage();
     }
     public function homePage()
