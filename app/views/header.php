@@ -58,7 +58,7 @@ Session::init();
                                     <!-- My Account -->
 
                                     <li class="account" style="min-width: 150px">
-                                        <a href="" id="prevent-default">
+                                        <a href="#" id="prevent-default">
 
                                             <?php
                                             if (Session::isLogin()) {

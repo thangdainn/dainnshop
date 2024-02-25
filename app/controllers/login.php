@@ -12,16 +12,13 @@ class login extends Controller
 
     public function index()
     {
-        $this->login();
-    }
-    public function login()
-    {
         Session::init();
         if (Session::get("login") == true) {
             header('Location:' . BASE_URL . '/');
         }
         $this->load->view("cpanel/login");
     }
+
 
     public function authentication()
     {

@@ -7,7 +7,7 @@
 			<div class="breadcrumbs d-flex flex-row align-items-center">
 				<ul>
 					<li><a href="<?php echo BASE_URL ?>">Home</a></li>
-					<li class="active"><a href="<?php echo BASE_URL ?>/contacts"><i class="fa fa-angle-right" aria-hidden="true"></i>Contact</a></li>
+					<li class="active"><a href="<?php echo BASE_URL ?>/contact"><i class="fa fa-angle-right" aria-hidden="true"></i>Contact</a></li>
 				</ul>
 			</div>
 
