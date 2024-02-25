@@ -196,7 +196,7 @@ Session::init();
                     <li class="menu_item"><a href="<?php echo BASE_URL ?>/shop">shop</a></li>
                     <li class="menu_item"><a href="<?php echo BASE_URL ?>">purchase order</a></li>
                     <li class="menu_item"><a href="<?php echo BASE_URL ?>">about</a></li>
-                    <li class="menu_item"><a href="<?php echo BASE_URL ?>/contacts">contacts</a></li>
+                    <li class="menu_item"><a href="<?php echo BASE_URL ?>/contact">contact</a></li>
                 </ul>
             </div>
         </div>
