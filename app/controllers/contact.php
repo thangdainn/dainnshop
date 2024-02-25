@@ -1,6 +1,6 @@
 <?php
 
-class contacts extends Controller
+class contact extends Controller
 {
 
     public function __construct()
@@ -9,12 +9,12 @@ class contacts extends Controller
     }
 
     public function index(){
-        $this->contacts();
+        $this->contact();
     }
-    public function contacts()
+    public function contact()
     {
         $this->load->view("header");
-        $this->load->view("cpanel/contacts");
+        $this->load->view("cpanel/contact");
         $this->load->view("footer");
     }
 }

@@ -11,22 +11,29 @@ Session::init();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Colo Shop Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/home/styles/bootstrap4/bootstrap.min.css">
-    <link href="<?php echo BASE_URL ?>/public/user/home/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/home/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/home/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/home/plugins/OwlCarousel2-2.2.1/animate.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL ?>/public/user/home/plugins/themify-icons/themify-icons.css">
-
-    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/home/styles/responsive.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/home/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/home/styles/single_styles.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/home/styles/contact_styles.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/home/styles/categories_styles.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/home/styles/main_styles.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/home/styles/categories_responsive.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/home/styles/contact_responsive.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/home/styles/single_responsive.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/styles/bootstrap4/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/plugins/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/plugins/OwlCarousel2-2.2.1/animate.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL ?>/public/user/plugins/themify-icons/themify-icons.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
+    <?php
+    $currentURL = $_SERVER['REQUEST_URI'];
+    if (strpos($currentURL, '/shop') !== false) {
+        echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/categories_styles.css">';
+        echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/categories_responsive.css">';
+    } elseif (strpos($currentURL, '/product') !== false) {
+        echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/single_styles.css">';
+        echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/single_responsive.css">';
+    } elseif (strpos($currentURL, '/contact') !== false) {
+        echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/contact_styles.css">';
+        echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/contact_responsive.css">';
+    } elseif (strpos($currentURL, '/index') !== false || strpos($currentURL, '/') !== false) {
+        echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/main_styles.css">';
+        echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/responsive.css">';
+    }
+    ?>
 </head>
 
 <body>
@@ -114,7 +121,7 @@ Session::init();
                                     <li><a href="<?php echo BASE_URL ?>/shop">shop</a></li>
                                     <li><a href="#">purchase order</a></li>
                                     <li><a href="#">about</a></li>
-                                    <li><a href="<?php echo BASE_URL ?>/contacts">contact</a></li>
+                                    <li><a href="<?php echo BASE_URL ?>/contact">contact</a></li>
                                 </ul>
                                 <ul class="navbar_user">
                                     <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>

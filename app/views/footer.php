@@ -102,19 +102,28 @@
 
 </div>
 
-<script src="<?php echo BASE_URL ?>/public/user/home/js/jquery-3.2.1.min.js"></script>
-<script src="<?php echo BASE_URL ?>/public/user/home/styles/bootstrap4/popper.js"></script>
-<script src="<?php echo BASE_URL ?>/public/user/home/styles/bootstrap4/bootstrap.min.js"></script>
-<script src="<?php echo BASE_URL ?>/public/user/home/plugins/Isotope/isotope.pkgd.min.js"></script>
-<script src="<?php echo BASE_URL ?>/public/user/home/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
-<script src="<?php echo BASE_URL ?>/public/user/home/plugins/easing/easing.js"></script>
-<script src="<?php echo BASE_URL ?>/public/user/home/js/custom.js"></script>
-<script src="<?php echo BASE_URL ?>/public/user/home/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
-<script src="<?php echo BASE_URL ?>/public/user/home/js/categories_custom.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>
-<script src="<?php echo BASE_URL ?>/public/user/home/js/contact_custom.js"></script>
-<script src="<?php echo BASE_URL ?>/public/user/home/js/single_custom.js"></script>
+<script src="<?php echo BASE_URL ?>/public/user/js/jquery-3.2.1.min.js"></script>
+<script src="<?php echo BASE_URL ?>/public/user/styles/bootstrap4/popper.js"></script>
+<script src="<?php echo BASE_URL ?>/public/user/styles/bootstrap4/bootstrap.min.js"></script>
+<script src="<?php echo BASE_URL ?>/public/user/plugins/Isotope/isotope.pkgd.min.js"></script>
+<script src="<?php echo BASE_URL ?>/public/user/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+<script src="<?php echo BASE_URL ?>/public/user/plugins/easing/easing.js"></script>
+<script src="<?php echo BASE_URL ?>/public/user/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
 
+<?php
+$currentURL = $_SERVER['REQUEST_URI'];
+if (strpos($currentURL, '/shop') !== false) {
+    echo '<script src="' . BASE_URL . '/public/user/js/categories_custom.js"></script>';
+} elseif (strpos($currentURL, '/product') !== false) {
+    echo '<script src="' . BASE_URL . '/public/user/js/single_custom.js"></script>';
+} elseif (strpos($currentURL, '/contact') !== false) {
+    echo '<script src="' . BASE_URL . '/public/user/js/contact_custom.js"></script>';
+    echo '<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>';
+} elseif (strpos($currentURL, '/index') !== false || strpos($currentURL, '/') !== false) {
+    echo '<script src="' . BASE_URL . '/public/user/js/custom.js"></script>';
+}
+
+?>
 </body>
 
 </html>

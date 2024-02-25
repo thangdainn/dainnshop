@@ -6,8 +6,8 @@
 
 			<div class="breadcrumbs d-flex flex-row align-items-center">
 				<ul>
-					<li><a href="index.html">Home</a></li>
-					<li><a href="categories.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Men's</a></li>
+					<li><a href="<?php echo BASE_URL ?>">Home</a></li>
+					<li><a href="<?php echo BASE_URL ?>/shop"><i class="fa fa-angle-right" aria-hidden="true"></i>Shop</a></li>
 					<li class="active"><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Single Product</a></li>
 				</ul>
 			</div>
@@ -54,14 +54,7 @@
 					<li><i class="fa fa-star" aria-hidden="true"></i></li>
 					<li><i class="fa fa-star-o" aria-hidden="true"></i></li>
 				</ul>
-				<!-- <div class="product_color">
-					<span>Select Color:</span>
-					<ul>
-						<li style="background: #e54e5d"></li>
-						<li style="background: #252525"></li>
-						<li style="background: #60b3f3"></li>
-					</ul>
-				</div> -->
+
 				<div class="quantity d-flex flex-column flex-sm-row align-items-sm-center">
 					<span>Quantity:</span>
 					<div class="quantity_selector">
@@ -69,7 +62,7 @@
 						<span id="quantity_value">1</span>
 						<span class="plus"><i class="fa fa-plus" aria-hidden="true"></i></span>
 					</div>
-					<div class="red_button add_to_cart_btn" style="width: 160px;"><a href="#" style="font-size: 12px;">add to cart</a></div>
+					<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
 					<div class="product_favorite d-flex flex-column align-items-center justify-content-center"></div>
 				</div>
 			</div>
@@ -226,7 +219,7 @@
 										<textarea id="review_message" class="input_review" name="message" placeholder="Your Review" rows="4" required data-error="Please, leave us a review."></textarea>
 									</div>
 									<div class="text-left text-sm-right">
-										<button id="review_submit" type="submit" class="red_button review_submit_btn trans_300" value="Submit" style="width: 170px;font-size: 12px;">submit</button>
+										<button id="review_submit" type="submit" class="red_button review_submit_btn trans_300" value="Submit">submit</button>
 									</div>
 								</form>
 							</div>

@@ -7,8 +7,6 @@ class login extends Controller
     {
         $message = array();
         $data = array();
-        // Session::checkSession();
-
         parent::__construct();
     }
 
@@ -18,21 +16,12 @@ class login extends Controller
     }
     public function login()
     {
-        // $this->load->view("header");
         Session::init();
         if (Session::get("login") == true) {
             header('Location:' . BASE_URL . '/');
         }
         $this->load->view("cpanel/login");
-        // $this->load->view("footer");
     }
-    // public function dashboard()
-    // {
-    //     Session::checkSession();
-    //     $this->load->view("header");
-    //     $this->load->view("cpanel/home");
-    //     $this->load->view("footer");
-    // }
 
     public function authentication()
     {
@@ -45,8 +34,7 @@ class login extends Controller
                 Session::init();
                 Session::set('login', true);
                 Session::set('email', $check['email']);
-                // Session::set('fullName', $check['fullname']);
-                Session::set('fullName', "dao duc thang");
+                Session::set('fullName', $check['fullname']);
                 Session::set('roleId', $check['group_id']);
                 header('Location:' . BASE_URL . '/');
             } else {

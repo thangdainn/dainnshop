@@ -133,10 +133,10 @@
                                 <?php
                                 foreach ($products as $key => $product) {
                                 ?>
-                                    <div class="product-item" style="width: 25%;">
+                                    <div class="product-item">
                                         <div class="product discount product_filter">
                                             <div class="product_image">
-                                                <img style="width: 100%;" src="<?php echo BASE_URL ?>/upload/images/<?php echo $product['img'] ?>" alt="">
+                                                <img src="<?php echo BASE_URL ?>/upload/images/<?php echo $product['img'] ?>" alt="">
                                             </div>
                                             <div class="favorite favorite_left"></div>
                                             <div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>-$20</span></div>

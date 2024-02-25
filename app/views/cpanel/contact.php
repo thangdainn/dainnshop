@@ -6,8 +6,8 @@
 
 			<div class="breadcrumbs d-flex flex-row align-items-center">
 				<ul>
-					<li><a href="index.html">Home</a></li>
-					<li class="active"><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Contact</a></li>
+					<li><a href="<?php echo BASE_URL ?>">Home</a></li>
+					<li class="active"><a href="<?php echo BASE_URL ?>/contacts"><i class="fa fa-angle-right" aria-hidden="true"></i>Contact</a></li>
 				</ul>
 			</div>
 
@@ -73,7 +73,7 @@
 						<textarea id="input_message" class="input_ph input_message" name="message" placeholder="Message" rows="3" required data-error="Please, write us a message."></textarea>
 					</div>
 					<div>
-						<button id="review_submit" type="submit" class="message_submit_btn trans_300" value="Submit" style="width: 165px; background: #1e1e27; border-radius: 4px;">send message</button>
+						<button id="review_submit" type="submit" class="message_submit_btn trans_300" value="Submit">send message</button>
 					</div>
 				</form>
 			</div>
