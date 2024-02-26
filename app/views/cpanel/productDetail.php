@@ -54,7 +54,18 @@
 					<li><i class="fa fa-star" aria-hidden="true"></i></li>
 					<li><i class="fa fa-star-o" aria-hidden="true"></i></li>
 				</ul>
+				<div class="product_color">
+					<span>Select Color:</span>
 
+					<ul>
+						<li>S</li>
+						<li>M</li>
+						<li>L</li>
+						<li>XL</li>
+						<li>XXL</li>
+
+					</ul>
+				</div>
 				<div class="quantity d-flex flex-column flex-sm-row align-items-sm-center">
 					<span>Quantity:</span>
 					<div class="quantity_selector">
