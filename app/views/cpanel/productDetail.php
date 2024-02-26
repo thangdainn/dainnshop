@@ -22,15 +22,15 @@
 					<div class="col-lg-3 thumbnails_col order-lg-1 order-2">
 						<div class="single_product_thumbnails">
 							<ul>
-								<li><img src="<?php echo BASE_URL ?>/public/user/home/images/single_1_thumb.jpg" alt="" data-image="<?php echo BASE_URL ?>/public/user/home/images/single_1.jpg"></li>
-								<li class="active"><img src="<?php echo BASE_URL ?>/public/user/home/images/single_2_thumb.jpg" alt="" data-image="<?php echo BASE_URL ?>/public/user/home/images/single_2.jpg"></li>
-								<li><img src="<?php echo BASE_URL ?>/public/user/home/images/single_3_thumb.jpg" alt="" data-image="<?php echo BASE_URL ?>/public/user/home/images/single_3.jpg"></li>
+								<li><img src="<?php echo BASE_URL ?>/public/user/images/single_1_thumb.jpg" alt="" data-image="<?php echo BASE_URL ?>/public/user/images/single_1.jpg"></li>
+								<li class="active"><img src="<?php echo BASE_URL ?>/public/user/images/single_2_thumb.jpg" alt="" data-image="<?php echo BASE_URL ?>/public/user/images/single_2.jpg"></li>
+								<li><img src="<?php echo BASE_URL ?>/public/user/images/single_3_thumb.jpg" alt="" data-image="<?php echo BASE_URL ?>/public/user/images/single_3.jpg"></li>
 							</ul>
 						</div>
 					</div>
 					<div class="col-lg-9 image_col order-lg-2 order-1">
 						<div class="single_product_image">
-							<div class="single_product_image_background" style="background-image:url(<?php echo BASE_URL ?>/public/user/home/images/single_2.jpg)"></div>
+							<div class="single_product_image_background" style="background-image:url(<?php echo BASE_URL ?>/public/user/images/single_2.jpg)"></div>
 						</div>
 					</div>
 				</div>
