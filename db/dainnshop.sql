@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 11, 2023 at 01:50 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Host: localhost:3306
+-- Generation Time: Feb 26, 2024 at 08:24 AM
+-- Server version: 8.0.30
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,107 +18,8 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `do_an_web`
+-- Database: `dainnshop`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `bill`
---
-
-CREATE TABLE `bill` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `resipient_name` varchar(50) DEFAULT NULL,
-  `resipient_phonenumber` varchar(20) DEFAULT NULL,
-  `delivery_address` varchar(100) DEFAULT NULL,
-  `note` varchar(100) DEFAULT NULL,
-  `id_order_status` int(11) NOT NULL,
-  `create_at` datetime DEFAULT NULL,
-  `update_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `bill`
---
-
-INSERT INTO `bill` (`id`, `user_id`, `resipient_name`, `resipient_phonenumber`, `delivery_address`, `note`, `id_order_status`, `create_at`, `update_at`) VALUES
-(5, 9, 'MinhLam', '0987654321', 'tuy phuoc binh dinh', 'ok', 4, '2023-03-29 19:23:42', '2023-04-10 15:43:45'),
-(6, 10, 'Tienhai', '0987982144', 'q8 tphcm', 'ok', 6, '2023-01-22 19:24:11', '2023-03-30 08:28:42'),
-(11, 3, 'haile', '0987654321', 'ok !', 'huy don vi mot so li do', 2, '2023-01-29 21:16:53', '2023-04-17 13:24:45'),
-(13, 3, 'Tien Hai Le', '0987982144', '', 'dang giao', 5, '2023-04-14 09:52:11', '2023-04-17 13:25:02'),
-(14, 3, 'Tien Hai Le', '0987982144', '', '', 1, '2023-04-14 10:04:43', NULL),
-(15, 3, 'Tien Hai Le', '0987982144', 'Biinh Dinh Viet Nam', '', 4, '2023-04-14 10:59:27', NULL),
-(16, 3, 'Tien Hai Le', '0987982144', 'viet nam viet na', '', 4, '2023-04-14 11:00:17', NULL),
-(17, 3, 'Tien Hai Le', '0987982144', 'viet nam viet na', 'chu y', 4, '2023-04-14 11:01:53', '2023-04-17 13:25:15'),
-(18, 3, 'Tien Hai Le', '0987982144', 'sdfaaaaaaaaafdasfd', '', 4, '2023-04-14 15:57:35', NULL),
-(19, 9, 'Minh Lam ', '0987654321', 'Tuy phuoc binh dinh', '', 1, '2023-05-07 20:07:46', NULL),
-(20, 37, 'Le Tien Hai', '0987654321', 'Ho Chi Minh Viet Nam', 'ok', 6, '2023-05-07 22:12:40', '2023-05-07 23:03:23'),
-(21, 37, 'Le Tien Hai', '0987654321', 'Ho Chi Minh Viet Nam', 'nguoi dung tu y huy', 6, '2023-05-07 23:13:07', '2023-05-07 23:15:43'),
-(22, 10, 'Le Tien Hai', '0987654321', 'Ho Chi Minh Viet Nam', '.', 1, '2023-05-08 09:54:55', NULL),
-(23, 9, 'Le Tien Hai', '0987654321', 'Ho Chi Minh Viet Nam', '.', 6, '2023-05-08 09:55:55', '2023-05-08 10:19:53'),
-(24, 9, 'Le Tien Hai', '0987654321', 'Ho Chi Minh Viet Nam', '', 1, '2023-05-08 11:17:41', NULL),
-(25, 9, 'Le Tien Hai', '0987654321', 'Ho Chi Minh Viet Nam', '', 1, '2023-05-08 11:22:55', NULL),
-(26, 9, 'Le Tien Hai', '0987654321', 'Ho Chi Minh Viet Nam', '', 1, '2023-05-08 11:31:33', NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `bill_detail`
---
-
-CREATE TABLE `bill_detail` (
-  `id` int(11) NOT NULL,
-  `bill_id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
-  `size_id` int(11) NOT NULL,
-  `total` int(11) DEFAULT NULL,
-  `quantity` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `bill_detail`
---
-
-INSERT INTO `bill_detail` (`id`, `bill_id`, `product_id`, `size_id`, `total`, `quantity`) VALUES
-(8, 5, 1, 3, 600, 2),
-(9, 5, 8, 6, 2800, 4),
-(10, 6, 7, 1, 6000, 5),
-(11, 5, 12, 2, 200, 2),
-(14, 6, 7, 3, 4800, 4),
-(17, 5, 13, 4, 49000, 10),
-(20, 11, 2, 2, 15000, 30),
-(21, 11, 8, 3, 10500, 15),
-(22, 11, 11, 4, 2000, 10),
-(27, 13, 2, 2, 46500, 93),
-(28, 13, 12, 2, 100, 1),
-(29, 15, 12, 3, 500, 5),
-(30, 16, 12, 5, 100, 1),
-(31, 17, 12, 3, 100, 1),
-(32, 18, 2, 2, 4000, 8),
-(33, 18, 2, 3, 500, 1),
-(34, 18, 2, 4, 500, 1),
-(35, 18, 12, 3, 100, 1),
-(36, 19, 2, 4, 500, 1),
-(37, 20, 1, 3, 5400, 18),
-(38, 20, 2, 2, 500, 1),
-(39, 21, 1, 2, 5400, 18),
-(40, 21, 2, 2, 4000, 8),
-(41, 22, 2, 3, 500, 1),
-(42, 23, 2, 1, 500, 1),
-(43, 23, 2, 2, 500, 1),
-(44, 23, 2, 3, 500, 1),
-(45, 23, 12, 4, 900, 9),
-(46, 23, 12, 6, 1200, 12),
-(47, 24, 28, 4, 2800, 4),
-(48, 24, 36, 2, 3000, 5),
-(49, 24, 37, 4, 4800, 4),
-(50, 24, 38, 4, 32000, 8),
-(51, 25, 22, 3, 500, 1),
-(52, 25, 27, 3, 4800, 4),
-(53, 25, 35, 3, 9000, 3),
-(54, 26, 7, 5, 21600, 18);
 
 -- --------------------------------------------------------
 
@@ -127,12 +28,12 @@ INSERT INTO `bill_detail` (`id`, `bill_id`, `product_id`, `size_id`, `total`, `q
 --
 
 CREATE TABLE `brands` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `name` varchar(50) NOT NULL,
   `image` varchar(100) NOT NULL,
-  `create_at` datetime DEFAULT NULL,
-  `update_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `create_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `update_at` datetime DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `brands`
@@ -152,13 +53,13 @@ INSERT INTO `brands` (`id`, `name`, `image`, `create_at`, `update_at`) VALUES
 --
 
 CREATE TABLE `cart` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
-  `amount` int(11) NOT NULL,
-  `size_id` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `id` int NOT NULL,
+  `user_id` int NOT NULL,
+  `product_id` int NOT NULL,
+  `amount` int NOT NULL,
+  `size_id` int NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `cart`
@@ -174,23 +75,23 @@ INSERT INTO `cart` (`id`, `user_id`, `product_id`, `amount`, `size_id`, `created
 --
 
 CREATE TABLE `categories` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `name` varchar(50) NOT NULL,
   `image` varchar(100) NOT NULL,
-  `create_at` datetime DEFAULT NULL,
-  `update_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `create_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `update_at` datetime DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `categories`
 --
 
 INSERT INTO `categories` (`id`, `name`, `image`, `create_at`, `update_at`) VALUES
-(1, 'Áo Thun', 'adidas-d2m-3s-gm2135-1.jpg', '2023-03-20 13:30:00', '2023-03-20 13:30:00'),
-(2, 'Áo Hoodie', 'images/sp3/ao-hoodie-lifestyle-nam-adidas-hl6925-1.jpg', '2023-03-20 13:30:00', '2023-03-27 14:59:53'),
-(3, 'Áo Sơ Mi', 'images/categories/ao-thun-lifestyle-nam-puma-classics-logo-metallic-534711-01-1.jpg', '2023-03-20 13:30:00', '2023-03-27 15:00:33'),
-(4, 'Áo Polo', 'images/categories/nike-dq1011-824-1.jpg', '2023-03-20 13:30:00', '2023-03-27 15:00:17'),
-(15, 'Áo khoác', 'images/categories/ao-hoodie-lifestyle-nam-adidas-hl6925-1.jpg', '2023-03-29 16:39:38', '2023-03-30 16:30:10');
+(1, 'T-shirt', 'adidas-d2m-3s-gm2135-1.jpg', '2023-03-20 13:30:00', '2023-03-20 13:30:00'),
+(2, 'Hoodie', 'images/sp3/ao-hoodie-lifestyle-nam-adidas-hl6925-1.jpg', '2023-03-20 13:30:00', '2023-03-27 14:59:53'),
+(3, 'Shirt', 'images/categories/ao-thun-lifestyle-nam-puma-classics-logo-metallic-534711-01-1.jpg', '2023-03-20 13:30:00', '2023-03-27 15:00:33'),
+(4, 'Polo', 'images/categories/nike-dq1011-824-1.jpg', '2023-03-20 13:30:00', '2023-03-27 15:00:17'),
+(15, 'Jacket', 'images/categories/ao-hoodie-lifestyle-nam-adidas-hl6925-1.jpg', '2023-03-29 16:39:38', '2023-03-30 16:30:10');
 
 -- --------------------------------------------------------
 
@@ -199,14 +100,14 @@ INSERT INTO `categories` (`id`, `name`, `image`, `create_at`, `update_at`) VALUE
 --
 
 CREATE TABLE `contacts` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `name` varchar(100) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
-  `message` text DEFAULT NULL,
-  `status` int(11) DEFAULT NULL COMMENT '1:Chưa xử lý 2:Đang xử lý 3:Đã xử lý',
-  `note` text DEFAULT NULL,
+  `message` text,
+  `status` int DEFAULT NULL COMMENT '1:Chưa xử lý 2:Đang xử lý 3:Đã xử lý',
+  `note` text,
   `create_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `contacts`
@@ -225,42 +126,16 @@ INSERT INTO `contacts` (`id`, `name`, `email`, `message`, `status`, `note`, `cre
 -- --------------------------------------------------------
 
 --
--- Table structure for table `groups`
---
-
-CREATE TABLE `groups` (
-  `id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `permission` text DEFAULT NULL,
-  `create_at` datetime DEFAULT NULL,
-  `update_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `groups`
---
-
-INSERT INTO `groups` (`id`, `name`, `permission`, `create_at`, `update_at`) VALUES
-(2, 'Người dùng', '{\"groups\":[\"view\",\"add\",\"update\",\"delete\"],\"products\":[\"view\",\"add\"],\"users\":[\"view\",\"add\"],\"bill\":[\"view\",\"update\"]}', '2023-03-17 11:18:31', '2023-03-26 21:43:20'),
-(3, 'Xử lý đơn hàng', NULL, '2023-03-17 11:18:43', '2023-03-26 21:09:57'),
-(5, 'Quản lý ', '{\"groups\":[\"view\"],\"products\":[\"add\"],\"users\":[\"update\"],\"bill\":[\"view\",\"update\"]}', '2023-03-17 11:19:13', '2023-03-26 21:03:40'),
-(7, 'Nhân Viên', '{\"groups\":[\"update\"],\"users\":[\"add\"],\"bill\":[\"update\"],\"contacts\":[\"update\"],\"reviews\":[\"update\",\"delete\"]}', '2023-04-01 17:56:34', '2023-05-06 10:49:33'),
-(8, 'Admin', '{\"groups\":[\"add\",\"update\",\"delete\",\"permission\"],\"products\":[\"add\",\"update\",\"delete\"],\"users\":[\"add\",\"update\",\"delete\"],\"bill\":[\"update\"],\"contacts\":[\"update\",\"delete\"],\"reviews\":[\"update\",\"delete\"],\"options\":[\"update\"],\"dashboard\":[\"view\"]}', '2023-04-01 20:31:31', '2023-04-02 08:59:41'),
-(10, 'Bán hàng', NULL, '2023-05-08 10:07:15', NULL);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `images`
 --
 
 CREATE TABLE `images` (
-  `id` int(11) NOT NULL,
-  `id_product` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `id_product` int NOT NULL,
   `image` varchar(100) NOT NULL,
-  `create_at` datetime DEFAULT NULL,
-  `update_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `create_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `update_at` datetime DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `images`
@@ -332,11 +207,11 @@ INSERT INTO `images` (`id`, `id_product`, `image`, `create_at`, `update_at`) VAL
 --
 
 CREATE TABLE `login_token` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  `token` text DEFAULT NULL,
-  `create_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `id` int NOT NULL,
+  `user_id` int DEFAULT NULL,
+  `token` text,
+  `create_at` datetime DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `login_token`
@@ -344,7 +219,7 @@ CREATE TABLE `login_token` (
 
 INSERT INTO `login_token` (`id`, `user_id`, `token`, `create_at`) VALUES
 (234, 9, '58e6904b813511f21b70843e15817ec89b03f5f3', '2023-09-12 16:52:40'),
-(286, 3, '20474106a24ae4e0a31c367c688997917ca021b4', '2023-12-11 19:48:02');
+(288, 3, '60754239d4828138ae19a0e598e6925a331ddb38', '2024-01-25 10:52:32');
 
 -- --------------------------------------------------------
 
@@ -356,7 +231,7 @@ CREATE TABLE `modules` (
   `name` varchar(50) NOT NULL,
   `title` varchar(100) NOT NULL,
   `actions` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `modules`
@@ -379,11 +254,11 @@ INSERT INTO `modules` (`name`, `title`, `actions`) VALUES
 --
 
 CREATE TABLE `options` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `opt_key` varchar(100) DEFAULT NULL,
-  `opt_value` text DEFAULT NULL,
+  `opt_value` text,
   `name` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `options`
@@ -409,16 +284,115 @@ INSERT INTO `options` (`id`, `opt_key`, `opt_value`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `order`
+--
+
+CREATE TABLE `order` (
+  `id` int NOT NULL,
+  `user_id` int NOT NULL,
+  `resipient_name` varchar(50) DEFAULT NULL,
+  `resipient_phonenumber` varchar(20) DEFAULT NULL,
+  `delivery_address` varchar(100) DEFAULT NULL,
+  `note` varchar(100) DEFAULT NULL,
+  `id_order_status` int NOT NULL,
+  `create_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `update_at` datetime DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data for table `order`
+--
+
+INSERT INTO `order` (`id`, `user_id`, `resipient_name`, `resipient_phonenumber`, `delivery_address`, `note`, `id_order_status`, `create_at`, `update_at`) VALUES
+(5, 9, 'MinhLam', '0987654321', 'tuy phuoc binh dinh', 'ok', 4, '2023-03-29 19:23:42', '2023-04-10 15:43:45'),
+(6, 10, 'Tienhai', '0987982144', 'q8 tphcm', 'ok', 6, '2023-01-22 19:24:11', '2023-03-30 08:28:42'),
+(11, 3, 'haile', '0987654321', 'ok !', 'huy don vi mot so li do', 2, '2023-01-29 21:16:53', '2023-04-17 13:24:45'),
+(13, 3, 'Tien Hai Le', '0987982144', '', 'dang giao', 5, '2023-04-14 09:52:11', '2023-04-17 13:25:02'),
+(14, 3, 'Tien Hai Le', '0987982144', '', '', 1, '2023-04-14 10:04:43', NULL),
+(15, 3, 'Tien Hai Le', '0987982144', 'Biinh Dinh Viet Nam', '', 4, '2023-04-14 10:59:27', NULL),
+(16, 3, 'Tien Hai Le', '0987982144', 'viet nam viet na', '', 4, '2023-04-14 11:00:17', NULL),
+(17, 3, 'Tien Hai Le', '0987982144', 'viet nam viet na', 'chu y', 4, '2023-04-14 11:01:53', '2023-04-17 13:25:15'),
+(18, 3, 'Tien Hai Le', '0987982144', 'sdfaaaaaaaaafdasfd', '', 4, '2023-04-14 15:57:35', NULL),
+(19, 9, 'Minh Lam ', '0987654321', 'Tuy phuoc binh dinh', '', 1, '2023-05-07 20:07:46', NULL),
+(20, 37, 'Le Tien Hai', '0987654321', 'Ho Chi Minh Viet Nam', 'ok', 6, '2023-05-07 22:12:40', '2023-05-07 23:03:23'),
+(21, 37, 'Le Tien Hai', '0987654321', 'Ho Chi Minh Viet Nam', 'nguoi dung tu y huy', 6, '2023-05-07 23:13:07', '2023-05-07 23:15:43'),
+(22, 10, 'Le Tien Hai', '0987654321', 'Ho Chi Minh Viet Nam', '.', 1, '2023-05-08 09:54:55', NULL),
+(23, 9, 'Le Tien Hai', '0987654321', 'Ho Chi Minh Viet Nam', '.', 6, '2023-05-08 09:55:55', '2023-05-08 10:19:53'),
+(24, 9, 'Le Tien Hai', '0987654321', 'Ho Chi Minh Viet Nam', '', 1, '2023-05-08 11:17:41', NULL),
+(25, 9, 'Le Tien Hai', '0987654321', 'Ho Chi Minh Viet Nam', '', 1, '2023-05-08 11:22:55', NULL),
+(26, 9, 'Le Tien Hai', '0987654321', 'Ho Chi Minh Viet Nam', '', 1, '2023-05-08 11:31:33', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_detail`
+--
+
+CREATE TABLE `order_detail` (
+  `id` int NOT NULL,
+  `order_id` int NOT NULL,
+  `product_id` int NOT NULL,
+  `size_id` int NOT NULL,
+  `total` int DEFAULT NULL,
+  `quantity` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data for table `order_detail`
+--
+
+INSERT INTO `order_detail` (`id`, `order_id`, `product_id`, `size_id`, `total`, `quantity`) VALUES
+(8, 5, 1, 3, 600, 2),
+(9, 5, 8, 6, 2800, 4),
+(10, 6, 7, 1, 6000, 5),
+(11, 5, 12, 2, 200, 2),
+(14, 6, 7, 3, 4800, 4),
+(17, 5, 13, 4, 49000, 10),
+(20, 11, 2, 2, 15000, 30),
+(21, 11, 8, 3, 10500, 15),
+(22, 11, 11, 4, 2000, 10),
+(27, 13, 2, 2, 46500, 93),
+(28, 13, 12, 2, 100, 1),
+(29, 15, 12, 3, 500, 5),
+(30, 16, 12, 5, 100, 1),
+(31, 17, 12, 3, 100, 1),
+(32, 18, 2, 2, 4000, 8),
+(33, 18, 2, 3, 500, 1),
+(34, 18, 2, 4, 500, 1),
+(35, 18, 12, 3, 100, 1),
+(36, 19, 2, 4, 500, 1),
+(37, 20, 1, 3, 5400, 18),
+(38, 20, 2, 2, 500, 1),
+(39, 21, 1, 2, 5400, 18),
+(40, 21, 2, 2, 4000, 8),
+(41, 22, 2, 3, 500, 1),
+(42, 23, 2, 1, 500, 1),
+(43, 23, 2, 2, 500, 1),
+(44, 23, 2, 3, 500, 1),
+(45, 23, 12, 4, 900, 9),
+(46, 23, 12, 6, 1200, 12),
+(47, 24, 28, 4, 2800, 4),
+(48, 24, 36, 2, 3000, 5),
+(49, 24, 37, 4, 4800, 4),
+(50, 24, 38, 4, 32000, 8),
+(51, 25, 22, 3, 500, 1),
+(52, 25, 27, 3, 4800, 4),
+(53, 25, 35, 3, 9000, 3),
+(54, 26, 7, 5, 21600, 18);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `order_status`
 --
 
 CREATE TABLE `order_status` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `name` varchar(50) DEFAULT NULL,
-  `description` text DEFAULT NULL,
-  `create_at` datetime DEFAULT NULL,
-  `update_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `description` text,
+  `create_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `update_at` datetime DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `order_status`
@@ -439,26 +413,26 @@ INSERT INTO `order_status` (`id`, `name`, `description`, `create_at`, `update_at
 --
 
 CREATE TABLE `products` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `name` varchar(200) NOT NULL,
   `img` varchar(100) NOT NULL,
   `description` text NOT NULL,
-  `price` int(11) NOT NULL,
-  `sale` int(11) NOT NULL,
-  `id_category` int(11) NOT NULL,
-  `id_brand` int(11) NOT NULL,
-  `status` tinyint(4) DEFAULT NULL COMMENT '1 Mở bán 2 Ẩn',
+  `price` int NOT NULL,
+  `sale` int NOT NULL,
+  `category_id` int NOT NULL,
+  `brand_id` int NOT NULL,
+  `status` tinyint DEFAULT NULL COMMENT '1 Mở bán 0 Ẩn',
   `type` varchar(50) DEFAULT NULL COMMENT 'Normal Sale New',
-  `create_at` datetime DEFAULT NULL,
-  `update_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `create_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `update_at` datetime DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `name`, `img`, `description`, `price`, `sale`, `id_category`, `id_brand`, `status`, `type`, `create_at`, `update_at`) VALUES
-(1, 'Áo Addidas D2M', 'adidas-d2m-3s-gm2135-1.jpg', '&#60;p&#62;Mặc l&#38;ecirc;n tự tin thoải m&#38;aacute;i sẵn s&#38;agrave;ng t&#38;ecirc; t&#38;aacute;i&#60;/p&#62;&#13;&#10;', 600, 300, 1, 1, 2, 'new', '2023-03-20 13:30:00', '2023-05-06 10:44:01'),
+INSERT INTO `products` (`id`, `name`, `img`, `description`, `price`, `sale`, `category_id`, `brand_id`, `status`, `type`, `create_at`, `update_at`) VALUES
+(1, 'Áo Addidas D2M', 'adidas-d2m-3s-gm2135-1.jpg', '&#60;p&#62;Mặc l&#38;ecirc;n tự tin thoải m&#38;aacute;i sẵn s&#38;agrave;ng t&#38;ecirc; t&#38;aacute;i&#60;/p&#62;&#13;&#10;', 600, 100, 1, 1, 2, 'new', '2023-03-20 13:30:00', '2023-05-06 10:44:01'),
 (2, 'Áo Thun Adidas D4R Xanh', 'adidas-d4r-tee-men-hk7117-1.jpg', 'Tuy không xinh nhưng biết thế nào là ảo', 800, 500, 1, 1, 1, 'new', '2023-03-20 13:30:00', '2023-05-08 10:12:21'),
 (3, 'Áo Thun Adidas HC2760 Đen', 'adidas-m-ti-tee-hc2760-den-1.jpg', 'Đen như cuộc tình của anh và em', 900, 800, 1, 1, 1, 'normal', '2023-03-20 13:30:00', '2023-03-20 13:30:00'),
 (5, 'Áo Hoodie Adidas Tokyo Carrier Pullover', 'images/categories/ao-hoodie-lifestyle-nam-adidas-hl6925-1.jpg', '&#60;p&#62;Kẻ si t&#38;igrave;nh trong cuộc t&#38;igrave;nh tay ba&#60;/p&#62;&#13;&#10;', 1500, 1200, 2, 1, 1, 'sale', '2023-03-20 13:30:00', '2023-03-27 15:03:27'),
@@ -487,7 +461,7 @@ INSERT INTO `products` (`id`, `name`, `img`, `description`, `price`, `sale`, `id
 (36, 'Áo Nike Hồng Nam Tính', 'images/sp7/nike-dq1011-824-1.jpg', '&#60;p&#62;Ai n&#38;oacute;i m&#38;agrave;u hồng chỉ d&#38;agrave;nh cho phụ nữ th&#38;ocirc;i, h&#38;atilde;y mua ngay mẫu &#38;aacute;o hồng ho&#38;agrave;n to&#38;agrave;n mới đến từ Nike&#60;/p&#62;&#13;&#10;', 1000, 600, 1, 2, 1, 'new', '2023-05-07 21:48:52', NULL),
 (37, 'Hoodie Nike Thể Thao Pullover  Tokyo Trăng', 'images/sp19/ao-nike-sportswear-men-s-pullover-hoodie-tokyo-color-cw0308-100-mau-trang-1.jpg', '&#60;p&#62;Vừa nh&#38;igrave;n đ&#38;atilde; đẹp, kh&#38;ocirc;ng cần g&#38;igrave; hết chỉ với chiếc Hoodie n&#38;agrave;y l&#38;agrave; c&#38;oacute; thể tự tin ra đường&#60;/p&#62;&#13;&#10;', 1400, 1200, 2, 2, 1, 'new', '2023-05-07 22:15:11', NULL),
 (38, 'Áo Sơ Mi Gucci Embroidered Cotten Trắng', 'images/sp20/ao-so-mi-gucci-white-cotton-snake-embroidered-collar-duke-shirt-2.jpg', '&#60;p&#62;Si&#38;ecirc;u phẩm đến từ Gucci, chỉ với ch&#38;uacute;t đỉnh l&#38;agrave; c&#38;oacute; thể sỡ hữu&#60;/p&#62;&#13;&#10;', 5000, 4000, 3, 4, 1, 'sale', '2023-05-07 22:18:10', '2023-05-08 11:06:10'),
-(39, 'abcxyz', 'images/sp14/team-4.jpg', '&#60;p&#62;abc&#60;/p&#62;&#13;&#10;', 2147483647, 2147483647, 1, 2, 2, 'normal', '2023-05-08 14:09:56', '2023-05-08 14:13:56');
+(39, 'abcxyz', 'images/sp14/team-4.jpg', '&#60;p&#62;abc&#60;/p&#62;&#13;&#10;', 500, 100, 1, 2, 2, 'normal', '2023-05-08 14:09:56', '2023-05-08 14:13:56');
 
 -- --------------------------------------------------------
 
@@ -496,12 +470,12 @@ INSERT INTO `products` (`id`, `name`, `img`, `description`, `price`, `sale`, `id
 --
 
 CREATE TABLE `products_size` (
-  `id_product` int(11) NOT NULL,
-  `id_size` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL,
-  `create_at` datetime DEFAULT NULL,
-  `update_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `id_product` int NOT NULL,
+  `id_size` int NOT NULL,
+  `quantity` int NOT NULL,
+  `create_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `update_at` datetime DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `products_size`
@@ -688,16 +662,16 @@ INSERT INTO `products_size` (`id_product`, `id_size`, `quantity`, `create_at`, `
 --
 
 CREATE TABLE `reviews` (
-  `id` int(11) NOT NULL,
-  `product_id` int(11) DEFAULT NULL,
+  `id` int NOT NULL,
+  `product_id` int DEFAULT NULL,
   `name` varchar(100) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
-  `message` text DEFAULT NULL,
-  `star` int(11) DEFAULT NULL,
-  `status` int(11) DEFAULT NULL COMMENT '1: An 2:Hien Thi',
-  `note` text DEFAULT NULL,
+  `message` text,
+  `star` int DEFAULT NULL,
+  `status` int DEFAULT NULL COMMENT '1: An 2:Hien Thi',
+  `note` text,
   `create_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `reviews`
@@ -716,16 +690,42 @@ INSERT INTO `reviews` (`id`, `product_id`, `name`, `email`, `message`, `star`, `
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `roles`
+--
+
+CREATE TABLE `roles` (
+  `id` int NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `permission` text,
+  `create_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `update_at` datetime DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data for table `roles`
+--
+
+INSERT INTO `roles` (`id`, `name`, `permission`, `create_at`, `update_at`) VALUES
+(2, 'Người dùng', '{\"groups\":[\"view\",\"add\",\"update\",\"delete\"],\"products\":[\"view\",\"add\"],\"users\":[\"view\",\"add\"],\"bill\":[\"view\",\"update\"]}', '2023-03-17 11:18:31', '2023-03-26 21:43:20'),
+(3, 'Xử lý đơn hàng', NULL, '2023-03-17 11:18:43', '2023-03-26 21:09:57'),
+(5, 'Quản lý ', '{\"groups\":[\"view\"],\"products\":[\"add\"],\"users\":[\"update\"],\"bill\":[\"view\",\"update\"]}', '2023-03-17 11:19:13', '2023-03-26 21:03:40'),
+(7, 'Nhân Viên', '{\"groups\":[\"update\"],\"users\":[\"add\"],\"bill\":[\"update\"],\"contacts\":[\"update\"],\"reviews\":[\"update\",\"delete\"]}', '2023-04-01 17:56:34', '2023-05-06 10:49:33'),
+(8, 'Admin', '{\"groups\":[\"add\",\"update\",\"delete\",\"permission\"],\"products\":[\"add\",\"update\",\"delete\"],\"users\":[\"add\",\"update\",\"delete\"],\"bill\":[\"update\"],\"contacts\":[\"update\",\"delete\"],\"reviews\":[\"update\",\"delete\"],\"options\":[\"update\"],\"dashboard\":[\"view\"]}', '2023-04-01 20:31:31', '2023-04-02 08:59:41'),
+(10, 'Bán hàng', NULL, '2023-05-08 10:07:15', NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `sizes`
 --
 
 CREATE TABLE `sizes` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `name` varchar(10) DEFAULT NULL,
   `description` varchar(100) DEFAULT NULL,
-  `create_at` datetime DEFAULT NULL,
-  `update_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `create_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `update_at` datetime DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `sizes`
@@ -747,12 +747,12 @@ INSERT INTO `sizes` (`id`, `name`, `description`, `create_at`, `update_at`) VALU
 --
 
 CREATE TABLE `subcribes` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `email` varchar(100) DEFAULT NULL,
-  `note` text DEFAULT NULL,
+  `note` text,
   `create_at` datetime DEFAULT NULL,
-  `status` int(11) DEFAULT NULL COMMENT '1:Chưa xử lý 2:Đang xử lý 3:Đã xử lý'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `status` int DEFAULT NULL COMMENT '1:Chưa xử lý 2:Đang xử lý 3:Đã xử lý'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `subcribes`
@@ -778,52 +778,35 @@ INSERT INTO `subcribes` (`id`, `email`, `note`, `create_at`, `status`) VALUES
 --
 
 CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `fullname` varchar(100) NOT NULL,
   `email` varchar(50) NOT NULL,
   `phone` varchar(50) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `status` int(11) NOT NULL COMMENT '1 Kich hoat 0 Chua kich hoat',
+  `status` int NOT NULL COMMENT '1 Kich hoat 0 Chua kich hoat',
   `type` varchar(50) DEFAULT 'user',
-  `group_id` int(11) NOT NULL,
+  `role_id` int NOT NULL,
   `forgot_token` varchar(200) DEFAULT NULL,
   `active_token` varchar(200) DEFAULT NULL,
-  `create_at` datetime DEFAULT NULL,
-  `update_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `create_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `update_at` datetime DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `fullname`, `email`, `phone`, `password`, `status`, `type`, `group_id`, `forgot_token`, `active_token`, `create_at`, `update_at`) VALUES
-(3, 'Tien Hai Le', 'tienhai4888@gmail.com', '0987982144', '$2y$10$G6GZk.UtbjfwMqDBBXyaEetxOuR1Q2LC1EFbtfM4ykXlRau0xeK62', 1, 'member', 8, 'ebc6cbcc368ed19baba5090bbe324959b967020e', NULL, '2023-03-17 11:05:40', '2023-04-17 16:38:48'),
+INSERT INTO `users` (`id`, `fullname`, `email`, `phone`, `password`, `status`, `type`, `role_id`, `forgot_token`, `active_token`, `create_at`, `update_at`) VALUES
+(3, 'Tien Hai Le', 'tienhai4888@gmail.com', '0987982144', '$2y$10$EOKveHmiOhJhwzp04D1nMuD4eeGJ0P7TKTsn9oGJHeIxWylm5Cht6', 1, 'member', 8, '7875d6272a18434cd5815a137e70d6e96cec6ac9', NULL, '2023-03-17 11:05:40', '2023-04-17 16:38:48'),
 (9, 'Minh Lam ', 'minhlam@gmail.com', '0987654321', '$2y$10$OcKwsA8ONsFm4ihM1mR8m.gVLCS3terEbozObJ5Jc89dsfOw8tI1O', 1, 'user', 2, NULL, NULL, '2023-03-18 21:48:44', '2023-05-08 13:13:10'),
 (10, 'TienHai', 'tienhai@gmail.com', '0987654321', '$2y$10$ilv4fmfcw0cfkdtcUou9xu0joh3KlGC08pEzuoNQKEc6iwNHtPgZm', 1, 'user', 3, NULL, NULL, '2023-03-18 21:50:14', '2023-03-19 09:57:31'),
 (37, 'TienHai', 'tienhai488@gmail.com', '0987654321', '$2y$10$G6GZk.UtbjfwMqDBBXyaEetxOuR1Q2LC1EFbtfM4ykXlRau0xeK62', 1, 'user', 2, '', '', '2023-03-31 16:54:53', '2023-03-31 21:22:18'),
 (38, 'Minh Lam', 'minhlam2@gmail.com', '0987654321', '$2y$10$uIcF8Q7uXNj7kI/Dc7qhEefwMSa4SZ61q5riSj1QklBx6/2p6O.ei', 1, 'member', 7, NULL, NULL, '2023-04-01 17:18:32', '2023-04-01 23:00:49'),
-(45, 'tienhai', 'tienhaile488@gmail.com', '0987654321', '$2y$10$L9WoymN1ZtQJA4EjpUmpo.utErYjFvVI7bl0wt/Fho.dooZYjCRSe', 0, 'user', 2, NULL, '238eacac8221c9a134c6b7b56839247969de1e97', '2023-10-19 10:49:41', NULL);
+(45, 'ducthang', 'thanngit@gmail.com', '0123123123', '$2y$10$wEQwvHRUaLt.NfjhNSv0pOjUGi25gdOY8RtSjQtZrVeC0MWP.KJpW', 1, 'user', 2, NULL, '238eacac8221c9a134c6b7b56839247969de1e97', '2023-10-19 10:49:41', NULL);
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `bill`
---
-ALTER TABLE `bill`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_bill_user` (`user_id`),
-  ADD KEY `fk_bill_order_status` (`id_order_status`);
-
---
--- Indexes for table `bill_detail`
---
-ALTER TABLE `bill_detail`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_detail_bill_bill` (`bill_id`),
-  ADD KEY `fk_bill_detail_product` (`product_id`),
-  ADD KEY `fk_bill_detail_size` (`size_id`);
 
 --
 -- Indexes for table `brands`
@@ -853,12 +836,6 @@ ALTER TABLE `contacts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `groups`
---
-ALTER TABLE `groups`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `images`
 --
 ALTER TABLE `images`
@@ -879,6 +856,23 @@ ALTER TABLE `options`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `order`
+--
+ALTER TABLE `order`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_bill_user` (`user_id`),
+  ADD KEY `fk_bill_order_status` (`id_order_status`);
+
+--
+-- Indexes for table `order_detail`
+--
+ALTER TABLE `order_detail`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_detail_bill_bill` (`order_id`),
+  ADD KEY `fk_bill_detail_product` (`product_id`),
+  ADD KEY `fk_bill_detail_size` (`size_id`);
+
+--
 -- Indexes for table `order_status`
 --
 ALTER TABLE `order_status`
@@ -889,8 +883,8 @@ ALTER TABLE `order_status`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_product_categorie` (`id_category`),
-  ADD KEY `fk_product_brand` (`id_brand`);
+  ADD KEY `fk_product_categorie` (`category_id`),
+  ADD KEY `fk_product_brand` (`brand_id`);
 
 --
 -- Indexes for table `products_size`
@@ -905,6 +899,12 @@ ALTER TABLE `products_size`
 ALTER TABLE `reviews`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_review_product` (`product_id`);
+
+--
+-- Indexes for table `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `sizes`
@@ -923,126 +923,111 @@ ALTER TABLE `subcribes`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_user_group` (`group_id`);
+  ADD KEY `fk_user_group` (`role_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `bill`
---
-ALTER TABLE `bill`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
-
---
--- AUTO_INCREMENT for table `bill_detail`
---
-ALTER TABLE `bill_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
-
---
 -- AUTO_INCREMENT for table `brands`
 --
 ALTER TABLE `brands`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `contacts`
 --
 ALTER TABLE `contacts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT for table `groups`
---
-ALTER TABLE `groups`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT for table `login_token`
 --
 ALTER TABLE `login_token`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=287;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=289;
 
 --
 -- AUTO_INCREMENT for table `options`
 --
 ALTER TABLE `options`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `order`
+--
+ALTER TABLE `order`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
+-- AUTO_INCREMENT for table `order_detail`
+--
+ALTER TABLE `order_detail`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `order_status`
 --
 ALTER TABLE `order_status`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+
+--
+-- AUTO_INCREMENT for table `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `sizes`
 --
 ALTER TABLE `sizes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `subcribes`
 --
 ALTER TABLE `subcribes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `bill`
---
-ALTER TABLE `bill`
-  ADD CONSTRAINT `fk_bill_order_status` FOREIGN KEY (`id_order_status`) REFERENCES `order_status` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `fk_bill_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
-
---
--- Constraints for table `bill_detail`
---
-ALTER TABLE `bill_detail`
-  ADD CONSTRAINT `fk_bill_detail_product` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `fk_bill_detail_size` FOREIGN KEY (`size_id`) REFERENCES `sizes` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `fk_detail_bill_bill` FOREIGN KEY (`bill_id`) REFERENCES `bill` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `cart`
@@ -1065,11 +1050,26 @@ ALTER TABLE `login_token`
   ADD CONSTRAINT `fk_login_token_account` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
+-- Constraints for table `order`
+--
+ALTER TABLE `order`
+  ADD CONSTRAINT `fk_bill_order_status` FOREIGN KEY (`id_order_status`) REFERENCES `order_status` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_bill_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `order_detail`
+--
+ALTER TABLE `order_detail`
+  ADD CONSTRAINT `fk_bill_detail_product` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_bill_detail_size` FOREIGN KEY (`size_id`) REFERENCES `sizes` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_detail_bill_bill` FOREIGN KEY (`order_id`) REFERENCES `order` (`id`) ON DELETE CASCADE;
+
+--
 -- Constraints for table `products`
 --
 ALTER TABLE `products`
-  ADD CONSTRAINT `fk_product_brand` FOREIGN KEY (`id_brand`) REFERENCES `brands` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `fk_product_categorie` FOREIGN KEY (`id_category`) REFERENCES `categories` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `fk_product_categorie` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`brand_id`) REFERENCES `brands` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Constraints for table `products_size`
@@ -1088,7 +1088,7 @@ ALTER TABLE `reviews`
 -- Constraints for table `users`
 --
 ALTER TABLE `users`
-  ADD CONSTRAINT `fk_user_group` FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `fk_user_group` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
