@@ -20,4 +20,11 @@ class ProductModel extends Model
         $result = $this->db->select($sql, $id);
         return $result;
     }
+
+    public function findByCategoryId($categoryId)
+    {
+        $sql = "SELECT * FROM products p JOIN categories c ON p.category_id = c.id WHERE c.id = ?";
+        $result = $this->db->select($sql, $categoryId);
+        return $result;
+    }
 }
