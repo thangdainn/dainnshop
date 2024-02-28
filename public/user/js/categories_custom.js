@@ -52,7 +52,6 @@ jQuery(document).ready(function ($) {
   initIsotopeFiltering();
   initPriceSlider();
   initCheckboxes();
-
   /* 
 
 	2. Set Header
@@ -383,5 +382,14 @@ jQuery(document).ready(function ($) {
         });
       }
     }
+  }
+
+  downFilter();
+  function downFilter() {
+    $("#toggleCategories").click(function () {
+      console.log(dqdqd);
+      // $("#categoryList").toggleClass("active");
+      // $("#categoryList").slideToggle();
+    });
   }
 });

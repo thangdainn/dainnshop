@@ -24,7 +24,11 @@ class shop extends Controller
         $sizeModel = $this->load->model("SizeModel");
         $data['sizes'] = $sizeModel->findAll();
         $productModel = $this->load->model("ProductModel");
-        $data['products'] = $productModel->findAll();
+        $products = $productModel->findAll(0);
+        $data['products'] = $products;
+
+        $totalPage = ceil($productModel->countFindAll() / 16);
+        $data['totalPage'] = $totalPage;
 
         $this->load->view("cpanel/shop", $data);
         $this->load->view("footer");

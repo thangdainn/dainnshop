@@ -1,4 +1,4 @@
-<div class="container product_section_container">
+<div id="product-container" class="container product_section_container">
     <div class="row">
         <div class="col product_section clearfix">
 
@@ -15,9 +15,11 @@
 
             <div class="sidebar">
                 <div class="sidebar_section">
-                    <div class="sidebar_title">
-                        <h5>Category</h5>
-                    </div>
+                    <a class="sidebar_title">
+                        Category
+                        <i class="fa fa-chevron-down"></i>
+
+                    </a>
                     <ul class="sidebar_categories">
                         <li class="active"><a href="#"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>All</a></li>
 
@@ -32,21 +34,13 @@
                 </div>
 
                 <!-- Price Range Filtering -->
-                <div class="sidebar_section">
-                    <div class="sidebar_title">
-                        <h5>Filter by Price</h5>
-                    </div>
-                    <p>
-                        <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
-                    </p>
-                    <div id="slider-range"></div>
-                    <div class="filter_button"><span>filter</span></div>
-                </div>
+
 
                 <!-- Brands -->
                 <div class="sidebar_section">
                     <div class="sidebar_title">
-                        <h5>Brands</h5>
+                        Brands
+                        <i class="fa fa-chevron-down"></i>
                     </div>
                     <ul class="checkboxes">
                         <?php
@@ -62,7 +56,8 @@
                 <!-- Sizes -->
                 <div class="sidebar_section">
                     <div class="sidebar_title">
-                        <h5>Sizes</h5>
+                        Sizes
+                        <i class="fa fa-chevron-down"></i>
                     </div>
                     <ul class="checkboxes">
                         <?php
@@ -127,7 +122,7 @@
 
                             <!-- Product Grid -->
 
-                            <div class="product-grid">
+                            <div class="row product-container" style="margin: 40px 0px;">
 
                                 <!-- Products -->
                                 <?php
@@ -150,25 +145,15 @@
                                 <?php
                                 }
                                 ?>
+                                <input type="hidden" id="page" name="page" value="1">
+                                <input type="hidden" id="totalPage" value="<?php echo $totalPage ?>">
                             </div>
 
-                            <!-- Product Sorting -->
+                            <a id="loadPage" href="#product-container"></a>
+                            <input type="hidden" id="keyword" name="keyword">
+                            <input type="hidden" id="categoryCode" name="categoryCode">
+                            <ul class="pagination justify-content-center" id="pagination" style="margin-top: 20px;"></ul>
 
-                            <div class="product_sorting_container product_sorting_container_bottom clearfix">
-                                <div class="pages d-flex flex-row align-items-center">
-                                    <div class="page_current">
-                                        <span>1</span>
-                                        <ul class="page_selection">
-                                            <li><a href="#">1</a></li>
-                                            <li><a href="#">2</a></li>
-                                            <li><a href="#">3</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="page_total"><span>of</span> 3</div>
-                                    <div id="next_page_1" class="page_next"><a href="#"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></div>
-                                </div>
-
-                            </div>
 
                             <!-- </div> -->
                         </div>
@@ -178,3 +163,58 @@
         </div>
     </div>
 </div>
+<script>
+    let page = $('#page').val();
+    page = parseInt(page);
+    let totalPage = $('#totalPage').val();
+    totalPage = parseInt(totalPage);
+    let currentPage = page;
+    // let totalPage = 5;
+    $(function() {
+        window.pagObj = $('#pagination').twbsPagination({
+            totalPages: totalPage,
+            visiblePages: 5,
+            startPage: currentPage,
+            onPageClick: function(event, page) {
+                if (page !== currentPage) {
+                    $('#page').val(page - 1);
+                    let data = {
+                        page: page - 1,
+                        limit: 12
+                    };
+                    autoClickTagA()
+                    currentPage = page;
+                    paging(data);
+                }
+            }
+        })
+    });
+
+    function autoClickTagA() {
+        var link = document.getElementById("loadPage");
+        var clickEvent = new MouseEvent("click", {
+            "view": window,
+            "bubbles": true,
+            "cancelable": false
+        });
+        link.dispatchEvent(clickEvent);
+    }
+
+    function paging(data) {
+        let url = '<?php echo BASE_URL ?>/product/paging';
+        $.ajax({
+            url: url,
+            type: 'POST',
+            dataType: 'html',
+            data: data,
+            success: function(data) {
+                $('.product-container').empty();
+                $('.product-container').html(data);
+
+            },
+            error: function() {
+
+            }
+        })
+    }
+</script>
