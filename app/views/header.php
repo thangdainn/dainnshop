@@ -22,6 +22,7 @@ Session::init();
     $currentURL = $_SERVER['REQUEST_URI'];
     if (strpos($currentURL, '/shop') !== false) {
         echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/categories_styles.css">';
+        echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/paging.css">';
         echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/categories_responsive.css">';
     } elseif (strpos($currentURL, '/product') !== false) {
         echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/single_styles.css">';
@@ -34,6 +35,8 @@ Session::init();
         echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/responsive.css">';
     }
     ?>
+    <script src="<?php echo BASE_URL ?>/public/user/js/jquery-3.2.1.min.js"></script>
+
 </head>
 
 <body>
