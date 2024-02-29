@@ -7,9 +7,9 @@ class ProductModel extends Model
         parent::__construct();
     }
 
-    public function findAll($page)
+    public function findAll($page, $limit)
     {
-        $sql = "SELECT * FROM products LIMIT " . $page . ", 16";
+        $sql = "SELECT * FROM products LIMIT " . $page . ", " . $limit;
         $result = $this->db->select($sql);
         return $result;
     }
@@ -44,7 +44,7 @@ class ProductModel extends Model
                 JOIN categories c ON p.category_id = c.id 
                 WHERE p.status = 1 AND ps.quantity > 0";
         if ($keyword !== null) {
-            // $keyword = "%" . $keyword . "%";
+            $keyword = "%" . $keyword . "%";
             $sql .= " AND p.name LIKE ?";
         }
         if ($categoryId !== null) {

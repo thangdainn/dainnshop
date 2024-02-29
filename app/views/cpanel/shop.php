@@ -15,12 +15,14 @@
 
             <div class="sidebar">
                 <div class="sidebar_section">
-                    <a class="sidebar_title">
-                        Category
-                        <i class="fa fa-chevron-down"></i>
+                    <div class="sidebar_title">
+                        <a>
+                            Category
+                            <i class="fa fa-chevron-down"></i>
 
-                    </a>
-                    <ul class="sidebar_categories">
+                        </a>
+                    </div>
+                    <ul class="sidebar_categories collapse show showItem">
                         <li class="active"><a href="#"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>All</a></li>
 
                         <?php
@@ -39,10 +41,13 @@
                 <!-- Brands -->
                 <div class="sidebar_section">
                     <div class="sidebar_title">
-                        Brands
-                        <i class="fa fa-chevron-down"></i>
+                        <a>
+                            Brands
+                            <i class="fa fa-chevron-down"></i>
+
+                        </a>
                     </div>
-                    <ul class="checkboxes">
+                    <ul class="checkboxes collapse show showItem">
                         <?php
                         foreach ($brands as $key => $brand) {
                         ?>
@@ -56,10 +61,13 @@
                 <!-- Sizes -->
                 <div class="sidebar_section">
                     <div class="sidebar_title">
-                        Sizes
-                        <i class="fa fa-chevron-down"></i>
+                        <a>
+                            Sizes
+                            <i class="fa fa-chevron-down"></i>
+
+                        </a>
                     </div>
-                    <ul class="checkboxes">
+                    <ul class="checkboxes collapse show showItem">
                         <?php
                         foreach ($sizes as $key => $size) {
                         ?>
@@ -165,11 +173,9 @@
 </div>
 <script>
     let page = $('#page').val();
-    page = parseInt(page);
     let totalPage = $('#totalPage').val();
     totalPage = parseInt(totalPage);
-    let currentPage = page;
-    // let totalPage = 5;
+    let currentPage = parseInt(page);
     $(function() {
         window.pagObj = $('#pagination').twbsPagination({
             totalPages: totalPage,
@@ -180,7 +186,7 @@
                     $('#page').val(page - 1);
                     let data = {
                         page: page - 1,
-                        limit: 12
+                        limit: 16
                     };
                     autoClickTagA()
                     currentPage = page;
