@@ -43,7 +43,7 @@ if (session_status() == PHP_SESSION_NONE) {
         echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/cart_responsive.css">';
     } elseif (strpos($currentURL, '/purchaseOrder') !== false) {
         echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/purchaseOrder_styles.css">';
-        echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/purchaseOrder_responsive.css">'; 
+        echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/purchaseOrder_responsive.css">';
     } elseif (strpos($currentURL, '/checkout') !== false) {
         echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/checkout_styles.css">';
         echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/checkout_responsive.css">';
