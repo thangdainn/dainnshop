@@ -19,15 +19,19 @@ class shop extends Controller
 
         $cateModel = $this->load->model("CategoryModel");
         $data['categories'] = $cateModel->findAll();
+        
         $brandModel = $this->load->model("BrandModel");
         $data['brands'] = $brandModel->findAll();
+
         $sizeModel = $this->load->model("SizeModel");
         $data['sizes'] = $sizeModel->findAll();
+
         $productModel = $this->load->model("ProductModel");
-        $products = $productModel->findAll(0);
+        $limit = 16;
+        $products = $productModel->findAll(0, $limit);
         $data['products'] = $products;
 
-        $totalPage = ceil($productModel->countFindAll() / 16);
+        $totalPage = ceil($productModel->countFindAll() / $limit);
         $data['totalPage'] = $totalPage;
 
         $this->load->view("cpanel/shop", $data);

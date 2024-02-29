@@ -52,6 +52,8 @@ jQuery(document).ready(function ($) {
   initIsotopeFiltering();
   initPriceSlider();
   initCheckboxes();
+  initFilter();
+  initCategory();
   /* 
 
 	2. Set Header
@@ -384,12 +386,24 @@ jQuery(document).ready(function ($) {
     }
   }
 
-  downFilter();
-  function downFilter() {
-    $("#toggleCategories").click(function () {
-      console.log(dqdqd);
-      // $("#categoryList").toggleClass("active");
-      // $("#categoryList").slideToggle();
+  function initFilter() {
+    $(".sidebar_title a").on("click", function () {
+      var ulElement = $(this).parent().next();
+      ulElement.toggleClass("showItem");
+    });
+  }
+
+  function initCategory() {
+    $(".sidebar_categories li").on("click", function () {
+      $(".sidebar_categories li").removeClass("active");
+      $(".sidebar_categories li a").find("span").remove();
+      $(".sidebar_categories li a").find("i").remove();
+      $(this).addClass("active");
+      $(this)
+        .find("a")
+        .prepend(
+          '<span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>'
+        );
     });
   }
 });

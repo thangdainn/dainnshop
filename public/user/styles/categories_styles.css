@@ -1031,33 +1031,44 @@ section {
   padding-right: 17px;
 }
 .sidebar_section {
-  padding-bottom: 35px;
-  margin-bottom: 50px;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
   border-bottom: solid 1px #ebebeb;
 }
+.sidebar_section ul {
+  padding-top: 5px;
+  /* display: none;  */
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.8s ease;
+}
 
-.sidebar_title {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  margin-left: 1px;
+.sidebar_section .showItem {
+  display: block;
+  max-height: 270px;
+}
+
+.sidebar_title a {
+  display: block;
+  position: relative;
 }
 
 .sidebar_title {
   font-size: 17px;
   font-weight: 500;
-  margin-bottom: 21px;
+  /* margin-bottom: 21px; */
   cursor: pointer;
 }
-.sidebar_title i {
+.sidebar_title a i {
+  position: absolute;
+  right: 0;
+  top: 6px;
   font-size: 14px;
-  font-weight: 100;
-  margin-top: 6px;
 }
 
-.sidebar_categories {
+/* .sidebar_categories {
   display: none;
-}
+} */
 .sidebar_categories.active {
   display: block;
 }
