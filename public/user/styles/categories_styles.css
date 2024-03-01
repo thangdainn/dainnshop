@@ -1037,7 +1037,7 @@ section {
 }
 .sidebar_section ul {
   padding-top: 5px;
-  /* display: none;  */
+  cursor: pointer;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.8s ease;

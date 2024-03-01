@@ -34,9 +34,21 @@ class product extends Controller
     {
         $page = $_POST['page'];
         $limit = $_POST['limit'];
+        $keyword = $_POST['keyword'];
+        $categoryId = $_POST['categoryId'];
+        if (isset($_POST['brandIds'])) {
+            $brandIds = $_POST['brandIds'];
+        } else {
+            $brandIds = null;
+        }
+        if (isset($_POST['sizeIds'])) {
+            $sizeIds = $_POST['sizeIds'];
+        } else {
+            $sizeIds = null;
+        }
         $productModel = $this->load->model("ProductModel");
-        $products = $productModel->findByDynamicFilter($page, $limit);
-        $totalItem = $productModel->countByDynamicFilter();
+        $products = $productModel->findByDynamicFilter($page, $limit, $keyword, $categoryId, $brandIds, $sizeIds);
+        $totalItem = $productModel->countByDynamicFilter($keyword, $categoryId, $brandIds, $sizeIds);
         $totalPage = ceil($totalItem / $limit);
         $html = '';
         foreach ($products as $key => $product) {
@@ -56,8 +68,8 @@ class product extends Controller
                     <div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
                 </div>';
         }
-        $html .= '<input type="hidden" id="page" value=' . ($page + 1) . '>';
         $html .= '<input type="hidden" id="totalPage" value=' . $totalPage . '>';
+        // $html .= '<script src="' . BASE_URL . '/public/user/js/jquery.twbsPagination.js"></script>';
         echo $html;
     }
 }

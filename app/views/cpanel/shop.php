@@ -23,12 +23,12 @@
                         </a>
                     </div>
                     <ul class="sidebar_categories collapse show showItem">
-                        <li class="active"><a href="#"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>All</a></li>
+                        <li class="active" data-value="0"><a><span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>All</a></li>
 
                         <?php
                         foreach ($categories as $key => $cate) {
                         ?>
-                            <li><a href="#"><?php echo $cate['name'] ?></a></li>
+                            <li data-value="<?php echo $cate['id'] ?>"><a><?php echo $cate['name'] ?></a></li>
                         <?php
                         }
                         ?>
@@ -47,11 +47,11 @@
 
                         </a>
                     </div>
-                    <ul class="checkboxes collapse show showItem">
+                    <ul class="checkboxes brands collapse show showItem">
                         <?php
                         foreach ($brands as $key => $brand) {
                         ?>
-                            <li><i class="fa fa-square-o" aria-hidden="true"></i><span><?php echo $brand['name'] ?></span></li>
+                            <li data-value="<?php echo $brand['id'] ?>"><i class="fa fa-square-o" aria-hidden="true"></i><span><?php echo $brand['name'] ?></span></li>
                         <?php
                         }
                         ?>
@@ -67,11 +67,11 @@
 
                         </a>
                     </div>
-                    <ul class="checkboxes collapse show showItem">
+                    <ul class="checkboxes sizes collapse show showItem">
                         <?php
                         foreach ($sizes as $key => $size) {
                         ?>
-                            <li><i class="fa fa-square-o" aria-hidden="true"></i><span><?php echo $size['name'] ?></span></li>
+                            <li data-value="<?php echo $size['id'] ?>"><i class="fa fa-square-o" aria-hidden="true"></i><span><?php echo $size['name'] ?></span></li>
                         <?php
                         }
                         ?>
@@ -113,19 +113,6 @@
                                         </ul>
                                     </li> -->
                                 </ul>
-                                <!-- <div class="pages d-flex flex-row align-items-center">
-                                    <div class="page_current">
-                                        <span>1</span>
-                                        <ul class="page_selection">
-                                            <li><a href="#">1</a></li>
-                                            <li><a href="#">2</a></li>
-                                            <li><a href="#">3</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="page_total"><span>of</span> 3</div>
-                                    <div id="next_page" class="page_next"><a href="#"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></div>
-                                </div> -->
-
                             </div>
 
                             <!-- Product Grid -->
@@ -153,14 +140,14 @@
                                 <?php
                                 }
                                 ?>
-                                <input type="hidden" id="page" name="page" value="1">
                                 <input type="hidden" id="totalPage" value="<?php echo $totalPage ?>">
                             </div>
-
+                            <div id="paging">
+                                <ul class="pagination justify-content-center" id="pagination"></ul>
+                            </div>
                             <a id="loadPage" href="#product-container"></a>
-                            <input type="hidden" id="keyword" name="keyword">
-                            <input type="hidden" id="categoryCode" name="categoryCode">
-                            <ul class="pagination justify-content-center" id="pagination" style="margin-top: 20px;"></ul>
+                            <input type="hidden" id="limit" value="16">
+                            <input type="hidden" id="keyword" value="">
 
 
                             <!-- </div> -->
@@ -172,55 +159,6 @@
     </div>
 </div>
 <script>
-    let page = $('#page').val();
-    let totalPage = $('#totalPage').val();
-    totalPage = parseInt(totalPage);
-    let currentPage = parseInt(page);
-    $(function() {
-        window.pagObj = $('#pagination').twbsPagination({
-            totalPages: totalPage,
-            visiblePages: 5,
-            startPage: currentPage,
-            onPageClick: function(event, page) {
-                if (page !== currentPage) {
-                    $('#page').val(page - 1);
-                    let data = {
-                        page: page - 1,
-                        limit: 16
-                    };
-                    autoClickTagA()
-                    currentPage = page;
-                    paging(data);
-                }
-            }
-        })
-    });
-
-    function autoClickTagA() {
-        var link = document.getElementById("loadPage");
-        var clickEvent = new MouseEvent("click", {
-            "view": window,
-            "bubbles": true,
-            "cancelable": false
-        });
-        link.dispatchEvent(clickEvent);
-    }
-
-    function paging(data) {
-        let url = '<?php echo BASE_URL ?>/product/paging';
-        $.ajax({
-            url: url,
-            type: 'POST',
-            dataType: 'html',
-            data: data,
-            success: function(data) {
-                $('.product-container').empty();
-                $('.product-container').html(data);
-
-            },
-            error: function() {
-
-            }
-        })
-    }
+    var base_url = "<?php echo BASE_URL ?>";
+    var url_page = base_url + "/product/paging";
 </script>

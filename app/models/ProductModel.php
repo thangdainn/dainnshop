@@ -35,7 +35,7 @@ class ProductModel extends Model
         return $result;
     }
 
-    public function findByDynamicFilter($page, $limit, $keyword = null, $categoryId = null, $brandId = null, $sizeId = null)
+    public function findByDynamicFilter($page, $limit, $keyword = null, $categoryId = null, $brandIds = null, $sizeIds = null)
     {
         $sql = "SELECT DISTINCT p.* FROM products p 
                 JOIN products_size ps ON p.id = ps.product_id 
@@ -47,21 +47,36 @@ class ProductModel extends Model
             $keyword = "%" . $keyword . "%";
             $sql .= " AND p.name LIKE ?";
         }
-        if ($categoryId !== null) {
+        if ($categoryId !== null && intval($categoryId) != 0) {
             $sql .= " AND c.id = ?";
+        } else {
+            $categoryId = null;
         }
-        if ($brandId !== null) {
-            $sql .= " AND b.id = ?";
+        if ($brandIds !== null && count($brandIds) > 0) {
+            $sqlBrand = " AND (";
+            foreach ($brandIds as $brandId) {
+                $sqlBrand .= " b.id = " . $brandId . " OR";
+            }
+            $sqlBrand = substr($sqlBrand, 0, -2);
+            $sqlBrand .= ")";
+            $sql .= $sqlBrand;
         }
-        if ($sizeId !== null) {
-            $sql .= " AND s.id = ?";
+        if ($sizeIds !== null && count($sizeIds) > 0) {
+            $sqlSize = " AND (";
+            foreach ($sizeIds as $sizeId) {
+                $sqlSize .= " s.id = " . $sizeId . " OR";
+            }
+            $sqlSize = substr($sqlSize, 0, -2);
+            $sqlSize .= ")";
+            $sql .= $sqlSize;
         }
         $offset = $page * $limit;
         $sql .= " LIMIT " . $offset . ", " . $limit;
-        $result = $this->db->select($sql, $keyword, $categoryId, $brandId, $sizeId);
+        echo $sql;
+        $result = $this->db->select($sql, $keyword, $categoryId);
         return $result;
     }
-    public function countByDynamicFilter($keyword = null, $categoryId = null, $brandId = null, $sizeId = null)
+    public function countByDynamicFilter($keyword = null, $categoryId = null, $brandIds = null, $sizeIds = null)
     {
         $sql = "SELECT DISTINCT p.* FROM products p 
                 JOIN products_size ps ON p.id = ps.product_id 
@@ -70,20 +85,34 @@ class ProductModel extends Model
                 JOIN categories c ON p.category_id = c.id 
                 WHERE p.status = 1 AND ps.quantity > 0";
         if ($keyword !== null) {
-            // $keyword = "%" . $keyword . "%";
+            $keyword = "%" . $keyword . "%";
             $sql .= " AND p.name LIKE ?";
         }
-        if ($categoryId !== null) {
+        if ($categoryId !== null && intval($categoryId) != 0) {
             $sql .= " AND c.id = ?";
+        } else {
+            $categoryId = null;
         }
-        if ($brandId !== null) {
-            $sql .= " AND b.id = ?";
+        if ($brandIds !== null && count($brandIds) > 0) {
+            $sqlBrand = " AND (";
+            foreach ($brandIds as $brandId) {
+                $sqlBrand .= " b.id = " . intval($brandId) . " OR";
+            }
+            $sqlBrand = substr($sqlBrand, 0, -2);
+            $sqlBrand .= ")";
+            $sql .= $sqlBrand;
         }
-        if ($sizeId !== null) {
-            $sql .= " AND s.id = ?";
+        if ($sizeIds !== null && count($sizeIds) > 0) {
+            $sqlSize = " AND (";
+            foreach ($sizeIds as $sizeId) {
+                $sqlSize .= " s.id = " . intval($sizeId) . " OR";
+            }
+            $sqlSize = substr($sqlSize, 0, -2);
+            $sqlSize .= ")";
+            $sql .= $sqlSize;
         }
 
-        $result = $this->db->count($sql, $keyword, $categoryId, $brandId, $sizeId);
+        $result = $this->db->count($sql, $keyword, $categoryId);
         return $result;
     }
 }

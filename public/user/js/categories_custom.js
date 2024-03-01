@@ -372,6 +372,7 @@ jQuery(document).ready(function ($) {
             box.find("i").addClass("fa-square");
             box.toggleClass("active");
           }
+          callAjax();
           // box.toggleClass('active');
         });
       });
@@ -404,6 +405,12 @@ jQuery(document).ready(function ($) {
         .prepend(
           '<span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>'
         );
+      callAjax();
     });
+  }
+  function callAjax() {
+    let limit = parseInt($("#limit").val());
+    let data = getDataFilters(0, limit);
+    pagingFilter(data, url_page);
   }
 });

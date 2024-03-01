@@ -113,6 +113,7 @@
 $currentURL = $_SERVER['REQUEST_URI'];
 if (strpos($currentURL, '/shop') !== false) {
     echo '<script src="' . BASE_URL . '/public/user/js/categories_custom.js"></script>';
+    echo '<script src="' . BASE_URL . '/public/user/js/paging.js"></script>';
     echo '<script src="' . BASE_URL . '/public/user/js/jquery.twbsPagination.js"></script>';
 } elseif (strpos($currentURL, '/product') !== false) {
     echo '<script src="' . BASE_URL . '/public/user/js/single_custom.js"></script>';
