@@ -19,7 +19,7 @@ class shop extends Controller
 
         $cateModel = $this->load->model("CategoryModel");
         $data['categories'] = $cateModel->findAll();
-        
+
         $brandModel = $this->load->model("BrandModel");
         $data['brands'] = $brandModel->findAll();
 
@@ -27,11 +27,16 @@ class shop extends Controller
         $data['sizes'] = $sizeModel->findAll();
 
         $productModel = $this->load->model("ProductModel");
+        if (isset($_GET['keyword'])) {
+            $keyword = $_GET['keyword'];
+        } else {
+            $keyword = "";
+        }
         $limit = 16;
-        $products = $productModel->findAll(0, $limit);
+        $products = $productModel->findAll(0, $limit, $keyword);
         $data['products'] = $products;
 
-        $totalPage = ceil($productModel->countFindAll() / $limit);
+        $totalPage = ceil($productModel->countFindAll($keyword) / $limit);
         $data['totalPage'] = $totalPage;
 
         $this->load->view("cpanel/shop", $data);

@@ -18,7 +18,6 @@ Session::init();
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/plugins/OwlCarousel2-2.2.1/animate.css">
     <link rel="stylesheet" href="<?php echo BASE_URL ?>/public/user/plugins/themify-icons/themify-icons.css">
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
-
     <?php
     $currentURL = $_SERVER['REQUEST_URI'];
     if (strpos($currentURL, '/shop') !== false) {
@@ -36,6 +35,8 @@ Session::init();
         echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/responsive.css">';
     }
     ?>
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/styles/header.css">
+
     <script src="<?php echo BASE_URL ?>/public/user/js/jquery-3.2.1.min.js"></script>
 
 </head>
@@ -62,7 +63,7 @@ Session::init();
                                     <!-- My Account -->
 
                                     <li class="account" style="min-width: 150px">
-                                        <a href="#" id="prevent-default">
+                                        <a href="" class="prevent-default">
 
                                             <?php
                                             if (Session::isLogin()) {
@@ -127,8 +128,28 @@ Session::init();
                                     <li><a href="#">about</a></li>
                                     <li><a href="<?php echo BASE_URL ?>/contact">contact</a></li>
                                 </ul>
-                                <ul class="navbar_user">
-                                    <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+                                <ul class="navbar_user" style="display: flex; align-items: center;">
+                                    <div class="search">
+                                        <form id="formSubmit" action="<?php echo BASE_URL ?>/shop" method="get">
+                                            <?php
+                                            if (isset($_GET['keyword'])) {
+                                            ?>
+                                                <input value="<?php echo $_GET['keyword'] ?>" type="text" id="search" name="keyword" placeholder="Search...">
+                                            <?php
+                                            } else {
+                                            ?>
+                                                <input type="text" id="search" name="keyword" placeholder="Search...">
+                                            <?php
+                                            }
+                                            ?>
+
+                                            <li>
+                                                <a href="" id="clearSearch" class="prevent-default"><i class="fa fa-times" style="opacity: 0.8; margin-top: 6px;" aria-hidden="true"></i></a>
+                                                <a href="" id="btn_search"><i class="fa fa-search" aria-hidden="true"></i></a>
+                                            </li>
+                                        </form>
+
+                                    </div>
                                     <!-- <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i></a></li> -->
                                     <li class="checkout">
                                         <a href="#">
@@ -147,7 +168,6 @@ Session::init();
             </div>
 
         </header>
-
 
         <!-- Hamburger Menu -->
 
@@ -205,9 +225,28 @@ Session::init();
             </div>
         </div>
         <script>
-            let btnAcc = document.getElementById('prevent-default');
-            btnAcc.addEventListener('click', (e) => {
+            $(".prevent-default").on("click", function(e) {
                 e.preventDefault();
+            })
+            $(document).ready(function() {
+                $('#search').on('input', function() {
+                    var inputVal = $(this).val();
+                    if (inputVal.length > 0) {
+                        $('#clearSearch').show();
+                    } else {
+                        $('#clearSearch').hide();
+                    }
+                });
+
+                $('#clearSearch').on('click', function() {
+                    $('#search').val('');
+                    $(this).hide();
+                });
+            });
+
+            $("#btn_search").on("click", function(e) {
+                e.preventDefault()
+                $("#formSubmit").submit();
             })
         </script>
         <div class="fs_menu_overlay"></div>

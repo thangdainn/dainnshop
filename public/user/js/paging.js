@@ -65,6 +65,13 @@ function getDataFilters(page, limit) {
     }
   });
 
+  let price = $("#amount").val();
+  var parts = price.split(" - ");
+  var priceInRange = [
+    parseInt(parts[0].replace("$", "")),
+    parseInt(parts[1].replace("$", "")),
+  ];
+
   let data = {
     page: page,
     limit: limit,
@@ -72,6 +79,7 @@ function getDataFilters(page, limit) {
     categoryId: categoryId,
     brandIds: brandIds,
     sizeIds: sizeIds,
+    priceInRange: priceInRange,
   };
   return data;
 }

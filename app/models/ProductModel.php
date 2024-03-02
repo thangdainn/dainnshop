@@ -7,17 +7,19 @@ class ProductModel extends Model
         parent::__construct();
     }
 
-    public function findAll($page, $limit)
+    public function findAll($page, $limit, $keyword)
     {
-        $sql = "SELECT * FROM products LIMIT " . $page . ", " . $limit;
-        $result = $this->db->select($sql);
+        $keyword = "%" . $keyword . "%";
+        $sql = "SELECT * FROM products WHERE status = 1 AND name LIKE ? LIMIT " . $page . ", " . $limit;
+        $result = $this->db->select($sql, $keyword);
         return $result;
     }
 
-    public function countFindAll()
+    public function countFindAll($keyword)
     {
-        $sql = "SELECT * FROM products";
-        $result = $this->db->count($sql);
+        $keyword = "%" . $keyword . "%";
+        $sql = "SELECT * FROM products WHERE status = 1 AND name LIKE ?";
+        $result = $this->db->count($sql, $keyword);
         return $result;
     }
 
@@ -35,7 +37,7 @@ class ProductModel extends Model
         return $result;
     }
 
-    public function findByDynamicFilter($page, $limit, $keyword = null, $categoryId = null, $brandIds = null, $sizeIds = null)
+    public function findByDynamicFilter($page, $limit, $priceInRange, $keyword = null, $categoryId = null, $brandIds = null, $sizeIds = null)
     {
         $sql = "SELECT DISTINCT p.* FROM products p 
                 JOIN products_size ps ON p.id = ps.product_id 
@@ -70,13 +72,16 @@ class ProductModel extends Model
             $sqlSize .= ")";
             $sql .= $sqlSize;
         }
+        $priceFrom = $priceInRange[0];
+        $priceTo = $priceInRange[1];
+        $sql .= " AND (p.sale >= ? AND p.sale <= ?)";
+
         $offset = $page * $limit;
         $sql .= " LIMIT " . $offset . ", " . $limit;
-        echo $sql;
-        $result = $this->db->select($sql, $keyword, $categoryId);
+        $result = $this->db->select($sql, $keyword, $categoryId, $priceFrom, $priceTo);
         return $result;
     }
-    public function countByDynamicFilter($keyword = null, $categoryId = null, $brandIds = null, $sizeIds = null)
+    public function countByDynamicFilter($priceInRange, $keyword = null, $categoryId = null, $brandIds = null, $sizeIds = null)
     {
         $sql = "SELECT DISTINCT p.* FROM products p 
                 JOIN products_size ps ON p.id = ps.product_id 
@@ -111,8 +116,11 @@ class ProductModel extends Model
             $sqlSize .= ")";
             $sql .= $sqlSize;
         }
+        $priceFrom = $priceInRange[0];
+        $priceTo = $priceInRange[1];
+        $sql .= " AND (p.sale >= ? AND p.sale <= ?)";
 
-        $result = $this->db->count($sql, $keyword, $categoryId);
+        $result = $this->db->count($sql, $keyword, $categoryId, $priceFrom, $priceTo);
         return $result;
     }
 }

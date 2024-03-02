@@ -46,9 +46,10 @@ class product extends Controller
         } else {
             $sizeIds = null;
         }
+        $priceInRange = $_POST['priceInRange'];
         $productModel = $this->load->model("ProductModel");
-        $products = $productModel->findByDynamicFilter($page, $limit, $keyword, $categoryId, $brandIds, $sizeIds);
-        $totalItem = $productModel->countByDynamicFilter($keyword, $categoryId, $brandIds, $sizeIds);
+        $products = $productModel->findByDynamicFilter($page, $limit, $priceInRange, $keyword, $categoryId, $brandIds, $sizeIds);
+        $totalItem = $productModel->countByDynamicFilter($priceInRange, $keyword, $categoryId, $brandIds, $sizeIds);
         $totalPage = ceil($totalItem / $limit);
         $html = '';
         foreach ($products as $key => $product) {
@@ -62,14 +63,13 @@ class product extends Controller
                         <div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>-$20</span></div>
                         <div class="product_info">
                             <h6 class="product_name"><a href="' . BASE_URL . '/product/detail/' . $product['id'] . '">' . $product['name'] . '</a></h6>
-                            <div class="product_price">' . ($product['price'] - $product['sale']) . '<span>' . $product['price'] . '</span></div>
+                            <div class="product_price">' . $product['sale'] . '<span>' . $product['price'] . '</span></div>
                         </div>
                     </div>
                     <div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
                 </div>';
         }
         $html .= '<input type="hidden" id="totalPage" value=' . $totalPage . '>';
-        // $html .= '<script src="' . BASE_URL . '/public/user/js/jquery.twbsPagination.js"></script>';
         echo $html;
     }
 }

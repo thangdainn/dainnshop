@@ -335,8 +335,8 @@ jQuery(document).ready(function ($) {
     $("#slider-range").slider({
       range: true,
       min: 0,
-      max: 1000,
-      values: [0, 580],
+      max: 5000,
+      values: [0, 4500],
       slide: function (event, ui) {
         $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
       },
@@ -391,6 +391,9 @@ jQuery(document).ready(function ($) {
     $(".sidebar_title a").on("click", function () {
       var ulElement = $(this).parent().next();
       ulElement.toggleClass("showItem");
+    });
+    $(".filter_button").on("click", function () {
+      callAjax();
     });
   }
 
