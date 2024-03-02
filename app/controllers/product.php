@@ -46,10 +46,26 @@ class product extends Controller
         } else {
             $sizeIds = null;
         }
+        $sortBy = $_POST['sortBy'];
+        // echo $sortBy;
+        switch ($sortBy) {
+            case 'Latest':
+                $sortBy = "p.create_at DESC";
+                break;
+            case 'Price: Low to Hight':
+                $sortBy = "p.sale ASC";
+                break;
+            case 'Price: Hight to Low':
+                $sortBy = "p.sale DESC";
+                break;
+            default:
+                $sortBy = null;
+                break;
+        }
         $priceInRange = $_POST['priceInRange'];
         $productModel = $this->load->model("ProductModel");
-        $products = $productModel->findByDynamicFilter($page, $limit, $priceInRange, $keyword, $categoryId, $brandIds, $sizeIds);
-        $totalItem = $productModel->countByDynamicFilter($priceInRange, $keyword, $categoryId, $brandIds, $sizeIds);
+        $products = $productModel->findByDynamicFilter($page, $limit, $priceInRange, $keyword, $categoryId, $brandIds, $sizeIds, $sortBy);
+        $totalItem = $productModel->countByDynamicFilter($priceInRange, $keyword, $categoryId, $brandIds, $sizeIds, $sortBy);
         $totalPage = ceil($totalItem / $limit);
         $html = '';
         foreach ($products as $key => $product) {

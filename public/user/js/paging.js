@@ -72,6 +72,8 @@ function getDataFilters(page, limit) {
     parseInt(parts[1].replace("$", "")),
   ];
 
+  let sortBy = $(".type_sorting_text").text();
+
   let data = {
     page: page,
     limit: limit,
@@ -80,6 +82,7 @@ function getDataFilters(page, limit) {
     brandIds: brandIds,
     sizeIds: sizeIds,
     priceInRange: priceInRange,
+    sortBy: sortBy,
   };
   return data;
 }

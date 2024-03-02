@@ -32,7 +32,7 @@ class shop extends Controller
         } else {
             $keyword = "";
         }
-        $limit = 16;
+        $limit = 12;
         $products = $productModel->findAll(0, $limit, $keyword);
         $data['products'] = $products;
 
