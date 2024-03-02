@@ -93,9 +93,9 @@ Session::init();
                                         } else {
                                         ?>
                                             <ul class="account_selection">
-                                                <li><a href="<?php echo BASE_URL ?>/login" onclick="onLogin()"><i class="fa fa-sign-in" aria-hidden="true"></i>
+                                                <li><a href="<?php echo BASE_URL ?>/login"><i class="fa fa-sign-in" aria-hidden="true"></i>
                                                         Login</a></li>
-                                                <li><a href="#" onclick="onRegister()"><i class="fa fa-user-plus" aria-hidden="true"></i>
+                                                <li><a href="#"><i class="fa fa-user-plus" aria-hidden="true"></i>
                                                         Register</a>
                                                 </li>
                                             </ul>
@@ -134,17 +134,16 @@ Session::init();
                                             <?php
                                             if (isset($_GET['keyword'])) {
                                             ?>
-                                                <input value="<?php echo $_GET['keyword'] ?>" type="text" id="search" name="keyword" placeholder="Search...">
+                                                <input value="<?php echo $_GET['keyword'] ?>" type="text" id="search" name="keyword" autocomplete="off" placeholder="Search...">
                                             <?php
                                             } else {
                                             ?>
-                                                <input type="text" id="search" name="keyword" placeholder="Search...">
+                                                <input type="text" id="search" name="keyword" autocomplete="off" placeholder=" Search...">
                                             <?php
                                             }
                                             ?>
 
                                             <li>
-                                                <a href="" id="clearSearch" class="prevent-default"><i class="fa fa-times" style="opacity: 0.8; margin-top: 6px;" aria-hidden="true"></i></a>
                                                 <a href="" id="btn_search"><i class="fa fa-search" aria-hidden="true"></i></a>
                                             </li>
                                         </form>
@@ -228,21 +227,6 @@ Session::init();
             $(".prevent-default").on("click", function(e) {
                 e.preventDefault();
             })
-            $(document).ready(function() {
-                $('#search').on('input', function() {
-                    var inputVal = $(this).val();
-                    if (inputVal.length > 0) {
-                        $('#clearSearch').show();
-                    } else {
-                        $('#clearSearch').hide();
-                    }
-                });
-
-                $('#clearSearch').on('click', function() {
-                    $('#search').val('');
-                    $(this).hide();
-                });
-            });
 
             $("#btn_search").on("click", function(e) {
                 e.preventDefault()
