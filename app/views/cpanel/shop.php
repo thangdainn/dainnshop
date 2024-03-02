@@ -35,7 +35,6 @@
                     </ul>
                 </div>
 
-                <!-- Price Range Filtering -->
 
 
                 <!-- Brands -->
@@ -76,6 +75,17 @@
                         }
                         ?>
                     </ul>
+                </div>
+                <!-- Price Range Filtering -->
+                <div class="sidebar_section">
+                    <div class="sidebar_title" style="cursor: default;">
+                        <h5>Filter by Price</h5>
+                    </div>
+                    <p>
+                        <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+                    </p>
+                    <div id="slider-range"></div>
+                    <div class="filter_button"><span>filter</span></div>
                 </div>
             </div>
 
@@ -132,7 +142,7 @@
                                             <div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>-$20</span></div>
                                             <div class="product_info">
                                                 <h6 class="product_name"><a href="<?php echo BASE_URL ?>/product/detail/<?php echo $product['id'] ?>"><?php echo $product['name'] ?></a></h6>
-                                                <div class="product_price"><?php echo ($product['price'] - $product['sale']) ?><span><?php echo $product['price'] ?></span></div>
+                                                <div class="product_price"><?php echo $product['sale'] ?><span><?php echo $product['price'] ?></span></div>
                                             </div>
                                         </div>
                                         <div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
@@ -146,9 +156,18 @@
                                 <ul class="pagination justify-content-center" id="pagination"></ul>
                             </div>
                             <a id="loadPage" href="#product-container"></a>
-                            <input type="hidden" id="limit" value="16">
-                            <input type="hidden" id="keyword" value="">
 
+                            <?php
+                            if (isset($_GET['keyword'])) {
+                            ?>
+                                <input type="hidden" id="keyword" value="<?php echo $_GET['keyword'] ?>">
+                            <?php
+                            } else { ?>
+                                <input type="hidden" id="keyword" value="">
+                            <?php
+                            }
+                            ?>
+                            <input type="hidden" id="limit" value="16">
 
                             <!-- </div> -->
                         </div>
