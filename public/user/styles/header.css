@@ -38,14 +38,13 @@
 .account_selection {
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
+  box-shadow: 0 15px 25px rgba(63, 78, 100, 0.4);
 }
-.account > a {
-  font-size: 13px;
-}
-
+.account > a,
 .account_selection li a {
   font-size: 13px;
 }
+
 .account_selection li {
   line-height: 32px;
 }

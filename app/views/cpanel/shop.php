@@ -132,23 +132,27 @@
 
                                 <!-- Products -->
                                 <?php
-                                foreach ($products as $key => $product) {
+                                if (empty($products)) {
+                                    echo "<p>No products found.</p>";
+                                } else {
+                                    foreach ($products as $key => $product) {
                                 ?>
-                                    <div class="product-item">
-                                        <div class="product discount product_filter">
-                                            <div class="product_image">
-                                                <img src="<?php echo BASE_URL ?>/upload/images/<?php echo $product['img'] ?>" alt="">
+                                        <div class="product-item">
+                                            <div class="product discount product_filter">
+                                                <div class="product_image">
+                                                    <img src="<?php echo BASE_URL ?>/upload/images/<?php echo $product['img'] ?>" alt="">
+                                                </div>
+                                                <div class="favorite favorite_left"></div>
+                                                <div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>-$20</span></div>
+                                                <div class="product_info">
+                                                    <h6 class="product_name"><a href="<?php echo BASE_URL ?>/product/detail/<?php echo $product['id'] ?>"><?php echo $product['name'] ?></a></h6>
+                                                    <div class="product_price"><?php echo $product['sale'] ?><span><?php echo $product['price'] ?></span></div>
+                                                </div>
                                             </div>
-                                            <div class="favorite favorite_left"></div>
-                                            <div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>-$20</span></div>
-                                            <div class="product_info">
-                                                <h6 class="product_name"><a href="<?php echo BASE_URL ?>/product/detail/<?php echo $product['id'] ?>"><?php echo $product['name'] ?></a></h6>
-                                                <div class="product_price"><?php echo $product['sale'] ?><span><?php echo $product['price'] ?></span></div>
-                                            </div>
+                                            <div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
                                         </div>
-                                        <div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
-                                    </div>
                                 <?php
+                                    }
                                 }
                                 ?>
                                 <input type="hidden" id="totalPage" value="<?php echo $totalPage ?>">
@@ -163,7 +167,8 @@
                             ?>
                                 <input type="hidden" id="keyword" value="<?php echo $_GET['keyword'] ?>">
                             <?php
-                            } else { ?>
+                            } else {
+                            ?>
                                 <input type="hidden" id="keyword" value="">
                             <?php
                             }

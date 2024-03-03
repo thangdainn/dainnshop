@@ -68,8 +68,9 @@ class product extends Controller
         $totalItem = $productModel->countByDynamicFilter($priceInRange, $keyword, $categoryId, $brandIds, $sizeIds, $sortBy);
         $totalPage = ceil($totalItem / $limit);
         $html = '';
-        foreach ($products as $key => $product) {
-            $html .= '
+        if ($totalItem > 0) {
+            foreach ($products as $key => $product) {
+                $html .= '
                 <div class="product-item">
                     <div class="product discount product_filter">
                         <div class="product_image">
@@ -84,8 +85,10 @@ class product extends Controller
                     </div>
                     <div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
                 </div>';
+            }
+            $html .= '<input type="hidden" id="totalPage" value=' . $totalPage . '>';
         }
-        $html .= '<input type="hidden" id="totalPage" value=' . $totalPage . '>';
+
         echo $html;
     }
 }

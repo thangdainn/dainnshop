@@ -44,7 +44,7 @@
 </div>
 
 <!-- Newsletter -->
-
+<!-- 
 <div class="newsletter">
     <div class="container">
         <div class="row">
@@ -62,7 +62,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 <!-- Footer -->
 
