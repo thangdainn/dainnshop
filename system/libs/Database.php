@@ -61,8 +61,12 @@ class Database extends PDO
     public function setParameter($stmt, array $data)
     {
         try {
+            $index = 1;
             foreach ($data as $key => $value) {
-                $stmt->bindValue($key + 1, $value);
+                if ($value !== null) {
+                    $stmt->bindValue($index, $value);
+                    $index++;
+                }
             }
         } catch (PDOException $e) {
             throw new Exception($e->getMessage());

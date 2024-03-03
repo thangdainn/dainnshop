@@ -22,15 +22,15 @@
 					<div class="col-lg-3 thumbnails_col order-lg-1 order-2">
 						<div class="single_product_thumbnails">
 							<ul>
-								<li><img src="<?php echo BASE_URL ?>/public/user/home/images/single_1_thumb.jpg" alt="" data-image="<?php echo BASE_URL ?>/public/user/home/images/single_1.jpg"></li>
-								<li class="active"><img src="<?php echo BASE_URL ?>/public/user/home/images/single_2_thumb.jpg" alt="" data-image="<?php echo BASE_URL ?>/public/user/home/images/single_2.jpg"></li>
-								<li><img src="<?php echo BASE_URL ?>/public/user/home/images/single_3_thumb.jpg" alt="" data-image="<?php echo BASE_URL ?>/public/user/home/images/single_3.jpg"></li>
+								<li><img src="<?php echo BASE_URL ?>/public/user/images/single_1_thumb.jpg" alt="" data-image="<?php echo BASE_URL ?>/public/user/images/single_1.jpg"></li>
+								<li class="active"><img src="<?php echo BASE_URL ?>/public/user/images/single_2_thumb.jpg" alt="" data-image="<?php echo BASE_URL ?>/public/user/images/single_2.jpg"></li>
+								<li><img src="<?php echo BASE_URL ?>/public/user/images/single_3_thumb.jpg" alt="" data-image="<?php echo BASE_URL ?>/public/user/images/single_3.jpg"></li>
 							</ul>
 						</div>
 					</div>
 					<div class="col-lg-9 image_col order-lg-2 order-1">
 						<div class="single_product_image">
-							<div class="single_product_image_background" style="background-image:url(<?php echo BASE_URL ?>/public/user/home/images/single_2.jpg)"></div>
+							<div class="single_product_image_background" style="background-image:url(<?php echo BASE_URL ?>/public/user/images/single_2.jpg)"></div>
 						</div>
 					</div>
 				</div>
@@ -40,11 +40,9 @@
 			<div class="product_details">
 				<div class="product_details_title">
 					<h2>Pocket cotton sweatshirt</h2>
-					<p>Nam tempus turpis at metus scelerisque placerat nulla deumantos solicitud felis. Pellentesque diam dolor, elementum etos lobortis des mollis ut...</p>
+					<!-- <p>Nam tempus turpis at metus scelerisque placerat nulla deumantos solicitud felis. Pellentesque diam dolor, elementum etos lobortis des mollis ut...</p> -->
 				</div>
-				<div class="free_delivery d-flex flex-row align-items-center justify-content-center">
-					<span class="ti-truck"></span><span>free delivery</span>
-				</div>
+
 				<div class="original_price">$629.99</div>
 				<div class="product_price">$495.00</div>
 				<ul class="star_rating">
@@ -54,6 +52,10 @@
 					<li><i class="fa fa-star" aria-hidden="true"></i></li>
 					<li><i class="fa fa-star-o" aria-hidden="true"></i></li>
 				</ul>
+				<div class="free_delivery d-flex flex-row align-items-center justify-content-center">
+					<span class="ti-truck"></span><span>free delivery</span>
+				</div>
+
 				<div class="product_color">
 					<span>Select Color:</span>
 
@@ -73,9 +75,12 @@
 						<span id="quantity_value">1</span>
 						<span class="plus"><i class="fa fa-plus" aria-hidden="true"></i></span>
 					</div>
-					<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
-					<div class="product_favorite d-flex flex-column align-items-center justify-content-center"></div>
 				</div>
+				<div class="add_cart justify-content-center" style="display: flex; margin-top: 40px;">
+					<div class="red_button add_to_cart_button" style="width: 90%; height: 54px;"><a href="#" style="height: 100%; padding-top: 6px;">add to cart</a></div>
+				</div>
+
+
 			</div>
 		</div>
 	</div>
@@ -92,7 +97,7 @@
 				<div class="tabs_container">
 					<ul class="tabs d-flex flex-sm-row flex-column align-items-left align-items-md-center justify-content-center">
 						<li class="tab active" data-active-tab="tab_1"><span>Description</span></li>
-						<li class="tab" data-active-tab="tab_2"><span>Additional Information</span></li>
+						<!-- <li class="tab" data-active-tab="tab_2"><span>Additional Information</span></li> -->
 						<li class="tab" data-active-tab="tab_3"><span>Reviews (2)</span></li>
 					</ul>
 				</div>
@@ -104,24 +109,24 @@
 				<!-- Tab Description -->
 
 				<div id="tab_1" class="tab_container active">
-					<div class="row">
-						<div class="col-lg-5 desc_col">
-							<div class="tab_title">
-								<h4>Description</h4>
-							</div>
-							<div class="tab_text_block">
-								<h2>Pocket cotton sweatshirt</h2>
-								<p>Nam tempus turpis at metus scelerisque placerat nulla deumantos solicitud felis. Pellentesque diam dolor, elementum etos lobortis des mollis ut...</p>
-							</div>
-							<div class="tab_image">
+					<!-- <div class="row"> -->
+					<div class=" desc_col">
+						<div class="tab_title">
+							<h4>Description</h4>
+						</div>
+						<div class="tab_text_block">
+							<!-- <h2>Pocket cotton sweatshirt</h2> -->
+							<p>Nam tempus turpis at metus scelerisque placerat nulla deumantos solicitud felis. Pellentesque diam dolor, elementum etos lobortis des mollis ut...</p>
+						</div>
+						<!-- <div class="tab_image">
 								<img src="images/desc_1.jpg" alt="">
 							</div>
 							<div class="tab_text_block">
 								<h2>Pocket cotton sweatshirt</h2>
 								<p>Nam tempus turpis at metus scelerisque placerat nulla deumantos solicitud felis. Pellentesque diam dolor, elementum etos lobortis des mollis ut...</p>
-							</div>
-						</div>
-						<div class="col-lg-5 offset-lg-2 desc_col">
+							</div> -->
+					</div>
+					<!-- <div class="col-lg-5 offset-lg-2 desc_col">
 							<div class="tab_image">
 								<img src="images/desc_2.jpg" alt="">
 							</div>
@@ -132,13 +137,13 @@
 							<div class="tab_image desc_last">
 								<img src="images/desc_3.jpg" alt="">
 							</div>
-						</div>
-					</div>
+						</div> -->
+					<!-- </div> -->
 				</div>
 
 				<!-- Tab Additional Info -->
 
-				<div id="tab_2" class="tab_container">
+				<!-- <div id="tab_2" class="tab_container">
 					<div class="row">
 						<div class="col additional_info_col">
 							<div class="tab_title additional_info_title">
@@ -148,7 +153,7 @@
 							<p>SIZE:<span>L,M,XL</span></p>
 						</div>
 					</div>
-				</div>
+				</div> -->
 
 				<!-- Tab Reviews -->
 

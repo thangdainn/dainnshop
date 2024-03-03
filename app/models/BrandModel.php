@@ -9,14 +9,14 @@ class BrandModel extends Model
 
     public function findAll()
     {
-        $sql = "SELECT * FROM brands";
+        $sql = "SELECT * FROM brands WHERE status = 1";
         $result = $this->db->select($sql);
         return $result;
     }
 
     public function findById($id)
     {
-        $sql = "SELECT * FROM brands WHERE id = ?";
+        $sql = "SELECT * FROM brands WHERE id = ? AND status = 1";
         $result = $this->db->select($sql, $id);
         return $result;
     }

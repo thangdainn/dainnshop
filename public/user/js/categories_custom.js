@@ -52,7 +52,8 @@ jQuery(document).ready(function ($) {
   initIsotopeFiltering();
   initPriceSlider();
   initCheckboxes();
-
+  initFilter();
+  initCategory();
   /* 
 
 	2. Set Header
@@ -245,81 +246,12 @@ jQuery(document).ready(function ($) {
 	*/
 
   function initIsotopeFiltering() {
-    var sortTypes = $(".type_sorting_btn");
-    var sortNums = $(".num_sorting_btn");
-    var sortTypesSelected = $(
-      ".sorting_type .item_sorting_btn is-checked span"
-    );
-    var filterButton = $(".filter_button");
+    let sortTypes = $(".type_sorting_btn");
 
-    if ($(".product-grid").length) {
-      $(".product-grid").isotope({
-        itemSelector: ".product-item",
-        getSortData: {
-          price: function (itemElement) {
-            var priceEle = $(itemElement)
-              .find(".product_price")
-              .text()
-              .replace("$", "");
-            return parseFloat(priceEle);
-          },
-          name: ".product_name",
-        },
-        animationOptions: {
-          duration: 750,
-          easing: "linear",
-          queue: false,
-        },
-      });
-
-      // Short based on the value from the sorting_type dropdown
-      sortTypes.each(function () {
-        $(this).on("click", function () {
-          $(".type_sorting_text").text($(this).text());
-          var option = $(this).attr("data-isotope-option");
-          option = JSON.parse(option);
-          $(".product-grid").isotope(option);
-        });
-      });
-
-      // Show only a selected number of items
-      sortNums.each(function () {
-        $(this).on("click", function () {
-          var numSortingText = $(this).text();
-          var numFilter = ":nth-child(-n+" + numSortingText + ")";
-          $(".num_sorting_text").text($(this).text());
-          $(".product-grid").isotope({ filter: numFilter });
-        });
-      });
-
-      // Filter based on the price range slider
-      filterButton.on("click", function () {
-        $(".product-grid").isotope({
-          filter: function () {
-            var priceRange = $("#amount").val();
-            var priceMin = parseFloat(
-              priceRange.split("-")[0].replace("$", "")
-            );
-            var priceMax = parseFloat(
-              priceRange.split("-")[1].replace("$", "")
-            );
-            var itemPrice = $(this)
-              .find(".product_price")
-              .clone()
-              .children()
-              .remove()
-              .end()
-              .text()
-              .replace("$", "");
-
-            return itemPrice > priceMin && itemPrice < priceMax;
-          },
-          animationOptions: {
-            duration: 750,
-            easing: "linear",
-            queue: false,
-          },
-        });
+    if ($(".product-container").length) {
+      sortTypes.on("click", function () {
+        $(".type_sorting_text").text($(this).text());
+        callAjax();
       });
     }
   }
@@ -334,8 +266,8 @@ jQuery(document).ready(function ($) {
     $("#slider-range").slider({
       range: true,
       min: 0,
-      max: 1000,
-      values: [0, 580],
+      max: 5000,
+      values: [0, 4500],
       slide: function (event, ui) {
         $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
       },
@@ -371,6 +303,7 @@ jQuery(document).ready(function ($) {
             box.find("i").addClass("fa-square");
             box.toggleClass("active");
           }
+          callAjax();
           // box.toggleClass('active');
         });
       });
@@ -383,5 +316,35 @@ jQuery(document).ready(function ($) {
         });
       }
     }
+  }
+
+  function initFilter() {
+    $(".sidebar_title a").on("click", function () {
+      var ulElement = $(this).parent().next();
+      ulElement.toggleClass("showItem");
+    });
+    $(".filter_button").on("click", function () {
+      callAjax();
+    });
+  }
+
+  function initCategory() {
+    $(".sidebar_categories li").on("click", function () {
+      $(".sidebar_categories li").removeClass("active");
+      $(".sidebar_categories li a").find("span").remove();
+      $(".sidebar_categories li a").find("i").remove();
+      $(this).addClass("active");
+      $(this)
+        .find("a")
+        .prepend(
+          '<span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>'
+        );
+      callAjax();
+    });
+  }
+  function callAjax() {
+    let limit = parseInt($("#limit").val());
+    let data = getDataFilters(0, limit);
+    pagingFilter(data, url_page);
   }
 });
