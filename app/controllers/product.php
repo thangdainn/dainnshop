@@ -19,12 +19,12 @@ class product extends Controller
         $this->load->view("cpanel/productDetail");
         $this->load->view("footer");
     }
-    public function detail()
+    public function detail($id)
     {
         $this->load->view("header");
 
         $product = $this->load->model("ProductModel");
-        $data['product'] = $product->findById(1);
+        $data['product'] = $product->findById($id);
 
         $this->load->view("cpanel/productDetail");
         $this->load->view("footer");
