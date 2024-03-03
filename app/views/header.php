@@ -22,6 +22,7 @@ Session::init();
     $currentURL = $_SERVER['REQUEST_URI'];
     if (strpos($currentURL, '/shop') !== false) {
         echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/categories_styles.css">';
+        echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/paging.css">';
         echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/categories_responsive.css">';
     } elseif (strpos($currentURL, '/product') !== false) {
         echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/single_styles.css">';
@@ -34,6 +35,10 @@ Session::init();
         echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/responsive.css">';
     }
     ?>
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/styles/header.css">
+
+    <script src="<?php echo BASE_URL ?>/public/user/js/jquery-3.2.1.min.js"></script>
+
 </head>
 
 <body>
@@ -58,7 +63,7 @@ Session::init();
                                     <!-- My Account -->
 
                                     <li class="account" style="min-width: 150px">
-                                        <a href="#" id="prevent-default">
+                                        <a href="" class="prevent-default">
 
                                             <?php
                                             if (Session::isLogin()) {
@@ -88,9 +93,9 @@ Session::init();
                                         } else {
                                         ?>
                                             <ul class="account_selection">
-                                                <li><a href="<?php echo BASE_URL ?>/login" onclick="onLogin()"><i class="fa fa-sign-in" aria-hidden="true"></i>
+                                                <li><a href="<?php echo BASE_URL ?>/login"><i class="fa fa-sign-in" aria-hidden="true"></i>
                                                         Login</a></li>
-                                                <li><a href="#" onclick="onRegister()"><i class="fa fa-user-plus" aria-hidden="true"></i>
+                                                <li><a href="#"><i class="fa fa-user-plus" aria-hidden="true"></i>
                                                         Register</a>
                                                 </li>
                                             </ul>
@@ -123,8 +128,27 @@ Session::init();
                                     <li><a href="#">about</a></li>
                                     <li><a href="<?php echo BASE_URL ?>/contact">contact</a></li>
                                 </ul>
-                                <ul class="navbar_user">
-                                    <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+                                <ul class="navbar_user" style="display: flex; align-items: center;">
+                                    <div class="search">
+                                        <form id="formSubmit" action="<?php echo BASE_URL ?>/shop" method="get">
+                                            <?php
+                                            if (isset($_GET['keyword'])) {
+                                            ?>
+                                                <input value="<?php echo $_GET['keyword'] ?>" type="text" id="search" name="keyword" autocomplete="off" placeholder="Search...">
+                                            <?php
+                                            } else {
+                                            ?>
+                                                <input type="text" id="search" name="keyword" autocomplete="off" placeholder=" Search...">
+                                            <?php
+                                            }
+                                            ?>
+
+                                            <li>
+                                                <a href="" id="btn_search"><i class="fa fa-search" aria-hidden="true"></i></a>
+                                            </li>
+                                        </form>
+
+                                    </div>
                                     <!-- <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i></a></li> -->
                                     <li class="checkout">
                                         <a href="#">
@@ -143,7 +167,6 @@ Session::init();
             </div>
 
         </header>
-
 
         <!-- Hamburger Menu -->
 
@@ -201,9 +224,13 @@ Session::init();
             </div>
         </div>
         <script>
-            let btnAcc = document.getElementById('prevent-default');
-            btnAcc.addEventListener('click', (e) => {
+            $(".prevent-default").on("click", function(e) {
                 e.preventDefault();
+            })
+
+            $("#btn_search").on("click", function(e) {
+                e.preventDefault()
+                $("#formSubmit").submit();
             })
         </script>
         <div class="fs_menu_overlay"></div>

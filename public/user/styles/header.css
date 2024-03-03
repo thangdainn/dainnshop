@@ -1,0 +1,50 @@
+.search {
+  position: relative;
+  display: inline-block;
+  margin-right: 8px;
+  border: solid 1px #ccc;
+  border-radius: 14px;
+}
+.search li {
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+}
+
+/* #clearSearch {
+  display: none;
+  width: 8px;
+} */
+.search li a {
+  height: 100%;
+}
+.search input {
+  border: none;
+  border-radius: 14px;
+  padding-left: 13px;
+  font-size: 13px !important;
+  height: 26px;
+  width: 80%;
+  float: left;
+}
+#search::placeholder {
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  color: #777777 !important;
+}
+
+.account_selection {
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  box-shadow: 0 15px 25px rgba(63, 78, 100, 0.4);
+}
+.account > a,
+.account_selection li a {
+  font-size: 13px;
+}
+
+.account_selection li {
+  line-height: 32px;
+}

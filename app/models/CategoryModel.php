@@ -9,14 +9,14 @@ class CategoryModel extends Model
 
     public function findAll()
     {
-        $sql = "SELECT * FROM categories";
+        $sql = "SELECT * FROM categories WHERE status = 1";
         $result = $this->db->select($sql);
         return $result;
     }
 
     public function findById($id)
     {
-        $sql = "SELECT * FROM categories WHERE id = ?";
+        $sql = "SELECT * FROM categories WHERE id = ? AND status = 1";
         $result = $this->db->select($sql, $id);
         return $result;
     }
