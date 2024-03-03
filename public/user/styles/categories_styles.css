@@ -803,7 +803,10 @@ section {
   background: #fe4c50;
   content: "";
 }
-
+.product-container h5 {
+  width: 100%;
+  text-align: center;
+}
 /*********************************
 4.1 Product Sorting
 *********************************/
@@ -858,7 +861,7 @@ section {
   visibility: hidden;
   opacity: 0;
   z-index: 1;
-  box-shadow: 0 15px 25px rgba(63, 78, 100, 0.15);
+  box-shadow: 0 15px 25px rgba(63, 78, 100, 0.4);
   -webkit-transition: opacity 0.3s ease;
   -moz-transition: opacity 0.3s ease;
   -ms-transition: opacity 0.3s ease;
@@ -1027,6 +1030,8 @@ section {
 
 .product_section_container {
   margin-top: 150px;
+  padding-bottom: 80px;
+  border-bottom: solid 1px #ebebeb;
 }
 .product_section {
 }

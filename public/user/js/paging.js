@@ -15,6 +15,7 @@ function paging(data, url) {
     dataType: "html",
     data: data,
     success: function (data) {
+      console.log(data);
       $(".product-container").empty();
       $(".product-container").html(data);
     },
@@ -31,12 +32,16 @@ function pagingFilter(data, url) {
     success: function (data) {
       $(".product-container").empty();
       $("#pagination").remove();
-      $(".product-container").html(data);
-      let paging = `<ul class="pagination justify-content-center" id="pagination"></ul>
+      if (data == "") {
+        data = "<h5>No products found.</h5>";
+        $(".product-container").html(data);
+      } else {
+        $(".product-container").html(data);
+        let paging = `<ul class="pagination justify-content-center" id="pagination"></ul>
                     <script src="${base_url}/public/user/js/jquery.twbsPagination.js"></script>`;
-      $("#paging").html(paging);
-
-      initPagination();
+        $("#paging").html(paging);
+        initPagination();
+      }
     },
     error: function () {},
   });
