@@ -56,8 +56,8 @@
 					<span class="ti-truck"></span><span>free delivery</span>
 				</div>
 
-				<div class="product_color">
-					<span>Select Color:</span>
+				<div class="product_size">
+					<span>Size:</span>
 
 					<ul>
 						<li>S</li>
@@ -76,8 +76,9 @@
 						<span class="plus"><i class="fa fa-plus" aria-hidden="true"></i></span>
 					</div>
 				</div>
-				<div class="add_cart justify-content-center" style="display: flex; margin-top: 40px;">
-					<div class="red_button add_to_cart_button" style="width: 90%; height: 54px;"><a href="#" style="height: 100%; padding-top: 6px;">add to cart</a></div>
+				<div class="add_cart d-flex justify-content-between" style="margin-top: 40px;">
+					<div class="buy_now_button"><a href="#" style="height: 100%; padding-top: 6px;">buy now</a></div>
+					<div class="red_button add_to_cart_button"><a href="#" style="height: 100%; padding-top: 6px;">add to cart</a></div>
 				</div>
 
 
