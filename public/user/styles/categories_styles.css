@@ -811,8 +811,8 @@ section {
 4.1 Product Sorting
 *********************************/
 .product_sorting .sorting_type {
-  border-bottom-left-radius: 6px;
-  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
 }
 
 .product_sorting_container_bottom {
@@ -823,6 +823,7 @@ section {
 }
 .product_sorting {
   display: inline-block;
+  margin-left: 7px;
 }
 .product_sorting > li {
   display: inline-block;
@@ -835,7 +836,7 @@ section {
   padding-left: 20px;
   padding-right: 7px;
   margin-right: 16px;
-  border-radius: 6px;
+  border-radius: 3px;
 }
 .product_sorting_container_bottom .product_sorting > li {
   width: 144px;
@@ -1194,9 +1195,13 @@ section {
   margin-top: 57px;
 }
 .product-item {
-  width: 25%;
-  height: 380px;
+  width: 23%;
+  height: 300px;
   cursor: pointer;
+  margin: 8px 8px;
+  border-radius: 2px;
+  background-color: #cccccc00;
+  box-shadow: 0 0.0625rem 0.125rem 0 rgba(0, 0, 0, 0.2);
 }
 .product-item::after {
   display: block;
@@ -1217,34 +1222,40 @@ section {
 }
 .product-item:hover::after {
   box-shadow: 0 25px 29px rgba(63, 78, 100, 0.15);
-  border: solid 2px rgba(235, 235, 235, 1);
+  /* border: solid 2px rgba(235, 235, 235, 1); */
 }
 .product {
   width: 100%;
-  height: 340px;
-  border-right: solid 1px #e9e9e9;
+  height: 100%;
+  /* border-right: solid 1px #e9e9e9; */
+  cursor: pointer;
+  border: none !important;
 }
 .product_image {
   width: 100%;
 }
 .product_image img {
   width: 100%;
+  border-radius: 2px;
 }
 .product_info {
   text-align: center;
   padding-left: 10px;
   padding-right: 10px;
+  height: 27%;
 }
+
 .product_name {
-  margin-top: 27px;
+  margin-top: 14px;
+  height: 44%;
 }
 .product_name a {
   color: #1e1e27;
   line-height: 20px;
 }
-.product_name:hover a {
+/* .product_name:hover a {
   color: #b5aec4;
-}
+} */
 .discount .product_info .product_price {
   font-size: 14px;
 }
@@ -1252,6 +1263,7 @@ section {
   font-size: 16px;
   color: #fe4c50;
   font-weight: 600;
+  text-align: center;
 }
 .product_price span {
   font-size: 12px;
@@ -1313,6 +1325,7 @@ section {
 }
 .add_to_cart_button {
   width: 100%;
+  height: 42px;
   visibility: hidden;
   opacity: 0;
   -webkit-transition: all 0.3s ease;
@@ -1326,8 +1339,8 @@ section {
   font-weight: 600;
 }
 .product-item:hover .add_to_cart_button {
-  visibility: visible;
-  opacity: 1;
+  /* visibility: visible; */
+  /* opacity: 1; */
 }
 .favorite {
   position: absolute;

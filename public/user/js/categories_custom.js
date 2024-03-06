@@ -347,4 +347,6 @@ jQuery(document).ready(function ($) {
     let data = getDataFilters(0, limit);
     pagingFilter(data, url_page);
   }
+
+  
 });
