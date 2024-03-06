@@ -124,7 +124,19 @@ Session::init();
                                 <ul class="navbar_menu">
                                     <li><a href="<?php echo BASE_URL ?>">home</a></li>
                                     <li><a href="<?php echo BASE_URL ?>/shop">shop</a></li>
-                                    <li><a href="#">purchase order</a></li>
+                                    <li>
+                                        <?php
+                                        if (Session::isLogin()) {
+                                        ?>
+                                            <a href="<?php echo BASE_URL ?>/purchaseOrder">purchase order</a>
+                                        <?php
+                                        } else {
+                                        ?>
+                                            <a href="<?php echo BASE_URL ?>/login">purchase order</a>
+                                        <?php
+                                        }
+                                        ?>
+                                    </li>
                                     <li><a href="#">about</a></li>
                                     <li><a href="<?php echo BASE_URL ?>/contact">contact</a></li>
                                 </ul>
