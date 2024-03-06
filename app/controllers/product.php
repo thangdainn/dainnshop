@@ -26,7 +26,7 @@ class product extends Controller
         $product = $this->load->model("ProductModel");
         $data['product'] = $product->findById($id);
 
-        $this->load->view("cpanel/productDetail");
+        $this->load->view("cpanel/productDetail", $data);
         $this->load->view("footer");
     }
 
@@ -71,20 +71,29 @@ class product extends Controller
         if ($totalItem > 0) {
             foreach ($products as $key => $product) {
                 $html .= '
-                <div class="product-item">
-                    <div class="product discount product_filter">
+                <div data-value="' . $product['id'] . '" class="product-item">
+                    <div class="product product_filter">
                         <div class="product_image">
                             <img src="' . BASE_URL . '/upload/images/' . $product['img'] . '" alt="">
-                        </div>
-                        <div class="favorite favorite_left"></div>
-                        <div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>-$20</span></div>
+                        </div>';
+                if ($product['type'] == "sale") {
+                    $html .= '
+                        <div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>sale</span></div>
                         <div class="product_info">
-                            <h6 class="product_name"><a href="' . BASE_URL . '/product/detail/' . $product['id'] . '">' . $product['name'] . '</a></h6>
+                            <h6 class="product_name">' . $product['name'] . '</h6>
                             <div class="product_price">' . $product['sale'] . '<span>' . $product['price'] . '</span></div>
-                        </div>
-                    </div>
-                    <div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
-                </div>';
+                        </div>';
+                } else {
+                    if ($product['type'] == "new") {
+                        $html .= '<div class="product_bubble product_bubble_left product_bubble_green d-flex flex-column align-items-center"><span>new</span></div>';
+                    }
+                    $html .= '<div class="product_info">
+                                    <h6 class="product_name">' . $product['name'] . '</h6>
+                                    <div class="product_price">' . $product['price'] . '</div>
+                                </div>';
+                }
+                $html .= '</div>
+                        </div>';
             }
             $html .= '<input type="hidden" id="totalPage" value=' . $totalPage . '>';
         }

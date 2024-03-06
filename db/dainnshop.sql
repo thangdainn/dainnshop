@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 26, 2024 at 08:24 AM
+-- Generation Time: Mar 06, 2024 at 09:31 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -31,6 +31,7 @@ CREATE TABLE `brands` (
   `id` int NOT NULL,
   `name` varchar(50) NOT NULL,
   `image` varchar(100) NOT NULL,
+  `status` tinyint NOT NULL DEFAULT '1',
   `create_at` datetime DEFAULT CURRENT_TIMESTAMP,
   `update_at` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
@@ -39,12 +40,12 @@ CREATE TABLE `brands` (
 -- Dumping data for table `brands`
 --
 
-INSERT INTO `brands` (`id`, `name`, `image`, `create_at`, `update_at`) VALUES
-(1, 'Addidas', 'adidas.jpg', '2023-03-20 13:30:00', '2023-03-27 14:58:38'),
-(2, 'Nike', 'nike.jpg', '2023-03-20 13:30:00', '2023-03-20 13:30:00'),
-(3, 'Puma', 'puma.jpg', '2023-03-20 13:30:00', '2023-03-20 13:30:00'),
-(4, 'Gucci', 'gucci.jpg', '2023-03-20 13:30:00', '2023-03-20 13:30:00'),
-(5, 'Reebok', 'reebok.jpg', '2023-03-20 13:30:00', '2023-03-20 13:30:00');
+INSERT INTO `brands` (`id`, `name`, `image`, `status`, `create_at`, `update_at`) VALUES
+(1, 'Addidas', 'adidas.jpg', 1, '2023-03-20 13:30:00', '2023-03-27 14:58:38'),
+(2, 'Nike', 'nike.jpg', 1, '2023-03-20 13:30:00', '2023-03-20 13:30:00'),
+(3, 'Puma', 'puma.jpg', 1, '2023-03-20 13:30:00', '2023-03-20 13:30:00'),
+(4, 'Gucci', 'gucci.jpg', 1, '2023-03-20 13:30:00', '2023-03-20 13:30:00'),
+(5, 'Reebok', 'reebok.jpg', 1, '2023-03-20 13:30:00', '2023-03-20 13:30:00');
 
 -- --------------------------------------------------------
 
@@ -78,6 +79,7 @@ CREATE TABLE `categories` (
   `id` int NOT NULL,
   `name` varchar(50) NOT NULL,
   `image` varchar(100) NOT NULL,
+  `status` tinyint NOT NULL DEFAULT '1',
   `create_at` datetime DEFAULT CURRENT_TIMESTAMP,
   `update_at` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
@@ -86,12 +88,12 @@ CREATE TABLE `categories` (
 -- Dumping data for table `categories`
 --
 
-INSERT INTO `categories` (`id`, `name`, `image`, `create_at`, `update_at`) VALUES
-(1, 'T-shirt', 'adidas-d2m-3s-gm2135-1.jpg', '2023-03-20 13:30:00', '2023-03-20 13:30:00'),
-(2, 'Hoodie', 'images/sp3/ao-hoodie-lifestyle-nam-adidas-hl6925-1.jpg', '2023-03-20 13:30:00', '2023-03-27 14:59:53'),
-(3, 'Shirt', 'images/categories/ao-thun-lifestyle-nam-puma-classics-logo-metallic-534711-01-1.jpg', '2023-03-20 13:30:00', '2023-03-27 15:00:33'),
-(4, 'Polo', 'images/categories/nike-dq1011-824-1.jpg', '2023-03-20 13:30:00', '2023-03-27 15:00:17'),
-(15, 'Jacket', 'images/categories/ao-hoodie-lifestyle-nam-adidas-hl6925-1.jpg', '2023-03-29 16:39:38', '2023-03-30 16:30:10');
+INSERT INTO `categories` (`id`, `name`, `image`, `status`, `create_at`, `update_at`) VALUES
+(1, 'T-shirt', 'adidas-d2m-3s-gm2135-1.jpg', 1, '2023-03-20 13:30:00', '2023-03-20 13:30:00'),
+(2, 'Hoodie', 'images/sp3/ao-hoodie-lifestyle-nam-adidas-hl6925-1.jpg', 1, '2023-03-20 13:30:00', '2023-03-27 14:59:53'),
+(3, 'Shirt', 'images/categories/ao-thun-lifestyle-nam-puma-classics-logo-metallic-534711-01-1.jpg', 1, '2023-03-20 13:30:00', '2023-03-27 15:00:33'),
+(4, 'Polo', 'images/categories/nike-dq1011-824-1.jpg', 1, '2023-03-20 13:30:00', '2023-03-27 15:00:17'),
+(15, 'Jacket', 'images/categories/ao-hoodie-lifestyle-nam-adidas-hl6925-1.jpg', 1, '2023-03-29 16:39:38', '2023-03-30 16:30:10');
 
 -- --------------------------------------------------------
 
@@ -131,7 +133,7 @@ INSERT INTO `contacts` (`id`, `name`, `email`, `message`, `status`, `note`, `cre
 
 CREATE TABLE `images` (
   `id` int NOT NULL,
-  `id_product` int NOT NULL,
+  `product_id` int NOT NULL,
   `image` varchar(100) NOT NULL,
   `create_at` datetime DEFAULT CURRENT_TIMESTAMP,
   `update_at` datetime DEFAULT CURRENT_TIMESTAMP
@@ -141,7 +143,7 @@ CREATE TABLE `images` (
 -- Dumping data for table `images`
 --
 
-INSERT INTO `images` (`id`, `id_product`, `image`, `create_at`, `update_at`) VALUES
+INSERT INTO `images` (`id`, `product_id`, `image`, `create_at`, `update_at`) VALUES
 (1, 1, 'images/product_image/adidas-d2m-3s-gm2135-2.jpg', '2023-03-29 22:04:45', NULL),
 (2, 1, 'images/product_image/adidas-d2m-3s-gm2135-3.jpg', '2023-03-29 22:04:45', NULL),
 (3, 1, 'images/product_image/adidas-d2m-3s-gm2135-4.jpg', '2023-03-29 22:04:45', NULL),
@@ -343,7 +345,6 @@ CREATE TABLE `order_detail` (
 
 INSERT INTO `order_detail` (`id`, `order_id`, `product_id`, `size_id`, `total`, `quantity`) VALUES
 (8, 5, 1, 3, 600, 2),
-(9, 5, 8, 6, 2800, 4),
 (10, 6, 7, 1, 6000, 5),
 (11, 5, 12, 2, 200, 2),
 (14, 6, 7, 3, 4800, 4),
@@ -370,7 +371,6 @@ INSERT INTO `order_detail` (`id`, `order_id`, `product_id`, `size_id`, `total`, 
 (43, 23, 2, 2, 500, 1),
 (44, 23, 2, 3, 500, 1),
 (45, 23, 12, 4, 900, 9),
-(46, 23, 12, 6, 1200, 12),
 (47, 24, 28, 4, 2800, 4),
 (48, 24, 36, 2, 3000, 5),
 (49, 24, 37, 4, 4800, 4),
@@ -421,7 +421,7 @@ CREATE TABLE `products` (
   `sale` int NOT NULL,
   `category_id` int NOT NULL,
   `brand_id` int NOT NULL,
-  `status` tinyint DEFAULT NULL COMMENT '1 Mở bán 0 Ẩn',
+  `status` tinyint DEFAULT '1' COMMENT '1 Mở bán 0 Ẩn',
   `type` varchar(50) DEFAULT NULL COMMENT 'Normal Sale New',
   `create_at` datetime DEFAULT CURRENT_TIMESTAMP,
   `update_at` datetime DEFAULT CURRENT_TIMESTAMP
@@ -432,7 +432,7 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `img`, `description`, `price`, `sale`, `category_id`, `brand_id`, `status`, `type`, `create_at`, `update_at`) VALUES
-(1, 'Áo Addidas D2M', 'adidas-d2m-3s-gm2135-1.jpg', '&#60;p&#62;Mặc l&#38;ecirc;n tự tin thoải m&#38;aacute;i sẵn s&#38;agrave;ng t&#38;ecirc; t&#38;aacute;i&#60;/p&#62;&#13;&#10;', 600, 100, 1, 1, 2, 'new', '2023-03-20 13:30:00', '2023-05-06 10:44:01'),
+(1, 'Áo Addidas D2M', 'adidas-d2m-3s-gm2135-1.jpg', '&#60;p&#62;Mặc l&#38;ecirc;n tự tin thoải m&#38;aacute;i sẵn s&#38;agrave;ng t&#38;ecirc; t&#38;aacute;i&#60;/p&#62;&#13;&#10;', 600, 100, 1, 1, 1, 'new', '2023-03-20 13:30:00', '2023-05-06 10:44:01'),
 (2, 'Áo Thun Adidas D4R Xanh', 'adidas-d4r-tee-men-hk7117-1.jpg', 'Tuy không xinh nhưng biết thế nào là ảo', 800, 500, 1, 1, 1, 'new', '2023-03-20 13:30:00', '2023-05-08 10:12:21'),
 (3, 'Áo Thun Adidas HC2760 Đen', 'adidas-m-ti-tee-hc2760-den-1.jpg', 'Đen như cuộc tình của anh và em', 900, 800, 1, 1, 1, 'normal', '2023-03-20 13:30:00', '2023-03-20 13:30:00'),
 (5, 'Áo Hoodie Adidas Tokyo Carrier Pullover', 'images/categories/ao-hoodie-lifestyle-nam-adidas-hl6925-1.jpg', '&#60;p&#62;Kẻ si t&#38;igrave;nh trong cuộc t&#38;igrave;nh tay ba&#60;/p&#62;&#13;&#10;', 1500, 1200, 2, 1, 1, 'sale', '2023-03-20 13:30:00', '2023-03-27 15:03:27'),
@@ -441,10 +441,10 @@ INSERT INTO `products` (`id`, `name`, `img`, `description`, `price`, `sale`, `ca
 (8, 'Áo Hoodie Nike Sportwear Midnight Navy', 'images/categories/ao-thun-lifestyle-nam-nike-dr8055-100-3.jpg', '&#60;p&#62;Nữa đ&#38;ecirc;m bật dậy nhắn em 1 c&#38;acirc;u, anh y&#38;ecirc;u em như cọc t&#38;igrave;m tr&#38;acirc;u&#60;/p&#62;&#13;&#10;', 800, 700, 2, 2, 1, 'normal', '2023-03-20 13:30:00', '2023-03-27 15:05:37'),
 (9, 'Áo Hoodie Nike Pullover Tokyo', 'images/sp1/adidas-d4r-tee-men-hk7117-1.jpg', '&#60;p&#62;Tokyo ở Nhật, c&#38;ograve;n em ở trong tim anh&#60;/p&#62;&#13;&#10;', 1900, 1500, 2, 2, 1, 'normal', '2023-03-20 13:30:00', '2023-03-27 15:07:52'),
 (10, 'Áo Polo Gucci With Pocket', 'images/sp2/ao-thun-lifestyle-nam-adidas-hl9386-1.jpg', '&#60;p&#62;Anh l&#38;agrave; ch&#38;agrave;ng trai Đ&#38;ocirc;n Chề c&#38;ograve;n em l&#38;agrave; c&#38;ocirc; g&#38;aacute;i Gu Ch&#38;igrave; của anh&#60;/p&#62;&#13;&#10;', 3000, 2800, 4, 4, 1, 'normal', '2023-03-20 13:30:00', '2023-03-27 15:08:19'),
-(11, 'Áo Sơ Mi Adidas Short Sleeve Xanh Olive', 'images/categories/ao-thun-lifestyle-nam-adidas-m-feelcozy-swt-h12221-1.jpg', '&#60;p&#62;Anh mặc sơ mi đi l&#38;agrave;m tr&#38;acirc;u l&#38;agrave;m ngựa, em mặc &#38;aacute;o crop-top đi l&#38;agrave;m ghệ người ta&#60;/p&#62;&#13;&#10;', 400, 200, 3, 1, 2, 'normal', '2023-03-20 13:30:00', '2023-03-27 15:07:19'),
+(11, 'Áo Sơ Mi Adidas Short Sleeve Xanh Olive', 'images/categories/ao-thun-lifestyle-nam-adidas-m-feelcozy-swt-h12221-1.jpg', '&#60;p&#62;Anh mặc sơ mi đi l&#38;agrave;m tr&#38;acirc;u l&#38;agrave;m ngựa, em mặc &#38;aacute;o crop-top đi l&#38;agrave;m ghệ người ta&#60;/p&#62;&#13;&#10;', 400, 200, 3, 1, 1, 'normal', '2023-03-20 13:30:00', '2023-03-27 15:07:19'),
 (12, 'Áo Sơ Mi Cộc Tay Adidas Màu Đen Xám', 'images/categories/adidas-m-ti-tee-hc2760-den-1.jpg', '&#60;p&#62;Em dạo n&#38;agrave;y c&#38;oacute; c&#38;ograve;n xem phim một m&#38;igrave;nh, em dạo n&#38;agrave;y c&#38;oacute; c&#38;ograve;n y&#38;ecirc;u người kh&#38;aacute;c kh&#38;ocirc;ng&#60;/p&#62;&#13;&#10;', 300, 100, 3, 1, 1, 'new', '2023-03-20 13:30:00', '2023-03-27 15:07:01'),
 (13, 'Áo Sơ Mi Gucci Cotton Trắng', 'images/categories/ao-ba-lo-chay-bo-nam-nike-cz9180-010-5.jpg', '&#60;p&#62;&#38;Aacute;o n&#38;agrave;y tuy rẻ nhưng vẫn mắc hơn lương t&#38;acirc;m của m&#60;/p&#62;&#13;&#10;', 5000, 4900, 3, 4, 1, 'sale', '2023-03-20 13:30:00', '2023-03-27 15:06:28'),
-(21, 'Áo Addidas D2M', 'adidas-d2m-3s-gm2135-1.jpg', '&#60;p&#62;Mặc l&#38;ecirc;n tự tin thoải m&#38;aacute;i sẵn s&#38;agrave;ng t&#38;ecirc; t&#38;aacute;i&#60;/p&#62;&#13;&#10;', 600, 300, 1, 1, 2, 'new', '2023-03-20 13:30:00', '2023-03-29 22:04:45'),
+(21, 'Áo Addidas D2M', 'adidas-d2m-3s-gm2135-1.jpg', '&#60;p&#62;Mặc l&#38;ecirc;n tự tin thoải m&#38;aacute;i sẵn s&#38;agrave;ng t&#38;ecirc; t&#38;aacute;i&#60;/p&#62;&#13;&#10;', 600, 300, 1, 1, 1, 'new', '2023-03-20 13:30:00', '2023-03-29 22:04:45'),
 (22, 'Áo Thun Adidas D4R Xanh', 'images/sp18/adidas-d4r-tee-men-hk7117-1.jpg', '&#60;p&#62;Xanh Xanh Long Lanh, Mặc V&#38;agrave;o Y&#38;ecirc;u Anh&#60;/p&#62;&#13;&#10;&#13;&#10;&#60;p&#62;h&#38;atilde;y mua ngay n&#38;egrave;&#60;/p&#62;&#13;&#10;', 800, 500, 1, 1, 1, 'new', '2023-03-20 13:30:00', '2023-05-07 22:10:46'),
 (23, 'Áo Thun Adidas HC2760 Đen', 'images/sp17/adidas-m-ti-tee-hc2760-den-1.jpg', '&#60;p&#62;&#38;Aacute;o Thun Thoải M&#38;aacute;i, Chưa Mặc Đ&#38;atilde; Kho&#38;aacute;i&#60;/p&#62;&#13;&#10;', 900, 800, 1, 1, 1, 'normal', '2023-03-20 13:30:00', '2023-05-07 22:09:18'),
 (25, 'Áo Hoodie Adidas Tokyo Carrier Pullover', 'images/sp8/ao-hoodie-adidas-tokyo-brand-carrier-pullover-h64727-mau-den-size-l-1.jpg', '&#60;p&#62;Hoodie Tokyo Carrier Pullover ho&#38;agrave;n to&#38;agrave;n mới đến từ nh&#38;agrave; Adidas, h&#38;atilde;y mua ngay trước khi ch&#38;aacute;y h&#38;agrave;ng&#60;/p&#62;&#13;&#10;', 1500, 1200, 2, 1, 1, 'sale', '2023-03-20 13:30:00', '2023-05-07 21:51:28'),
@@ -461,7 +461,7 @@ INSERT INTO `products` (`id`, `name`, `img`, `description`, `price`, `sale`, `ca
 (36, 'Áo Nike Hồng Nam Tính', 'images/sp7/nike-dq1011-824-1.jpg', '&#60;p&#62;Ai n&#38;oacute;i m&#38;agrave;u hồng chỉ d&#38;agrave;nh cho phụ nữ th&#38;ocirc;i, h&#38;atilde;y mua ngay mẫu &#38;aacute;o hồng ho&#38;agrave;n to&#38;agrave;n mới đến từ Nike&#60;/p&#62;&#13;&#10;', 1000, 600, 1, 2, 1, 'new', '2023-05-07 21:48:52', NULL),
 (37, 'Hoodie Nike Thể Thao Pullover  Tokyo Trăng', 'images/sp19/ao-nike-sportswear-men-s-pullover-hoodie-tokyo-color-cw0308-100-mau-trang-1.jpg', '&#60;p&#62;Vừa nh&#38;igrave;n đ&#38;atilde; đẹp, kh&#38;ocirc;ng cần g&#38;igrave; hết chỉ với chiếc Hoodie n&#38;agrave;y l&#38;agrave; c&#38;oacute; thể tự tin ra đường&#60;/p&#62;&#13;&#10;', 1400, 1200, 2, 2, 1, 'new', '2023-05-07 22:15:11', NULL),
 (38, 'Áo Sơ Mi Gucci Embroidered Cotten Trắng', 'images/sp20/ao-so-mi-gucci-white-cotton-snake-embroidered-collar-duke-shirt-2.jpg', '&#60;p&#62;Si&#38;ecirc;u phẩm đến từ Gucci, chỉ với ch&#38;uacute;t đỉnh l&#38;agrave; c&#38;oacute; thể sỡ hữu&#60;/p&#62;&#13;&#10;', 5000, 4000, 3, 4, 1, 'sale', '2023-05-07 22:18:10', '2023-05-08 11:06:10'),
-(39, 'abcxyz', 'images/sp14/team-4.jpg', '&#60;p&#62;abc&#60;/p&#62;&#13;&#10;', 500, 100, 1, 2, 2, 'normal', '2023-05-08 14:09:56', '2023-05-08 14:13:56');
+(39, 'abcxyz', 'images/sp14/team-4.jpg', '&#60;p&#62;abc&#60;/p&#62;&#13;&#10;', 500, 100, 1, 2, 1, 'normal', '2023-05-08 14:09:56', '2023-05-08 14:13:56');
 
 -- --------------------------------------------------------
 
@@ -470,8 +470,8 @@ INSERT INTO `products` (`id`, `name`, `img`, `description`, `price`, `sale`, `ca
 --
 
 CREATE TABLE `products_size` (
-  `id_product` int NOT NULL,
-  `id_size` int NOT NULL,
+  `product_id` int NOT NULL,
+  `size_id` int NOT NULL,
   `quantity` int NOT NULL,
   `create_at` datetime DEFAULT CURRENT_TIMESTAMP,
   `update_at` datetime DEFAULT CURRENT_TIMESTAMP
@@ -481,115 +481,97 @@ CREATE TABLE `products_size` (
 -- Dumping data for table `products_size`
 --
 
-INSERT INTO `products_size` (`id_product`, `id_size`, `quantity`, `create_at`, `update_at`) VALUES
+INSERT INTO `products_size` (`product_id`, `size_id`, `quantity`, `create_at`, `update_at`) VALUES
 (1, 1, 30, '2023-03-29 22:04:45', NULL),
 (1, 2, 27, '2023-03-29 22:04:45', '2023-05-07 23:15:29'),
 (1, 3, 32, '2023-03-29 22:04:45', '2023-05-07 22:13:49'),
 (1, 4, 30, '2023-03-29 22:04:45', NULL),
 (1, 5, 30, '2023-03-29 22:04:45', NULL),
-(1, 6, 1, '2023-03-29 22:04:45', NULL),
 (2, 1, 1, NULL, NULL),
 (2, 2, 103, NULL, '2023-05-07 23:15:29'),
 (2, 3, -1, NULL, NULL),
 (2, 4, 0, NULL, NULL),
 (2, 5, 6, NULL, NULL),
-(2, 6, 7, NULL, NULL),
 (3, 1, 8, NULL, NULL),
 (3, 2, 9, NULL, NULL),
 (3, 3, 10, NULL, NULL),
 (3, 4, 0, NULL, NULL),
 (3, 5, 11, NULL, NULL),
-(3, 6, 12, NULL, NULL),
 (5, 1, 19, NULL, NULL),
 (5, 2, 20, NULL, NULL),
 (5, 3, 0, NULL, NULL),
 (5, 4, 21, NULL, NULL),
 (5, 5, 22, NULL, NULL),
-(5, 6, 23, NULL, NULL),
 (6, 1, 24, NULL, NULL),
 (6, 2, 25, NULL, NULL),
 (6, 3, 26, NULL, NULL),
 (6, 4, 27, NULL, NULL),
 (6, 5, 28, NULL, NULL),
-(6, 6, 29, NULL, NULL),
 (7, 1, 30, NULL, NULL),
 (7, 2, 0, NULL, NULL),
 (7, 3, 5, NULL, NULL),
 (7, 4, 0, NULL, NULL),
 (7, 5, 7, NULL, NULL),
-(7, 6, 21, NULL, NULL),
 (8, 1, 16, NULL, NULL),
 (8, 2, 0, NULL, NULL),
 (8, 3, 115, NULL, '2023-04-10 21:52:03'),
 (8, 4, 6, NULL, NULL),
 (8, 5, 12, NULL, NULL),
-(8, 6, 0, NULL, NULL),
 (9, 1, 30, NULL, NULL),
 (9, 2, 8, NULL, NULL),
 (9, 3, 21, NULL, NULL),
 (9, 4, 22, NULL, NULL),
 (9, 5, 30, NULL, NULL),
-(9, 6, 1, NULL, NULL),
 (10, 1, 12, NULL, NULL),
 (10, 2, 11, NULL, NULL),
 (10, 3, 20, NULL, NULL),
 (10, 4, 10, NULL, NULL),
 (10, 5, 0, NULL, NULL),
-(10, 6, 6, NULL, NULL),
 (11, 1, 24, NULL, NULL),
 (11, 2, 5, NULL, NULL),
 (11, 3, 11, NULL, NULL),
 (11, 4, 97, NULL, '2023-04-10 21:52:03'),
 (11, 5, 23, NULL, NULL),
-(11, 6, 21, NULL, NULL),
 (12, 1, 16, NULL, NULL),
 (12, 2, 0, NULL, NULL),
 (12, 3, 0, NULL, NULL),
 (12, 4, 0, NULL, NULL),
 (12, 5, 13, NULL, NULL),
-(12, 6, 0, NULL, NULL),
 (13, 1, 2, NULL, NULL),
 (13, 2, 1, NULL, NULL),
 (13, 3, 0, NULL, NULL),
 (13, 4, 0, NULL, NULL),
 (13, 5, 3, NULL, NULL),
-(13, 6, 8, NULL, NULL),
 (21, 1, 30, '2023-03-29 22:04:45', NULL),
 (21, 2, 45, '2023-03-29 22:04:45', NULL),
 (21, 3, 32, '2023-03-29 22:04:45', NULL),
 (21, 4, 30, '2023-03-29 22:04:45', NULL),
 (21, 5, 30, '2023-03-29 22:04:45', NULL),
-(21, 6, 1, '2023-03-29 22:04:45', NULL),
 (22, 1, 2, '2023-05-07 22:10:46', NULL),
 (22, 2, 3, '2023-05-07 22:10:46', NULL),
 (22, 3, 1, '2023-05-07 22:10:46', NULL),
 (22, 4, 2, '2023-05-07 22:10:46', NULL),
 (22, 5, 6, '2023-05-07 22:10:46', NULL),
-(22, 6, 7, '2023-05-07 22:10:46', NULL),
 (23, 1, 8, '2023-05-07 22:09:18', NULL),
 (23, 2, 9, '2023-05-07 22:09:18', NULL),
 (23, 3, 10, '2023-05-07 22:09:18', NULL),
 (23, 4, 10, '2023-05-07 22:09:18', NULL),
 (23, 5, 11, '2023-05-07 22:09:18', NULL),
-(23, 6, 12, '2023-05-07 22:09:18', NULL),
 (25, 1, 19, '2023-05-07 21:51:28', NULL),
 (25, 2, 20, '2023-05-07 21:51:28', NULL),
 (25, 3, 10, '2023-05-07 21:51:28', NULL),
 (25, 4, 21, '2023-05-07 21:51:28', NULL),
 (25, 5, 22, '2023-05-07 21:51:28', NULL),
-(25, 6, 23, '2023-05-07 21:51:28', NULL),
 (26, 1, 24, '2023-05-07 22:07:57', NULL),
 (26, 2, 25, '2023-05-07 22:07:57', NULL),
 (26, 3, 26, '2023-05-07 22:07:57', NULL),
 (26, 4, 27, '2023-05-07 22:07:57', NULL),
 (26, 5, 28, '2023-05-07 22:07:57', NULL),
-(26, 6, 29, '2023-05-07 22:07:57', NULL),
 (27, 1, 30, '2023-05-07 22:05:45', NULL),
 (27, 2, 10, '2023-05-07 22:05:45', NULL),
 (27, 3, 1, '2023-05-07 22:05:45', NULL),
 (27, 4, 4, '2023-05-07 22:05:45', NULL),
 (27, 5, 25, '2023-05-07 22:05:45', NULL),
-(27, 6, 21, '2023-05-07 22:05:45', NULL),
 (28, 1, 16, '2023-05-07 22:06:33', NULL),
 (28, 3, 10, '2023-05-07 22:06:33', NULL),
 (28, 4, 2, '2023-05-07 22:06:33', NULL),
@@ -599,61 +581,50 @@ INSERT INTO `products_size` (`id_product`, `id_size`, `quantity`, `create_at`, `
 (29, 3, 21, '2023-05-07 22:02:43', NULL),
 (29, 4, 22, '2023-05-07 22:02:43', NULL),
 (29, 5, 30, '2023-05-07 22:02:43', NULL),
-(29, 6, 1, '2023-05-07 22:02:43', NULL),
 (30, 1, 12, '2023-05-07 21:59:14', NULL),
 (30, 2, 11, '2023-05-07 21:59:14', NULL),
 (30, 3, 20, '2023-05-07 21:59:14', NULL),
 (30, 4, 10, '2023-05-07 21:59:14', NULL),
-(30, 6, 6, '2023-05-07 21:59:14', NULL),
 (31, 1, 24, '2023-05-07 21:57:06', NULL),
 (31, 2, 0, '2023-05-07 21:57:06', NULL),
 (31, 3, 11, '2023-05-07 21:57:06', NULL),
 (31, 4, 27, '2023-05-07 21:57:06', NULL),
 (31, 5, 23, '2023-05-07 21:57:06', NULL),
-(31, 6, 21, '2023-05-07 21:57:06', NULL),
 (32, 1, 16, '2023-05-07 21:55:07', NULL),
 (32, 2, 3, '2023-05-07 21:55:07', NULL),
 (32, 3, 7, '2023-05-07 21:55:07', NULL),
 (32, 4, 9, '2023-05-07 21:55:07', NULL),
 (32, 5, 14, '2023-05-07 21:55:07', NULL),
-(32, 6, 12, '2023-05-07 21:55:07', NULL),
 (33, 1, 2, '2023-05-07 21:53:38', NULL),
 (33, 2, 1, '2023-05-07 21:53:38', NULL),
 (33, 3, 1, '2023-05-07 21:53:38', NULL),
 (33, 4, 2, '2023-05-07 21:53:38', NULL),
 (33, 5, 3, '2023-05-07 21:53:38', NULL),
-(33, 6, 8, '2023-05-07 21:53:38', NULL),
 (34, 1, 10, '2023-05-07 21:40:00', NULL),
 (34, 2, 24, '2023-05-07 21:40:00', NULL),
 (34, 3, 14, '2023-05-07 21:40:00', NULL),
 (34, 4, 21, '2023-05-07 21:40:00', NULL),
 (34, 5, 24, '2023-05-07 21:40:00', NULL),
-(34, 6, 22, '2023-05-07 21:40:00', NULL),
 (35, 1, 10, '2023-05-07 21:46:30', NULL),
 (35, 2, 2, '2023-05-07 21:46:30', NULL),
 (35, 3, 9, '2023-05-07 21:46:30', NULL),
 (35, 4, 11, '2023-05-07 21:46:30', NULL),
 (35, 5, 42, '2023-05-07 21:46:30', NULL),
-(35, 6, 13, '2023-05-07 21:46:30', NULL),
 (36, 1, 13, '2023-05-07 21:48:52', NULL),
 (36, 2, 7, '2023-05-07 21:48:52', NULL),
 (36, 3, 11, '2023-05-07 21:48:52', NULL),
 (36, 4, 31, '2023-05-07 21:48:52', NULL),
 (36, 5, 32, '2023-05-07 21:48:52', NULL),
-(36, 6, 42, '2023-05-07 21:48:52', NULL),
 (37, 1, 20, '2023-05-07 22:15:11', NULL),
 (37, 2, 31, '2023-05-07 22:15:11', NULL),
 (37, 3, 10, '2023-05-07 22:15:11', NULL),
 (37, 4, 18, '2023-05-07 22:15:11', NULL),
 (37, 5, 12, '2023-05-07 22:15:11', NULL),
-(37, 6, 13, '2023-05-07 22:15:11', NULL),
 (38, 1, 32, '2023-05-07 22:18:10', NULL),
 (38, 2, 23, '2023-05-07 22:18:10', NULL),
 (38, 3, 10, '2023-05-07 22:18:10', NULL),
 (38, 4, 14, '2023-05-07 22:18:10', NULL),
-(38, 5, 13, '2023-05-07 22:18:10', NULL),
-(38, 6, 11, '2023-05-07 22:18:10', NULL),
-(39, 6, 2, '2023-05-08 14:10:20', NULL);
+(38, 5, 13, '2023-05-07 22:18:10', NULL);
 
 -- --------------------------------------------------------
 
@@ -723,6 +694,7 @@ CREATE TABLE `sizes` (
   `id` int NOT NULL,
   `name` varchar(10) DEFAULT NULL,
   `description` varchar(100) DEFAULT NULL,
+  `status` tinyint NOT NULL DEFAULT '1',
   `create_at` datetime DEFAULT CURRENT_TIMESTAMP,
   `update_at` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
@@ -731,14 +703,12 @@ CREATE TABLE `sizes` (
 -- Dumping data for table `sizes`
 --
 
-INSERT INTO `sizes` (`id`, `name`, `description`, `create_at`, `update_at`) VALUES
-(1, 'S', '[value-3]', NULL, NULL),
-(2, 'M', '[value-3]', NULL, NULL),
-(3, 'L', '[value-3]', NULL, NULL),
-(4, 'XL', '[value-3]', NULL, NULL),
-(5, '2XL', '[value-3]', NULL, NULL),
-(6, '3XL', '[value-3]', NULL, NULL),
-(7, '3XL', 'abc', '2023-05-08 14:06:07', NULL);
+INSERT INTO `sizes` (`id`, `name`, `description`, `status`, `create_at`, `update_at`) VALUES
+(1, 'S', '[value-3]', 1, NULL, NULL),
+(2, 'M', '[value-3]', 1, NULL, NULL),
+(3, 'L', '[value-3]', 1, NULL, NULL),
+(4, 'XL', '[value-3]', 1, NULL, NULL),
+(5, '2XL', '[value-3]', 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -840,7 +810,7 @@ ALTER TABLE `contacts`
 --
 ALTER TABLE `images`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_image_product` (`id_product`);
+  ADD KEY `fk_image_product` (`product_id`);
 
 --
 -- Indexes for table `login_token`
@@ -890,8 +860,8 @@ ALTER TABLE `products`
 -- Indexes for table `products_size`
 --
 ALTER TABLE `products_size`
-  ADD PRIMARY KEY (`id_product`,`id_size`),
-  ADD KEY `fk_product_size_size` (`id_size`);
+  ADD PRIMARY KEY (`product_id`,`size_id`),
+  ADD KEY `fk_product_size_size` (`size_id`);
 
 --
 -- Indexes for table `reviews`
@@ -1041,7 +1011,7 @@ ALTER TABLE `cart`
 -- Constraints for table `images`
 --
 ALTER TABLE `images`
-  ADD CONSTRAINT `fk_image_product` FOREIGN KEY (`id_product`) REFERENCES `products` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `fk_image_product` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `login_token`
@@ -1075,8 +1045,8 @@ ALTER TABLE `products`
 -- Constraints for table `products_size`
 --
 ALTER TABLE `products_size`
-  ADD CONSTRAINT `fk_product_size_product` FOREIGN KEY (`id_product`) REFERENCES `products` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `fk_product_size_size` FOREIGN KEY (`id_size`) REFERENCES `sizes` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `fk_product_size_product` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_product_size_size` FOREIGN KEY (`size_id`) REFERENCES `sizes` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `reviews`

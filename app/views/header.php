@@ -124,7 +124,19 @@ Session::init();
                                 <ul class="navbar_menu">
                                     <li><a href="<?php echo BASE_URL ?>">home</a></li>
                                     <li><a href="<?php echo BASE_URL ?>/shop">shop</a></li>
-                                    <li><a href="#">purchase order</a></li>
+                                    <li>
+                                        <?php
+                                        if (Session::isLogin()) {
+                                        ?>
+                                            <a href="<?php echo BASE_URL ?>/purchaseOrder">purchase order</a>
+                                        <?php
+                                        } else {
+                                        ?>
+                                            <a href="<?php echo BASE_URL ?>/login">purchase order</a>
+                                        <?php
+                                        }
+                                        ?>
+                                    </li>
                                     <li><a href="#">about</a></li>
                                     <li><a href="<?php echo BASE_URL ?>/contact">contact</a></li>
                                 </ul>
@@ -151,7 +163,7 @@ Session::init();
                                     </div>
                                     <!-- <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i></a></li> -->
                                     <li class="checkout">
-                                        <a href="#">
+                                        <a href="<?php echo BASE_URL ?>/cart">
                                             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                                             <span id="checkout_items" class="checkout_items">2</span>
                                         </a>
