@@ -97,7 +97,7 @@ class ProductModel extends Model
             $sql .= $sqlSize;
         }
 
-        $sql .= " AND (p.sale >= ? AND p.sale <= ?)";
+        $sql .= " AND (p.price >= ? AND p.price <= ?)";
 
         if ($sortBy !== null) {
             $sql .= " ORDER BY " . $sortBy;
