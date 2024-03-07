@@ -7,9 +7,11 @@ class Main
     public $methodName = "index";
     public $controllerPath = "app/controllers/";
     public $controller;
+    public $routes;
 
     public function __construct()
     {
+        // $this->routes = new Route();
         $this->getUrl();
         $this->getController();
         $this->getMethod();
@@ -22,6 +24,13 @@ class Main
         if ($this->url != NULL) {
             $this->url = rtrim($this->url, "/");
             $this->url = explode("/", filter_var($this->url, FILTER_SANITIZE_URL));
+            if ($this->url[0] == "admin") {
+                $this->controllerPath .= "admin/";
+                unset($this->url[0]);
+                $this->url = array_values($this->url);
+            }
+            print_r($this->url);
+            print_r($this->controllerPath);
         } else {
             unset($this->url);
         }
