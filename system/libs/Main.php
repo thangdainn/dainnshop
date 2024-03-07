@@ -29,8 +29,6 @@ class Main
                 unset($this->url[0]);
                 $this->url = array_values($this->url);
             }
-            print_r($this->url);
-            print_r($this->controllerPath);
         } else {
             unset($this->url);
         }
