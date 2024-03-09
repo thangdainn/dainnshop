@@ -351,6 +351,7 @@ jQuery(document).ready(function ($) {
         productId: productId,
         sizeId: sizeId,
         quantity: quantity,
+        action: "buy_now",
       };
       addToCartAjax(data);
     });
