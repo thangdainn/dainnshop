@@ -148,7 +148,7 @@
                                                     <div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>sale</span></div>
                                                     <div class="product_info">
                                                         <h6 class="product_name"><?php echo $product['name'] ?></h6>
-                                                        <div class="product_price"><?php echo $product['sale'] ?><span><?php echo $product['price'] ?></span></div>
+                                                        <div class="product_price">$<?php echo $product['sale'] ?><span>$<?php echo $product['price'] ?></span></div>
                                                     </div>
                                                     <?php
                                                 } else {
@@ -160,7 +160,7 @@
                                                     ?>
                                                     <div class="product_info">
                                                         <h6 class="product_name"><?php echo $product['name'] ?></h6>
-                                                        <div class="product_price"><?php echo $product['price'] ?></div>
+                                                        <div class="product_price">$<?php echo $product['price'] ?></div>
                                                     </div>
                                                 <?php
                                                 }
@@ -200,6 +200,5 @@
     </div>
 </div>
 <script>
-    var base_url = "<?php echo BASE_URL ?>";
     var url_page = base_url + "/product/paging";
 </script>

@@ -23,8 +23,20 @@ class product extends Controller
     {
         $this->load->view("header");
 
-        $product = $this->load->model("ProductModel");
-        $data['product'] = $product->findById($id);
+        $productModel = $this->load->model("ProductModel");
+        $data['product'] = $productModel->findById($id);
+
+        $imageModel = $this->load->model("ImageModel");
+        $data['images'] = $imageModel->findByProduct_Id($id);
+
+        $sizeModel = $this->load->model("SizeModel");
+        $data['sizes'] = $sizeModel->findByProduct_Id($id);
+
+        $reviewModel = $this->load->model("ReviewModel");
+        $data['reviews'] = $reviewModel->findByProduct_Id($id);
+
+        $userModel = $this->load->model("UserModel");
+        $data['userReviews'] = $userModel->findByProduct_Id($id);
 
         $this->load->view("cpanel/productDetail", $data);
         $this->load->view("footer");
