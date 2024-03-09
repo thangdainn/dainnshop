@@ -347,7 +347,6 @@ jQuery(document).ready(function ($) {
   }
   function buyNowAjax(data) {
     let url = base_url + "/cart/add";
-    console.log(url);
     $.ajax({
       type: "POST",
       url: url,
