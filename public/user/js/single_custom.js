@@ -345,7 +345,7 @@ jQuery(document).ready(function ($) {
       },
     });
   }
-  function addBuyNowAjax(data) {
+  function buyNowAjax(data) {
     let url = base_url + "/cart/add";
     console.log(url);
     $.ajax({
