@@ -5,7 +5,6 @@ function paging(data, url) {
     dataType: "html",
     data: data,
     success: function (data) {
-      console.log(data);
       $(".product-container").empty();
       $(".product-container").html(data);
       redirectProductDetail();
