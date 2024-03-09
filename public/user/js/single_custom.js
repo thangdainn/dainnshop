@@ -328,6 +328,22 @@ jQuery(document).ready(function ($) {
       },
     });
   }
+  function addBuyNowAjax(data) {
+    let url = base_url + "/cart/add";
+    console.log(url);
+    $.ajax({
+      type: "POST",
+      url: url,
+      data: data,
+      success: function (response) {
+        if (response.status === "success") {
+          alert("Add to cart successfully");
+        } else {
+          alert("Add to cart failed");
+        }
+      },
+    });
+  }
 
   function initBuyNow() {
     $(".buy_now_button").on("click", function (e) {
@@ -353,7 +369,7 @@ jQuery(document).ready(function ($) {
         quantity: quantity,
         action: "buy_now",
       };
-      addToCartAjax(data);
+      addBuyNowAjax(data);
     });
   }
 
