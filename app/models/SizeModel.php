@@ -14,9 +14,15 @@ class SizeModel extends Model
         return $result;
     }
 
-    public function findById($id)
+    public function findByProduct_Id($id)
     {
-        $sql = "SELECT * FROM sizes WHERE id = ? AND status = 1";
+        $sql = "SELECT s.id, s.name, ps.quantity FROM sizes s 
+                JOIN products_size ps ON s.id = ps.size_id 
+                JOIN products p ON p.id = ps.product_id 
+                WHERE ps.quantity >= 0 
+                    AND s.status > 0 
+                    AND p.status > 0 
+                    AND p.id = ?";
         $result = $this->db->select($sql, $id);
         return $result;
     }

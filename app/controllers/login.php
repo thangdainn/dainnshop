@@ -31,6 +31,7 @@ class login extends Controller
                 Session::init();
                 Session::set('login', true);
                 Session::set('email', $check['email']);
+                Session::set('userId', $check['id']);
                 Session::set('fullName', $check['fullname']);
                 Session::set('roleId', $check['group_id']);
                 header('Location:' . BASE_URL . '/');

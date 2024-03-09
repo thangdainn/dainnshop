@@ -15,9 +15,9 @@ function paging(data, url) {
     dataType: "html",
     data: data,
     success: function (data) {
-      console.log(data);
       $(".product-container").empty();
       $(".product-container").html(data);
+      redirectProductDetail();
     },
     error: function () {},
   });
@@ -41,7 +41,7 @@ function pagingFilter(data, url) {
                     <script src="${base_url}/public/user/js/jquery.twbsPagination.js"></script>
                     <script src="${base_url}/public/user/js/paging.js"></script>`;
         $("#paging").html(paging);
-        initPagination();
+        // initPagination();
       }
     },
     error: function () {},
@@ -115,7 +115,7 @@ function initPagination() {
 function redirectProductDetail() {
   $(".product").on("click", function (e) {
     var dataValue = $(this).closest(".product-item").data("value");
-    console.log(dataValue);
+    // console.log(dataValue);
     window.location.href = base_url + "/product/detail/" + dataValue;
   });
 }

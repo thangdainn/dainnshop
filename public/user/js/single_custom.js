@@ -50,7 +50,9 @@ jQuery(document).ready(function ($) {
   initStarRating();
   initFavorite();
   initTabs();
-
+  initSize();
+  initBuyNow();
+  initAddToCart();
   /* 
 
 	2. Set Header
@@ -176,14 +178,38 @@ jQuery(document).ready(function ($) {
       var value = $("#quantity_value");
 
       plus.on("click", function () {
-        var x = parseInt(value.text());
-        value.text(x + 1);
+        var x = parseInt(value.val());
+        let maxItem = parseInt($(".total_item").text().split(" ")[0]);
+
+        if (x < maxItem) {
+          value.val(x + 1);
+        }
       });
 
       minus.on("click", function () {
-        var x = parseInt(value.text());
+        var x = parseInt(value.val());
         if (x > 1) {
-          value.text(x - 1);
+          value.val(x - 1);
+        }
+      });
+
+      let inputElement = $("#quantity_value");
+      inputElement.on("input", function () {
+        // Lọc ra các ký tự số và không cho nhập bất kỳ ký tự nào khác
+        $(this).val($(this).val().replace(/\D/g, ""));
+        // Kiểm tra giá trị nhỏ nhất
+        if (parseInt($(this).val()) < parseInt($(this).attr("min"))) {
+          $(this).val($(this).attr("min"));
+        }
+        // Kiểm tra giá trị lớn nhất
+        if (parseInt($(this).val()) > parseInt($(this).attr("max"))) {
+          $(this).val($(this).attr("max"));
+        }
+      });
+
+      inputElement.on("blur", function () {
+        if ($(this).val() === "") {
+          $(this).val($(this).attr("min"));
         }
       });
     }
@@ -262,16 +288,97 @@ jQuery(document).ready(function ($) {
   }
 
   function initSize() {
-    let sizeElm = $(".product_size ul li");
+    let sizeElm = $(".product_size ul li").not(".empty");
     sizeElm.on("click", function () {
       if ($(this).hasClass("active")) {
         $(this).removeClass("active");
+        $(".total_item").text(
+          $(".total_item").data("value") + " pieces available"
+        );
       } else {
         sizeElm.removeClass("active");
         $(this).addClass("active");
+        $(".total_item").text($(this).data("value") + " pieces available");
       }
+      $("#quantity_value").val(1);
     });
   }
 
-  initSize();
+  function checkLogin() {
+    let userId = $("#user_id").val();
+    if (userId == "0") {
+      return 0;
+    }
+    return userId;
+  }
+
+  function addToCartAjax(data) {
+    let url = base_url + "/cart/add";
+    console.log(url);
+    $.ajax({
+      type: "POST",
+      url: url,
+      data: data,
+      success: function (response) {
+        if (response.status === "success") {
+          alert("Add to cart successfully");
+        } else {
+          alert("Add to cart failed");
+        }
+      },
+    });
+  }
+
+  function initBuyNow() {
+    $(".buy_now_button").on("click", function (e) {
+      e.preventDefault();
+      let userId = checkLogin();
+      if (checkLogin() == 0) {
+        alert("Please login to add to cart");
+        return;
+      }
+
+      let productId = $("#product_id").val();
+      let sizeElm = $(".product_size ul li.active");
+      if (sizeElm.length === 0) {
+        alert("Please choose size");
+        return;
+      }
+      let sizeId = sizeElm.val();
+      let quantity = $("#quantity_value").val();
+      let data = {
+        userId: userId,
+        productId: productId,
+        sizeId: sizeId,
+        quantity: quantity,
+      };
+      addToCartAjax(data);
+    });
+  }
+
+  function initAddToCart() {
+    $(".add_to_cart_button").on("click", function (e) {
+      e.preventDefault();
+      let userId = checkLogin();
+      if (checkLogin() == 0) {
+        alert("Please login to add to cart");
+        return;
+      }
+      let productId = $("#product_id").val();
+      let sizeElm = $(".product_size ul li.active");
+      if (sizeElm.length === 0) {
+        alert("Please choose size");
+        return;
+      }
+      let sizeId = sizeElm.val();
+      let quantity = $("#quantity_value").val();
+      let data = {
+        userId: userId,
+        productId: productId,
+        sizeId: sizeId,
+        quantity: quantity,
+      };
+      addToCartAjax(data);
+    });
+  }
 });

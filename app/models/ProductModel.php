@@ -26,7 +26,7 @@ class ProductModel extends Model
     public function findById($id)
     {
         $sql = "SELECT * FROM products WHERE id = ?";
-        $result = $this->db->select($sql, $id);
+        $result = $this->db->select_one($sql, $id);
         return $result;
     }
 

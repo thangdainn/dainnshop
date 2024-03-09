@@ -236,6 +236,7 @@ Session::init();
             </div>
         </div>
         <script>
+            var base_url = "<?php echo BASE_URL ?>";
             $(".prevent-default").on("click", function(e) {
                 e.preventDefault();
             })
