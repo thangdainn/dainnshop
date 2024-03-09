@@ -328,7 +328,7 @@ jQuery(document).ready(function ($) {
       },
     });
   }
-  function addBuyNowAjax(data) {
+  function buyNowAjax(data) {
     let url = base_url + "/cart/add";
     console.log(url);
     $.ajax({
@@ -369,7 +369,7 @@ jQuery(document).ready(function ($) {
         quantity: quantity,
         action: "buy_now",
       };
-      addBuyNowAjax(data);
+      buyNowAjax(data);
     });
   }
 
