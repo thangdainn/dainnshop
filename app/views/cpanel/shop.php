@@ -128,7 +128,7 @@
 
                             <!-- Product Grid -->
 
-                            <div class="row product-container" style="margin: 40px 0px;">
+                            <div class="row product-container justify-content-start" style="margin: 40px 0px;">
 
                                 <!-- Products -->
                                 <?php
@@ -176,7 +176,6 @@
                             <div id="paging">
                                 <ul class="pagination justify-content-center" id="pagination"></ul>
                             </div>
-                            <a id="loadPage" href="#product-container"></a>
 
                             <?php
                             if (isset($_GET['keyword'])) {

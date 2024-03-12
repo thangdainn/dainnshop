@@ -32,8 +32,22 @@ class ProductModel extends Model
 
     public function findByCategoryId($categoryId)
     {
-        $sql = "SELECT * FROM products p JOIN categories c ON p.category_id = c.id WHERE c.id = ?";
+        $sql = "SELECT p.* FROM products p JOIN categories c ON p.category_id = c.id WHERE c.id = ?";
         $result = $this->db->select($sql, $categoryId);
+        return $result;
+    }
+
+    public function findTop10ByCreateAt()
+    {
+        $sql = "SELECT DISTINCT p.* FROM products p JOIN products_size ps ON p.id = ps.product_id WHERE ps.quantity AND p.status > 0 ORDER BY p.create_at DESC LIMIT 0, 5";
+        $result = $this->db->select($sql);
+        return $result;
+    }
+
+    public function findTop10ByOrder()
+    {
+        $sql = "SELECT p.*, COUNT(od.product_id) AS order_count FROM `products` p JOIN order_detail od ON p.id = od.product_id GROUP BY p.id ORDER BY order_count DESC LIMIT 0, 10";
+        $result = $this->db->select($sql);
         return $result;
     }
 

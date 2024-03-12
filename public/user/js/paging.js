@@ -1,13 +1,3 @@
-function autoClickTagA() {
-  var link = document.getElementById("loadPage");
-  var clickEvent = new MouseEvent("click", {
-    view: window,
-    bubbles: true,
-    cancelable: false,
-  });
-  link.dispatchEvent(clickEvent);
-}
-
 function paging(data, url) {
   $.ajax({
     url: url,
@@ -104,11 +94,19 @@ function initPagination() {
     onPageClick: function (event, page) {
       if (page !== currentPage) {
         let data = getDataFilters(page - 1, limit);
-        autoClickTagA();
+        scrollPage();
         currentPage = page;
         paging(data, url_page);
       }
     },
+  });
+}
+
+function scrollPage() {
+  const docEL = document.documentElement;
+  docEL.scrollTo({
+    top: 0,
+    behavior: "smooth",
   });
 }
 

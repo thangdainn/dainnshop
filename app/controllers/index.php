@@ -16,7 +16,12 @@ class index extends Controller
     public function homePage()
     {
         $this->load->view("header");
-        $this->load->view("cpanel/home");
+
+        $productNewList = $this->load->model("ProductModel");
+        $data['productNewList'] = $productNewList->findTop10ByCreateAt();
+        $data['productBestSellerList'] = $productNewList->findTop10ByOrder();
+
+        $this->load->view("cpanel/home", $data);
         $this->load->view("footer");
     }
     public function notFound()

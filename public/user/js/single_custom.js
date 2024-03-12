@@ -290,6 +290,8 @@ jQuery(document).ready(function ($) {
   function initSize() {
     let sizeElm = $(".product_size ul li").not(".empty");
     sizeElm.on("click", function () {
+      $("#error").hide();
+      $("#exclamation").hide();
       if ($(this).hasClass("active")) {
         $(this).removeClass("active");
         $(".total_item").text(
@@ -320,7 +322,7 @@ jQuery(document).ready(function ($) {
       data: data,
       success: function (response) {
         if (response.status === "success") {
-          alert("Add to cart successfully");
+          showNotification();
         } else {
           alert("Add to cart failed");
         }
@@ -348,14 +350,15 @@ jQuery(document).ready(function ($) {
       e.preventDefault();
       let userId = checkLogin();
       if (checkLogin() == 0) {
-        alert("Please login to add to cart");
+        window.location.href = base_url + "/login";
         return;
       }
 
       let productId = $("#product_id").val();
       let sizeElm = $(".product_size ul li.active");
       if (sizeElm.length === 0) {
-        alert("Please choose size");
+        $("#error").show();
+        $("#exclamation").css("display", "inline-block");
         return;
       }
       let sizeId = sizeElm.val();
@@ -376,13 +379,14 @@ jQuery(document).ready(function ($) {
       e.preventDefault();
       let userId = checkLogin();
       if (checkLogin() == 0) {
-        alert("Please login to add to cart");
+        window.location.href = base_url + "/login";
         return;
       }
       let productId = $("#product_id").val();
       let sizeElm = $(".product_size ul li.active");
       if (sizeElm.length === 0) {
-        alert("Please choose size");
+        $("#error").show();
+        $("#exclamation").css("display", "inline-block");
         return;
       }
       let sizeId = sizeElm.val();
@@ -394,6 +398,30 @@ jQuery(document).ready(function ($) {
         quantity: quantity,
       };
       addToCartAjax(data);
+    });
+  }
+
+  function showNotification() {
+    let toast = $("#toast");
+    toast.html(`<div class="alert alert-success d-flex flex-column" role="alert">
+                  <div class="success_icon">
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                  </div>
+                  <p class="notification">Item has been added to your shopping cart !</p>
+                </div>`);
+
+    const autoRemoveToast = setTimeout(() => {
+      $(".alert").remove();
+    }, 2000 + 1300);
+
+    $(document).on("click", function (event) {
+      if (
+        !$(event.target).closest(".alert").length &&
+        !$(event.target).closest(".add_to_cart_button").length
+      ) {
+        $(".alert").remove();
+        clearTimeout(autoRemoveToast);
+      }
     });
   }
 });
