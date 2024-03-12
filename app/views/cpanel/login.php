@@ -35,7 +35,7 @@
 
 <body>
 
-	<div class="limiter">
+	<div class="limiter" style="position: relative;">
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<form action="" id="formLogin" class="login100-form validate-form-login" method="post">

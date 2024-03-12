@@ -55,7 +55,6 @@ if (session_status() == PHP_SESSION_NONE) {
         echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/responsive.css">';
     }
     ?>
-
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/styles/footer.css">
 
     <script src="<?php echo BASE_URL ?>/public/user/js/jquery-3.2.1.min.js"></script>
