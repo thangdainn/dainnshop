@@ -31,7 +31,7 @@
 
 <body>
 
-	<div class="limiter">
+	<div class="limiter" style="position: relative;">
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<form action="<?php echo BASE_URL ?>/login/authentication" class="login100-form validate-form" method="post">
@@ -81,7 +81,9 @@
 			</div>
 		</div>
 	</div>
-
+	<div class="logo_container">
+		<a href="<?php echo BASE_URL ?>">dainn<span>shop</span></a>
+	</div>
 
 	<div id="dropDownSelect1"></div>
 
@@ -101,7 +103,10 @@
 	<script src="<?php echo BASE_URL ?>/public/admin/login/vendor/countdowntime/countdowntime.js"></script>
 	<!--===============================================================================================-->
 	<script src="<?php echo BASE_URL ?>/public/admin/login/js/main.js"></script>
-
+	<script>
+		document.querySelector('.limiter').style.opacity = '1';
+		document.querySelector('.container-login100').style.opacity = '1';
+	</script>
 </body>
 
 </html>

@@ -105,6 +105,10 @@
 						?>
 
 					</ul>
+					<div id="exclamation">
+						<i class="fa fa-exclamation-circle"></i>
+					</div>
+
 				</div>
 				<div class="quantity d-flex flex-sm-row align-items-center">
 					<span>Quantity:</span>
@@ -116,6 +120,8 @@
 					<div class="total_item" data-value="<?php echo $totalItem ?>"><?php echo $totalItem ?> pieces available</div>
 
 				</div>
+				<div id="error">Please select product size first</div>
+
 				<div class="add_cart d-flex justify-content-between" style="margin-top: 40px;">
 					<div class="buy_now_button"><a href="" style="height: 100%; padding-top: 6px;">buy now</a></div>
 					<div class="red_button add_to_cart_button"><a href="" style="height: 100%; padding-top: 6px;">add to cart</a></div>
@@ -225,4 +231,12 @@
 			</div>
 		</div>
 	</div>
+</div>
+<div id="toast">
+	<!-- <div class="alert alert-success d-flex flex-column hidden" role="alert">
+		<div class="success_icon">
+			<i class="fa fa-check" aria-hidden="true"></i>
+		</div>
+		<p class="notification">Item has been added to your shopping cart !</p>
+	</div> -->
 </div>
