@@ -106,8 +106,10 @@
 <script src="<?php echo BASE_URL ?>/public/user/styles/bootstrap4/bootstrap.min.js"></script>
 <script src="<?php echo BASE_URL ?>/public/user/plugins/Isotope/isotope.pkgd.min.js"></script>
 <script src="<?php echo BASE_URL ?>/public/user/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+<script src="<?php echo BASE_URL ?>/public/user/plugins/Magnific-popup/jquery.magnific-popup.min.js"></script>
 <script src="<?php echo BASE_URL ?>/public/user/plugins/easing/easing.js"></script>
 <script src="<?php echo BASE_URL ?>/public/user/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+<script src="<?php echo BASE_URL ?>/public/user/plugins/slick-nav/jquery.slicknav.js"></script>
 
 <?php
 $currentURL = $_SERVER['REQUEST_URI'];
