@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 06, 2024 at 09:31 AM
+-- Generation Time: Mar 13, 2024 at 12:03 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -31,7 +31,7 @@ CREATE TABLE `brands` (
   `id` int NOT NULL,
   `name` varchar(50) NOT NULL,
   `image` varchar(100) NOT NULL,
-  `status` tinyint NOT NULL DEFAULT '1',
+  `status` int NOT NULL DEFAULT '1',
   `create_at` datetime DEFAULT CURRENT_TIMESTAMP,
   `update_at` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
@@ -79,7 +79,7 @@ CREATE TABLE `categories` (
   `id` int NOT NULL,
   `name` varchar(50) NOT NULL,
   `image` varchar(100) NOT NULL,
-  `status` tinyint NOT NULL DEFAULT '1',
+  `status` int NOT NULL DEFAULT '1',
   `create_at` datetime DEFAULT CURRENT_TIMESTAMP,
   `update_at` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
@@ -201,27 +201,6 @@ INSERT INTO `images` (`id`, `product_id`, `image`, `create_at`, `update_at`) VAL
 (75, 38, 'images/sp20/ao-so-mi-gucci-white-cotton-snake-embroidered-collar-duke-shirt-3.jpg', '2023-05-07 22:18:10', NULL),
 (76, 38, 'images/sp20/ao-so-mi-gucci-white-cotton-snake-embroidered-collar-duke-shirt-1.jpg', '2023-05-07 22:18:10', NULL),
 (78, 39, 'images/sp14/team-4.jpg', '2023-05-08 14:10:20', NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `login_token`
---
-
-CREATE TABLE `login_token` (
-  `id` int NOT NULL,
-  `user_id` int DEFAULT NULL,
-  `token` text,
-  `create_at` datetime DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
-
---
--- Dumping data for table `login_token`
---
-
-INSERT INTO `login_token` (`id`, `user_id`, `token`, `create_at`) VALUES
-(234, 9, '58e6904b813511f21b70843e15817ec89b03f5f3', '2023-09-12 16:52:40'),
-(288, 3, '60754239d4828138ae19a0e598e6925a331ddb38', '2024-01-25 10:52:32');
 
 -- --------------------------------------------------------
 
@@ -421,7 +400,7 @@ CREATE TABLE `products` (
   `sale` int NOT NULL,
   `category_id` int NOT NULL,
   `brand_id` int NOT NULL,
-  `status` tinyint DEFAULT '1' COMMENT '1 Mở bán 0 Ẩn',
+  `status` int DEFAULT '1' COMMENT '1 Mở bán 0 Ẩn',
   `type` varchar(50) DEFAULT NULL COMMENT 'Normal Sale New',
   `create_at` datetime DEFAULT CURRENT_TIMESTAMP,
   `update_at` datetime DEFAULT CURRENT_TIMESTAMP
@@ -635,12 +614,12 @@ INSERT INTO `products_size` (`product_id`, `size_id`, `quantity`, `create_at`, `
 CREATE TABLE `reviews` (
   `id` int NOT NULL,
   `product_id` int DEFAULT NULL,
+  `user_id` int NOT NULL,
   `name` varchar(100) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
   `message` text,
   `star` int DEFAULT NULL,
-  `status` int DEFAULT NULL COMMENT '1: An 2:Hien Thi',
-  `note` text,
+  `status` int DEFAULT '1' COMMENT '0: An 1:Hien Thi',
   `create_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
@@ -648,15 +627,15 @@ CREATE TABLE `reviews` (
 -- Dumping data for table `reviews`
 --
 
-INSERT INTO `reviews` (`id`, `product_id`, `name`, `email`, `message`, `star`, `status`, `note`, `create_at`) VALUES
-(8, 1, 'Minh Lâm', 'tienhai@gmail.com', 'san pham ok lamnh', 5, 2, 'Vua gui', '2023-04-03 16:40:20'),
-(9, 1, 'Minh Lâm', 'minhlam@gmail.com', 'ok lam do nha', 3, 2, 'Vua gui', '2023-04-03 16:44:32'),
-(10, 12, 'Minh Lâm', 'tienhai488@gmail.com', 'ok nha moi nguoio', 2, 2, 'Vua gui', '2023-04-03 16:56:27'),
-(11, 12, 'Minh Lâm', 'minhlam@gmail.com', 'minhlam@gmail.com', 5, 2, 'Vua gui', '2023-04-03 16:58:09'),
-(12, 1, 'PTTK_Tuan3', 'tienhai9a2@gmail.com', 'tienhai9a2@gmail.com', 5, 2, 'Vua gui', '2023-04-03 21:02:24'),
-(28, 12, 'haile@gmail.com', 'haile@gmail.com', 'haile@gmail.com', 5, 2, 'Vua gui', '2023-04-14 18:27:39'),
-(29, 12, 'TienHai', 'tienhai@gmail.com', 'Binh luan danh gia san pham', 5, 2, 'Chưa xử lý', '2023-04-14 19:57:26'),
-(34, 12, 'TienHai488', 'tienhai4888@gmail.com', 'Binh luan cho san pham tesst chuc nawng', 3, 1, 'Chưa xử lý', '2023-04-14 20:43:25');
+INSERT INTO `reviews` (`id`, `product_id`, `user_id`, `name`, `email`, `message`, `star`, `status`, `create_at`) VALUES
+(8, 1, 3, 'Minh Lâm', 'tienhai@gmail.com', 'san pham ok lamnh', 5, 1, '2023-04-03 16:40:20'),
+(9, 1, 3, 'Minh Lâm', 'minhlam@gmail.com', 'ok lam do nha', 3, 1, '2023-04-03 16:44:32'),
+(10, 12, 9, 'Minh Lâm', 'tienhai488@gmail.com', 'ok nha moi nguoio', 2, 1, '2023-04-03 16:56:27'),
+(11, 12, 10, 'Minh Lâm', 'minhlam@gmail.com', 'minhlam@gmail.com', 5, 1, '2023-04-03 16:58:09'),
+(12, 1, 45, 'PTTK_Tuan3', 'tienhai9a2@gmail.com', 'tienhai9a2@gmail.com', 5, 1, '2023-04-03 21:02:24'),
+(28, 12, 45, 'haile@gmail.com', 'haile@gmail.com', 'haile@gmail.com', 5, 1, '2023-04-14 18:27:39'),
+(29, 12, 45, 'TienHai', 'tienhai@gmail.com', 'Binh luan danh gia san pham', 5, 1, '2023-04-14 19:57:26'),
+(34, 12, 9, 'TienHai488', 'tienhai4888@gmail.com', 'Binh luan cho san pham tesst chuc nawng', 3, 1, '2023-04-14 20:43:25');
 
 -- --------------------------------------------------------
 
@@ -668,6 +647,7 @@ CREATE TABLE `roles` (
   `id` int NOT NULL,
   `name` varchar(100) NOT NULL,
   `permission` text,
+  `status` int NOT NULL DEFAULT '1',
   `create_at` datetime DEFAULT CURRENT_TIMESTAMP,
   `update_at` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
@@ -676,13 +656,13 @@ CREATE TABLE `roles` (
 -- Dumping data for table `roles`
 --
 
-INSERT INTO `roles` (`id`, `name`, `permission`, `create_at`, `update_at`) VALUES
-(2, 'Người dùng', '{\"groups\":[\"view\",\"add\",\"update\",\"delete\"],\"products\":[\"view\",\"add\"],\"users\":[\"view\",\"add\"],\"bill\":[\"view\",\"update\"]}', '2023-03-17 11:18:31', '2023-03-26 21:43:20'),
-(3, 'Xử lý đơn hàng', NULL, '2023-03-17 11:18:43', '2023-03-26 21:09:57'),
-(5, 'Quản lý ', '{\"groups\":[\"view\"],\"products\":[\"add\"],\"users\":[\"update\"],\"bill\":[\"view\",\"update\"]}', '2023-03-17 11:19:13', '2023-03-26 21:03:40'),
-(7, 'Nhân Viên', '{\"groups\":[\"update\"],\"users\":[\"add\"],\"bill\":[\"update\"],\"contacts\":[\"update\"],\"reviews\":[\"update\",\"delete\"]}', '2023-04-01 17:56:34', '2023-05-06 10:49:33'),
-(8, 'Admin', '{\"groups\":[\"add\",\"update\",\"delete\",\"permission\"],\"products\":[\"add\",\"update\",\"delete\"],\"users\":[\"add\",\"update\",\"delete\"],\"bill\":[\"update\"],\"contacts\":[\"update\",\"delete\"],\"reviews\":[\"update\",\"delete\"],\"options\":[\"update\"],\"dashboard\":[\"view\"]}', '2023-04-01 20:31:31', '2023-04-02 08:59:41'),
-(10, 'Bán hàng', NULL, '2023-05-08 10:07:15', NULL);
+INSERT INTO `roles` (`id`, `name`, `permission`, `status`, `create_at`, `update_at`) VALUES
+(2, 'Người dùng', '{\"groups\":[\"view\",\"add\",\"update\",\"delete\"],\"products\":[\"view\",\"add\"],\"users\":[\"view\",\"add\"],\"bill\":[\"view\",\"update\"]}', 1, '2023-03-17 11:18:31', '2023-03-26 21:43:20'),
+(3, 'Xử lý đơn hàng', NULL, 1, '2023-03-17 11:18:43', '2023-03-26 21:09:57'),
+(5, 'Quản lý ', '{\"groups\":[\"view\"],\"products\":[\"add\"],\"users\":[\"update\"],\"bill\":[\"view\",\"update\"]}', 1, '2023-03-17 11:19:13', '2023-03-26 21:03:40'),
+(7, 'Nhân Viên', '{\"groups\":[\"update\"],\"users\":[\"add\"],\"bill\":[\"update\"],\"contacts\":[\"update\"],\"reviews\":[\"update\",\"delete\"]}', 1, '2023-04-01 17:56:34', '2023-05-06 10:49:33'),
+(8, 'Admin', '{\"groups\":[\"add\",\"update\",\"delete\",\"permission\"],\"products\":[\"add\",\"update\",\"delete\"],\"users\":[\"add\",\"update\",\"delete\"],\"bill\":[\"update\"],\"contacts\":[\"update\",\"delete\"],\"reviews\":[\"update\",\"delete\"],\"options\":[\"update\"],\"dashboard\":[\"view\"]}', 1, '2023-04-01 20:31:31', '2023-04-02 08:59:41'),
+(10, 'Bán hàng', NULL, 1, '2023-05-08 10:07:15', NULL);
 
 -- --------------------------------------------------------
 
@@ -694,7 +674,7 @@ CREATE TABLE `sizes` (
   `id` int NOT NULL,
   `name` varchar(10) DEFAULT NULL,
   `description` varchar(100) DEFAULT NULL,
-  `status` tinyint NOT NULL DEFAULT '1',
+  `status` int NOT NULL DEFAULT '1',
   `create_at` datetime DEFAULT CURRENT_TIMESTAMP,
   `update_at` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
@@ -751,13 +731,12 @@ CREATE TABLE `users` (
   `id` int NOT NULL,
   `fullname` varchar(100) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `phone` varchar(50) NOT NULL,
+  `phone` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
   `password` varchar(100) NOT NULL,
-  `status` int NOT NULL COMMENT '1 Kich hoat 0 Chua kich hoat',
+  `image` varchar(255) NOT NULL DEFAULT 'images/avatar/default.png',
+  `status` int NOT NULL DEFAULT '1' COMMENT '1 Kich hoat 0 Chua kich hoat',
   `type` varchar(50) DEFAULT 'user',
-  `role_id` int NOT NULL,
-  `forgot_token` varchar(200) DEFAULT NULL,
-  `active_token` varchar(200) DEFAULT NULL,
+  `role_id` int NOT NULL DEFAULT '2',
   `create_at` datetime DEFAULT CURRENT_TIMESTAMP,
   `update_at` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
@@ -766,13 +745,15 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `fullname`, `email`, `phone`, `password`, `status`, `type`, `role_id`, `forgot_token`, `active_token`, `create_at`, `update_at`) VALUES
-(3, 'Tien Hai Le', 'tienhai4888@gmail.com', '0987982144', '$2y$10$EOKveHmiOhJhwzp04D1nMuD4eeGJ0P7TKTsn9oGJHeIxWylm5Cht6', 1, 'member', 8, '7875d6272a18434cd5815a137e70d6e96cec6ac9', NULL, '2023-03-17 11:05:40', '2023-04-17 16:38:48'),
-(9, 'Minh Lam ', 'minhlam@gmail.com', '0987654321', '$2y$10$OcKwsA8ONsFm4ihM1mR8m.gVLCS3terEbozObJ5Jc89dsfOw8tI1O', 1, 'user', 2, NULL, NULL, '2023-03-18 21:48:44', '2023-05-08 13:13:10'),
-(10, 'TienHai', 'tienhai@gmail.com', '0987654321', '$2y$10$ilv4fmfcw0cfkdtcUou9xu0joh3KlGC08pEzuoNQKEc6iwNHtPgZm', 1, 'user', 3, NULL, NULL, '2023-03-18 21:50:14', '2023-03-19 09:57:31'),
-(37, 'TienHai', 'tienhai488@gmail.com', '0987654321', '$2y$10$G6GZk.UtbjfwMqDBBXyaEetxOuR1Q2LC1EFbtfM4ykXlRau0xeK62', 1, 'user', 2, '', '', '2023-03-31 16:54:53', '2023-03-31 21:22:18'),
-(38, 'Minh Lam', 'minhlam2@gmail.com', '0987654321', '$2y$10$uIcF8Q7uXNj7kI/Dc7qhEefwMSa4SZ61q5riSj1QklBx6/2p6O.ei', 1, 'member', 7, NULL, NULL, '2023-04-01 17:18:32', '2023-04-01 23:00:49'),
-(45, 'ducthang', 'thanngit@gmail.com', '0123123123', '$2y$10$wEQwvHRUaLt.NfjhNSv0pOjUGi25gdOY8RtSjQtZrVeC0MWP.KJpW', 1, 'user', 2, NULL, '238eacac8221c9a134c6b7b56839247969de1e97', '2023-10-19 10:49:41', NULL);
+INSERT INTO `users` (`id`, `fullname`, `email`, `phone`, `password`, `image`, `status`, `type`, `role_id`, `create_at`, `update_at`) VALUES
+(3, 'Tien Hai Le', 'tienhai4888@gmail.com', '0987982144', '$2y$10$EOKveHmiOhJhwzp04D1nMuD4eeGJ0P7TKTsn9oGJHeIxWylm5Cht6', 'images/avatar/default.png', 1, 'member', 8, '2023-03-17 11:05:40', '2023-04-17 16:38:48'),
+(9, 'Minh Lam ', 'minhlam@gmail.com', '0987654321', '$2y$10$OcKwsA8ONsFm4ihM1mR8m.gVLCS3terEbozObJ5Jc89dsfOw8tI1O', 'images/avatar/default.png', 1, 'user', 2, '2023-03-18 21:48:44', '2023-05-08 13:13:10'),
+(10, 'TienHai', 'tienhai@gmail.com', '0987654321', '$2y$10$ilv4fmfcw0cfkdtcUou9xu0joh3KlGC08pEzuoNQKEc6iwNHtPgZm', 'images/avatar/default.png', 1, 'user', 3, '2023-03-18 21:50:14', '2023-03-19 09:57:31'),
+(37, 'TienHai', 'tienhai488@gmail.com', '0987654321', '$2y$10$G6GZk.UtbjfwMqDBBXyaEetxOuR1Q2LC1EFbtfM4ykXlRau0xeK62', 'images/avatar/default.png', 1, 'user', 2, '2023-03-31 16:54:53', '2023-03-31 21:22:18'),
+(38, 'Minh Lam', 'minhlam2@gmail.com', '0987654321', '$2y$10$uIcF8Q7uXNj7kI/Dc7qhEefwMSa4SZ61q5riSj1QklBx6/2p6O.ei', 'images/avatar/default.png', 1, 'member', 7, '2023-04-01 17:18:32', '2023-04-01 23:00:49'),
+(45, 'ducthang', 'thanngit@gmail.com', '0123123123', '$2y$10$wEQwvHRUaLt.NfjhNSv0pOjUGi25gdOY8RtSjQtZrVeC0MWP.KJpW', 'images/avatar/default.png', 1, 'user', 2, '2023-10-19 10:49:41', NULL),
+(46, 'ducthang', '3121560085@sv.sgu.edu.vn', NULL, '$2y$10$KhWZMCIUoVrqg8XejPtX8ee1oLkB4Ojusscz888TMR5GMPCbqL0ma', 'images/avatar/default.png', 1, 'user', 2, '2024-03-13 16:16:06', '2024-03-13 16:16:06'),
+(47, 'ducthang', 'wdw@gmail.com', NULL, '$2y$10$Lry7g1my2Tm9QWPymlAU/emV77GZt6nFVYsfYiIHPMH6kzPpXF2Bi', 'images/avatar/default.png', 1, 'user', 2, '2024-03-13 16:18:20', '2024-03-13 16:18:20');
 
 --
 -- Indexes for dumped tables
@@ -811,13 +792,6 @@ ALTER TABLE `contacts`
 ALTER TABLE `images`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_image_product` (`product_id`);
-
---
--- Indexes for table `login_token`
---
-ALTER TABLE `login_token`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_login_token_account` (`user_id`);
 
 --
 -- Indexes for table `options`
@@ -868,7 +842,8 @@ ALTER TABLE `products_size`
 --
 ALTER TABLE `reviews`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_review_product` (`product_id`);
+  ADD KEY `fk_review_product` (`product_id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `roles`
@@ -930,12 +905,6 @@ ALTER TABLE `images`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
--- AUTO_INCREMENT for table `login_token`
---
-ALTER TABLE `login_token`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=289;
-
---
 -- AUTO_INCREMENT for table `options`
 --
 ALTER TABLE `options`
@@ -993,7 +962,7 @@ ALTER TABLE `subcribes`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- Constraints for dumped tables
@@ -1012,12 +981,6 @@ ALTER TABLE `cart`
 --
 ALTER TABLE `images`
   ADD CONSTRAINT `fk_image_product` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE;
-
---
--- Constraints for table `login_token`
---
-ALTER TABLE `login_token`
-  ADD CONSTRAINT `fk_login_token_account` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `order`
@@ -1052,7 +1015,8 @@ ALTER TABLE `products_size`
 -- Constraints for table `reviews`
 --
 ALTER TABLE `reviews`
-  ADD CONSTRAINT `fk_review_product` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `fk_review_product` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `reviews_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Constraints for table `users`
