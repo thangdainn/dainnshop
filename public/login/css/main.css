@@ -207,13 +207,32 @@ iframe {
   padding: 15px;
   background: #f2f2f2;
 }
+.container-register100 {
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  width: 100%;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  background: #f2f2f2;
+
+  /* display: none; */
+}
 
 .wrap-login100 {
   width: 390px;
   background: #fff;
   border-radius: 10px;
   overflow: hidden;
-  padding: 77px 55px 33px 55px;
+  padding: 53px 55px 33px 55px;
 
   box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
@@ -248,7 +267,7 @@ iframe {
   width: 100%;
   position: relative;
   border-bottom: 2px solid #adadad;
-  margin-bottom: 37px;
+  margin-bottom: 28px;
 }
 
 .input100 {
@@ -523,6 +542,7 @@ iframe {
 .logo_container {
   position: absolute;
   top: 7%;
+  z-index: 1000;
   -webkit-transform: translateY(-50%);
   -moz-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -547,7 +567,21 @@ iframe {
   transition: opacity 0.8s ease;
 }
 
-.container-login100 {
+.container-login100,
+.container-register100 {
   opacity: 0;
-  transition: opacity 0.8s ease;
+  transition: opacity 1.5s ease;
+}
+
+.error {
+  height: 25px;
+  text-align: center;
+  font-size: 13px;
+}
+
+.error span {
+  display: none;
+}
+.swal2-popup.swal2-modal.swal2-icon-success.swal2-show {
+  font-size: 7px;
 }

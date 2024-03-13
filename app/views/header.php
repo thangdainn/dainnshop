@@ -14,7 +14,8 @@ Session::init();
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/styles/bootstrap4/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/plugins/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/plugins/elegant/elegant-icons.css">
-    <!-- <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/plugins/OwlCarousel2-2.2.1/owl.carousel.min.css"> -->
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/plugins/Magnific-popup/magnific-popup.css">
+
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/plugins/OwlCarousel2-2.2.1/animate.css">
@@ -45,6 +46,11 @@ Session::init();
 </head>
 
 <body>
+    <!-- Page Preloder -->
+
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
     <div class="super_container">
 
         <!-- Header -->
@@ -232,8 +238,8 @@ Session::init();
                     </li>
                     <li class="menu_item"><a href="<?php echo BASE_URL ?>">home</a></li>
                     <li class="menu_item"><a href="<?php echo BASE_URL ?>/shop">shop</a></li>
-                    <li class="menu_item"><a href="<?php echo BASE_URL ?>">purchase order</a></li>
-                    <li class="menu_item"><a href="<?php echo BASE_URL ?>">about</a></li>
+                    <li class="menu_item"><a href="<?php echo BASE_URL ?>/purchaseOrder">purchase order</a></li>
+                    <li class="menu_item"><a href="<?php echo BASE_URL ?>/about">about</a></li>
                     <li class="menu_item"><a href="<?php echo BASE_URL ?>/contact">contact</a></li>
                 </ul>
             </div>
@@ -248,5 +254,10 @@ Session::init();
                 e.preventDefault()
                 $("#formSubmit").submit();
             })
+            $(window).on('load', function() {
+                $(".loader").fadeOut();
+                $("#preloder").delay(200).fadeOut("slow");
+
+            });
         </script>
         <div class="fs_menu_overlay"></div>

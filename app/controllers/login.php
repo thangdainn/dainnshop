@@ -33,15 +33,35 @@ class login extends Controller
                 Session::set('email', $check['email']);
                 Session::set('userId', $check['id']);
                 Session::set('fullName', $check['fullname']);
-                Session::set('roleId', $check['group_id']);
-                header('Location:' . BASE_URL . '/');
+                Session::set('roleId', $check['role_id']);
+                $message['isLogin'] = true;
+                $message['msg'] = 'Login successful';
             } else {
-                header('Location:' . BASE_URL . '/login');
+                $message['isLogin'] = false;
+                $message['msg'] = 'Information Login is incorrect';
             }
         } else {
+            $message['isLogin'] = false;
             $message['msg'] = 'Information Login is incorrect';
-            header('Location:' . BASE_URL . '/login');
         }
+        echo json_encode($message);
+    }
+    public function register()
+    {
+        $fullname = $_POST['name'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $loginModel = $this->load->model('LoginModel');
+        $check = $loginModel->findByEmail($email);
+        if (isset($check['email'])) {
+            $message['isRegister'] = false;
+            $message['msg'] = 'Email was registered';
+        } else {
+            $loginModel->save($fullname, $email, password_hash($password, PASSWORD_DEFAULT));
+            $message['isRegister'] = true;
+            $message['msg'] = 'Register successful';
+        }
+        echo json_encode($message);
     }
 
     public function logout()
