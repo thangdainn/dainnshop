@@ -88,7 +88,11 @@ if (session_status() == PHP_SESSION_NONE) {
                                     <!-- My Account -->
 
                                     <li class="account" style="min-width: 162px">
+<<<<<<< HEAD
                                         <a href="" class="prevent-default d-flex justify-content-center align-items-center">
+=======
+                                        <a href="" class="prevent-default d-flex justify-content-center">
+>>>>>>> af69eac ( update)
 
                                             <?php
                                             if (Session::isLogin()) {
@@ -98,7 +102,11 @@ if (session_status() == PHP_SESSION_NONE) {
                                                 <div class="avatar d-flex justify-content-center align-items-center">
                                                     <img src="<?php echo BASE_URL ?>/upload/<?php echo $image ?>" alt="">
                                                 </div>
+<<<<<<< HEAD
                                                 <span class="full-name"><?php echo $fullName ?></span>
+=======
+                                                <div class=""><?php echo $fullName ?></div>
+>>>>>>> af69eac ( update)
                                             <?php
                                             } else {
                                             ?>
