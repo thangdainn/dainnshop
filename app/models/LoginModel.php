@@ -18,4 +18,9 @@ class LoginModel extends Model
         $result = $this->db->execute($sql, $fullname, $email, $password);
         return $result;
     }
+    public function forgotPassword($email, $password){
+        $sql = "UPDATE users SET password = ? WHERE email = ?";
+        $result = $this->db->execute($sql, $password, $email);
+        return $result;
+    }
 }

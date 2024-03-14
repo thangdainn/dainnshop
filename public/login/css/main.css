@@ -181,7 +181,7 @@ iframe {
 .txt2 {
   font-family: Poppins-Regular;
   font-size: 13px;
-  color: #333333;
+  color: #b721ff;
   line-height: 1.5;
 }
 
@@ -223,8 +223,23 @@ iframe {
   align-items: center;
   padding: 15px;
   background: #f2f2f2;
-
-  /* display: none; */
+}
+.container-forgot100 {
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  width: 100%;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  background: #f2f2f2;
 }
 
 .wrap-login100 {
@@ -568,7 +583,8 @@ iframe {
 }
 
 .container-login100,
-.container-register100 {
+.container-register100,
+.container-forgot100 {
   opacity: 0;
   transition: opacity 1.5s ease;
 }
@@ -584,4 +600,8 @@ iframe {
 }
 .swal2-popup.swal2-modal.swal2-icon-success.swal2-show {
   font-size: 7px;
+}
+
+.zmdi-font:before {
+  content: "\f112" !important;
 }

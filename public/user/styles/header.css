@@ -177,6 +177,17 @@
   font-size: 13px;
 }
 
+.avatar {
+  width: 31%;
+  height: 100%;
+}
+
+.avatar img {
+  width: 62%;
+  height: 62%;
+  border-radius: 50%;
+}
+
 /*********************************
 3.4 Main Navigation
 *********************************/

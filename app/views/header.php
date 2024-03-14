@@ -21,6 +21,8 @@ Session::init();
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/plugins/OwlCarousel2-2.2.1/animate.css">
     <link rel="stylesheet" href="<?php echo BASE_URL ?>/public/user/plugins/themify-icons/themify-icons.css">
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
+
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/styles/header.css">
     <?php
     $currentURL = $_SERVER['REQUEST_URI'];
     if (strpos($currentURL, '/shop') !== false) {
@@ -38,7 +40,7 @@ Session::init();
         echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/responsive.css">';
     }
     ?>
-    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/styles/header.css">
+
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/styles/footer.css">
 
     <script src="<?php echo BASE_URL ?>/public/user/js/jquery-3.2.1.min.js"></script>
@@ -71,18 +73,24 @@ Session::init();
 
                                     <!-- My Account -->
 
-                                    <li class="account" style="min-width: 150px">
-                                        <a href="" class="prevent-default">
+                                    <li class="account" style="min-width: 162px">
+                                        <a href="" class="prevent-default d-flex justify-content-center">
 
                                             <?php
                                             if (Session::isLogin()) {
+                                                $image = Session::getImg();
                                                 $fullName = Session::getFullName();
-                                                echo "Welcome, $fullName";
+                                            ?>
+                                                <div class="avatar d-flex justify-content-center align-items-center">
+                                                    <img src="<?php echo BASE_URL ?>/upload/<?php echo $image ?>" alt="">
+                                                </div>
+                                                <div class=""><?php echo $fullName ?></div>
+                                            <?php
                                             } else {
                                                 echo "My Account";
                                             }
                                             ?>
-                                            <i class="fa fa-angle-down"></i>
+
                                         </a>
                                         <?php
                                         if (Session::isLogin()) {
@@ -200,7 +208,7 @@ Session::init();
                             <?php
                             if (Session::isLogin()) {
                                 $fullName = Session::getFullName();
-                                echo "Welcome, $fullName";
+                                echo $fullName;
                             } else {
                                 echo "My Account";
                             }

@@ -53,4 +53,9 @@ class Session
         // self::init();
         return self::get("fullName");
     }
+    public static function getImg()
+    {
+        // self::init();
+        return self::get("img");
+    }
 }
