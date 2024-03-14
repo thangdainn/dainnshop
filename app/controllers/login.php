@@ -33,6 +33,7 @@ class login extends Controller
                 Session::set('email', $check['email']);
                 Session::set('userId', $check['id']);
                 Session::set('fullName', $check['fullname']);
+                Session::set('img', $check['image']);
                 Session::set('roleId', $check['role_id']);
                 $message['isLogin'] = true;
                 $message['msg'] = 'Login successful';
@@ -60,6 +61,36 @@ class login extends Controller
             $loginModel->save($fullname, $email, password_hash($password, PASSWORD_DEFAULT));
             $message['isRegister'] = true;
             $message['msg'] = 'Register successful';
+        }
+        echo json_encode($message);
+    }
+    public function mailForgot()
+    {
+        $email = $_POST['email'];
+        $loginModel = $this->load->model('LoginModel');
+        $check = $loginModel->findByEmail($email);
+        if (isset($check['email'])) {
+            $message['isCheckMailForgot'] = true;
+        } else {
+            $message['isCheckMailForgot'] = false;
+            $message['msg'] = 'Email is not registered';
+        }
+        echo json_encode($message);
+    }
+    public function forgotPassword()
+    {
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $loginModel = $this->load->model('LoginModel');
+        $check = $loginModel->findByEmail($email);
+        if (isset($check['email'])) {
+            $loginModel->forgotPassword($email, password_hash($password, PASSWORD_DEFAULT));
+
+            $message['isForgotPassword'] = true;
+            $message['msg'] = 'Change password successful';
+        } else {
+            $message['isForgotPassword'] = false;
+            $message['msg'] = 'Change password failed';
         }
         echo json_encode($message);
     }
