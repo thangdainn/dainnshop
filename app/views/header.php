@@ -88,61 +88,59 @@ if (session_status() == PHP_SESSION_NONE) {
                                     <!-- My Account -->
 
                                     <li class="account" style="min-width: 162px">
-<<<<<<< HEAD
-                                        <a href="" class="prevent-default d-flex justify-content-center align-items-center">
-=======
-                                        <a href="" class="prevent-default d-flex justify-content-center">
->>>>>>> af69eac ( update)
+                                        <<<<<<< HEAD <a href="" class="prevent-default d-flex justify-content-center align-items-center">
+                                            =======
+                                            <a href="" class="prevent-default d-flex justify-content-center">
+                                                >>>>>>> af69eac ( update)
 
+                                                <?php
+                                                if (Session::isLogin()) {
+                                                    $image = Session::getImg();
+                                                    $fullName = Session::getFullName();
+                                                ?>
+                                                    <div class="avatar d-flex justify-content-center align-items-center">
+                                                        <img src="<?php echo BASE_URL ?>/upload/<?php echo $image ?>" alt="">
+                                                    </div>
+                                                    <<<<<<< HEAD <span class="full-name"><?php echo $fullName ?></span>
+                                                        =======
+                                                        <div class=""><?php echo $fullName ?></div>
+                                                        >>>>>>> af69eac ( update)
+                                                    <?php
+                                                } else {
+                                                    ?>
+                                                        <i class="fa fa-user-circle" style="margin-right: 8px; font-size: 19px"></i>
+                                                        <span>Account</span>
+                                                    <?php
+                                                }
+                                                    ?>
+
+                                            </a>
                                             <?php
                                             if (Session::isLogin()) {
-                                                $image = Session::getImg();
-                                                $fullName = Session::getFullName();
+                                                $userId = Session::getUserId();
                                             ?>
-                                                <div class="avatar d-flex justify-content-center align-items-center">
-                                                    <img src="<?php echo BASE_URL ?>/upload/<?php echo $image ?>" alt="">
-                                                </div>
-<<<<<<< HEAD
-                                                <span class="full-name"><?php echo $fullName ?></span>
-=======
-                                                <div class=""><?php echo $fullName ?></div>
->>>>>>> af69eac ( update)
+                                                <ul class="account_selection">
+                                                    <li><a href="<?php echo BASE_URL . '/user/profile/' . $userId ?>"><i class=" fa fa-user" aria-hidden="true"></i>
+                                                            Information</a>
+                                                    </li>
+
+                                                    <li><a href="<?php echo BASE_URL ?>/login/logout"><i class="fa fa-arrow-left" aria-hidden="true"></i>
+                                                            Logout</a>
+                                                    </li>
+                                                </ul>
                                             <?php
                                             } else {
                                             ?>
-                                                <i class="fa fa-user-circle" style="margin-right: 8px; font-size: 19px"></i>
-                                                <span>Account</span>
+                                                <ul class="account_selection">
+                                                    <li><a href="<?php echo BASE_URL ?>/login"><i class="fa fa-sign-in" aria-hidden="true"></i>
+                                                            Login</a></li>
+                                                    <li><a href="<?php echo BASE_URL ?>/login?register"><i class="fa fa-user-plus" aria-hidden="true"></i>
+                                                            Register</a>
+                                                    </li>
+                                                </ul>
                                             <?php
                                             }
                                             ?>
-
-                                        </a>
-                                        <?php
-                                        if (Session::isLogin()) {
-                                            $userId = Session::getUserId();
-                                        ?>
-                                            <ul class="account_selection">
-                                                <li><a href="<?php echo BASE_URL . '/user/profile/' . $userId ?>"><i class=" fa fa-user" aria-hidden="true"></i>
-                                                        Information</a>
-                                                </li>
-
-                                                <li><a href="<?php echo BASE_URL ?>/login/logout"><i class="fa fa-arrow-left" aria-hidden="true"></i>
-                                                        Logout</a>
-                                                </li>
-                                            </ul>
-                                        <?php
-                                        } else {
-                                        ?>
-                                            <ul class="account_selection">
-                                                <li><a href="<?php echo BASE_URL ?>/login"><i class="fa fa-sign-in" aria-hidden="true"></i>
-                                                        Login</a></li>
-                                                <li><a href="<?php echo BASE_URL ?>/login?register"><i class="fa fa-user-plus" aria-hidden="true"></i>
-                                                        Register</a>
-                                                </li>
-                                            </ul>
-                                        <?php
-                                        }
-                                        ?>
 
                                     </li>
                                 </ul>
