@@ -17,8 +17,8 @@ class SizeModel extends Model
     public function findByProduct_Id($id)
     {
         $sql = "SELECT s.id, s.name, ps.quantity FROM sizes s 
-                JOIN products_size ps ON s.id = ps.size_id 
-                JOIN products p ON p.id = ps.product_id 
+                INNER JOIN products_size ps ON s.id = ps.size_id 
+                INNER JOIN products p ON p.id = ps.product_id 
                 WHERE ps.quantity >= 0 
                     AND s.status > 0 
                     AND p.status > 0 
