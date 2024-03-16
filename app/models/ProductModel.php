@@ -32,21 +32,21 @@ class ProductModel extends Model
 
     public function findByCategoryId($categoryId)
     {
-        $sql = "SELECT p.* FROM products p JOIN categories c ON p.category_id = c.id WHERE c.id = ?";
+        $sql = "SELECT p.* FROM products p INNER JOIN categories c ON p.category_id = c.id WHERE c.id = ?";
         $result = $this->db->select($sql, $categoryId);
         return $result;
     }
 
     public function findTop10ByCreateAt()
     {
-        $sql = "SELECT DISTINCT p.* FROM products p JOIN products_size ps ON p.id = ps.product_id WHERE ps.quantity AND p.status > 0 ORDER BY p.create_at DESC LIMIT 0, 5";
+        $sql = "SELECT DISTINCT p.* FROM products p INNER JOIN products_size ps ON p.id = ps.product_id WHERE ps.quantity AND p.status > 0 ORDER BY p.create_at DESC LIMIT 0, 5";
         $result = $this->db->select($sql);
         return $result;
     }
 
     public function findTop10ByOrder()
     {
-        $sql = "SELECT p.*, COUNT(od.product_id) AS order_count FROM `products` p JOIN order_detail od ON p.id = od.product_id GROUP BY p.id ORDER BY order_count DESC LIMIT 0, 10";
+        $sql = "SELECT p.*, COUNT(od.product_id) AS order_count FROM `products` p INNER JOIN order_detail od ON p.id = od.product_id GROUP BY p.id ORDER BY order_count DESC LIMIT 0, 10";
         $result = $this->db->select($sql);
         return $result;
     }
@@ -78,10 +78,10 @@ class ProductModel extends Model
     public function commonSqlFilter(&$keyword, &$categoryId, $brandIds, $sizeIds, $sortBy)
     {
         $sql = "SELECT DISTINCT p.* FROM products p 
-                JOIN products_size ps ON p.id = ps.product_id 
-                JOIN sizes s ON ps.size_id = s.id 
-                JOIN brands b ON p.brand_id = b.id 
-                JOIN categories c ON p.category_id = c.id 
+                INNER JOIN products_size ps ON p.id = ps.product_id 
+                INNER JOIN sizes s ON ps.size_id = s.id 
+                INNER JOIN brands b ON p.brand_id = b.id 
+                INNER JOIN categories c ON p.category_id = c.id 
                 WHERE p.status = 1 AND ps.quantity > 0";
         if ($keyword !== null) {
             $keyword = "%" . $keyword . "%";

@@ -17,7 +17,7 @@ class ImageModel extends Model
     public function findByProduct_Id($id)
     {
         $sql = "SELECT * FROM images i 
-                JOIN products p ON p.id = i.product_id 
+                INNER JOIN products p ON p.id = i.product_id 
                 WHERE p.id = ?";
         $result = $this->db->select($sql, $id);
         return $result;
