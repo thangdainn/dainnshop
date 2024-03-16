@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 13, 2024 at 12:03 PM
+-- Generation Time: Mar 16, 2024 at 03:01 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -693,37 +693,6 @@ INSERT INTO `sizes` (`id`, `name`, `description`, `status`, `create_at`, `update
 -- --------------------------------------------------------
 
 --
--- Table structure for table `subcribes`
---
-
-CREATE TABLE `subcribes` (
-  `id` int NOT NULL,
-  `email` varchar(100) DEFAULT NULL,
-  `note` text,
-  `create_at` datetime DEFAULT NULL,
-  `status` int DEFAULT NULL COMMENT '1:Chưa xử lý 2:Đang xử lý 3:Đã xử lý'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
-
---
--- Dumping data for table `subcribes`
---
-
-INSERT INTO `subcribes` (`id`, `email`, `note`, `create_at`, `status`) VALUES
-(1, 'tienhai488@gmail.com', 'chua xu ly', '2023-03-23 08:53:41', 1),
-(2, 'tienhai@gmail.com', 'Chưa xử lý', '2023-04-02 10:10:58', 1),
-(3, 'tienhai@gmail.com', 'Chưa xử lý', '2023-04-02 10:15:42', 1),
-(4, 'minhlam@gmail.com', 'Chưa xử lý', '2023-04-02 10:16:13', 1),
-(5, 'tienhai@gmail.com', 'Chưa xử lý', '2023-04-02 10:16:51', 1),
-(6, 'tienhai@gmail.com', 'Chưa xử lý', '2023-04-02 10:17:23', 1),
-(7, 'manhtuan@gmail.com', 'Chưa xử lý', '2023-04-02 10:17:56', 1),
-(8, 'email@gmail.com', 'Chưa xử lý', '2023-04-12 22:24:42', 1),
-(9, 'tienhai488@gmail.com', 'Chưa xử lý', '2023-04-14 20:12:38', 1),
-(10, 'ngochuy@gmail.com', 'Chưa xử lý', '2023-04-17 14:30:36', 1),
-(11, 'tienhai@gmail.com', 'Chưa xử lý', '2023-05-07 23:26:02', 1);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `users`
 --
 
@@ -751,9 +720,10 @@ INSERT INTO `users` (`id`, `fullname`, `email`, `phone`, `password`, `image`, `s
 (10, 'TienHai', 'tienhai@gmail.com', '0987654321', '$2y$10$ilv4fmfcw0cfkdtcUou9xu0joh3KlGC08pEzuoNQKEc6iwNHtPgZm', 'images/avatar/default.png', 1, 'user', 3, '2023-03-18 21:50:14', '2023-03-19 09:57:31'),
 (37, 'TienHai', 'tienhai488@gmail.com', '0987654321', '$2y$10$G6GZk.UtbjfwMqDBBXyaEetxOuR1Q2LC1EFbtfM4ykXlRau0xeK62', 'images/avatar/default.png', 1, 'user', 2, '2023-03-31 16:54:53', '2023-03-31 21:22:18'),
 (38, 'Minh Lam', 'minhlam2@gmail.com', '0987654321', '$2y$10$uIcF8Q7uXNj7kI/Dc7qhEefwMSa4SZ61q5riSj1QklBx6/2p6O.ei', 'images/avatar/default.png', 1, 'member', 7, '2023-04-01 17:18:32', '2023-04-01 23:00:49'),
-(45, 'ducthang', 'thanngit@gmail.com', '0123123123', '$2y$10$wEQwvHRUaLt.NfjhNSv0pOjUGi25gdOY8RtSjQtZrVeC0MWP.KJpW', 'images/avatar/default.png', 1, 'user', 2, '2023-10-19 10:49:41', NULL),
+(45, 'ducthang', 'thanngit@gmail.com', '0123123123', '$2y$10$sdvKfv5Tu6hXbbJfOTsHj.Gy4osCNG2uEYO7gjGTKJBpcz8GuZJr6', 'images/avatar/default.png', 1, 'user', 2, '2023-10-19 10:49:41', NULL),
 (46, 'ducthang', '3121560085@sv.sgu.edu.vn', NULL, '$2y$10$KhWZMCIUoVrqg8XejPtX8ee1oLkB4Ojusscz888TMR5GMPCbqL0ma', 'images/avatar/default.png', 1, 'user', 2, '2024-03-13 16:16:06', '2024-03-13 16:16:06'),
-(47, 'ducthang', 'wdw@gmail.com', NULL, '$2y$10$Lry7g1my2Tm9QWPymlAU/emV77GZt6nFVYsfYiIHPMH6kzPpXF2Bi', 'images/avatar/default.png', 1, 'user', 2, '2024-03-13 16:18:20', '2024-03-13 16:18:20');
+(47, 'ducthang', 'wdw@gmail.com', NULL, '$2y$10$Lry7g1my2Tm9QWPymlAU/emV77GZt6nFVYsfYiIHPMH6kzPpXF2Bi', 'images/avatar/default.png', 1, 'user', 2, '2024-03-13 16:18:20', '2024-03-13 16:18:20'),
+(49, 'Học tập', 'thdddanngit@gmail.com', NULL, '$2y$10$Gh4Q7fm2pFUmcni7EE/YWeUluTtG8f6gjlfZFhVHBcEcbr9w8XQeG', 'images/avatar/default.png', 1, 'user', 2, '2024-03-13 19:16:16', '2024-03-13 19:16:16');
 
 --
 -- Indexes for dumped tables
@@ -858,16 +828,11 @@ ALTER TABLE `sizes`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `subcribes`
---
-ALTER TABLE `subcribes`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`),
   ADD KEY `fk_user_group` (`role_id`);
 
 --
@@ -953,16 +918,10 @@ ALTER TABLE `sizes`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `subcribes`
---
-ALTER TABLE `subcribes`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- Constraints for dumped tables
