@@ -76,7 +76,7 @@
           }, 1500);
         } else {
           $(".error.login").text(message.msg);
-          $(".error.login").show();
+          // $(".error.login").show();
         }
       },
     });
@@ -134,7 +134,7 @@
       },
     });
   }
-  // forgot email
+  // check email
 
   var inputEmailForgot = $("#email-forgot");
 
@@ -237,6 +237,25 @@
           .match(
             /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/
           ) == null
+      ) {
+        return false;
+      }
+    } else if (
+      $(input).attr("type") == "password" ||
+      $(input).attr("name") == "password"
+    ) {
+      if ($(input).val().trim().length < 6) {
+        return false;
+      }
+    } else if (
+      $(input).attr("type") == "tel" ||
+      $(input).attr("name") == "phone"
+    ) {
+      if (
+        $(input)
+          .val()
+          .trim()
+          .match(/^0\d{9}$/) == null
       ) {
         return false;
       }

@@ -324,7 +324,8 @@ jQuery(document).ready(function ($) {
         if (response.status === "success") {
           showNotification();
         } else {
-          alert("Add to cart failed");
+          showNotification();
+          // alert("Add to cart failed");
         }
       },
     });

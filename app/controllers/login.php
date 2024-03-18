@@ -13,7 +13,7 @@ class login extends Controller
     public function index()
     {
         Session::init();
-        if (Session::get("login") == true) {
+        if (Session::get("login")) {
             header('Location:' . BASE_URL . '/');
         }
         $this->load->view("cpanel/login");
@@ -24,8 +24,8 @@ class login extends Controller
     {
         $email = $_POST['email'];
         $password = $_POST['password'];
-        $loginModel = $this->load->model('LoginModel');
-        $check = $loginModel->findByEmail($email);
+        $userModel = $this->load->model('UserModel');
+        $check = $userModel->findByEmail($email);
         if (isset($check['email'])) {
             if (password_verify($password, $check['password'])) {
                 Session::init();
@@ -51,14 +51,15 @@ class login extends Controller
     {
         $fullname = $_POST['name'];
         $email = $_POST['email'];
+        $phone = $_POST['phone'];
         $password = $_POST['password'];
-        $loginModel = $this->load->model('LoginModel');
-        $check = $loginModel->findByEmail($email);
+        $userModel = $this->load->model('UserModel');
+        $check = $userModel->findByEmail($email);
         if (isset($check['email'])) {
             $message['isRegister'] = false;
             $message['msg'] = 'Email was registered';
         } else {
-            $loginModel->save($fullname, $email, password_hash($password, PASSWORD_DEFAULT));
+            $userModel->register($fullname, $email, $phone, password_hash($password, PASSWORD_DEFAULT));
             $message['isRegister'] = true;
             $message['msg'] = 'Register successful';
         }
@@ -67,8 +68,8 @@ class login extends Controller
     public function mailForgot()
     {
         $email = $_POST['email'];
-        $loginModel = $this->load->model('LoginModel');
-        $check = $loginModel->findByEmail($email);
+        $userModel = $this->load->model('UserModel');
+        $check = $userModel->findByEmail($email);
         if (isset($check['email'])) {
             $message['isCheckMailForgot'] = true;
         } else {
@@ -81,10 +82,11 @@ class login extends Controller
     {
         $email = $_POST['email'];
         $password = $_POST['password'];
-        $loginModel = $this->load->model('LoginModel');
-        $check = $loginModel->findByEmail($email);
+        $userModel = $this->load->model('UserModel');
+        $check = $userModel->findByEmail($email);
         if (isset($check['email'])) {
-            $loginModel->forgotPassword($email, password_hash($password, PASSWORD_DEFAULT));
+            $currentDateTime = date('Y-m-d H:i:s', strtotime('+7 hours'));
+            $userModel->forgotPassword($email, password_hash($password, PASSWORD_DEFAULT), $currentDateTime);
 
             $message['isForgotPassword'] = true;
             $message['msg'] = 'Change password successful';
