@@ -1,5 +1,8 @@
 <?php
-Session::init();
+if (session_status() == PHP_SESSION_NONE) {
+    Session::init();
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -68,7 +71,7 @@ Session::init();
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="top_nav_left">free shipping on all u.s orders over $50</div>
+                            <div class="top_nav_left">free shipping on all orders</div>
                         </div>
                         <div class="col-md-6 text-right">
                             <div class="top_nav_right">
@@ -87,7 +90,7 @@ Session::init();
                                                 <div class="avatar d-flex justify-content-center align-items-center">
                                                     <img src="<?php echo BASE_URL ?>/upload/<?php echo $image ?>" alt="">
                                                 </div>
-                                                <span class=""><?php echo $fullName ?></span>
+                                                <span class="full-name"><?php echo $fullName ?></span>
                                             <?php
                                             } else {
                                             ?>

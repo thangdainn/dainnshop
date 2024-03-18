@@ -177,9 +177,7 @@ h6::selection {
   font-weight: 500;
   color: #777777 !important;
 }
-.form-control {
-  /* color: #db5246; */
-}
+
 section {
   display: block;
   position: relative;
@@ -505,6 +503,10 @@ textarea:hover {
   padding-left: 20px;
   padding-top: 13px;
 }
+
+#form-profile input {
+  font-size: 14px !important;
+}
 .user_star_rating {
   display: inline-block;
   margin-left: 18px;
@@ -559,15 +561,18 @@ textarea:hover {
   position: relative;
   display: flex;
   align-items: center;
+  margin-bottom: 2rem;
 }
 
 #form-profile .form-group label {
   width: 16%;
 }
 
+/* validate */
 .alert-validate::before {
   content: attr(data-validate);
   position: absolute;
+  z-index: 2;
   max-width: 70%;
   background-color: #fff;
   border: 1px solid #c80000;
@@ -605,6 +610,7 @@ textarea:hover {
 
   display: block;
   position: absolute;
+  z-index: 2;
   background-color: #fff;
   top: 50%;
   -webkit-transform: translateY(-50%);
@@ -618,4 +624,175 @@ textarea:hover {
 .alert-validate:hover:before {
   visibility: visible;
   opacity: 1;
+}
+
+.swal2-popup.swal2-modal.swal2-icon-success.swal2-show {
+  font-size: 10px;
+}
+
+.change_pass {
+  width: 100%;
+  font-size: 14px;
+  margin: 1.25rem 0;
+}
+
+/*---------------------------------------------*/
+.btn-show-pass {
+  font-size: 14px;
+  color: #999999;
+
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  height: 100%;
+  top: 0;
+  right: 0;
+  padding-right: 5px;
+  cursor: pointer;
+  z-index: 1;
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.btn-show-pass:hover {
+  color: #6a7dfe;
+  color: -webkit-linear-gradient(left, #21d4fd, #b721ff);
+  color: -o-linear-gradient(left, #21d4fd, #b721ff);
+  color: -moz-linear-gradient(left, #21d4fd, #b721ff);
+  color: linear-gradient(left, #21d4fd, #b721ff);
+}
+
+.btn-show-pass.active {
+  color: #6a7dfe;
+  color: -webkit-linear-gradient(left, #21d4fd, #b721ff);
+  color: -o-linear-gradient(left, #21d4fd, #b721ff);
+  color: -moz-linear-gradient(left, #21d4fd, #b721ff);
+  color: linear-gradient(left, #21d4fd, #b721ff);
+}
+
+.error {
+  height: 18px;
+  text-align: center;
+  font-size: 13px;
+}
+
+.error span {
+  display: none;
+}
+
+/* model */
+.modal.open {
+  display: flex;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-container {
+  position: relative;
+  background: #fff;
+  width: 35%;
+  min-height: 200px;
+  border-radius: 0.2rem;
+  animation: modalFadeIn ease 0.4s;
+}
+
+.modal-header {
+  background: #495057;
+  /* height: 129px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: #fff;
+  position: relative;
+  border-top-left-radius: 0.2rem;
+  border-top-right-radius: 0.2rem;
+}
+
+.modal .modal-heading-icon {
+  margin-right: 16px;
+}
+
+.modal-close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: #fff;
+  font-size: 14px;
+  padding: 16px;
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  color: #f93f43;
+}
+
+.modal-label {
+  display: block;
+  padding: 15px 0;
+}
+
+.modal-body {
+  margin: 0 24px;
+}
+
+.modal-body label {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.modal-body input {
+  font-size: 14px !important;
+  padding: 0.175rem 0.75rem !important;
+}
+
+#submit-change-pass {
+  background: #495057;
+  color: #fff;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 54.5px;
+  margin-top: 16px;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 2px;
+  width: -webkit-fill-available;
+  border: none;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-200px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
 }

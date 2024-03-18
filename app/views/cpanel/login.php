@@ -28,7 +28,6 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/login/css/main.css">
 	<!--===============================================================================================-->
 
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script>
 		var base_url = "<?php echo BASE_URL ?>";
 	</script>
@@ -52,7 +51,7 @@
 						<span class="focus-input100" data-placeholder="Email"></span>
 					</div>
 
-					<div class="wrap-input100 validate-input-login" data-validate="Enter password">
+					<div class="wrap-input100 validate-input-login" data-validate="Enter min 6 characters">
 						<span class="btn-show-pass">
 							<i class="zmdi zmdi-eye"></i>
 						</span>
@@ -105,8 +104,12 @@
 						<input class="input100" type="text" name="email">
 						<span class="focus-input100" data-placeholder="Email"></span>
 					</div>
+					<div class="wrap-input100 validate-input-register" data-validate="Valid email is: 0xxx(10)">
+						<input class="input100" type="tel" name="phone">
+						<span class="focus-input100" data-placeholder="Phone"></span>
+					</div>
 
-					<div class="wrap-input100 validate-input-register" data-validate="Enter password">
+					<div class="wrap-input100 validate-input-register" data-validate="Enter min 6 characters">
 						<span class="btn-show-pass">
 							<i class="zmdi zmdi-eye"></i>
 						</span>
@@ -208,6 +211,7 @@
 
 	<div id="dropDownSelect1"></div>
 
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<!--===============================================================================================-->
 	<script src="<?php echo BASE_URL ?>/public/login/vendor/jquery/jquery-3.2.1.min.js"></script>
 	<!--===============================================================================================-->
