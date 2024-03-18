@@ -116,6 +116,7 @@ function updateProfile(data, url) {
     success: function (data) {
       let message = JSON.parse(data);
       if (message.isUpdateProfile) {
+        $(".full-name").text($("#name").val());
         Swal.fire({
           position: "center",
           icon: "success",
