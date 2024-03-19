@@ -122,6 +122,9 @@ if (strpos($currentURL, '/shop') !== false) {
 } elseif (strpos($currentURL, '/contact') !== false) {
     echo '<script src="' . BASE_URL . '/public/user/js/contact_custom.js"></script>';
     echo '<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>';
+} elseif (strpos($currentURL, '/user') !== false) {
+    echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>';
+    echo '<script src="' . BASE_URL . '/public/user/js/profile.js"></script>';
 } elseif (strpos($currentURL, '/index') !== false || strpos($currentURL, '/') !== false) {
     echo '<script src="' . BASE_URL . '/public/user/js/custom.js"></script>';
 }

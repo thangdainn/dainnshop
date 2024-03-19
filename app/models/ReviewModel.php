@@ -17,7 +17,7 @@ class ReviewModel extends Model
     public function findByProduct_Id($id)
     {
         $sql = "SELECT * FROM reviews r 
-                JOIN products p ON p.id = r.product_id 
+                INNER JOIN products p ON p.id = r.product_id 
                 WHERE r.status > 0
                     AND p.id = ?";
         $result = $this->db->select($sql, $id);

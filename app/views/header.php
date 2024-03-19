@@ -1,5 +1,8 @@
 <?php
-Session::init();
+if (session_status() == PHP_SESSION_NONE) {
+    Session::init();
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -21,6 +24,8 @@ Session::init();
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/plugins/OwlCarousel2-2.2.1/animate.css">
     <link rel="stylesheet" href="<?php echo BASE_URL ?>/public/user/plugins/themify-icons/themify-icons.css">
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
+
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/styles/header.css">
     <?php
     $currentURL = $_SERVER['REQUEST_URI'];
     if (strpos($currentURL, '/shop') !== false) {
@@ -33,12 +38,15 @@ Session::init();
     } elseif (strpos($currentURL, '/contact') !== false) {
         echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/contact_styles.css">';
         echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/contact_responsive.css">';
+    } elseif (strpos($currentURL, '/user') !== false) {
+        echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/profile_styles.css">';
+        echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/contact_responsive.css">';
     } elseif (strpos($currentURL, '/index') !== false || strpos($currentURL, '/') !== false) {
         echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/main_styles.css">';
         echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/responsive.css">';
     }
     ?>
-    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/styles/header.css">
+
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/styles/footer.css">
 
     <script src="<?php echo BASE_URL ?>/public/user/js/jquery-3.2.1.min.js"></script>
@@ -63,7 +71,7 @@ Session::init();
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="top_nav_left">free shipping on all u.s orders over $50</div>
+                            <div class="top_nav_left">free shipping on all orders</div>
                         </div>
                         <div class="col-md-6 text-right">
                             <div class="top_nav_right">
@@ -71,29 +79,37 @@ Session::init();
 
                                     <!-- My Account -->
 
-                                    <li class="account" style="min-width: 150px">
-                                        <a href="" class="prevent-default">
+                                    <li class="account" style="min-width: 162px">
+                                        <a href="" class="prevent-default d-flex justify-content-center align-items-center">
 
                                             <?php
                                             if (Session::isLogin()) {
+                                                $image = Session::getImg();
                                                 $fullName = Session::getFullName();
-                                                echo "Welcome, $fullName";
+                                            ?>
+                                                <div class="avatar d-flex justify-content-center align-items-center">
+                                                    <img src="<?php echo BASE_URL ?>/upload/<?php echo $image ?>" alt="">
+                                                </div>
+                                                <span class="full-name"><?php echo $fullName ?></span>
+                                            <?php
                                             } else {
-                                                echo "My Account";
+                                            ?>
+                                                <i class="fa fa-user-circle" style="margin-right: 8px; font-size: 19px"></i>
+                                                <span>Account</span>
+                                            <?php
                                             }
                                             ?>
-                                            <i class="fa fa-angle-down"></i>
+
                                         </a>
                                         <?php
                                         if (Session::isLogin()) {
+                                            $userId = Session::getUserId();
                                         ?>
                                             <ul class="account_selection">
-                                                <li><a href="<?php echo BASE_URL . '/auth/user_info' ?>"><i class=" fa fa-user" aria-hidden="true"></i>
+                                                <li><a href="<?php echo BASE_URL . '/user/profile/' . $userId ?>"><i class=" fa fa-user" aria-hidden="true"></i>
                                                         Information</a>
                                                 </li>
-                                                <li><a href="<?php echo BASE_URL . '/auth/change_password' ?>"><i class=" fa fa-user" aria-hidden="true"></i>
-                                                        Change Password</a>
-                                                </li>
+
                                                 <li><a href="<?php echo BASE_URL ?>/login/logout"><i class="fa fa-arrow-left" aria-hidden="true"></i>
                                                         Logout</a>
                                                 </li>
@@ -104,7 +120,7 @@ Session::init();
                                             <ul class="account_selection">
                                                 <li><a href="<?php echo BASE_URL ?>/login"><i class="fa fa-sign-in" aria-hidden="true"></i>
                                                         Login</a></li>
-                                                <li><a href="#"><i class="fa fa-user-plus" aria-hidden="true"></i>
+                                                <li><a href="<?php echo BASE_URL ?>/login?register"><i class="fa fa-user-plus" aria-hidden="true"></i>
                                                         Register</a>
                                                 </li>
                                             </ul>
@@ -200,7 +216,7 @@ Session::init();
                             <?php
                             if (Session::isLogin()) {
                                 $fullName = Session::getFullName();
-                                echo "Welcome, $fullName";
+                                echo $fullName;
                             } else {
                                 echo "My Account";
                             }
