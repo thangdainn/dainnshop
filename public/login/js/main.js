@@ -329,6 +329,13 @@
     showForm(formForgot);
   });
 
+  let params = new URLSearchParams(window.location.search);
+  if (params.has("register")) {
+    showForm(formRegister);
+  } else {
+    showForm(formLogin);
+  }
+
   $(".limiter").css("opacity", "1");
   $(".container-login100").css("opacity", "1");
 })(jQuery);

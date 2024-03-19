@@ -120,7 +120,7 @@ if (session_status() == PHP_SESSION_NONE) {
                                             <ul class="account_selection">
                                                 <li><a href="<?php echo BASE_URL ?>/login"><i class="fa fa-sign-in" aria-hidden="true"></i>
                                                         Login</a></li>
-                                                <li><a href="<?php echo BASE_URL ?>/login"><i class="fa fa-user-plus" aria-hidden="true"></i>
+                                                <li><a href="<?php echo BASE_URL ?>/login?register"><i class="fa fa-user-plus" aria-hidden="true"></i>
                                                         Register</a>
                                                 </li>
                                             </ul>
