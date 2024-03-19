@@ -1,13 +1,3 @@
-function autoClickTagA() {
-  var link = document.getElementById("loadPage");
-  var clickEvent = new MouseEvent("click", {
-    view: window,
-    bubbles: true,
-    cancelable: false,
-  });
-  link.dispatchEvent(clickEvent);
-}
-
 function paging(data, url) {
   $.ajax({
     url: url,
@@ -15,9 +5,9 @@ function paging(data, url) {
     dataType: "html",
     data: data,
     success: function (data) {
-      console.log(data);
       $(".product-container").empty();
       $(".product-container").html(data);
+      redirectProductDetail();
     },
     error: function () {},
   });
@@ -41,7 +31,7 @@ function pagingFilter(data, url) {
                     <script src="${base_url}/public/user/js/jquery.twbsPagination.js"></script>
                     <script src="${base_url}/public/user/js/paging.js"></script>`;
         $("#paging").html(paging);
-        initPagination();
+        // initPagination();
       }
     },
     error: function () {},
@@ -104,7 +94,7 @@ function initPagination() {
     onPageClick: function (event, page) {
       if (page !== currentPage) {
         let data = getDataFilters(page - 1, limit);
-        autoClickTagA();
+        scrollPage();
         currentPage = page;
         paging(data, url_page);
       }
@@ -112,10 +102,18 @@ function initPagination() {
   });
 }
 
+function scrollPage() {
+  const docEL = document.documentElement;
+  docEL.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+}
+
 function redirectProductDetail() {
   $(".product").on("click", function (e) {
     var dataValue = $(this).closest(".product-item").data("value");
-    console.log(dataValue);
+    // console.log(dataValue);
     window.location.href = base_url + "/product/detail/" + dataValue;
   });
 }
