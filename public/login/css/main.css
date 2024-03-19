@@ -588,7 +588,7 @@ iframe {
 .container-register100,
 .container-forgot100 {
   opacity: 0;
-  transition: opacity 1.5s ease;
+  transition: opacity 1s ease;
 }
 
 .error {
