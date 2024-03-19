@@ -116,7 +116,6 @@ function updateProfile(data, url) {
     success: function (data) {
       let message = JSON.parse(data);
       if (message.isUpdateProfile) {
-        $(".full-name").text($("#name").val());
         Swal.fire({
           position: "center",
           icon: "success",
@@ -125,6 +124,9 @@ function updateProfile(data, url) {
           timer: 1500,
         });
         setTimeout(() => {
+          $(".full-name").text($("#name").val());
+          $(".account img").attr("src", message.imagePath);
+          console.log(message.imagePath);
           $(".error.profile").text("");
         }, 1500);
       } else {

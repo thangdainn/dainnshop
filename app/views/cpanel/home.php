@@ -77,7 +77,7 @@
 			<div class="col-lg-8 offset-lg-3">
 				<div class="banner__item">
 					<div class="banner__item__pic">
-						<img src="<?php echo BASE_URL ?>/public/user/images/banner/banner-1.jpg" alt="">
+						<img src="<?php echo BASE_URL ?>/public/user/images/banner/banner-1.jpg" loading="lazy" alt="">
 					</div>
 					<div class="banner__item__text">
 						<h2>Clothing Collections 2030</h2>
@@ -88,7 +88,7 @@
 			<div class="col-lg-5">
 				<div class="banner__item banner__item--middle">
 					<div class="banner__item__pic">
-						<img src="<?php echo BASE_URL ?>/public/user/images/banner/banner-2.jpg" alt="">
+						<img src="<?php echo BASE_URL ?>/public/user/images/banner/banner-2.jpg" loading="lazy" alt="">
 					</div>
 					<div class="banner__item__text">
 						<h2>Accessories</h2>
@@ -99,7 +99,7 @@
 			<div class="col-lg-7">
 				<div class="banner__item banner__item--last">
 					<div class="banner__item__pic">
-						<img src="<?php echo BASE_URL ?>/public/user/images/banner/banner-3.jpg" alt="">
+						<img src="<?php echo BASE_URL ?>/public/user/images/banner/banner-3.jpg" loading="lazy" alt="">
 					</div>
 					<div class="banner__item__text">
 						<h2>Shoes Spring 2030</h2>
@@ -135,7 +135,7 @@
 						<div data-value="<?php echo $product['id'] ?>" class="product-item">
 							<div class="product product_filter">
 								<div class="product_image">
-									<img src="<?php echo BASE_URL ?>/upload/images/<?php echo $product['img'] ?>" alt="">
+									<img src="<?php echo BASE_URL ?>/upload/images/<?php echo $product['img'] ?>" loading="lazy" alt="">
 								</div>
 								<div class="product_info">
 									<h6 class="product_name"><?php echo $product['name'] ?></h6>
@@ -220,7 +220,7 @@
 								<div data-value="<?php echo $product['id'] ?>" class="product-item">
 									<div class="product">
 										<div class="product_image">
-											<img src="<?php echo BASE_URL ?>/upload/images/<?php echo $product['img'] ?>" alt="">
+											<img src="<?php echo BASE_URL ?>/upload/images/<?php echo $product['img'] ?>" loading="lazy" alt="">
 										</div>
 										<div class="product_info">
 											<h6 class="product_name"><?php echo $product['name'] ?></h6>

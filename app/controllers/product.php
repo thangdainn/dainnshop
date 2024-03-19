@@ -86,7 +86,7 @@ class product extends Controller
                 <div data-value="' . $product['id'] . '" class="product-item">
                     <div class="product product_filter">
                         <div class="product_image">
-                            <img src="' . BASE_URL . '/upload/images/' . $product['img'] . '" alt="">
+                            <img src="' . BASE_URL . '/upload/images/' . $product['img'] . '" loading="lazy" alt="">
                         </div>';
                 if ($product['type'] == "sale") {
                     $html .= '
