@@ -91,13 +91,17 @@ class user extends Controller
             $userModel->updateProfile($id, $fullname, $email, $phone, $currentDateTime, $file_destination);
             $message['isUpdateProfile'] = true;
             $message['msg'] = 'Update successful';
+            $message['imagePath'] = BASE_URL . "/upload" . "/" . $file_destination;
+
             Session::init();
             Session::set('fullName', $fullname);
+            Session::set('img', $file_destination);
         } else if (!isset($_FILES['image'])) {
             $file_destination = null;
             $userModel->updateProfile($id, $fullname, $email, $phone, $currentDateTime, $file_destination);
             $message['isUpdateProfile'] = true;
             $message['msg'] = 'Update successful';
+
             Session::init();
             Session::set('fullName', $fullname);
         } else {

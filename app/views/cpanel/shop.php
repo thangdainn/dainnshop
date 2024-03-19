@@ -140,7 +140,7 @@
                                         <div data-value="<?php echo $product['id'] ?>" class="product-item">
                                             <div class="product product_filter">
                                                 <div class="product_image">
-                                                    <img src="<?php echo BASE_URL ?>/upload/images/<?php echo $product['img'] ?>" alt="">
+                                                    <img src="<?php echo BASE_URL ?>/upload/images/<?php echo $product['img'] ?>" loading="lazy" alt="">
                                                 </div>
                                                 <?php
                                                 if ($product['type'] == "sale") {
