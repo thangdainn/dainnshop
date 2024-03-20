@@ -43,9 +43,19 @@ class Session
         return self::get("login") == true ? true : false;
     }
 
+    public static function getUserId()
+    {
+        // self::init();
+        return self::get("userId");
+    }
     public static function getFullName()
     {
         // self::init();
         return self::get("fullName");
+    }
+    public static function getImg()
+    {
+        // self::init();
+        return self::get("img");
     }
 }

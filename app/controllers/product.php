@@ -23,8 +23,20 @@ class product extends Controller
     {
         $this->load->view("header");
 
-        $product = $this->load->model("ProductModel");
-        $data['product'] = $product->findById($id);
+        $productModel = $this->load->model("ProductModel");
+        $data['product'] = $productModel->findById($id);
+
+        $imageModel = $this->load->model("ImageModel");
+        $data['images'] = $imageModel->findByProduct_Id($id);
+
+        $sizeModel = $this->load->model("SizeModel");
+        $data['sizes'] = $sizeModel->findByProduct_Id($id);
+
+        $reviewModel = $this->load->model("ReviewModel");
+        $data['reviews'] = $reviewModel->findByProduct_Id($id);
+
+        $userModel = $this->load->model("UserModel");
+        $data['userReviews'] = $userModel->findByProduct_Id($id);
 
         $this->load->view("cpanel/productDetail", $data);
         $this->load->view("footer");
@@ -74,7 +86,7 @@ class product extends Controller
                 <div data-value="' . $product['id'] . '" class="product-item">
                     <div class="product product_filter">
                         <div class="product_image">
-                            <img src="' . BASE_URL . '/upload/images/' . $product['img'] . '" alt="">
+                            <img src="' . BASE_URL . '/upload/images/' . $product['img'] . '" loading="lazy" alt="">
                         </div>';
                 if ($product['type'] == "sale") {
                     $html .= '

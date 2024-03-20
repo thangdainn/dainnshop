@@ -128,7 +128,7 @@
 
                             <!-- Product Grid -->
 
-                            <div class="row product-container" style="margin: 40px 0px;">
+                            <div class="row product-container justify-content-start" style="margin: 40px 0px;">
 
                                 <!-- Products -->
                                 <?php
@@ -140,7 +140,7 @@
                                         <div data-value="<?php echo $product['id'] ?>" class="product-item">
                                             <div class="product product_filter">
                                                 <div class="product_image">
-                                                    <img src="<?php echo BASE_URL ?>/upload/images/<?php echo $product['img'] ?>" alt="">
+                                                    <img src="<?php echo BASE_URL ?>/upload/images/<?php echo $product['img'] ?>" loading="lazy" alt="">
                                                 </div>
                                                 <?php
                                                 if ($product['type'] == "sale") {
@@ -148,7 +148,7 @@
                                                     <div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>sale</span></div>
                                                     <div class="product_info">
                                                         <h6 class="product_name"><?php echo $product['name'] ?></h6>
-                                                        <div class="product_price"><?php echo $product['sale'] ?><span><?php echo $product['price'] ?></span></div>
+                                                        <div class="product_price">$<?php echo $product['sale'] ?><span>$<?php echo $product['price'] ?></span></div>
                                                     </div>
                                                     <?php
                                                 } else {
@@ -160,7 +160,7 @@
                                                     ?>
                                                     <div class="product_info">
                                                         <h6 class="product_name"><?php echo $product['name'] ?></h6>
-                                                        <div class="product_price"><?php echo $product['price'] ?></div>
+                                                        <div class="product_price">$<?php echo $product['price'] ?></div>
                                                     </div>
                                                 <?php
                                                 }
@@ -176,7 +176,6 @@
                             <div id="paging">
                                 <ul class="pagination justify-content-center" id="pagination"></ul>
                             </div>
-                            <a id="loadPage" href="#product-container"></a>
 
                             <?php
                             if (isset($_GET['keyword'])) {
@@ -200,6 +199,5 @@
     </div>
 </div>
 <script>
-    var base_url = "<?php echo BASE_URL ?>";
     var url_page = base_url + "/product/paging";
 </script>
