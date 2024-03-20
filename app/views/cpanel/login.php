@@ -104,7 +104,7 @@
 						<input class="input100" type="text" name="email">
 						<span class="focus-input100" data-placeholder="Email"></span>
 					</div>
-					<div class="wrap-input100 validate-input-register" data-validate="Valid email is: 0xxx(10)">
+					<div class="wrap-input100 validate-input-register" data-validate="Valid phone is: 0xxx(10)">
 						<input class="input100" type="tel" name="phone">
 						<span class="focus-input100" data-placeholder="Phone"></span>
 					</div>
