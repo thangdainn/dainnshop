@@ -125,14 +125,10 @@ function updateProfile(data, url) {
         });
         setTimeout(() => {
           $(".full-name").text($("#name").val());
-<<<<<<< HEAD
           $(".account img").attr(
             "src",
             base_url + "/upload/" + message.imagePath
           );
-=======
-          $(".account img").attr("src", base_url + "/upload/" + message.imagePath);
->>>>>>> 8429f54 ( update)
           $(".error.profile").text("");
         }, 1500);
       } else {
