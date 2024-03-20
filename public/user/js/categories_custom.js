@@ -280,8 +280,8 @@ jQuery(document).ready(function ($) {
     $("#slider-range").slider({
       range: true,
       min: 0,
-      max: 5000,
-      values: [0, 4500],
+      max: 6500,
+      values: [0, 5100],
       slide: function (event, ui) {
         $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
       },
