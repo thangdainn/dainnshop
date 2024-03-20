@@ -102,7 +102,7 @@
                             <!-- Product Sorting -->
 
                             <div class="product_sorting_container product_sorting_container_top">
-                                <ul class="product_sorting">
+                                <ul class="product_sorting d-flex justify-content-between">
                                     <li>
                                         <span class="type_sorting_text">Default Sorting</span>
                                         <i class="fa fa-angle-down"></i>
@@ -113,16 +113,16 @@
                                             <li class="type_sorting_btn"><span>Price: Hight to Low</span></li>
                                         </ul>
                                     </li>
-                                    <!-- <li>
+                                    <li style="width: 123px;">
                                         <span>Show</span>
-                                        <span class="num_sorting_text">6</span>
+                                        <span id="limit" class="num_sorting_text" style="margin-left: 23px;">12</span>
                                         <i class="fa fa-angle-down"></i>
                                         <ul class="sorting_num">
-                                            <li class="num_sorting_btn"><span>6</span></li>
                                             <li class="num_sorting_btn"><span>12</span></li>
-                                            <li class="num_sorting_btn"><span>24</span></li>
+                                            <li class="num_sorting_btn"><span>16</span></li>
+                                            <li class="num_sorting_btn"><span>20</span></li>
                                         </ul>
-                                    </li> -->
+                                    </li>
                                 </ul>
                             </div>
 
@@ -136,6 +136,7 @@
                                     echo "<h5>No products found.</h5>";
                                 } else {
                                     foreach ($products as $key => $product) {
+                                        
                                 ?>
                                         <div data-value="<?php echo $product['id'] ?>" class="product-item">
                                             <div class="product product_filter">
@@ -188,7 +189,7 @@
                             <?php
                             }
                             ?>
-                            <input type="hidden" id="limit" value="12">
+                            <!-- <input type="hidden" id="limit" value="12"> -->
 
                             <!-- </div> -->
                         </div>
