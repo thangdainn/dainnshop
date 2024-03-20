@@ -626,6 +626,8 @@ section {
 5.2 New Arrivals Products Grid
 *********************************/
 
+
+
 .product-container {
   margin: 40px 0px;
 }
@@ -680,13 +682,22 @@ section {
   border-radius: 2px;
   border: none !important;
 }
+
+.product:hover .product_image img {
+  transform: scale(1.1);
+  transition: transform 0.5s;
+}
+
 .product_image {
   width: 100%;
+  overflow: hidden;
 }
 .product_image img {
   width: 100%;
   object-fit: cover;
   border-radius: 2px;
+  transform: scale(1);
+  transition: transform 0.5s;
 }
 .product_info {
   text-align: center;
