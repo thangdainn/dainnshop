@@ -247,11 +247,25 @@ jQuery(document).ready(function ($) {
 
   function initIsotopeFiltering() {
     let sortTypes = $(".type_sorting_btn");
+    let sortNumbs = $(".num_sorting_btn");
 
     if ($(".product-container").length) {
-      sortTypes.on("click", function () {
-        $(".type_sorting_text").text($(this).text());
-        callAjax();
+      // sortTypes.on("click", function () {
+      //   $(".type_sorting_text").text($(this).text());
+      //   callAjax();
+      // });
+
+      sortTypes.each(function () {
+        $(this).on("click", function () {
+          $(".type_sorting_text").text($(this).text());
+          callAjax();
+        });
+      });
+      sortNumbs.each(function () {
+        $(this).on("click", function () {
+          $(".num_sorting_text").text($(this).text());
+          callAjax();
+        });
       });
     }
   }
@@ -342,11 +356,12 @@ jQuery(document).ready(function ($) {
       callAjax();
     });
   }
+
+  function initShowItem() {}
+
   function callAjax() {
-    let limit = parseInt($("#limit").val());
+    let limit = parseInt($("#limit").text());
     let data = getDataFilters(0, limit);
     pagingFilter(data, url_page);
   }
-
-  
 });
