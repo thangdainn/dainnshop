@@ -46,7 +46,7 @@
                             $('.order_status_link').click(function(e) {
                                 e.preventDefault();
 
-                                $('.order_status_link').removeClass('order_status_link--current');
+                                $('.order_status_link ').removeClass('order_status_link--current');
 
                                 $(this).addClass('order_status_link--current');
 

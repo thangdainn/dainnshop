@@ -56,6 +56,7 @@ class purchaseOrder extends Controller
                 </tr>';
             }
         }
+        
         else {
             $html .= '<span class="order_none">Không có đơn hàng</span>';
         }
