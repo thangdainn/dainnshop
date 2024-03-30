@@ -23,16 +23,24 @@ class PurchaseOrderModel extends Model
 
     public function findByOrderStatusId($userId, $orderStatusId)
     {
-        $sql = "SELECT * FROM `order` WHERE user_id = ?";
-    $params = array($userId);
-    
-    // Kiểm tra xem $orderStatusId có được định nghĩa và không rỗng
-    if ($orderStatusId !== null && $orderStatusId !== '') {
-        $sql .= " AND id_order_status IN ($orderStatusId)";
+        $sql = '';
+        if ($orderStatusId == 0) {
+            $sql = "SELECT * FROM `order` WHERE user_id = ?";
+            $result = $this->db->select($sql, $userId);
+        }
+        else {
+            $sql = "SELECT * FROM `order` WHERE user_id = ? AND id_order_status = ?";
+            $result = $this->db->select($sql, $userId , $orderStatusId);
+        }
+        return $result;
     }
-    
-    $result = $this->db->select($sql, $params);
-    return $result;
+
+    public function viewDetailByOrderId($orderId) {
+        $sql = "SELECT p.name as product_name, p.img as product_image , s.name as size , od.quantity as quantity , od.total as total
+        FROM `order_detail` od, `products` p, `sizes` s 
+        WHERE od.product_id = p.id and od.size_id = s.id and od.order_id = ?";
+        $result = $this->db->select($sql, $orderId); 
+        return $result;
     }
 
     public function save($data)
