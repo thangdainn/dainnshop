@@ -786,16 +786,18 @@ section {
   }
 }
 
-.product-item .product_name {
+/* .product-item .product_name {
   animation: 1.2s cubic-bezier(0.22, 0.61, 0.36, 1) 0s 1 slideInFromLeft;
 }
 
 .product-item .product_price {
   animation: 1.2s cubic-bezier(0.22, 0.61, 0.36, 1) 0s 1 slideInFromRight;
-}
+} */
 
-.product-item .product_image img {
-  animation: 1.2s ease-out 0s 1 fadeIn;
+.product-item .product_image img,
+.product-item .product_name,
+.product-item .product_price {
+  animation: 2s ease 0s 1 fadeIn;
 }
 
 .product_bubble {
