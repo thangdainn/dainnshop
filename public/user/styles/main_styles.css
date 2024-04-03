@@ -308,7 +308,7 @@ section {
 /* ===== Hero ======= */
 
 .hero {
-  margin-top: 123px;
+  /* margin-top: 123px; */
 }
 
 .hero__slider.owl-carousel .owl-item.active .hero__text h6 {
