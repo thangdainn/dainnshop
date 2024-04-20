@@ -21,15 +21,24 @@ class purchaseOrder extends Controller
             $orderModel = $this->load->model("PurchaseOrderModel");
             $orderDetails = $orderModel->viewDetailByOrderId($orderId);
             $html = '';
+            $totalCost = 0;
             foreach ($orderDetails as $item) {
+                $totalCost += $item['total'];
                 $html .= '<tr>
                     <td>' . $item['product_name'] . '</td>
                     <td><img class="product_image" src="' . BASE_URL . '/upload/images/' . $item['product_image'] . '" alt="Product Image"></td>
                     <td>' . $item['size'] . '</td>
                     <td>' . $item['quantity'] . '</td>
-                    <td>' . $item['total'] . '</td>
+                    <td>' . $item['total'] . '$</td>
                 </tr>';
             }
+                $html .= '<tr>
+                    <td>Total Cost</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>'.$totalCost .'$</td>
+                </tr>';
             echo $html;
         } else {
             echo "Error: Missing orderId";
@@ -57,7 +66,7 @@ class purchaseOrder extends Controller
             }
         }
         else {
-            $html .= '<span class="order_none">Không có đơn hàng</span>';
+            $html .= '<span class="order_none">No cart here</span>';
         }
         echo $html;
     }

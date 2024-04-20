@@ -2,7 +2,7 @@
 
 ?>
 <input type="hidden" id="user-id" value="<?php echo Session::getUserId();
-                            ?>">
+                                            ?>">
 
 <div class="container purchaseOrder_container">
     <div class="row">
@@ -107,19 +107,17 @@
                 <?php
                 } else {
                 ?>
-                    <span class="order_none">Không có đơn hàng cho người dùng</span>
+                    <span class="order_none">No cart here</span>
                 <?php
                 }
                 ?>
-                </tbody>
-                </table>
             </div>
         </div>
     </div>
 
     <script>
         $(document).ready(function() {
-            $('.btn_detail').click(function(e) {
+            $(document).on('click', '.btn_detail', function(e) {
                 e.preventDefault();
 
                 var orderId = $(this).data('id');

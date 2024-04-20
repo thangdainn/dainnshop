@@ -44,6 +44,9 @@ if (session_status() == PHP_SESSION_NONE) {
     } elseif (strpos($currentURL, '/purchaseOrder') !== false) {
         echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/purchaseOrder_styles.css">';
         echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/purchaseOrder_responsive.css">'; 
+    } elseif (strpos($currentURL, '/checkout') !== false) {
+        echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/checkout_styles.css">';
+        echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/checkout_responsive.css">';
     } elseif (strpos($currentURL, '/user') !== false) {
         echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/profile_styles.css">';
         echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/contact_responsive.css">';
