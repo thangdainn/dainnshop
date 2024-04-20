@@ -1,21 +1,5 @@
-<?php
-if (!isset($_SESSION["cart"])) {
-	$_SESSION["cart"] = array();
-}
-if (isset($_GET['action'])) {
-	switch ($_GET['action']) {
-		case "add":
-			foreach ($_POST['quantity'] as $id => $quantity) {
-				$_SESSION["cart"][$id] = $quantity;
-			}
-			break;
-	}
-}
-if (!empty($_SESSION["cart"])) {
-	$products = mysqli_query($con, "SELECT * FROM `product` WHERE `id` IN (" . implode(",", array_keys($_SESSION["cart"])) . ")");
-}
-?>
-
+<input type="hidden" id="user-id" value="<?php echo Session::getUserId();
+											?>">
 <!-- Cart -->
 <div class="container cart_container">
 	<div class="row">
@@ -36,69 +20,138 @@ if (!empty($_SESSION["cart"])) {
 	<!-- Cart -->
 	<div class="row">
 		<div class="col">
-			<form id="cart_form" action="<?php echo BASE_URL ?>/cart?action=submit" method="post">
+			<!-- <form id="cart_form" action="<?php echo BASE_URL ?>/cart?action=submit" method="post"> -->
+			<?php if (!empty($carts)) {
+			?>
 				<table class="table cart_table">
 					<thead>
 						<tr>
-							<th class="product_number">STT</th>
-							<th class="product_name">Tên sản phẩm</th>
-							<th class="product_img">Ảnh sản phẩm</th>
-							<th class="product_quantity">Số lượng</th>
-							<th class="product_price">Đơn giá</th>
-							<th class="total_money">Tổng tiền</th>
-							<th class="product_delete">Thao tác</th>
+							<th class="product_number">No</th>
+							<th class="product_name">Product name</th>
+							<th class="product_img">Product image</th>
+							<th class="product_quantity">Quantity</th>
+							<th class="product_price">Price</th>
+							<th class="total_money">Total</th>
+							<th class="product_delete">Action</th>
 						</tr>
 					</thead>
-					<tr>
-						<td class="product_number">1</td>
-						<td class="product_name">Pocket cotton sweatshirt</td>
-						<td class="product_img"><img src="http://localhost/dainnshop/public/user/images/single_2.jpg" alt=""></td>
-						<td class="product_quantity">
-							<button class="quantity_btn" id="decrease">-</button>
-							<input class="quantity_input" type="number" id="quantity" value="1" min="1">
-							<button class="quantity_btn" id="increase">+</button>
-						</td>
-						<td class="product_price">495$</td>
-						<td class="total_money">495$</td>
-						<td class="product_delete">
-							<button class="delete_btn" id="delete">Xóa</button>
-						</td>
-					</tr>
-					<tr>
-						<td class="product_number">&nbsp;</td>
-						<td class="product_name">Tổng đơn hàng</td>
-						<td class="product_img">&nbsp;</td>
-						<td class="product_quantity">&nbsp;</td>
-						<td class="product_price">&nbsp;</td>
-						<td class="total_money">495$</td>
-						<td class="product_delete">&nbsp;</td>
-					</tr>
-				</table>
-				<div id="form-button">
-					<input type="submit" name="update_click" value="Cập nhật" />
-				</div>
-				<hr>
-				</hr>
-			</form>
-			<script>
-				document.getElementById('increase').addEventListener('click', function() {
-					var input = document.getElementById('quantity');
-					var value = parseInt(input.value, 10);
-					input.value = isNaN(value) ? 1 : value + 1;
-				});
+					<tbody>
+						<?php
+						$num = 1;
+						$totalFinal = 0;
+						foreach ($carts as $cart) {
+							$totalMoney = $cart['cost'] * $cart['amount'];
+							$totalFinal += $totalMoney;
+						?>
+							<tr>
+								<input type="hidden" id="cart-id" value="<?php echo $cart['cart_id'];
+																			?>">
+								<td class="product_number"><?php echo $num; ?></td>
+								<td class="product_name"><?php echo $cart['product_name'] ?> </td>
+								<td class="product_img"><img src="<?php echo BASE_URL ?>/upload/images/<?php echo $cart['product_img'] ?>" alt=""></td>
+								<td class="product_quantity">
+									<input class="quantity_input" type="number" value="<?php echo $cart['amount'] ?>" min="1">
+								</td>
+								<td class="product_price"><?php echo $cart['cost'] ?></td>
+								<td class="total_money"><?php echo $totalMoney; ?></td>
+								<td class="product_action">
+									<button class="btn delete_btn" id="delete">Delete</button>
+									<button class="btn update_btn" id="update">Update</button>
+								</td>
+							</tr>
 
-				document.getElementById('decrease').addEventListener('click', function() {
-					var input = document.getElementById('quantity');
-					var value = parseInt(input.value, 10);
-					input.value = isNaN(value) ? 1 : (value > 1 ? value - 1 : 1);
-				});
-			</script>
+						<?php
+							$num++;
+						}
+						?>
+						<tr>
+							<td class="product_number">&nbsp;</td>
+							<td class="product_name">Total cart</td>
+							<td class="product_img">&nbsp;</td>
+							<td class="product_quantity">&nbsp;</td>
+							<td class="product_price">&nbsp;</td>
+							<td class="total_money"><?php echo $totalFinal; ?></td>
+							<td class="product_delete">&nbsp;</td>
+						</tr>
+					</tbody>
+				</table>
 			<?php
-			if (isset($_GET['action'])) {
-				echo "action";
-				exit;
+			} else {
+			?>
+				<span class="order_none">No cart here</span>
+			<?php
 			}
 			?>
+			<div class="cart_buttons">
+				<div id="payment-button">
+					<a href="<?php echo BASE_URL ?>/checkout" class="btn payment_btn">Checkout</a>
+				</div>
+			</div>
+			<hr>
+			</hr>
+			<!-- </form> -->
+			<script>
+				//Edit Amount on up down button
+				function eventHandler() {
+
+					//Update Amount
+					$(document).on('click', '.update_btn', function(e) {
+						var cartId = $(this).closest('tr').find('#cart-id').val();
+						var newAmount = $(this).closest('tr').find('.quantity_input').val();
+						var userId = $('#user-id').val();
+
+						$.ajax({
+							type: "POST",
+							dataType: "html",
+							url: base_url + "/cart/updateAmount",
+							data: {
+								cartId: cartId,
+								newAmount: newAmount,
+								userId: userId
+							},
+							success: function(response) {
+								console.log(response);
+								$('.cart_table tbody').html(response);
+								eventHandler();
+								addEventListenersToQuantityButtons();
+							}
+						});
+					});
+
+
+
+					//Delete Cart
+
+					$('.delete_btn').click(function(e) {
+
+						var cartId = $(this).closest('tr').find('#cart-id').val();
+						var userId = $('#user-id').val();
+
+						if (confirm("Are you sure you want to delete this product in your cart?")) {
+							$.ajax({
+								url: base_url + "/cart/deleteCart",
+								type: "POST",
+								dataType: "html",
+								data: {
+									cartId: cartId,
+									userId: userId
+								},
+								success: function(response) {
+									console.log(response);
+									$('.cart_table tbody').html(response);
+									eventHandler();
+								},
+								error: function(jqXHR, textStatus, errorThrown) {
+									alert('An error occurred while deleting the product. Please try again later.');
+								}
+							});
+						}
+					});
+				}
+				$(document).ready(function() {
+					eventHandler();
+				});
+			</script>
 		</div>
 	</div>
 </div>
