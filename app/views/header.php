@@ -147,7 +147,7 @@ if (session_status() == PHP_SESSION_NONE) {
                             </div>
                             <nav class="navbar">
                                 <ul class="navbar_menu">
-                                    <li><a href="<?php echo BASE_URL ?>">home</a></li>
+                                    <li class="active"><a href="<?php echo BASE_URL ?>">home</a></li>
                                     <li><a href="<?php echo BASE_URL ?>/shop">shop</a></li>
                                     <li>
                                         <?php
@@ -162,7 +162,6 @@ if (session_status() == PHP_SESSION_NONE) {
                                         }
                                         ?>
                                     </li>
-                                    <li><a href="#">about</a></li>
                                     <li><a href="<?php echo BASE_URL ?>/contact">contact</a></li>
                                 </ul>
                                 <ul class="navbar_user" style="display: flex; align-items: center;">
