@@ -147,7 +147,7 @@ if (session_status() == PHP_SESSION_NONE) {
                             </div>
                             <nav class="navbar">
                                 <ul class="navbar_menu">
-                                    <li class="active"><a href="<?php echo BASE_URL ?>">home</a></li>
+                                    <li class=""><a href="<?php echo BASE_URL ?>/">home</a></li>
                                     <li><a href="<?php echo BASE_URL ?>/shop">shop</a></li>
                                     <li>
                                         <?php
@@ -273,6 +273,20 @@ if (session_status() == PHP_SESSION_NONE) {
                 $(".loader").fadeOut();
                 $("#preloder").delay(200).fadeOut("slow");
 
+            });
+
+            var currentUrl = window.location.href;
+
+            $('.navbar_menu li a').each(function() {
+                let linkUrl = this.href;
+                if (currentUrl == linkUrl) {
+                    // Xóa class 'active' khỏi tất cả các thẻ <li>
+                    $('.navbar_menu li').removeClass('active');
+
+                    // Thêm class 'active' vào thẻ <li> chứa liên kết khớp
+                    $(this).closest('li').addClass('active');
+                    return false;
+                }
             });
         </script>
         <div class="fs_menu_overlay"></div>
