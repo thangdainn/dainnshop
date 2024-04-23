@@ -80,7 +80,7 @@
 						<img src="<?php echo BASE_URL ?>/public/user/images/banner/banner-1.jpg" loading="lazy" alt="">
 					</div>
 					<div class="banner__item__text">
-						<h2>Clothing Collections 2030</h2>
+						<h2>Top choice for Winter</h2>
 						<a href="<?php echo BASE_URL ?>/shop">Shop now</a>
 					</div>
 				</div>
@@ -91,7 +91,7 @@
 						<img src="<?php echo BASE_URL ?>/public/user/images/banner/banner-2.jpg" loading="lazy" alt="">
 					</div>
 					<div class="banner__item__text">
-						<h2>Accessories</h2>
+						<h2>Western fashion</h2>
 						<a href="<?php echo BASE_URL ?>/shop">Shop now</a>
 					</div>
 				</div>
@@ -102,7 +102,7 @@
 						<img src="<?php echo BASE_URL ?>/public/user/images/banner/banner-3.jpg" loading="lazy" alt="">
 					</div>
 					<div class="banner__item__text">
-						<h2>Shoes Spring 2030</h2>
+						<h2>Maturity for men</h2>
 						<a href="<?php echo BASE_URL ?>/shop">Shop now</a>
 					</div>
 				</div>
@@ -186,7 +186,7 @@
 							<div class="timer_unit">Sec</div>
 						</li>
 					</ul>
-					<div class="red_button deal_ofthe_week_button"><a href="#">shop now</a></div>
+					<div class="red_button deal_ofthe_week_button"><a href="<?php echo BASE_URL ?>/shop">shop now</a></div>
 				</div>
 			</div>
 		</div>
