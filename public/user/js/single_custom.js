@@ -321,11 +321,11 @@ jQuery(document).ready(function ($) {
       url: url,
       data: data,
       success: function (response) {
-        if (response.status === "success") {
+        let message = JSON.parse(response);
+        if (message.status) {
           showNotification();
         } else {
-          showNotification();
-          // alert("Add to cart failed");
+          alert("Add to cart failed");
         }
       },
     });

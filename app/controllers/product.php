@@ -93,7 +93,7 @@ class product extends Controller
                         <div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>sale</span></div>
                         <div class="product_info">
                             <h6 class="product_name">' . $product['name'] . '</h6>
-                            <div class="product_price">' . $product['sale'] . '<span>' . $product['price'] . '</span></div>
+                            <div class="product_price">$' . $product['sale'] . '<span>$' . $product['price'] . '</span></div>
                         </div>';
                 } else {
                     if ($product['type'] == "new") {
@@ -101,7 +101,7 @@ class product extends Controller
                     }
                     $html .= '<div class="product_info">
                                     <h6 class="product_name">' . $product['name'] . '</h6>
-                                    <div class="product_price">' . $product['price'] . '</div>
+                                    <div class="product_price">$' . $product['price'] . '</div>
                                 </div>';
                 }
                 $html .= '</div>

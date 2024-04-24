@@ -43,7 +43,7 @@ if (session_status() == PHP_SESSION_NONE) {
         echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/cart_responsive.css">';
     } elseif (strpos($currentURL, '/purchaseOrder') !== false) {
         echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/purchaseOrder_styles.css">';
-        echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/purchaseOrder_responsive.css">'; 
+        echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/purchaseOrder_responsive.css">';
     } elseif (strpos($currentURL, '/checkout') !== false) {
         echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/checkout_styles.css">';
         echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/checkout_responsive.css">';
@@ -55,7 +55,6 @@ if (session_status() == PHP_SESSION_NONE) {
         echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/responsive.css">';
     }
     ?>
-
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/styles/footer.css">
 
     <script src="<?php echo BASE_URL ?>/public/user/js/jquery-3.2.1.min.js"></script>
@@ -69,6 +68,7 @@ if (session_status() == PHP_SESSION_NONE) {
         <div class="loader"></div>
     </div>
     <div class="super_container">
+
 
         <!-- Header -->
 
@@ -90,52 +90,51 @@ if (session_status() == PHP_SESSION_NONE) {
 
                                     <li class="account" style="min-width: 162px">
                                         <a href="" class="prevent-default d-flex justify-content-center align-items-center">
+                                                <?php
+                                                if (Session::isLogin()) {
+                                                    $image = Session::getImg();
+                                                    $fullName = Session::getFullName();
+                                                ?>
+                                                    <div class="avatar d-flex justify-content-center align-items-center">
+                                                        <img src="<?php echo BASE_URL ?>/upload/<?php echo $image ?>" alt="">
+                                                    </div>
+                                                    <span class="full-name"><?php echo $fullName ?></span>
+                                                    <?php
+                                                } else {
+                                                    ?>
+                                                        <i class="fa fa-user-circle" style="margin-right: 8px; font-size: 19px"></i>
+                                                        <span>Account</span>
+                                                    <?php
+                                                }
+                                                    ?>
 
+                                            </a>
                                             <?php
                                             if (Session::isLogin()) {
-                                                $image = Session::getImg();
-                                                $fullName = Session::getFullName();
+                                                $userId = Session::getUserId();
                                             ?>
-                                                <div class="avatar d-flex justify-content-center align-items-center">
-                                                    <img src="<?php echo BASE_URL ?>/upload/<?php echo $image ?>" alt="">
-                                                </div>
-                                                <span class="full-name"><?php echo $fullName ?></span>
+                                                <ul class="account_selection">
+                                                    <li><a href="<?php echo BASE_URL . '/user/profile/' . $userId ?>"><i class=" fa fa-user" aria-hidden="true"></i>
+                                                            Information</a>
+                                                    </li>
+
+                                                    <li><a href="<?php echo BASE_URL ?>/login/logout"><i class="fa fa-arrow-left" aria-hidden="true"></i>
+                                                            Logout</a>
+                                                    </li>
+                                                </ul>
                                             <?php
                                             } else {
                                             ?>
-                                                <i class="fa fa-user-circle" style="margin-right: 8px; font-size: 19px"></i>
-                                                <span>Account</span>
+                                                <ul class="account_selection">
+                                                    <li><a href="<?php echo BASE_URL ?>/login"><i class="fa fa-sign-in" aria-hidden="true"></i>
+                                                            Login</a></li>
+                                                    <li><a href="<?php echo BASE_URL ?>/login?register"><i class="fa fa-user-plus" aria-hidden="true"></i>
+                                                            Register</a>
+                                                    </li>
+                                                </ul>
                                             <?php
                                             }
                                             ?>
-
-                                        </a>
-                                        <?php
-                                        if (Session::isLogin()) {
-                                            $userId = Session::getUserId();
-                                        ?>
-                                            <ul class="account_selection">
-                                                <li><a href="<?php echo BASE_URL . '/user/profile/' . $userId ?>"><i class=" fa fa-user" aria-hidden="true"></i>
-                                                        Information</a>
-                                                </li>
-
-                                                <li><a href="<?php echo BASE_URL ?>/login/logout"><i class="fa fa-arrow-left" aria-hidden="true"></i>
-                                                        Logout</a>
-                                                </li>
-                                            </ul>
-                                        <?php
-                                        } else {
-                                        ?>
-                                            <ul class="account_selection">
-                                                <li><a href="<?php echo BASE_URL ?>/login"><i class="fa fa-sign-in" aria-hidden="true"></i>
-                                                        Login</a></li>
-                                                <li><a href="<?php echo BASE_URL ?>/login?register"><i class="fa fa-user-plus" aria-hidden="true"></i>
-                                                        Register</a>
-                                                </li>
-                                            </ul>
-                                        <?php
-                                        }
-                                        ?>
 
                                     </li>
                                 </ul>
@@ -156,7 +155,7 @@ if (session_status() == PHP_SESSION_NONE) {
                             </div>
                             <nav class="navbar">
                                 <ul class="navbar_menu">
-                                    <li><a href="<?php echo BASE_URL ?>">home</a></li>
+                                    <li class=""><a href="<?php echo BASE_URL ?>/">home</a></li>
                                     <li><a href="<?php echo BASE_URL ?>/shop">shop</a></li>
                                     <li>
                                         <?php
@@ -171,7 +170,6 @@ if (session_status() == PHP_SESSION_NONE) {
                                         }
                                         ?>
                                     </li>
-                                    <li><a href="#">about</a></li>
                                     <li><a href="<?php echo BASE_URL ?>/contact">contact</a></li>
                                 </ul>
                                 <ul class="navbar_user" style="display: flex; align-items: center;">
@@ -283,6 +281,20 @@ if (session_status() == PHP_SESSION_NONE) {
                 $(".loader").fadeOut();
                 $("#preloder").delay(200).fadeOut("slow");
 
+            });
+
+            var currentUrl = window.location.href;
+
+            $('.navbar_menu li a').each(function() {
+                let linkUrl = this.href;
+                if (currentUrl == linkUrl) {
+                    // Xóa class 'active' khỏi tất cả các thẻ <li>
+                    $('.navbar_menu li').removeClass('active');
+
+                    // Thêm class 'active' vào thẻ <li> chứa liên kết khớp
+                    $(this).closest('li').addClass('active');
+                    return false;
+                }
             });
         </script>
         <div class="fs_menu_overlay"></div>

@@ -667,6 +667,33 @@ INSERT INTO `roles` (`id`, `name`, `permission`, `status`, `create_at`, `update_
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `roles`
+--
+
+CREATE TABLE `roles` (
+  `id` int NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `permission` text,
+  `status` int NOT NULL DEFAULT '1',
+  `create_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `update_at` datetime DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data for table `roles`
+--
+
+INSERT INTO `roles` (`id`, `name`, `permission`, `status`, `create_at`, `update_at`) VALUES
+(2, 'Người dùng', '{\"groups\":[\"view\",\"add\",\"update\",\"delete\"],\"products\":[\"view\",\"add\"],\"users\":[\"view\",\"add\"],\"bill\":[\"view\",\"update\"]}', 1, '2023-03-17 11:18:31', '2023-03-26 21:43:20'),
+(3, 'Xử lý đơn hàng', NULL, 1, '2023-03-17 11:18:43', '2023-03-26 21:09:57'),
+(5, 'Quản lý ', '{\"groups\":[\"view\"],\"products\":[\"add\"],\"users\":[\"update\"],\"bill\":[\"view\",\"update\"]}', 1, '2023-03-17 11:19:13', '2023-03-26 21:03:40'),
+(7, 'Nhân Viên', '{\"groups\":[\"update\"],\"users\":[\"add\"],\"bill\":[\"update\"],\"contacts\":[\"update\"],\"reviews\":[\"update\",\"delete\"]}', 1, '2023-04-01 17:56:34', '2023-05-06 10:49:33'),
+(8, 'Admin', '{\"groups\":[\"add\",\"update\",\"delete\",\"permission\"],\"products\":[\"add\",\"update\",\"delete\"],\"users\":[\"add\",\"update\",\"delete\"],\"bill\":[\"update\"],\"contacts\":[\"update\",\"delete\"],\"reviews\":[\"update\",\"delete\"],\"options\":[\"update\"],\"dashboard\":[\"view\"]}', 1, '2023-04-01 20:31:31', '2023-04-02 08:59:41'),
+(10, 'Bán hàng', NULL, 1, '2023-05-08 10:07:15', NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `sizes`
 --
 
@@ -822,6 +849,12 @@ ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `sizes`
 --
 ALTER TABLE `sizes`
@@ -940,6 +973,21 @@ ALTER TABLE `cart`
 --
 ALTER TABLE `images`
   ADD CONSTRAINT `fk_image_product` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `order`
+--
+ALTER TABLE `order`
+  ADD CONSTRAINT `fk_bill_order_status` FOREIGN KEY (`id_order_status`) REFERENCES `order_status` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_bill_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `order_detail`
+--
+ALTER TABLE `order_detail`
+  ADD CONSTRAINT `fk_bill_detail_product` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_bill_detail_size` FOREIGN KEY (`size_id`) REFERENCES `sizes` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_detail_bill_bill` FOREIGN KEY (`order_id`) REFERENCES `order` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `order`

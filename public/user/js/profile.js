@@ -125,7 +125,10 @@ function updateProfile(data, url) {
         });
         setTimeout(() => {
           $(".full-name").text($("#name").val());
-          $(".account img").attr("src", base_url + "/upload/" + message.imagePath);
+          $(".account img").attr(
+            "src",
+            base_url + "/upload/" + message.imagePath
+          );
           $(".error.profile").text("");
         }, 1500);
       } else {

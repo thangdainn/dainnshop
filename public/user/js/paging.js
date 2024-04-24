@@ -86,7 +86,8 @@ function getDataFilters(page, limit) {
 function initPagination() {
   totalPage = parseInt($("#totalPage").val());
   let currentPage = 1;
-  let limit = parseInt($("#limit").val());
+  let limit = parseInt($("#limit").text());
+  console.log(limit);
   window.pagObj = $("#pagination").twbsPagination({
     totalPages: totalPage,
     visiblePages: 5,
