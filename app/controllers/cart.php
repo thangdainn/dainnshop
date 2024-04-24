@@ -1,8 +1,4 @@
 <?php
-if (!isset($_SESSION)) {
-    session_start();
-}
-
 
 class cart extends Controller
 {
@@ -104,8 +100,7 @@ class cart extends Controller
         $this->render($updatedCart);
     }
 
-    public function deleteCart()
-    {
+    public function deleteCart() {
         $cartId = $_POST['cartId'];
         $userId = $_POST['userId'];
 
@@ -142,14 +137,13 @@ class cart extends Controller
         }
     }
 
-    public function render($carts)
-    {
+    public function render($carts) {
         $num = 1;
-        $totalFinal = 0;
+		$totalFinal = 0;
         $html = '';
         foreach ($carts as $cart) {
             $totalMoney = $cart['cost'] * $cart['amount'];
-            $totalFinal += $totalMoney;
+			$totalFinal += $totalMoney;
             $html .= '
             <tr>
                 <input type="hidden" id="cart-id" value="' . $cart['cart_id'] . '
@@ -228,7 +222,6 @@ class cart extends Controller
 
     public function cart()
     {
-        $totalQuantity = 0;
         $this->load->view("header");
         if (Session::isLogin()) {
             $userID = Session::getUserId();

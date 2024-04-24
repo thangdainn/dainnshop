@@ -57,14 +57,14 @@
                             <div class="checkout__order">
                                 <h4 class="order__title">Your order</h4>
                                 <div class="checkout__order__products">Product <span>Total</span></div>
-                                <ul class="checkout__total__products">
-                                    <?php
-                                    $num = 1;
-                                    $totalFinal = 0;
-                                    foreach ($carts as $cart) {
-                                        $totalMoney = $cart['cost'] * $cart['amount'];
-                                        $totalFinal += $totalMoney;
-                                    ?>
+                                <?php
+                                $num = 1;
+                                $totalFinal = 0;
+                                foreach ($carts as $cart) {
+                                    $totalMoney = $cart['cost'] * $cart['amount'];
+                                    $totalFinal += $totalMoney;
+                                ?>
+                                    <ul class="checkout__total__products">
                                         <li>
                                             <!-- <?php echo $num ?>. -->
                                             <span class="product-name"><?php echo $num . ". " . $cart['product_name'] ?></span>
@@ -76,26 +76,26 @@
                                             <input type="hidden" id="product-quantity" value="<?php echo $cart['amount'];
                                                                                                 ?>">
                                         </li>
-                                    <?php
-                                        $num++;
-                                    }
-                                    ?>
-                                </ul>
+                                    </ul>
+                                <?php
+                                    $num++;
+                                }
+                                ?>
                                 <ul class="checkout__total__all">
                                     <li>Total <span>$<?php echo $totalFinal ?></span></li>
                                 </ul>
 
                                 <div class="checkout-payment__checkbox">
                                     <div class="checkout-payment__checkbox-item">
-                                        <input type="checkbox" id="checkbox1" name="checkbox" value="credit" class="single-checkbox">
+                                        <input type="checkbox" id="checkbox1" name="checkbox" class="single-checkbox">
                                         <label for="checkbox1">Credit or Debit Card</label>
                                     </div>
                                     <div class="checkout-payment__checkbox-item">
-                                        <input type="checkbox" id="checkbox2" name="checkbox" value="cash" class="single-checkbox">
+                                        <input type="checkbox" id="checkbox2" name="checkbox" class="single-checkbox">
                                         <label for="checkbox2">Cash</label>
                                     </div>
                                     <div class="checkout-payment__checkbox-item">
-                                        <input type="checkbox" id="checkbox3" name="checkbox" value="mobile wallet" class="single-checkbox">
+                                        <input type="checkbox" id="checkbox3" name="checkbox" class="single-checkbox">
                                         <label for="checkbox3">Mobile Wallet</label>
                                     </div>
                                 </div>
