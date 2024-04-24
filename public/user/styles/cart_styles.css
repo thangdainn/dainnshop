@@ -353,6 +353,10 @@ section {
   margin-left: auto;
 }
 
+#payment-button {
+	margin-left: auto;
+}
+
 .cart_container .payment_btn {
   color: #fff;
   background-color: #000;
