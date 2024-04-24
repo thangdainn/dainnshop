@@ -328,7 +328,7 @@ jQuery(document).ready(function ($) {
         //   alert("Add to cart failed");
         // }
         showNotification();
-        setTimeout(function() {
+        setTimeout(function () {
           window.location.href = base_url + "/shop";
         }, 1000);
       },
@@ -342,7 +342,7 @@ jQuery(document).ready(function ($) {
       data: data,
       success: function (response) {
         showNotification();
-        setTimeout(function() {
+        setTimeout(function () {
           window.location.href = base_url + "/cart";
         }, 1000);
       },
@@ -438,7 +438,6 @@ jQuery(document).ready(function ($) {
       return [];
     }
   }
-
 
   function setLocalStorageCartItems(cartItems) {
     try {
