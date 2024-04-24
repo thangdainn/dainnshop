@@ -7,6 +7,12 @@ class CartModel extends Model
         parent::__construct();
     }
 
+    public function getInfoSessionCart ($productId, $sizeId) {
+        $sql = "SELECT p.name, s.name FROM `products` p, `sizes` s WHERE p.id = ? AND s.id = ?";
+        $result = $this->db->select($sql, $productId, $sizeId);
+        return $result;
+    }
+
     public function findAll()
     {
         $sql = "SELECT * FROM `cart`";

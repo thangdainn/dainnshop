@@ -47,7 +47,8 @@ class cart extends Controller
         $this->render($updatedCart);
     }
 
-    public function deleteCart() {
+    public function deleteCart()
+    {
         $cartId = $_POST['cartId'];
         $userID = $_POST['userId'];
         $cartModel = $this->load->model("CartModel");
@@ -56,16 +57,17 @@ class cart extends Controller
         $this->render($updatedCart);
     }
 
-    public function render($carts) {
+    public function render($carts)
+    {
         $num = 1;
-		$totalFinal = 0;
+        $totalFinal = 0;
         $html = '';
         foreach ($carts as $cart) {
             $totalMoney = $cart['cost'] * $cart['amount'];
-			$totalFinal += $totalMoney;
+            $totalFinal += $totalMoney;
             $html .= '
             <tr>
-                                    <input type="hidden" id="cart-id" value="'.$cart['cart_id'] .'
+                                    <input type="hidden" id="cart-id" value="' . $cart['cart_id'] . '
                                                                                     ">
 									<td class="product_number">' . $num . '</td>
 									<td class="product_name">' . $cart['product_name'] . ' </td>
@@ -80,9 +82,9 @@ class cart extends Controller
 									    <button class="btn update_btn" id="update">Update</button>
 								    </td>
 								</tr>';
-                                $num ++;
+            $num++;
         }
-        $html.= '
+        $html .= '
 
 								<tr>
 									<td class="product_number">&nbsp;</td>
@@ -99,11 +101,14 @@ class cart extends Controller
     public function cart()
     {
         $this->load->view("header");
-        $userID = Session::getUserId();
-        echo $userID;
-        $cartModel = $this->load->model("CartModel");
-        $data['carts'] = $cartModel->findByUserId($userID);
-        $this->load->view("cpanel/cart", $data);
+        if (Session::isLogin()) {
+            $userID = Session::getUserId();
+            $cartModel = $this->load->model("CartModel");
+            $data['carts'] = $cartModel->findByUserId($userID);
+            $this->load->view("cpanel/cart", $data);
+        } else {
+            $this->load->view("cpanel/cart");
+        }
         $this->load->view("footer");
     }
 }
