@@ -124,7 +124,7 @@
             });
             $('.site-btn').click(function(e) {
                 e.preventDefault();
-                
+
                 console.log(paymentMethod);
                 var fullname = $('input[name="full-name"]').val();
                 var phone = $('input[name="phone"]').val();
