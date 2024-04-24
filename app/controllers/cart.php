@@ -15,6 +15,8 @@ class cart extends Controller
 
     public function add()
     {
+        $message = array();
+        $message["status"] = false;
         if (
             isset($_POST['userId']) &&
             isset($_POST['productId']) &&
@@ -26,8 +28,36 @@ class cart extends Controller
             $sizeId = $_POST['sizeId'];
             $quantity = $_POST['quantity'];
 
-            $cartModel = $this->load->model("CartModel");
-            $cartModel->addCart($userId, $productId, $quantity, $sizeId);
+            if ($userId == 0 || !isset($userId)) {
+                $this->addCartSession($productId, $sizeId, $quantity);
+                $message["status"] = true;
+            }
+            else {
+                $cartModel = $this->load->model("CartModel");
+                $cartModel->addCart($userId, $productId, $quantity, $sizeId);
+                $message["status"] = true;
+            }
+        }
+        echo json_encode($message); 
+    }
+
+    public function addCartSession($productId, $sizeId, $quantity) {
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+    
+        if (!isset($_SESSION['cart'])) {
+            $_SESSION['cart'] = [];
+        }
+    
+        if (isset($_SESSION['cart'][$productId])) {
+            $_SESSION['cart'][$productId]['quantity'] += $quantity;
+        } else {
+            $_SESSION['cart'][$productId] = [
+                'product_id' => $productId,
+                'quantity' => $quantity,
+                'size_id' => $sizeId
+            ];
         }
     }
 
@@ -95,11 +125,15 @@ class cart extends Controller
     public function cart()
     {
         $this->load->view("header");
-        $userID = Session::getUserId();
-        echo $userID;
-        $cartModel = $this->load->model("CartModel");
-        $data['carts'] = $cartModel->findByUserId($userID);
-        $this->load->view("cpanel/cart", $data);
+        if (Session::isLogin()) {
+            $userID = Session::getUserId();
+            $cartModel = $this->load->model("CartModel");
+            $data['carts'] = $cartModel->findByUserId($userID);
+            $this->load->view("cpanel/cart", $data);
+        }
+        else {
+            $this->load->view("cpanel/cart");
+        }
         $this->load->view("footer");
     }
 }
