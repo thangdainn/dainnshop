@@ -70,7 +70,7 @@
                                         <li>
                                             <?php echo $num ?>.
                                             <span class="product-name"><?php echo $cart['product_name'] ?>
-                                                <span class="product-total">$<?php echo $totalMoney ?></span>
+                                                <span></span>$<span class="product-total"><?php echo $totalMoney ?></span>
                                                 <input type="hidden" id="product-id" value="<?php echo $cart['product_id'];
                                                                                             ?>">
                                                 <input type="hidden" id="product-size-id" value="<?php echo $cart['size_id'];
@@ -121,7 +121,7 @@
 
                 var products_detail = []
                 $('.checkout__total__products').each(function() {
-                    var productTotal = $('.product-total').val();
+                    var productTotal = $('.product-total').text();
                     var productId = $('#product-id').val();
                     var sizeId = $('#product-size-id').val();
                     var productQuantity = $('#product-quantity').val();
@@ -149,7 +149,6 @@
                         window.location = base_url;
                     },
                     error: function(xhr, status, error) {
-                        // Xử lý lỗi nếu có
                         console.error(error);
                         alert('Failed to place order. Please try again.');
                     }

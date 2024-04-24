@@ -20,7 +20,6 @@
 	<!-- Cart -->
 	<div class="row">
 		<div class="col">
-			<!-- <form id="cart_form" action="<?php echo BASE_URL ?>/cart?action=submit" method="post"> -->
 			<?php if (!empty($carts)) {
 			?>
 				<table class="table cart_table">
@@ -36,6 +35,7 @@
 						</tr>
 					</thead>
 					<tbody>
+
 						<?php
 						$num = 1;
 						$totalFinal = 0;
@@ -75,25 +75,28 @@
 						</tr>
 					</tbody>
 				</table>
+				<div class="cart_buttons">
+					<div id="payment-button">
+						<a href="<?php echo BASE_URL ?>/checkout" class="btn payment_btn">Checkout</a>
+					</div>
+				</div>
 			<?php
 			} else {
 			?>
-				<span class="order_none">No cart here</span>
+				<table class="table cart_table" id="showLSCartTable">
+					<thead>
+						</thread>
+				</table>
 			<?php
 			}
 			?>
-			<div class="cart_buttons">
-				<div id="payment-button">
-					<a href="<?php echo BASE_URL ?>/checkout" class="btn payment_btn">Checkout</a>
-				</div>
-			</div>
-			<hr>
-			</hr>
+
+			<!-- <hr>
+			</hr> -->
 			<!-- </form> -->
 			<script>
 				//Edit Amount on up down button
 				function eventHandler() {
-
 					//Update Amount
 					$(document).on('click', '.update_btn', function(e) {
 						var cartId = $(this).closest('tr').find('#cart-id').val();
@@ -118,10 +121,7 @@
 						});
 					});
 
-
-
 					//Delete Cart
-
 					$('.delete_btn').click(function(e) {
 
 						var cartId = $(this).closest('tr').find('#cart-id').val();
@@ -148,6 +148,7 @@
 						}
 					});
 				}
+
 				$(document).ready(function() {
 					eventHandler();
 				});
