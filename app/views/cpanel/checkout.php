@@ -59,6 +59,7 @@
                             <div class="checkout__order">
                                 <h4 class="order__title">Your order</h4>
                                 <div class="checkout__order__products">Product <span>Total</span></div>
+                                <ul class="checkout__total__products">
                                 <?php
                                 $num = 1;
                                 $totalFinal = 0;
@@ -66,23 +67,22 @@
                                     $totalMoney = $cart['cost'] * $cart['amount'];
                                     $totalFinal += $totalMoney;
                                 ?>
-                                    <ul class="checkout__total__products">
                                         <li>
                                             <?php echo $num ?>.
                                             <span class="product-name"><?php echo $cart['product_name'] ?>
                                                 <span></span>$<span class="product-total"><?php echo $totalMoney ?></span>
-                                                <input type="hidden" id="product-id" value="<?php echo $cart['product_id'];
-                                                                                            ?>">
-                                                <input type="hidden" id="product-size-id" value="<?php echo $cart['size_id'];
-                                                                                                    ?>">
-                                                <input type="hidden" id="product-quantity" value="<?php echo $cart['amount'];
-                                                                                                    ?>">
+                                                    <input type="hidden" id="product-id" value="<?php echo $cart['product_id'];
+                                                                                                ?>">
+                                                    <input type="hidden" id="product-size-id" value="<?php echo $cart['size_id'];
+                                                                                                        ?>">
+                                                    <input type="hidden" id="product-quantity" value="<?php echo $cart['amount'];
+                                                                                                        ?>">
                                         </li>
-                                    </ul>
-                                <?php
+                                        <?php
                                     $num++;
                                 }
                                 ?>
+                                </ul>
                                 <ul class="checkout__total__all">
                                     <li>Total <span><?php echo $totalFinal ?></span></li>
                                 </ul>
@@ -120,11 +120,11 @@
                 var address = $('input[name="address"]').val();
 
                 var products_detail = []
-                $('.checkout__total__products').each(function() {
-                    var productTotal = $('.product-total').text();
-                    var productId = $('#product-id').val();
-                    var sizeId = $('#product-size-id').val();
-                    var productQuantity = $('#product-quantity').val();
+                $('.checkout__total__products li').each(function() {
+                    var productTotal = $(this).find('.product-total').text();
+                    var productId = $(this).find('#product-id').val();
+                    var sizeId = $(this).find('#product-size-id').val();
+                    var productQuantity = $(this).find('#product-quantity').val();
                     products_detail.push({
                         product_id: productId,
                         size_id: sizeId,
