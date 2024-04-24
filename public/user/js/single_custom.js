@@ -321,7 +321,8 @@ jQuery(document).ready(function ($) {
       url: url,
       data: data,
       success: function (response) {
-        if (response.status === "success") {
+        let message = JSON.parse(response);
+        if (message.status) {
           showNotification();
         } else {
           alert("Add to cart failed");

@@ -231,10 +231,6 @@
 			</div>
 		</div>
 	</div>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> f489c4e ( update)
 </div>
 <div id="toast">
 	<!-- <div class="alert alert-success d-flex flex-column hidden" role="alert">
@@ -243,9 +239,4 @@
 		</div>
 		<p class="notification">Item has been added to your shopping cart !</p>
 	</div> -->
-<<<<<<< HEAD
-=======
->>>>>>> 1527c54 (update)
-=======
->>>>>>> f489c4e ( update)
 </div>

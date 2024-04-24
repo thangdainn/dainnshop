@@ -15,6 +15,8 @@ class cart extends Controller
 
     public function add()
     {
+        $message = array();
+        $message["status"] = false;
         if (
             isset($_POST['userId']) &&
             isset($_POST['productId']) &&
@@ -28,7 +30,9 @@ class cart extends Controller
 
             $cartModel = $this->load->model("CartModel");
             $cartModel->addCart($userId, $productId, $quantity, $sizeId);
+            $message["status"] = true;
         }
+        echo json_encode($message);
     }
 
     public function updateAmount()
