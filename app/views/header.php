@@ -117,6 +117,9 @@ if (session_status() == PHP_SESSION_NONE) {
                                                     <li><a href="<?php echo BASE_URL . '/user/profile/' . $userId ?>"><i class=" fa fa-user" aria-hidden="true"></i>
                                                             Information</a>
                                                     </li>
+                                                    <li><a href="<?php echo BASE_URL . '/purchaseOrder' ?>"><i class=" fa fa-user" aria-hidden="true"></i>
+                                                            Purchase order</a>
+                                                    </li>
 
                                                     <li><a href="<?php echo BASE_URL ?>/login/logout"><i class="fa fa-arrow-left" aria-hidden="true"></i>
                                                             Logout</a>
@@ -157,19 +160,7 @@ if (session_status() == PHP_SESSION_NONE) {
                                 <ul class="navbar_menu">
                                     <li class=""><a href="<?php echo BASE_URL ?>/">home</a></li>
                                     <li><a href="<?php echo BASE_URL ?>/shop">shop</a></li>
-                                    <li>
-                                        <?php
-                                        if (Session::isLogin()) {
-                                        ?>
-                                            <a href="<?php echo BASE_URL ?>/purchaseOrder">purchase order</a>
-                                        <?php
-                                        } else {
-                                        ?>
-                                            <a href="<?php echo BASE_URL ?>/login">purchase order</a>
-                                        <?php
-                                        }
-                                        ?>
-                                    </li>
+                                    <li><a href="<?php echo BASE_URL ?>/about">about</a></li>
                                     <li><a href="<?php echo BASE_URL ?>/contact">contact</a></li>
                                 </ul>
                                 <ul class="navbar_user" style="display: flex; align-items: center;">
