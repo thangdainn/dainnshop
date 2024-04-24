@@ -31,10 +31,6 @@ CREATE TABLE `brands` (
   `id` int NOT NULL,
   `name` varchar(50) NOT NULL,
   `image` varchar(100) NOT NULL,
-<<<<<<< HEAD
-  `status` int NOT NULL DEFAULT '1',
-=======
->>>>>>> 74b728e (update)
   `create_at` datetime DEFAULT CURRENT_TIMESTAMP,
   `update_at` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
@@ -82,10 +78,6 @@ CREATE TABLE `categories` (
   `id` int NOT NULL,
   `name` varchar(50) NOT NULL,
   `image` varchar(100) NOT NULL,
-<<<<<<< HEAD
-  `status` int NOT NULL DEFAULT '1',
-=======
->>>>>>> 74b728e (update)
   `create_at` datetime DEFAULT CURRENT_TIMESTAMP,
   `update_at` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
@@ -94,21 +86,12 @@ CREATE TABLE `categories` (
 -- Dumping data for table `categories`
 --
 
-<<<<<<< HEAD
-INSERT INTO `categories` (`id`, `name`, `image`, `status`, `create_at`, `update_at`) VALUES
-(1, 'T-shirt', 'adidas-d2m-3s-gm2135-1.jpg', 1, '2023-03-20 13:30:00', '2023-03-20 13:30:00'),
-(2, 'Hoodie', 'images/sp3/ao-hoodie-lifestyle-nam-adidas-hl6925-1.jpg', 1, '2023-03-20 13:30:00', '2023-03-27 14:59:53'),
-(3, 'Shirt', 'images/categories/ao-thun-lifestyle-nam-puma-classics-logo-metallic-534711-01-1.jpg', 1, '2023-03-20 13:30:00', '2023-03-27 15:00:33'),
-(4, 'Polo', 'images/categories/nike-dq1011-824-1.jpg', 1, '2023-03-20 13:30:00', '2023-03-27 15:00:17'),
-(15, 'Jacket', 'images/categories/ao-hoodie-lifestyle-nam-adidas-hl6925-1.jpg', 1, '2023-03-29 16:39:38', '2023-03-30 16:30:10');
-=======
 INSERT INTO `categories` (`id`, `name`, `image`, `create_at`, `update_at`) VALUES
 (1, 'T-shirt', 'adidas-d2m-3s-gm2135-1.jpg', '2023-03-20 13:30:00', '2023-03-20 13:30:00'),
 (2, 'Hoodie', 'images/sp3/ao-hoodie-lifestyle-nam-adidas-hl6925-1.jpg', '2023-03-20 13:30:00', '2023-03-27 14:59:53'),
 (3, 'Shirt', 'images/categories/ao-thun-lifestyle-nam-puma-classics-logo-metallic-534711-01-1.jpg', '2023-03-20 13:30:00', '2023-03-27 15:00:33'),
 (4, 'Polo', 'images/categories/nike-dq1011-824-1.jpg', '2023-03-20 13:30:00', '2023-03-27 15:00:17'),
 (15, 'Jacket', 'images/categories/ao-hoodie-lifestyle-nam-adidas-hl6925-1.jpg', '2023-03-29 16:39:38', '2023-03-30 16:30:10');
->>>>>>> 74b728e (update)
 
 -- --------------------------------------------------------
 
@@ -148,11 +131,7 @@ INSERT INTO `contacts` (`id`, `name`, `email`, `message`, `status`, `note`, `cre
 
 CREATE TABLE `images` (
   `id` int NOT NULL,
-<<<<<<< HEAD
-  `product_id` int NOT NULL,
-=======
   `id_product` int NOT NULL,
->>>>>>> 74b728e (update)
   `image` varchar(100) NOT NULL,
   `create_at` datetime DEFAULT CURRENT_TIMESTAMP,
   `update_at` datetime DEFAULT CURRENT_TIMESTAMP
@@ -224,8 +203,6 @@ INSERT INTO `images` (`id`, `product_id`, `image`, `create_at`, `update_at`) VAL
 -- --------------------------------------------------------
 
 --
-<<<<<<< HEAD
-=======
 -- Table structure for table `login_token`
 --
 
@@ -247,7 +224,6 @@ INSERT INTO `login_token` (`id`, `user_id`, `token`, `create_at`) VALUES
 -- --------------------------------------------------------
 
 --
->>>>>>> 74b728e (update)
 -- Table structure for table `modules`
 --
 
@@ -367,10 +343,7 @@ CREATE TABLE `order_detail` (
 
 INSERT INTO `order_detail` (`id`, `order_id`, `product_id`, `size_id`, `total`, `quantity`) VALUES
 (8, 5, 1, 3, 600, 2),
-<<<<<<< HEAD
-=======
 (9, 5, 8, 6, 2800, 4),
->>>>>>> 74b728e (update)
 (10, 6, 7, 1, 6000, 5),
 (11, 5, 12, 2, 200, 2),
 (14, 6, 7, 3, 4800, 4),
@@ -397,10 +370,7 @@ INSERT INTO `order_detail` (`id`, `order_id`, `product_id`, `size_id`, `total`, 
 (43, 23, 2, 2, 500, 1),
 (44, 23, 2, 3, 500, 1),
 (45, 23, 12, 4, 900, 9),
-<<<<<<< HEAD
-=======
 (46, 23, 12, 6, 1200, 12),
->>>>>>> 74b728e (update)
 (47, 24, 28, 4, 2800, 4),
 (48, 24, 36, 2, 3000, 5),
 (49, 24, 37, 4, 4800, 4),
@@ -451,11 +421,7 @@ CREATE TABLE `products` (
   `sale` int NOT NULL,
   `category_id` int NOT NULL,
   `brand_id` int NOT NULL,
-<<<<<<< HEAD
-  `status` int DEFAULT '1' COMMENT '1 Mở bán 0 Ẩn',
-=======
   `status` tinyint DEFAULT NULL COMMENT '1 Mở bán 0 Ẩn',
->>>>>>> 74b728e (update)
   `type` varchar(50) DEFAULT NULL COMMENT 'Normal Sale New',
   `create_at` datetime DEFAULT CURRENT_TIMESTAMP,
   `update_at` datetime DEFAULT CURRENT_TIMESTAMP
@@ -466,11 +432,7 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `img`, `description`, `price`, `sale`, `category_id`, `brand_id`, `status`, `type`, `create_at`, `update_at`) VALUES
-<<<<<<< HEAD
-(1, 'Áo Addidas D2M', 'adidas-d2m-3s-gm2135-1.jpg', '&#60;p&#62;Mặc l&#38;ecirc;n tự tin thoải m&#38;aacute;i sẵn s&#38;agrave;ng t&#38;ecirc; t&#38;aacute;i&#60;/p&#62;&#13;&#10;', 600, 100, 1, 1, 1, 'new', '2023-03-20 13:30:00', '2023-05-06 10:44:01'),
-=======
 (1, 'Áo Addidas D2M', 'adidas-d2m-3s-gm2135-1.jpg', '&#60;p&#62;Mặc l&#38;ecirc;n tự tin thoải m&#38;aacute;i sẵn s&#38;agrave;ng t&#38;ecirc; t&#38;aacute;i&#60;/p&#62;&#13;&#10;', 600, 100, 1, 1, 2, 'new', '2023-03-20 13:30:00', '2023-05-06 10:44:01'),
->>>>>>> 74b728e (update)
 (2, 'Áo Thun Adidas D4R Xanh', 'adidas-d4r-tee-men-hk7117-1.jpg', 'Tuy không xinh nhưng biết thế nào là ảo', 800, 500, 1, 1, 1, 'new', '2023-03-20 13:30:00', '2023-05-08 10:12:21'),
 (3, 'Áo Thun Adidas HC2760 Đen', 'adidas-m-ti-tee-hc2760-den-1.jpg', 'Đen như cuộc tình của anh và em', 900, 800, 1, 1, 1, 'normal', '2023-03-20 13:30:00', '2023-03-20 13:30:00'),
 (5, 'Áo Hoodie Adidas Tokyo Carrier Pullover', 'images/categories/ao-hoodie-lifestyle-nam-adidas-hl6925-1.jpg', '&#60;p&#62;Kẻ si t&#38;igrave;nh trong cuộc t&#38;igrave;nh tay ba&#60;/p&#62;&#13;&#10;', 1500, 1200, 2, 1, 1, 'sale', '2023-03-20 13:30:00', '2023-03-27 15:03:27'),
@@ -499,11 +461,7 @@ INSERT INTO `products` (`id`, `name`, `img`, `description`, `price`, `sale`, `ca
 (36, 'Áo Nike Hồng Nam Tính', 'images/sp7/nike-dq1011-824-1.jpg', '&#60;p&#62;Ai n&#38;oacute;i m&#38;agrave;u hồng chỉ d&#38;agrave;nh cho phụ nữ th&#38;ocirc;i, h&#38;atilde;y mua ngay mẫu &#38;aacute;o hồng ho&#38;agrave;n to&#38;agrave;n mới đến từ Nike&#60;/p&#62;&#13;&#10;', 1000, 600, 1, 2, 1, 'new', '2023-05-07 21:48:52', NULL),
 (37, 'Hoodie Nike Thể Thao Pullover  Tokyo Trăng', 'images/sp19/ao-nike-sportswear-men-s-pullover-hoodie-tokyo-color-cw0308-100-mau-trang-1.jpg', '&#60;p&#62;Vừa nh&#38;igrave;n đ&#38;atilde; đẹp, kh&#38;ocirc;ng cần g&#38;igrave; hết chỉ với chiếc Hoodie n&#38;agrave;y l&#38;agrave; c&#38;oacute; thể tự tin ra đường&#60;/p&#62;&#13;&#10;', 1400, 1200, 2, 2, 1, 'new', '2023-05-07 22:15:11', NULL),
 (38, 'Áo Sơ Mi Gucci Embroidered Cotten Trắng', 'images/sp20/ao-so-mi-gucci-white-cotton-snake-embroidered-collar-duke-shirt-2.jpg', '&#60;p&#62;Si&#38;ecirc;u phẩm đến từ Gucci, chỉ với ch&#38;uacute;t đỉnh l&#38;agrave; c&#38;oacute; thể sỡ hữu&#60;/p&#62;&#13;&#10;', 5000, 4000, 3, 4, 1, 'sale', '2023-05-07 22:18:10', '2023-05-08 11:06:10'),
-<<<<<<< HEAD
-(39, 'abcxyz', 'images/sp14/team-4.jpg', '&#60;p&#62;abc&#60;/p&#62;&#13;&#10;', 500, 100, 1, 2, 1, 'normal', '2023-05-08 14:09:56', '2023-05-08 14:13:56');
-=======
 (39, 'abcxyz', 'images/sp14/team-4.jpg', '&#60;p&#62;abc&#60;/p&#62;&#13;&#10;', 500, 100, 1, 2, 2, 'normal', '2023-05-08 14:09:56', '2023-05-08 14:13:56');
->>>>>>> 74b728e (update)
 
 -- --------------------------------------------------------
 
@@ -512,13 +470,8 @@ INSERT INTO `products` (`id`, `name`, `img`, `description`, `price`, `sale`, `ca
 --
 
 CREATE TABLE `products_size` (
-<<<<<<< HEAD
-  `product_id` int NOT NULL,
-  `size_id` int NOT NULL,
-=======
   `id_product` int NOT NULL,
   `id_size` int NOT NULL,
->>>>>>> 74b728e (update)
   `quantity` int NOT NULL,
   `create_at` datetime DEFAULT CURRENT_TIMESTAMP,
   `update_at` datetime DEFAULT CURRENT_TIMESTAMP
@@ -682,20 +635,12 @@ INSERT INTO `products_size` (`product_id`, `size_id`, `quantity`, `create_at`, `
 CREATE TABLE `reviews` (
   `id` int NOT NULL,
   `product_id` int DEFAULT NULL,
-<<<<<<< HEAD
-  `user_id` int NOT NULL,
-=======
->>>>>>> 74b728e (update)
   `name` varchar(100) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
   `message` text,
   `star` int DEFAULT NULL,
-<<<<<<< HEAD
-  `status` int DEFAULT '1' COMMENT '0: An 1:Hien Thi',
-=======
   `status` int DEFAULT NULL COMMENT '1: An 2:Hien Thi',
   `note` text,
->>>>>>> 74b728e (update)
   `create_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
@@ -776,10 +721,6 @@ CREATE TABLE `sizes` (
   `id` int NOT NULL,
   `name` varchar(10) DEFAULT NULL,
   `description` varchar(100) DEFAULT NULL,
-<<<<<<< HEAD
-  `status` int NOT NULL DEFAULT '1',
-=======
->>>>>>> 74b728e (update)
   `create_at` datetime DEFAULT CURRENT_TIMESTAMP,
   `update_at` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
@@ -788,14 +729,6 @@ CREATE TABLE `sizes` (
 -- Dumping data for table `sizes`
 --
 
-<<<<<<< HEAD
-INSERT INTO `sizes` (`id`, `name`, `description`, `status`, `create_at`, `update_at`) VALUES
-(1, 'S', '[value-3]', 1, NULL, NULL),
-(2, 'M', '[value-3]', 1, NULL, NULL),
-(3, 'L', '[value-3]', 1, NULL, NULL),
-(4, 'XL', '[value-3]', 1, NULL, NULL),
-(5, '2XL', '[value-3]', 1, NULL, NULL);
-=======
 INSERT INTO `sizes` (`id`, `name`, `description`, `create_at`, `update_at`) VALUES
 (1, 'S', '[value-3]', NULL, NULL),
 (2, 'M', '[value-3]', NULL, NULL),
@@ -835,7 +768,6 @@ INSERT INTO `subcribes` (`id`, `email`, `note`, `create_at`, `status`) VALUES
 (9, 'tienhai488@gmail.com', 'Chưa xử lý', '2023-04-14 20:12:38', 1),
 (10, 'ngochuy@gmail.com', 'Chưa xử lý', '2023-04-17 14:30:36', 1),
 (11, 'tienhai@gmail.com', 'Chưa xử lý', '2023-05-07 23:26:02', 1);
->>>>>>> 74b728e (update)
 
 -- --------------------------------------------------------
 
@@ -849,18 +781,11 @@ CREATE TABLE `users` (
   `email` varchar(50) NOT NULL,
   `phone` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
   `password` varchar(100) NOT NULL,
-<<<<<<< HEAD
-  `image` varchar(255) NOT NULL DEFAULT 'images/avatar/default.png',
-  `status` int NOT NULL DEFAULT '1' COMMENT '1 Kich hoat 0 Chua kich hoat',
-  `type` varchar(50) DEFAULT 'user',
-  `role_id` int NOT NULL DEFAULT '2',
-=======
   `status` int NOT NULL COMMENT '1 Kich hoat 0 Chua kich hoat',
   `type` varchar(50) DEFAULT 'user',
   `role_id` int NOT NULL,
   `forgot_token` varchar(200) DEFAULT NULL,
   `active_token` varchar(200) DEFAULT NULL,
->>>>>>> 74b728e (update)
   `create_at` datetime DEFAULT CURRENT_TIMESTAMP,
   `update_at` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
@@ -869,18 +794,6 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-<<<<<<< HEAD
-INSERT INTO `users` (`id`, `fullname`, `email`, `phone`, `password`, `image`, `status`, `type`, `role_id`, `create_at`, `update_at`) VALUES
-(3, 'Tien Hai Le', 'tienhai4888@gmail.com', '0987982144', '$2y$10$EOKveHmiOhJhwzp04D1nMuD4eeGJ0P7TKTsn9oGJHeIxWylm5Cht6', 'images/avatar/default.png', 1, 'member', 8, '2023-03-17 11:05:40', '2023-04-17 16:38:48'),
-(9, 'Minh Lam ', 'minhlam@gmail.com', '0987654321', '$2y$10$OcKwsA8ONsFm4ihM1mR8m.gVLCS3terEbozObJ5Jc89dsfOw8tI1O', 'images/avatar/default.png', 1, 'user', 2, '2023-03-18 21:48:44', '2023-05-08 13:13:10'),
-(10, 'TienHai', 'tienhai@gmail.com', '0987654321', '$2y$10$ilv4fmfcw0cfkdtcUou9xu0joh3KlGC08pEzuoNQKEc6iwNHtPgZm', 'images/avatar/default.png', 1, 'user', 3, '2023-03-18 21:50:14', '2023-03-19 09:57:31'),
-(37, 'TienHai', 'tienhai488@gmail.com', '0987654321', '$2y$10$G6GZk.UtbjfwMqDBBXyaEetxOuR1Q2LC1EFbtfM4ykXlRau0xeK62', 'images/avatar/default.png', 1, 'user', 2, '2023-03-31 16:54:53', '2023-03-31 21:22:18'),
-(38, 'Minh Lam', 'minhlam2@gmail.com', '0987654321', '$2y$10$uIcF8Q7uXNj7kI/Dc7qhEefwMSa4SZ61q5riSj1QklBx6/2p6O.ei', 'images/avatar/default.png', 1, 'member', 7, '2023-04-01 17:18:32', '2023-04-01 23:00:49'),
-(45, 'ducthang', 'thanngit@gmail.com', '0123123123', '$2y$10$sdvKfv5Tu6hXbbJfOTsHj.Gy4osCNG2uEYO7gjGTKJBpcz8GuZJr6', 'images/avatar/default.png', 1, 'user', 2, '2023-10-19 10:49:41', NULL),
-(46, 'ducthang', '3121560085@sv.sgu.edu.vn', NULL, '$2y$10$KhWZMCIUoVrqg8XejPtX8ee1oLkB4Ojusscz888TMR5GMPCbqL0ma', 'images/avatar/default.png', 1, 'user', 2, '2024-03-13 16:16:06', '2024-03-13 16:16:06'),
-(47, 'ducthang', 'wdw@gmail.com', NULL, '$2y$10$Lry7g1my2Tm9QWPymlAU/emV77GZt6nFVYsfYiIHPMH6kzPpXF2Bi', 'images/avatar/default.png', 1, 'user', 2, '2024-03-13 16:18:20', '2024-03-13 16:18:20'),
-(49, 'Học tập', 'thdddanngit@gmail.com', NULL, '$2y$10$Gh4Q7fm2pFUmcni7EE/YWeUluTtG8f6gjlfZFhVHBcEcbr9w8XQeG', 'images/avatar/default.png', 1, 'user', 2, '2024-03-13 19:16:16', '2024-03-13 19:16:16');
-=======
 INSERT INTO `users` (`id`, `fullname`, `email`, `phone`, `password`, `status`, `type`, `role_id`, `forgot_token`, `active_token`, `create_at`, `update_at`) VALUES
 (3, 'Tien Hai Le', 'tienhai4888@gmail.com', '0987982144', '$2y$10$EOKveHmiOhJhwzp04D1nMuD4eeGJ0P7TKTsn9oGJHeIxWylm5Cht6', 1, 'member', 8, '7875d6272a18434cd5815a137e70d6e96cec6ac9', NULL, '2023-03-17 11:05:40', '2023-04-17 16:38:48'),
 (9, 'Minh Lam ', 'minhlam@gmail.com', '0987654321', '$2y$10$OcKwsA8ONsFm4ihM1mR8m.gVLCS3terEbozObJ5Jc89dsfOw8tI1O', 1, 'user', 2, NULL, NULL, '2023-03-18 21:48:44', '2023-05-08 13:13:10'),
@@ -888,7 +801,6 @@ INSERT INTO `users` (`id`, `fullname`, `email`, `phone`, `password`, `status`, `
 (37, 'TienHai', 'tienhai488@gmail.com', '0987654321', '$2y$10$G6GZk.UtbjfwMqDBBXyaEetxOuR1Q2LC1EFbtfM4ykXlRau0xeK62', 1, 'user', 2, '', '', '2023-03-31 16:54:53', '2023-03-31 21:22:18'),
 (38, 'Minh Lam', 'minhlam2@gmail.com', '0987654321', '$2y$10$uIcF8Q7uXNj7kI/Dc7qhEefwMSa4SZ61q5riSj1QklBx6/2p6O.ei', 1, 'member', 7, NULL, NULL, '2023-04-01 17:18:32', '2023-04-01 23:00:49'),
 (45, 'ducthang', 'thanngit@gmail.com', '0123123123', '$2y$10$wEQwvHRUaLt.NfjhNSv0pOjUGi25gdOY8RtSjQtZrVeC0MWP.KJpW', 1, 'user', 2, NULL, '238eacac8221c9a134c6b7b56839247969de1e97', '2023-10-19 10:49:41', NULL);
->>>>>>> 74b728e (update)
 
 --
 -- Indexes for dumped tables
@@ -1003,10 +915,6 @@ ALTER TABLE `sizes`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-<<<<<<< HEAD
-  ADD UNIQUE KEY `email` (`email`),
-=======
->>>>>>> 74b728e (update)
   ADD KEY `fk_user_group` (`role_id`);
 
 --
@@ -1042,15 +950,12 @@ ALTER TABLE `contacts`
 --
 ALTER TABLE `images`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
-<<<<<<< HEAD
-=======
 
 --
 -- AUTO_INCREMENT for table `login_token`
 --
 ALTER TABLE `login_token`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=289;
->>>>>>> 74b728e (update)
 
 --
 -- AUTO_INCREMENT for table `options`
@@ -1099,25 +1004,18 @@ ALTER TABLE `roles`
 --
 ALTER TABLE `sizes`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-<<<<<<< HEAD
-=======
 
 --
 -- AUTO_INCREMENT for table `subcribes`
 --
 ALTER TABLE `subcribes`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
->>>>>>> 74b728e (update)
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-<<<<<<< HEAD
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
-=======
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
->>>>>>> 74b728e (update)
 
 --
 -- Constraints for dumped tables
