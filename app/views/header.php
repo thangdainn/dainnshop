@@ -69,6 +69,7 @@ if (session_status() == PHP_SESSION_NONE) {
     </div>
     <div class="super_container">
 
+
         <!-- Header -->
 
         <header class="header trans_300">
