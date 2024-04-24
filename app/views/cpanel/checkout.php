@@ -71,12 +71,12 @@
                                             <?php echo $num ?>.
                                             <span class="product-name"><?php echo $cart['product_name'] ?>
                                                 <span></span>$<span class="product-total"><?php echo $totalMoney ?></span>
-                                                <input type="hidden" id="product-id" value="<?php echo $cart['product_id'];
-                                                                                            ?>">
-                                                <input type="hidden" id="product-size-id" value="<?php echo $cart['size_id'];
-                                                                                                    ?>">
-                                                <input type="hidden" id="product-quantity" value="<?php echo $cart['amount'];
-                                                                                                    ?>">
+                                                    <input type="hidden" id="product-id" value="<?php echo $cart['product_id'];
+                                                                                                ?>">
+                                                    <input type="hidden" id="product-size-id" value="<?php echo $cart['size_id'];
+                                                                                                        ?>">
+                                                    <input type="hidden" id="product-quantity" value="<?php echo $cart['amount'];
+                                                                                                        ?>">
                                         </li>
                                     <?php
                                         $num++;
