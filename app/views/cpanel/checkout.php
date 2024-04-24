@@ -52,21 +52,21 @@
                             </div>
                             <div class="checkout__input">
                                 <p>Order notes<span>*</span></p>
-                                <input name="note" type="text" placeholder="Notes about your order, e.g. special notes for delivery.">
+                                <input type="text" placeholder="Notes about your order, e.g. special notes for delivery.">
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6">
                             <div class="checkout__order">
                                 <h4 class="order__title">Your order</h4>
                                 <div class="checkout__order__products">Product <span>Total</span></div>
-                                <ul class="checkout__total__products">
-                                    <?php
-                                    $num = 1;
-                                    $totalFinal = 0;
-                                    foreach ($carts as $cart) {
-                                        $totalMoney = $cart['cost'] * $cart['amount'];
-                                        $totalFinal += $totalMoney;
-                                    ?>
+                                <?php
+                                $num = 1;
+                                $totalFinal = 0;
+                                foreach ($carts as $cart) {
+                                    $totalMoney = $cart['cost'] * $cart['amount'];
+                                    $totalFinal += $totalMoney;
+                                ?>
+                                    <ul class="checkout__total__products">
                                         <li>
                                             <?php echo $num ?>.
                                             <span class="product-name"><?php echo $cart['product_name'] ?>
@@ -78,26 +78,26 @@
                                                 <input type="hidden" id="product-quantity" value="<?php echo $cart['amount'];
                                                                                                     ?>">
                                         </li>
-                                    <?php
-                                        $num++;
-                                    }
-                                    ?>
-                                </ul>
+                                    </ul>
+                                <?php
+                                    $num++;
+                                }
+                                ?>
                                 <ul class="checkout__total__all">
                                     <li>Total <span><?php echo $totalFinal ?></span></li>
                                 </ul>
 
                                 <div class="checkout-payment__checkbox">
                                     <div class="checkout-payment__checkbox-item">
-                                        <input type="checkbox" id="checkbox1" name="checkbox" value="credit" class="single-checkbox">
+                                        <input type="checkbox" id="checkbox1" name="checkbox" class="single-checkbox">
                                         <label for="checkbox1">Credit or Debit Card</label>
                                     </div>
                                     <div class="checkout-payment__checkbox-item">
-                                        <input type="checkbox" id="checkbox2" name="checkbox" value="cash" class="single-checkbox">
+                                        <input type="checkbox" id="checkbox2" name="checkbox" class="single-checkbox">
                                         <label for="checkbox2">Cash</label>
                                     </div>
                                     <div class="checkout-payment__checkbox-item">
-                                        <input type="checkbox" id="checkbox3" name="checkbox" value="mobile wallet" class="single-checkbox">
+                                        <input type="checkbox" id="checkbox3" name="checkbox" class="single-checkbox">
                                         <label for="checkbox3">Mobile Wallet</label>
                                     </div>
                                 </div>
@@ -112,31 +112,19 @@
 
     <script>
         $('document').ready(function() {
-            var paymentMethod = '';
-
-            $(".single-checkbox").change(function() {
-                // Kiểm tra xem checkbox này có được chọn không
-                if ($(this).is(":checked")) {
-                    // Lấy giá trị của checkbox đã được chọn
-                    $(".single-checkbox").not(this).prop("checked", false);
-                    paymentMethod = $(this).val();
-                }
-            });
             $('.site-btn').click(function(e) {
                 e.preventDefault();
 
-                console.log(paymentMethod);
                 var fullname = $('input[name="full-name"]').val();
                 var phone = $('input[name="phone"]').val();
                 var address = $('input[name="address"]').val();
-                var note = $('input[name="note"]').val();
 
                 var products_detail = []
-                $('.checkout__total__products li').each(function() {
-                    var productTotal = $(this).find('.product-total').text();
-                    var productId = $(this).find('#product-id').val();
-                    var sizeId = $(this).find('#product-size-id').val();
-                    var productQuantity = $(this).find('#product-quantity').val();
+                $('.checkout__total__products').each(function() {
+                    var productTotal = $('.product-total').text();
+                    var productId = $('#product-id').val();
+                    var sizeId = $('#product-size-id').val();
+                    var productQuantity = $('#product-quantity').val();
                     products_detail.push({
                         product_id: productId,
                         size_id: sizeId,
@@ -153,8 +141,6 @@
                         fullName: fullname,
                         phone: phone,
                         address: address,
-                        note: note,
-                        paymentMethod: paymentMethod,
                         products: products_detail
                     },
                     success: function(reponse) {
