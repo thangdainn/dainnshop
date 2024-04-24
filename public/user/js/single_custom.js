@@ -344,21 +344,6 @@ jQuery(document).ready(function ($) {
       },
     });
   }
-  function buyNowAjax(data) {
-    let url = base_url + "/cart/add";
-    $.ajax({
-      type: "POST",
-      url: url,
-      data: data,
-      success: function (response) {
-        if (response.status === "success") {
-          alert("Add to cart successfully");
-        } else {
-          alert("Add to cart failed");
-        }
-      },
-    });
-  }
 
   function initBuyNow() {
     $(".buy_now_button").on("click", function (e) {
