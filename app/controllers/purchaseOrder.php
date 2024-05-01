@@ -13,12 +13,11 @@ class purchaseOrder extends Controller
         $this->purchaseOrder();
     }
 
-    public function cancelOrder()
-    {
+    public function cancelOrder() {
         if (isset($_POST['orderId'])) {
             $orderId = $_POST['orderId'];
             $orderModel = $this->load->model("PurchaseOrderModel");
-            $orderModel->cancelOrder($orderId);
+            $orderModel -> cancelOrder($orderId);
         } else {
             echo "Error: Missing orderId";
         }
@@ -44,12 +43,12 @@ class purchaseOrder extends Controller
                     <td>' . $item['total'] . '$</td>
                 </tr>';
             }
-            $html .= '<tr>
+                $html .= '<tr>
                     <td>Total Cost</td>
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td>' . $totalCost . '$</td>
+                    <td>'.$totalCost .'$</td>
                 </tr>';
             echo $html;
         } else {
@@ -158,7 +157,8 @@ class purchaseOrder extends Controller
                 '</td>
                 </tr>';
             }
-        } else {
+        }
+        else {
             $html .= '<span class="order_none">No cart here</span>';
         }
         echo $html;
@@ -174,5 +174,6 @@ class purchaseOrder extends Controller
         $data['orders'] = $orderModel->findByUserId($userID);
         $this->load->view("cpanel/purchaseOrder", $data);
         $this->load->view("footer");
+        
     }
 }
