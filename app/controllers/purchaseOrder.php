@@ -13,12 +13,11 @@ class purchaseOrder extends Controller
         $this->purchaseOrder();
     }
 
-    public function cancelOrder()
-    {
+    public function cancelOrder() {
         if (isset($_POST['orderId'])) {
             $orderId = $_POST['orderId'];
             $orderModel = $this->load->model("PurchaseOrderModel");
-            $orderModel->cancelOrder($orderId);
+            $orderModel -> cancelOrder($orderId);
         } else {
             echo "Error: Missing orderId";
         }
@@ -43,12 +42,12 @@ class purchaseOrder extends Controller
                     <td>' . $item['total'] . '$</td>
                 </tr>';
             }
-            $html .= '<tr>
+                $html .= '<tr>
                     <td>Total Cost</td>
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td>' . $totalCost . '$</td>
+                    <td>'.$totalCost .'$</td>
                 </tr>';
             echo $html;
         } else {
@@ -68,18 +67,18 @@ class purchaseOrder extends Controller
             foreach ($orders as $order) {
                 $html .= '
                 <tr>
-                    <th scope="row">' . $order['id'] . '</th>
-                    <td>' . $order['resipient_name'] . '</td>
-                    <td>' . $order['resipient_phonenumber'] . '</td>
-                    <td>' . $order['delivery_address'] . '</td>
-                    <td class="actions"><a href="#" data-id="' . $order['id'] . '" class="btn btn_detail">View Details</a>';
-                if ($order['id_order_status'] == 1) {
-                    $html .= '<a href="#" data-id="' . $order['id'] . '" class="btn btn_cancel">Cancel</a>';
-                }
-                '</td>
+                    <th scope="row">'. $order['id'] .'</th>
+                    <td>'. $order['resipient_name'] .'</td>
+                    <td>'. $order['resipient_phonenumber'] .'</td>
+                    <td>'. $order['delivery_address'] .'</td>
+                    <td><a href="#" data-id="'. $order['id'] .'" class="btn btn_detail">View Details</a></td>';
+                    if ($order['id_order_status'] == 1) {
+                        $html .= '<td><a href="#" data-id="'. $order['id'] .'" class="btn btn_cancel">Cancel</a></td>';
+                    }'
                 </tr>';
             }
-        } else {
+        }
+        else {
             $html .= '<span class="order_none">No cart here</span>';
         }
         echo $html;
@@ -95,5 +94,6 @@ class purchaseOrder extends Controller
         $data['orders'] = $orderModel->findByUserId($userID);
         $this->load->view("cpanel/purchaseOrder", $data);
         $this->load->view("footer");
+        
     }
 }
