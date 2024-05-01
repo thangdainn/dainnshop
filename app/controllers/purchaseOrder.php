@@ -13,16 +13,26 @@ class purchaseOrder extends Controller
         $this->purchaseOrder();
     }
 
+    public function cancelOrder() {
+        if (isset($_POST['orderId'])) {
+            $orderId = $_POST['orderId'];
+            $orderModel = $this->load->model("PurchaseOrderModel");
+            $orderModel -> cancelOrder($orderId);
+        } else {
+            echo "Error: Missing orderId";
+        }
+    }
+
     public function orderDetail()
     {
         if (isset($_POST['orderId'])) {
             $orderId = $_POST['orderId'];
 
             $orderModel = $this->load->model("PurchaseOrderModel");
-            $orderDetails = $orderModel->viewDetailByOrderId($orderId);
+            $orderDetail = $orderModel->viewDetailByOrderId($orderId);
             $html = '';
             $totalCost = 0;
-            foreach ($orderDetails as $item) {
+            foreach ($orderDetail as $item) {
                 $totalCost += $item['total'];
                 $html .= '<tr>
                     <td>' . $item['product_name'] . '</td>
@@ -61,7 +71,10 @@ class purchaseOrder extends Controller
                     <td>'. $order['resipient_name'] .'</td>
                     <td>'. $order['resipient_phonenumber'] .'</td>
                     <td>'. $order['delivery_address'] .'</td>
-                    <td><a href="#" data-id="'. $order['id'] .'" class="btn btn_detail">View Details</a></td>
+                    <td><a href="#" data-id="'. $order['id'] .'" class="btn btn_detail">View Details</a></td>';
+                    if ($order['id_order_status'] == 1) {
+                        $html .= '<td><a href="#" data-id="'. $order['id'] .'" class="btn btn_cancel">Cancel</a></td>';
+                    }'
                 </tr>';
             }
         }
