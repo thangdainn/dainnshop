@@ -27,29 +27,31 @@ class PurchaseOrderModel extends Model
         if ($orderStatusId == 0) {
             $sql = "SELECT * FROM `order` WHERE user_id = ?";
             $result = $this->db->select($sql, $userId);
-        }
-        else {
+        } else {
             $sql = "SELECT * FROM `order` WHERE user_id = ? AND id_order_status = ?";
-            $result = $this->db->select($sql, $userId , $orderStatusId);
+            $result = $this->db->select($sql, $userId, $orderStatusId);
         }
         return $result;
     }
 
-    public function viewDetailByOrderId($orderId) {
+    public function viewDetailByOrderId($orderId)
+    {
         $sql = "SELECT p.id as product_id, p.name as product_name, p.img as product_image , s.name as size , od.quantity as quantity , od.total as total, od.isReviewed as is_reviewed
         FROM `order_detail` od, `products` p, `sizes` s 
         WHERE od.product_id = p.id and od.size_id = s.id and od.order_id = ?";
-        $result = $this->db->select($sql, $orderId); 
+        $result = $this->db->select($sql, $orderId);
         return $result;
     }
 
-    public function isReviewed ($orderId, $productId) {
+    public function isReviewed($orderId, $productId)
+    {
         $sql = "UPDATE `order_detail` SET `isReviewed` = 1 WHERE `order_id` = ? AND `product_id` = ?";
         $result = $this->db->execute($sql, $orderId, $productId);
         return $result;
     }
 
-    public function cancelOrder($orderId) {
+    public function cancelOrder($orderId)
+    {
         $sql = "UPDATE `order` SET id_order_status = 4 WHERE id = ?";
         $result = $this->db->execute($sql, $orderId);
         return $result;
