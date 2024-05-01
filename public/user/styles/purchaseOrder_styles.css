@@ -254,6 +254,14 @@ section
 	overflow: hidden;
 }
 
+.btn {
+	font-size: 14px;
+	color: #FFFFFF;
+	background-color: #1e1e27;
+	text-decoration: none;
+	max-width: 120px;
+	border-radius: 2px;
+}
 /*********************************
 3. Home
 *********************************/

@@ -65,13 +65,13 @@
 						}
 						?>
 						<tr>
-							<td class="product_number">&nbsp;</td>
-							<td class="product_name">Total cart</td>
-							<td class="product_img">&nbsp;</td>
-							<td class="product_quantity">&nbsp;</td>
-							<td class="product_price">&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Total cart</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
 							<td class="total_money"><?php echo $totalFinal; ?></td>
-							<td class="product_delete">&nbsp;</td>
+							<td>&nbsp;</td>
 						</tr>
 					</tbody>
 				</table>
@@ -82,21 +82,34 @@
 				</div>
 			<?php
 			} else {
+				echo '<div class="cart_none">No cart here</div>';
 			?>
-				<table class="table cart_table" id="showLSCartTable">
+				<!-- <table class="table cart_table" id="showLSCartTable">
 					<thead>
 						</thread>
-				</table>
+				</table> -->
 			<?php
 			}
 			?>
 
-			<!-- <hr>
-			</hr> -->
-			<!-- </form> -->
 			<script>
-				//Edit Amount on up down button
+				//Event Handler
 				function eventHandler() {
+
+					$('.quantity_input').change(function() {
+						var newQuantity = $(this).val();
+						var pricePerItem = <?php echo $cart['cost'] ?>; // Assuming this is the price per item
+						var newPrice = newQuantity * pricePerItem;
+						var $row = $(this).closest('tr'); // Find the nearest table row
+						$row.find('.product_price').text(newPrice); // Update the price
+
+						var totalMoney = 0;
+						$('.product_price').each(function() {
+							totalMoney += Number($(this).text());
+						});
+						$('.total_money').text(totalMoney); // Update the total money
+					});
+
 					//Update Amount
 					$(document).on('click', '.update_btn', function(e) {
 						var cartId = $(this).closest('tr').find('#cart-id').val();
@@ -113,10 +126,8 @@
 								userId: userId
 							},
 							success: function(response) {
-								console.log(response);
 								$('.cart_table tbody').html(response);
 								eventHandler();
-								addEventListenersToQuantityButtons();
 							}
 						});
 					});
@@ -137,7 +148,6 @@
 									userId: userId
 								},
 								success: function(response) {
-									console.log(response);
 									$('.cart_table tbody').html(response);
 									eventHandler();
 								},
