@@ -162,7 +162,6 @@
 									userId: userId
 								},
 								success: function(response) {
-									console.log(response);
 									$('.cart_table tbody').html(response);
 									// // row.remove();
 									eventHandler();
