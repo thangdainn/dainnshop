@@ -17,7 +17,7 @@ $(document).ready(function() {
                 if (willDelete) {
                     $.ajax({
                         method: "POST",
-                        url: "../../admin/controllers/code.php",
+                        url: "code.php",
                         data: {
                             'product_id':id,
                             'delete_product_btn':true
@@ -55,7 +55,7 @@ $(document).ready(function() {
                 if (willDelete) {
                     $.ajax({
                         method: "POST",
-                        url: "../../admin/controllers/code.php",
+                        url: "code.php",
                         data: {
                             'category_id':id,
                             'delete_category_btn':true
@@ -93,7 +93,7 @@ $(document).ready(function() {
                 if (willDelete) {
                     $.ajax({
                         method: "POST",
-                        url: "../../admin/controllers/code.php",
+                        url: "code.php",
                         data: {
                             'brand_id':id,
                             'delete_brand_btn':true
@@ -133,7 +133,7 @@ $(document).ready(function() {
                 if (willDelete) {
                     $.ajax({
                         method: "POST",
-                        url: "../../admin/controllers/code.php",
+                        url: "code.php",
                         data: {
                             'product_id':product_id,
                             'size_id':size_id,
