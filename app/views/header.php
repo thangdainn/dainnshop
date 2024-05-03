@@ -38,6 +38,9 @@ if (session_status() == PHP_SESSION_NONE) {
     } elseif (strpos($currentURL, '/contact') !== false) {
         echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/contact_styles.css">';
         echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/contact_responsive.css">';
+    } elseif (strpos($currentURL, '/about') !== false) {
+        echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/about_styles.css">';
+        echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/about_responsive.css">';
     } elseif (strpos($currentURL, '/cart') !== false) {
         echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/cart_styles.css">';
         echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/cart_responsive.css">';
