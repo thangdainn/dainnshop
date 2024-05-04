@@ -87,15 +87,15 @@
 
                                 <div class="checkout-payment__checkbox">
                                     <div class="checkout-payment__checkbox-item">
-                                        <input type="checkbox" id="checkbox1" name="checkbox" class="single-checkbox">
+                                        <input type="checkbox" id="checkbox1" name="checkbox" value="credit" class="single-checkbox">
                                         <label for="checkbox1">Credit or Debit Card</label>
                                     </div>
                                     <div class="checkout-payment__checkbox-item">
-                                        <input type="checkbox" id="checkbox2" name="checkbox" class="single-checkbox">
+                                        <input type="checkbox" id="checkbox2" name="checkbox" value="cash" class="single-checkbox">
                                         <label for="checkbox2">Cash</label>
                                     </div>
                                     <div class="checkout-payment__checkbox-item">
-                                        <input type="checkbox" id="checkbox3" name="checkbox" class="single-checkbox">
+                                        <input type="checkbox" id="checkbox3" name="checkbox" value="mobile wallet" class="single-checkbox">
                                         <label for="checkbox3">Mobile Wallet</label>
                                     </div>
                                 </div>
