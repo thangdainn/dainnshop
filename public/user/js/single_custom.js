@@ -321,12 +321,13 @@ jQuery(document).ready(function ($) {
       url: url,
       data: data,
       success: function (response) {
-        let message = JSON.parse(response);
-        if (message.status) {
-          showNotification();
-        } else {
-          alert("Add to cart failed");
-        }
+        // let message = JSON.parse(response);
+        // if (message.status) {
+        //   showNotification();
+        // } else {
+        //   alert("Add to cart failed");
+        // }
+        showNotification();
       },
     });
   }

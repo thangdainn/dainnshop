@@ -2,7 +2,6 @@
 if (session_status() == PHP_SESSION_NONE) {
     Session::init();
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -193,7 +192,9 @@ if (session_status() == PHP_SESSION_NONE) {
                                     <li class="checkout">
                                         <a href="<?php echo BASE_URL ?>/cart">
                                             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                            <span id="checkout_items" class="checkout_items">2</span>
+                                            <span id="checkout_items" class="checkout_items">
+                                                <?php echo isset($_SESSION['totalQuantity']) ? $_SESSION['totalQuantity'] : 0; ?>
+                                            </span>
                                         </a>
                                     </li>
                                 </ul>

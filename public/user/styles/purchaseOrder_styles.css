@@ -361,11 +361,12 @@ section
 	border-radius: 2px;
 }
 
-.btn_detail:focus {
+.btn_detail:focus ,
+.btn_cancel:focus {
 	box-shadow: none;
 }
 
-.btn_detail:hover {
+.btn_detail:hover, .btn_cancel:hover {
 	opacity: 0.6;
 	color: #fff;
 }
