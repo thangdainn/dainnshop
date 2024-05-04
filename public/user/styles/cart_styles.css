@@ -968,6 +968,10 @@ section {
   color: #fe4c50;
 }
 
+.product_link {
+	color: #fe4c50;
+}	
+
 .cart_buttons {
   display: flex;
   justify-content: space-between;
