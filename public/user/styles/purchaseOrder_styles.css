@@ -352,10 +352,6 @@ section
 	margin-top: 50px; 
 }
 
-.actions {
-	display: flex;
-}
-
 .btn_detail {
 	font-size: 14px;
 	color: #FFFFFF;
@@ -363,10 +359,6 @@ section
 	text-decoration: none;
 	max-width: 120px;
 	border-radius: 2px;
-}
-
-.btn_cancel {
-	margin-left: 5px;
 }
 
 .btn_detail:focus ,
