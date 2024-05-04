@@ -403,9 +403,9 @@ jQuery(document).ready(function ($) {
         if (!Array.isArray(existingCartItems)) {
           existingCartItems = [];
         }
-    
+
         existingCartItems.push(data);
-    
+
         setLocalStorageCartItems(existingCartItems);
         // return;
       }
