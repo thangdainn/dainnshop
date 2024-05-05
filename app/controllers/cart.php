@@ -88,7 +88,6 @@ class cart extends Controller
             }
             $_SESSION['cart'][] = $cartItem;
         }
-        echo json_encode($message);
     }
 
     public function updateAmount()
