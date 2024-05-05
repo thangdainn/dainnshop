@@ -229,7 +229,7 @@
   .order_status_link::before {
     left: -34px;
   }
-  
+
   .detail-table {
     font-size: 16px;
   }
@@ -238,7 +238,6 @@
     font-size: 42px;
     line-height: 50px;
   }
-
 }
 
 /************
@@ -326,7 +325,7 @@
 
   .order_status_link::before {
     left: -21px;
-}
+  }
 }
 
 /************
@@ -380,7 +379,8 @@
     flex-direction: column;
   }
 
-  .btn_cancel, .btn_review  {
+  .btn_cancel,
+  .btn_review {
     margin-left: 0;
     margin-top: 10px;
   }
