@@ -289,9 +289,6 @@
 ************/
 
 @media only screen and (max-width: 479px) {
-	.follow_us_contents .social{
-		justify-content: center;
-	}
   .contact_container {
     margin-top: 73px;
   }
