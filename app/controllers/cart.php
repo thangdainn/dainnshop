@@ -32,9 +32,61 @@ class cart extends Controller
             $sizeId = $_POST['sizeId'];
             $quantity = $_POST['quantity'];
 
-            $cartModel = $this->load->model("CartModel");
-            $cartModel->addCart($userId, $productId, $quantity, $sizeId);
-            $message["status"] = true;
+            if ($userId == 0 || !isset($userId)) {
+                $this->addCartSession($productId, $sizeId, $quantity);
+                $message["status"] = true;
+            } else {
+                $cartModel = $this->load->model("CartModel");
+                $existingCartItem = $cartModel->findCartItem($userId, $productId, $sizeId);
+
+                if ($existingCartItem) {
+                    $existingCartItem[0]['amount'] += $quantity;
+                    $cartModel->updateCart($existingCartItem[0]['amount'], $existingCartItem[0]['id']);
+                } else {
+                    $cartModel->addCart($userId, $productId, $quantity, $sizeId);
+                }
+                $message["status"] = true;
+            }
+            $_SESSION['totalQuantity'] = isset($_SESSION['totalQuantity']) ? $_SESSION['totalQuantity'] + 1 : 1;
+        }
+        echo json_encode($message);
+    }
+
+    public function addCartSession($productId, $sizeId, $quantity)
+    {
+        $cartModel = $this->load->model("CartModel");
+        //Lấy ra name, image, price, quantity của sản phẩm
+        $cartInfo = $cartModel->getInfoSessionCart($productId, $sizeId);
+        $cartId = time();
+
+        $cartItemExists = false;
+        if (isset($_SESSION['cart'])) {
+            foreach ($_SESSION['cart'] as &$item) {
+                if ($item['product_id'] == $productId && $item['size_id'] == $sizeId) {
+                    // Nếu sản phẩm đã có trong giỏ hàng, tăng số lượng của nó lên
+                    $item['amount'] += $quantity;
+                    $cartItemExists = true;
+                    break;
+                }
+            }
+        }
+
+        if (!$cartItemExists) {
+            $cartItem = array(
+                'size_id' => $sizeId,
+                'product_id' => $productId,
+                'cart_id' => $cartId,
+                'amount' => $quantity,
+                'product_name' => $cartInfo[0]['product_name'],
+                'product_img' => $cartInfo[0]['product_img'],
+                'cost' => $cartInfo[0]['product_cost'],
+                'size' => $cartInfo[0]['size']
+            );
+
+            if (!isset($_SESSION['cart'])) {
+                $_SESSION['cart'] = array();
+            }
+            $_SESSION['cart'][] = $cartItem;
         }
         echo json_encode($message);
     }
@@ -78,6 +130,11 @@ class cart extends Controller
             $this->render($updatedCart);
         }
 
+        if ($_SESSION['totalQuantity'] < 0) {
+            $_SESSION['totalQuantity'] = 0;
+        }
+    }
+
     public function render($carts)
     {
         $num = 1;
@@ -88,34 +145,34 @@ class cart extends Controller
             $totalFinal += $totalMoney;
             $html .= '
             <tr>
-                                    <input type="hidden" id="cart-id" value="' . $cart['cart_id'] . '
+                <input type="hidden" id="cart-id" value="' . $cart['cart_id'] . '
                                                                                     ">
-									<td class="product_number">' . $num . '</td>
-									<td class="product_name">' . $cart['product_name'] . ' </td>
-									<td class="product_img"><img src="' . BASE_URL . '/upload/images/' . $cart['product_img'] . '" alt=""</td>
-									<td class="product_quantity">
-										<input class="quantity_input" type="number" value="' . $cart['amount'] . '" min="1">
-									</td>
-									<td class="product_price">' . $cart['cost'] . '</td>
-									<td class="total_money">' . $totalMoney . ' </td>
-									<td class="product_action">
-									    <button class="btn delete_btn" id="delete">Delete</button>
-									    <button class="btn update_btn" id="update">Update</button>
-								    </td>
-								</tr>';
+				<td class="product_number">' . $num . '</td>
+				<td class="product_name">' . $cart['product_name'] . ' </td>
+				<td class="product_img"><img src="' . BASE_URL . '/upload/images/' . $cart['product_img'] . '" alt=""</td>
+				<td class="product_size">' . $cart['size'] . '</td>
+                <td class="product_quantity">
+					<input class="quantity_input" type="number" value="' . $cart['amount'] . '" min="1">
+				</td>
+				<td class="product_price">' . $cart['cost'] . '</td>
+				<td class="total_money">' . $totalMoney . ' </td>
+				<td class="product_action">
+					<button class="btn delete_btn" id="delete">Delete</button>
+				</td>
+			</tr>';
             $num++;
         }
         $html .= '
-
-								<tr>
-									<td class="product_number">&nbsp;</td>
-									<td class="product_name">Total cart</td>
-									<td class="product_img">&nbsp;</td>
-									<td class="product_quantity">&nbsp;</td>
-									<td class="product_price">&nbsp;</td>
-									<td class="total_money">' . $totalFinal . '</td>
-									<td class="product_delete">&nbsp;</td>
-								</tr>';
+		    <tr>
+                <td>&nbsp;</td>
+                <td>Total cart</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td class="total_cart">' . $totalFinal . '</td>
+                <td>&nbsp;</td>
+		    </tr>';
         echo $html;
     }
 
@@ -181,8 +238,11 @@ class cart extends Controller
             $totalQuantity = $total[0]['total'];
             $this->load->view("cpanel/cart", $data);
         } else {
-            $this->load->view("cpanel/cart");
+            $carts = isset($_SESSION['cart']) ? $_SESSION['cart'] : array();
+            $totalQuantity = count($carts);
+            $this->load->view("cpanel/cart", ['carts' => $carts]);
         }
+        $_SESSION['totalQuantity'] = $totalQuantity;
         $this->load->view("footer");
     }
 }
