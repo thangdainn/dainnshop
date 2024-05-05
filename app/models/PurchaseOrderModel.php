@@ -43,6 +43,12 @@ class PurchaseOrderModel extends Model
         return $result;
     }
 
+    public function cancelOrder($orderId) {
+        $sql = "UPDATE `order` SET id_order_status = 4 WHERE id = ?";
+        $result = $this->db->execute($sql, $orderId);
+        return $result;
+    }
+
     public function save($data)
     {
         $sql = "INSERT INTO order(name, image) VALUES (?,?)";

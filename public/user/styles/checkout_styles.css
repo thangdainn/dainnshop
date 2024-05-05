@@ -1010,7 +1010,11 @@ section
 	margin-bottom: 0;
 }
 
-.checkout__total__products li span {
+.checkout__total__products li span.product-name {
+	color: #111111;
+	float: left;
+}
+.checkout__total__products li span.product-total {
 	color: #111111;
 	float: right;
 }
@@ -1036,12 +1040,17 @@ section
 	float: right;
 }
 
+.checkout-payment__checkbox-item {
+	display: flex;
+}
+
 .checkout-payment__checkbox-item label{
 	font-size: 16px;
+	margin-left: 5px;
 }
 
 .single-checkbox {
-    display: none; 
+    display: block; 
 }
 
 .single-checkbox + label {

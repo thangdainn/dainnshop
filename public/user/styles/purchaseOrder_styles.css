@@ -254,6 +254,14 @@ section
 	overflow: hidden;
 }
 
+.btn {
+	font-size: 14px;
+	color: #FFFFFF;
+	background-color: #1e1e27;
+	text-decoration: none;
+	max-width: 120px;
+	border-radius: 2px;
+}
 /*********************************
 3. Home
 *********************************/
@@ -344,6 +352,10 @@ section
 	margin-top: 50px; 
 }
 
+.actions {
+	display: flex;
+}
+
 .btn_detail {
 	font-size: 14px;
 	color: #FFFFFF;
@@ -353,11 +365,16 @@ section
 	border-radius: 2px;
 }
 
-.btn_detail:focus {
+.btn_cancel {
+	margin-left: 5px;
+}
+
+.btn_detail:focus ,
+.btn_cancel:focus {
 	box-shadow: none;
 }
 
-.btn_detail:hover {
+.btn_detail:hover, .btn_cancel:hover {
 	opacity: 0.6;
 	color: #fff;
 }
