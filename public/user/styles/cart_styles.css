@@ -883,7 +883,7 @@ section {
 }
 
 #payment-button {
-	margin-left: auto;
+  margin-left: auto;
 }
 
 .cart_container .payment_btn {
@@ -961,8 +961,8 @@ section {
 }
 
 .product_link {
-	color: #fe4c50;
-}	
+  color: #fe4c50;
+}
 
 .cart_buttons {
   display: flex;
