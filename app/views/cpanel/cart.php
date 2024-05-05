@@ -31,7 +31,7 @@
 							<th class="product_name">Product name</th>
 							<th class="product_img">Product image</th>
 							<th class="product_size">Size</th>
-							<th class="product_quantity">Quantity</th>
+							<th class="product_quantity_th">Quantity</th>
 							<th class="product_price">Price</th>
 							<th class="total_money">Total</th>
 							<th class="product_delete">Action</th>
