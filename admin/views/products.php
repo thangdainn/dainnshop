@@ -1,7 +1,7 @@
 <?php
 include('../models/adminconfig.php');
 include('../middleware/adminMiddleware.php');
-include ('../includes/header.php');
+include('../includes/header.php');
 ?>
 
 <div class="container">
@@ -27,53 +27,46 @@ include ('../includes/header.php');
                         </thead>
                         <tbody>
                             <?php
-                                $products = getAll("products");
+                            $products = getAll("products");
 
-                                if(mysqli_num_rows($products) > 0)
-                                {
-                                    foreach($products as $item)
-                                    {
-                                        ?>
-                                            <tr>
-                                                <td> <?= $item['id'];?> </td>
-                                                <td> <?= $item['name'];?> </td>
-                                                <td style="min-width:12.9rem;">
-                                                    <img src="../../upload/images/<?= $item['img']; ?>" width="50px" height="50px" alt="<?= $item['name'];?>">
-                                                </td>
-                                                <td style="min-width:10rem;"> 
-                                                    <?= $item['status'] == '0'? "Hidden":"Visible" ?>
-                                                </td>
-                                                <td style="min-width:10rem;">
-                                                    <a href="edit-product.php?id=<?= $item['id'];?>" class="btn btn-primary">Edit</a>
-                                                </td>
-                                                <?php
-                                                    if($item['status'] == 0)
-                                                    {
-                                                        ?>
-                                                        <td style="min-width:10rem;">
-                                                            <button type="button" class="btn btn-danger delete_product_btn" value="<?= $item['id'];?>" style="  pointer-events: none;cursor: not-allowed;opacity: 0.65;filter: alpha(opacity=65);-webkit-box-shadow: none;box-shadow: none;">Delete</button>
-                                                        </td>
-                                                        <?php
-                                                    }
-                                                    else
-                                                    {
-                                                        ?>
-                                                        <td style="min-width:10rem;">
-                                                            <button type="button" class="btn btn-danger delete_product_btn" value="<?= $item['id'];?>" >Delete</button>
-                                                        </td>
-                                                        <?php
-                                                    }
-                                                ?>
-                                            </tr>
-                                        <?php
-                                    }
-                                }
-                                else
-                                {
-                                    echo "No records found";
-                                }
+                            if (mysqli_num_rows($products) > 0) {
+                                foreach ($products as $item) {
                             ?>
-                        
+                                    <tr>
+                                        <td> <?= $item['id']; ?> </td>
+                                        <td> <?= $item['name']; ?> </td>
+                                        <td style="min-width:12.9rem;">
+                                            <img src="../../upload/images/<?= $item['img']; ?>" width="50px" height="50px" alt="<?= $item['name']; ?>">
+                                        </td>
+                                        <td style="min-width:10rem;">
+                                            <?= $item['status'] == '0' ? "Hidden" : "Visible" ?>
+                                        </td>
+                                        <td style="min-width:10rem;">
+                                            <a href="edit-product.php?id=<?= $item['id']; ?>" class="btn btn-primary">Edit</a>
+                                        </td>
+                                        <?php
+                                        if ($item['status'] == 0) {
+                                        ?>
+                                            <td style="min-width:10rem;">
+                                                <button type="button" class="btn btn-danger delete_product_btn" value="<?= $item['id']; ?>" style="  pointer-events: none;cursor: not-allowed;opacity: 0.65;filter: alpha(opacity=65);-webkit-box-shadow: none;box-shadow: none;">Delete</button>
+                                            </td>
+                                        <?php
+                                        } else {
+                                        ?>
+                                            <td style="min-width:10rem;">
+                                                <button type="button" class="btn btn-danger delete_product_btn" value="<?= $item['id']; ?>">Delete</button>
+                                            </td>
+                                        <?php
+                                        }
+                                        ?>
+                                    </tr>
+                            <?php
+                                }
+                            } else {
+                                echo "No records found";
+                            }
+                            ?>
+
                         </tbody>
                     </table>
                 </div>
@@ -82,6 +75,8 @@ include ('../includes/header.php');
     </div>
 </div>
 </div>
-<script>$('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar();</script>
+<script>
+    $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar();
+</script>
 
-<?php include ('../includes/footer.php'); ?>
+<?php include('../includes/footer.php'); ?>

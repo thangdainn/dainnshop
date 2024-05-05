@@ -1,26 +1,22 @@
 <?php
 include('../models/adminconfig.php');
 include('../middleware/adminMiddleware.php');
-include ('../includes/header.php');
+include('../includes/header.php');
 
-if(isset($_GET['id']))
-{
+if (isset($_GET['id'])) {
     $order_id = $_GET['id'];
 
     $orderData = checkIdNoValid($order_id);
-    if(mysqli_num_rows($orderData) < 0)
-    {
-        ?>
-            <h4>Something went wrong</h4>
-        <?php
-        die();
-    }
-}
-else
-{
-    ?>
+    if (mysqli_num_rows($orderData) < 0) {
+?>
         <h4>Something went wrong</h4>
     <?php
+        die();
+    }
+} else {
+    ?>
+    <h4>Something went wrong</h4>
+<?php
     die();
 }
 
@@ -92,45 +88,42 @@ $data = mysqli_fetch_array($orderData);
                                 </thead>
                                 <tbody>
                                     <?php
-                                        $order_query = "SELECT `o`.`id` AS `oid`, `o`.`id_order_status`, `od`.*, `p`.* 
+                                    $order_query = "SELECT `o`.`id` AS `oid`, `o`.`id_order_status`, `od`.*, `p`.* 
                                         FROM `order` AS `o`, `order_detail` AS `od`, `products` AS `p` 
                                         WHERE `od`.`order_id` = `o`.`id` AND `p`.`id` = `od`.`product_id` AND `o`.`id` = '$order_id'";
 
-                                        $order_query_run = mysqli_query($con, $order_query);
-                                        
-                                        if(mysqli_num_rows($order_query_run) > 0)
-                                        {
-                                            foreach($order_query_run as $item)
-                                            {
-                                                ?>
-                                                <tr>
-                                                    <td class="align-middle">
-                                                        <img src="../../upload/images/<?= $item['img']; ?>" width="50px" height="50px" alt="<?= $item['name']; ?>">
-                                                        <?= $item['name']; ?>
-                                                    </td>
-                                                    <td class="align-middle">
-                                                        $<?= $item['total']; ?>
-                                                    </td>
-                                                    <td class="align-middle">
-                                                        <?= $item['quantity']; ?>
-                                                    </td>
-                                                </tr>
-                                                <?php
-                                            }
+                                    $order_query_run = mysqli_query($con, $order_query);
+
+                                    if (mysqli_num_rows($order_query_run) > 0) {
+                                        foreach ($order_query_run as $item) {
+                                    ?>
+                                            <tr>
+                                                <td class="align-middle">
+                                                    <img src="../../upload/images/<?= $item['img']; ?>" width="50px" height="50px" alt="<?= $item['name']; ?>">
+                                                    <?= $item['name']; ?>
+                                                </td>
+                                                <td class="align-middle">
+                                                    $<?= $item['total']; ?>
+                                                </td>
+                                                <td class="align-middle">
+                                                    <?= $item['quantity']; ?>
+                                                </td>
+                                            </tr>
+                                    <?php
                                         }
+                                    }
                                     ?>
                                 </tbody>
                             </table>
 
                             <hr>
-                            <h5>Total Price : 
+                            <h5>Total Price :
                                 <span class="float-end fw-bold">
                                     <?php
-                                        $totalPrice = 0;
-                                        foreach($order_query_run as $item)
-                                        {
-                                            $totalPrice += $item['total'];
-                                        }
+                                    $totalPrice = 0;
+                                    foreach ($order_query_run as $item) {
+                                        $totalPrice += $item['total'];
+                                    }
                                     ?>
                                     $<?= $totalPrice ?>
                                 </span>
@@ -143,12 +136,12 @@ $data = mysqli_fetch_array($orderData);
                             <label class="fw-bold">Status</label>
                             <div class="mb-3">
                                 <form action="../controllers/code.php" method="POST">
-                                    <input type="hidden" name="id" value="<?= $data['id']; ?>" >
+                                    <input type="hidden" name="id" value="<?= $data['id']; ?>">
                                     <select name="order_status" id="" class="form-select">
-                                        <option value="1" <?= $data['id_order_status'] == '1'?"selected":"" ?>>Chờ duyệt</option>
-                                        <option value="4" <?= $data['id_order_status'] == '4'?"selected":"" ?>>Hủy đơn</option>
-                                        <option value="5" <?= $data['id_order_status'] == '5'?"selected":"" ?>>Đang giao</option>
-                                        <option value="6" <?= $data['id_order_status'] == '6'?"selected":"" ?>>Thành công</option>
+                                        <option value="1" <?= $data['id_order_status'] == '1' ? "selected" : "" ?>>Chờ duyệt</option>
+                                        <option value="4" <?= $data['id_order_status'] == '4' ? "selected" : "" ?>>Hủy đơn</option>
+                                        <option value="5" <?= $data['id_order_status'] == '5' ? "selected" : "" ?>>Đang giao</option>
+                                        <option value="6" <?= $data['id_order_status'] == '6' ? "selected" : "" ?>>Thành công</option>
                                     </select>
                                     <button type="submit" class="btn btn-primary mt-2 float-end" name="update_order_btn">Update Status</button>
                                 </form>
@@ -161,4 +154,4 @@ $data = mysqli_fetch_array($orderData);
     </div>
 </div>
 
-<?php include ('../includes/footer.php'); ?>
+<?php include('../includes/footer.php'); ?>

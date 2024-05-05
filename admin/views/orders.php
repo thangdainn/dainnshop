@@ -1,7 +1,7 @@
 <?php
 include('../models/adminconfig.php');
 include('../middleware/adminMiddleware.php');
-include ('../includes/header.php');
+include('../includes/header.php');
 
 ?>
 
@@ -26,51 +26,47 @@ include ('../includes/header.php');
                         </thead>
                         <tbody>
                             <?php
-                                $orders = getAllOrders();
+                            $orders = getAllOrders();
 
-                                if(mysqli_num_rows($orders) > 0)
-                                {
-                                    foreach($orders as $item)
-                                    {
-                                        ?>
-                                            <tr>
-                                                <td> <?= $item['id'];?> </td>
-                                                <td> <?= $item['user_id'];?> </td>
-                                                <td style="min-width:17.3rem;"> <?= $item['resipient_name'];?> </td>
-                                                <td style="min-width:17.3rem;"> <?= $item['create_at'];?> </td>
-                                                <td style="min-width:17.3rem;"> 
-                                                    <?php 
-                                                    switch ($item['id_order_status']) {
-                                                        case '1':
-                                                            echo "Chờ duyệt";
-                                                            break;
-                                                        case '4':
-                                                            echo "Hủy đơn";
-                                                            break;
-                                                        case '5':
-                                                            echo "Đang giao";
-                                                            break;
-                                                        case '6':
-                                                            echo "Thành công";
-                                                            break;
-                                                        default:
-                                                            echo "Trạng thái không xác định";
-                                                    };
-                                                    ?>
-                                                </td>
-                                                <td>
-                                                    <a href="view-order.php?id=<?= $item['id'];?>" class="btn btn-primary">View Details</a>
-                                                </td>
-                                            </tr>
-                                        <?php
-                                    }
-                                }
-                                else
-                                {
-                                    echo "No records found";
-                                }
+                            if (mysqli_num_rows($orders) > 0) {
+                                foreach ($orders as $item) {
                             ?>
-                        
+                                    <tr>
+                                        <td> <?= $item['id']; ?> </td>
+                                        <td> <?= $item['user_id']; ?> </td>
+                                        <td style="min-width:17.3rem;"> <?= $item['resipient_name']; ?> </td>
+                                        <td style="min-width:17.3rem;"> <?= $item['create_at']; ?> </td>
+                                        <td style="min-width:17.3rem;">
+                                            <?php
+                                            switch ($item['id_order_status']) {
+                                                case '1':
+                                                    echo "Chờ duyệt";
+                                                    break;
+                                                case '4':
+                                                    echo "Hủy đơn";
+                                                    break;
+                                                case '5':
+                                                    echo "Đang giao";
+                                                    break;
+                                                case '6':
+                                                    echo "Thành công";
+                                                    break;
+                                                default:
+                                                    echo "Trạng thái không xác định";
+                                            };
+                                            ?>
+                                        </td>
+                                        <td>
+                                            <a href="view-order.php?id=<?= $item['id']; ?>" class="btn btn-primary">View Details</a>
+                                        </td>
+                                    </tr>
+                            <?php
+                                }
+                            } else {
+                                echo "No records found";
+                            }
+                            ?>
+
                         </tbody>
                     </table>
                 </div>
@@ -79,4 +75,4 @@ include ('../includes/header.php');
     </div>
 </div>
 
-<?php include ('../includes/footer.php'); ?>
+<?php include('../includes/footer.php'); ?>

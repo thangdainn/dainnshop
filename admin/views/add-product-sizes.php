@@ -1,7 +1,7 @@
 <?php
 include('../models/adminconfig.php');
 include('../middleware/adminMiddleware.php');
-include ('../includes/header.php');
+include('../includes/header.php');
 ?>
 
 <div class="container">
@@ -18,47 +18,39 @@ include ('../includes/header.php');
                         <div class="row">
                             <div class="col-md-6">
                                 <label class="mb-0">Select Product</label>
-                                <select name="product_id" class="form-select mb-2" >
+                                <select name="product_id" class="form-select mb-2">
                                     <option selected> Select Product</option>
                                     <?php
-                                        $product = getAll("products");
+                                    $product = getAll("products");
 
-                                        if(mysqli_num_rows($product) > 0)
-                                        {
-                                            foreach($product as $item)
-                                            {
-                                                ?>
-                                                    <option value="<?= $item['id'] ?>"><?= $item['name'] ?></option>
-                                                <?php
-                                            }
+                                    if (mysqli_num_rows($product) > 0) {
+                                        foreach ($product as $item) {
+                                    ?>
+                                            <option value="<?= $item['id'] ?>"><?= $item['name'] ?></option>
+                                    <?php
                                         }
-                                        else
-                                        {
-                                            echo "No products available";
-                                        }
+                                    } else {
+                                        echo "No products available";
+                                    }
                                     ?>
                                 </select>
                             </div>
                             <div class="col-md-6">
                                 <label class="mb-0"> Select Size</label>
-                                <select name="size_id" class="form-select mb-2" >
+                                <select name="size_id" class="form-select mb-2">
                                     <option selected> Select Size</option>
                                     <?php
-                                        $sizes = getAll("sizes");
+                                    $sizes = getAll("sizes");
 
-                                        if(mysqli_num_rows($sizes) > 0)
-                                        {
-                                            foreach($sizes as $item)
-                                            {
-                                                ?>
-                                                    <option value="<?= $item['id'] ?>"><?= $item['name'] ?></option>
-                                                <?php
-                                            }
+                                    if (mysqli_num_rows($sizes) > 0) {
+                                        foreach ($sizes as $item) {
+                                    ?>
+                                            <option value="<?= $item['id'] ?>"><?= $item['name'] ?></option>
+                                    <?php
                                         }
-                                        else
-                                        {
-                                            echo "No sizes available";
-                                        }
+                                    } else {
+                                        echo "No sizes available";
+                                    }
                                     ?>
                                 </select>
                             </div>
@@ -66,7 +58,7 @@ include ('../includes/header.php');
                                 <label class="mb-0">Quantity</label>
                                 <input type="text" required name="quantity" placeholder="Enter Quantity" class="form-control mb-2">
                             </div>
-                            <div class="col-md-12" >
+                            <div class="col-md-12">
                                 <button type="submit" class="btn btn-primary mt-2" name="add_product_sizes_btn">Save</button>
                             </div>
                         </div>
@@ -78,4 +70,4 @@ include ('../includes/header.php');
 </div>
 </div>
 
-<?php include ('../includes/footer.php'); ?>
+<?php include('../includes/footer.php'); ?>

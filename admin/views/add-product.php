@@ -1,7 +1,7 @@
 <?php
 include('../models/adminconfig.php');
 include('../middleware/adminMiddleware.php');
-include ('../includes/header.php');
+include('../includes/header.php');
 ?>
 
 <div class="container">
@@ -44,60 +44,52 @@ include ('../includes/header.php');
                             </div>
                             <div class="col-md-12">
                                 <label class="mb-0">Select Category</label>
-                                <select name="category_id" class="form-select mb-2" >
+                                <select name="category_id" class="form-select mb-2">
                                     <option selected> Select Category</option>
                                     <?php
-                                        $categories = getAll("categories");
+                                    $categories = getAll("categories");
 
-                                        if(mysqli_num_rows($categories) > 0)
-                                        {
-                                            foreach($categories as $item)
-                                            {
-                                                ?>
-                                                    <option value="<?= $item['id'] ?>"><?= $item['name'] ?></option>
-                                                <?php
-                                            }
+                                    if (mysqli_num_rows($categories) > 0) {
+                                        foreach ($categories as $item) {
+                                    ?>
+                                            <option value="<?= $item['id'] ?>"><?= $item['name'] ?></option>
+                                    <?php
                                         }
-                                        else
-                                        {
-                                            echo "No categories available";
-                                        }
+                                    } else {
+                                        echo "No categories available";
+                                    }
                                     ?>
                                 </select>
                             </div>
                             <div class="col-md-6">
                                 <label class="mb-0"> Select Brand</label>
-                                <select name="brand_id" class="form-select mb-2" >
+                                <select name="brand_id" class="form-select mb-2">
                                     <option selected> Select Brand</option>
                                     <?php
-                                        $brands = getAll("brands");
+                                    $brands = getAll("brands");
 
-                                        if(mysqli_num_rows($brands) > 0)
-                                        {
-                                            foreach($brands as $item)
-                                            {
-                                                ?>
-                                                    <option value="<?= $item['id'] ?>"><?= $item['name'] ?></option>
-                                                <?php
-                                            }
+                                    if (mysqli_num_rows($brands) > 0) {
+                                        foreach ($brands as $item) {
+                                    ?>
+                                            <option value="<?= $item['id'] ?>"><?= $item['name'] ?></option>
+                                    <?php
                                         }
-                                        else
-                                        {
-                                            echo "No Brands available";
-                                        }
+                                    } else {
+                                        echo "No Brands available";
+                                    }
                                     ?>
                                 </select>
                             </div>
                             <div class="col-md-6">
                                 <label class="mb-0">Select Type</label>
-                                <select name="type" class="form-select mb-2" >
+                                <select name="type" class="form-select mb-2">
                                     <option selected>Select Type</option>
                                     <option value="new">New</option>
                                     <option value="normal">Normal</option>
                                     <option value="sale">Sale</option>
                                 </select>
                             </div>
-                            <div class="col-md-12" >
+                            <div class="col-md-12">
                                 <button type="submit" class="btn btn-primary mt-2" name="add_product_btn">Save</button>
                             </div>
                         </div>
@@ -109,4 +101,4 @@ include ('../includes/header.php');
 </div>
 </div>
 
-<?php include ('../includes/footer.php'); ?>
+<?php include('../includes/footer.php'); ?>
