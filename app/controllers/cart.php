@@ -36,7 +36,6 @@ class cart extends Controller
             $cartModel->addCart($userId, $productId, $quantity, $sizeId);
             $message["status"] = true;
         }
-        echo json_encode($message);
     }
 
     public function updateAmount()
