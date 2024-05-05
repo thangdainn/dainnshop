@@ -63,7 +63,7 @@
                                     <td><?php echo $order['resipient_name'] ?> </td>
                                     <td><?php echo $order['resipient_phonenumber'] ?></td>
                                     <td><?php echo $order['delivery_address'] ?></td>
-                                    <td><a href="#" data-id="<?php echo $order['id'] ?>" class="btn btn_detail">View Details</a></td>
+                                    <td class ="actions"><a href="#" data-id="<?php echo $order['id'] ?>" class="btn btn_detail">View Details</a></td>
                                 </tr>
                             <?php
                             }
