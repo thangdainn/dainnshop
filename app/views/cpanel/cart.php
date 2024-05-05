@@ -54,7 +54,7 @@
 								<td class="product_number"><?php echo $num; ?></td>
 								<td class="product_name">
 									<a class="product_link" href="<?php echo BASE_URL ?>/product/detail/<?php echo $cart['product_id'] ?>">
-									<?php echo $cart['product_name'] ?> 
+										<?php echo $cart['product_name'] ?>
 								</td>
 								<td class="product_img"><img src="<?php echo BASE_URL ?>/upload/images/<?php echo $cart['product_img'] ?>" alt=""></td>
 								<td class="product_size"><?php echo $cart['size'] ?></td>
