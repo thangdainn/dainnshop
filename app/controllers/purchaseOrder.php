@@ -71,10 +71,11 @@ class purchaseOrder extends Controller
                     <td>'. $order['resipient_name'] .'</td>
                     <td>'. $order['resipient_phonenumber'] .'</td>
                     <td>'. $order['delivery_address'] .'</td>
-                    <td><a href="#" data-id="'. $order['id'] .'" class="btn btn_detail">View Details</a></td>';
+                    <td class="actions"><a href="#" data-id="'. $order['id'] .'" class="btn btn_detail">View Details</a>';
                     if ($order['id_order_status'] == 1) {
-                        $html .= '<td><a href="#" data-id="'. $order['id'] .'" class="btn btn_cancel">Cancel</a></td>';
-                    }'
+                        $html .= '<a href="#" data-id="'. $order['id'] .'" class="btn btn_cancel">Cancel</a>';
+                    }
+                    '</td>
                 </tr>';
             }
         }
