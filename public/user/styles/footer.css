@@ -160,3 +160,34 @@
 .footer__copyright__text p a {
   color: #e53637;
 }
+
+@media only screen and (max-width: 479px) {
+  .checkout_items {
+    top: -6px;
+    left: 17px;
+  }
+  .search input {
+    font-size: 12px;
+  }
+
+  .logo_container a {
+    font-size: 13px !important;
+  }
+  #btn_search {
+    height: auto;
+  }
+  
+
+  .footer__widget ul li a,
+  .footer__about p,
+  .footer__widget .footer__newslatter p {
+    font-size: 12px !important;
+  }
+  .footer__widget ul li {
+    line-height: 24px !important;
+  }
+  .footer__widget h6 {
+    font-size: 13px !important;
+    margin-bottom: 8px !important;
+  }
+}

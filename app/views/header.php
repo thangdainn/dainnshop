@@ -230,11 +230,11 @@ if (session_status() == PHP_SESSION_NONE) {
                         if (Session::isLogin()) {
                         ?>
                             <ul class="menu_selection">
-                                <li><a href="<?php echo BASE_URL . '/auth/user_info' ?>"><i class=" fa fa-user" aria-hidden="true"></i>
+                                <li><a href="<?php echo BASE_URL . '/user/profile/' . $userId ?>"><i class=" fa fa-user" aria-hidden="true"></i>
                                         Information</a>
                                 </li>
-                                <li><a href="<?php echo BASE_URL . '/auth/change_password' ?>"><i class=" fa fa-user" aria-hidden="true"></i>
-                                        Change Password</a>
+                                <li><a href="<?php echo BASE_URL . '/purchaseOrder' ?>"><i class=" fa fa-user" aria-hidden="true"></i>
+                                        Purchase order</a>
                                 </li>
                                 <li><a href="<?php echo BASE_URL ?>/login/logout"><i class="fa fa-arrow-left" aria-hidden="true"></i>
                                         Logout</a>
@@ -244,9 +244,9 @@ if (session_status() == PHP_SESSION_NONE) {
                         } else {
                         ?>
                             <ul class="menu_selection">
-                                <li><a href="<?php echo BASE_URL ?>/login" onclick="onLogin()"><i class="fa fa-sign-in" aria-hidden="true"></i>
+                                <li><a href="<?php echo BASE_URL ?>/login" ><i class="fa fa-sign-in" aria-hidden="true"></i>
                                         Login</a></li>
-                                <li><a href="#" onclick="onRegister()"><i class="fa fa-user-plus" aria-hidden="true"></i>
+                                <li><a href="<?php echo BASE_URL ?>/login?register"><i class="fa fa-user-plus" aria-hidden="true"></i>
                                         Register</a>
                                 </li>
                             </ul>
@@ -255,9 +255,8 @@ if (session_status() == PHP_SESSION_NONE) {
                         ?>
 
                     </li>
-                    <li class="menu_item"><a href="<?php echo BASE_URL ?>">home</a></li>
+                    <li class="menu_item"><a href="<?php echo BASE_URL ?>/">home</a></li>
                     <li class="menu_item"><a href="<?php echo BASE_URL ?>/shop">shop</a></li>
-                    <li class="menu_item"><a href="<?php echo BASE_URL ?>/purchaseOrder">purchase order</a></li>
                     <li class="menu_item"><a href="<?php echo BASE_URL ?>/about">about</a></li>
                     <li class="menu_item"><a href="<?php echo BASE_URL ?>/contact">contact</a></li>
                 </ul>

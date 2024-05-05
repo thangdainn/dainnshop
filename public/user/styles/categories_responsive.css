@@ -288,6 +288,86 @@
 ************/
 
 @media only screen and (max-width: 479px) {
+  #filters {
+    display: none;
+    transition: transform 0.5s ease-in-out;
+    transform: translateX(-100%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: white;
+    overflow: auto;
+    padding: 35px 28px 28px 28px;
+    background-color: #fff;
+  }
+  #filter-button {
+    display: block;
+    position: absolute;
+    right: 14px;
+    border: none;
+    background-color: #fff;
+    font-size: large;
+  }
+
+  #filter-button {
+    display: block;
+  }
+  #close-button {
+    display: block;
+    position: absolute;
+    top: 8px;
+    right: 18px;
+    border: none;
+    font-size: large;
+    background-color: #fff;
+    color: #fe4c50;
+  }
+
+  .sidebar_title {
+    font-size: 15px !important;
+  }
+
+  .sidebar_categories li a {
+    font-size: 13px;
+    line-height: 28px;
+  }
+
+  .checkboxes li {
+    height: 30px;
+    line-height: 34px;
+  }
+
+  .checkboxes {
+    height: 160px;
+    overflow: hidden;
+    font-size: 13px;
+  }
+  #amount {
+    font-size: 15px;
+  }
+  .breadcrumbs {
+    height: 32px;
+    margin-bottom: 40px;
+  }
+  .breadcrumbs ul li a {
+    font-size: 12px;
+  }
+  .product_sorting {
+    font-size: 12px;
+  }
+  .product_sorting > li {
+    margin-bottom: 0;
+  }
+
+  #paging {
+    font-size: 12px;
+  }
+  .product_section_container {
+    margin-top: 73px;
+  }
   .logo_container a {
     font-size: 12px;
   }
@@ -338,7 +418,7 @@
     font-size: 10px;
   }
   .product-item {
-    width: 100%;
+    width: 45%;
     height: auto;
   }
   .product {
