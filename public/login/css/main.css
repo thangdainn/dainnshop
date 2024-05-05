@@ -481,9 +481,18 @@ iframe {
 /*------------------------------------------------------------------
 [ Responsive ]*/
 
-@media (max-width: 576px) {
+@media only screen and (max-width: 479px) {
   .wrap-login100 {
-    padding: 77px 15px 33px 15px;
+    padding: 77px 35px 33px 35px;
+  }
+  .container-login100{
+    padding: 12px 10px 135px;
+  }
+  .logo_container{
+    left: 2rem !important;
+  }
+  .logo_container a{
+    font-size: 17px !important;
   }
 }
 

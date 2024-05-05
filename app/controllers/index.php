@@ -26,8 +26,8 @@ class index extends Controller
     }
     public function notFound()
     {
-        // $this->load->view("header");
+        $this->load->view("header");
         $this->load->view("404");
-        // $this->load->view("footer");
+        $this->load->view("footer");
     }
 }

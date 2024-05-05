@@ -14,6 +14,7 @@ if (session_status() == PHP_SESSION_NONE) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Colo Shop Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="<?php echo BASE_URL ?>/public/user/images/logo/favicon.ico" />
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/styles/bootstrap4/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/plugins/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/plugins/elegant/elegant-icons.css">
@@ -26,6 +27,7 @@ if (session_status() == PHP_SESSION_NONE) {
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
 
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/styles/header.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL ?>/public/user/styles/404.css">
     <?php
     $currentURL = $_SERVER['REQUEST_URI'];
     if (strpos($currentURL, '/shop') !== false) {
@@ -38,6 +40,9 @@ if (session_status() == PHP_SESSION_NONE) {
     } elseif (strpos($currentURL, '/contact') !== false) {
         echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/contact_styles.css">';
         echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/contact_responsive.css">';
+    } elseif (strpos($currentURL, '/about') !== false) {
+        echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/about_styles.css">';
+        echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/about_responsive.css">';
     } elseif (strpos($currentURL, '/cart') !== false) {
         echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/cart_styles.css">';
         echo '<link rel="stylesheet" type="text/css" href="' . BASE_URL . '/public/user/styles/cart_responsive.css">';
@@ -90,54 +95,54 @@ if (session_status() == PHP_SESSION_NONE) {
 
                                     <li class="account" style="min-width: 162px">
                                         <a href="" class="prevent-default d-flex justify-content-center align-items-center">
-                                                <?php
-                                                if (Session::isLogin()) {
-                                                    $image = Session::getImg();
-                                                    $fullName = Session::getFullName();
-                                                ?>
-                                                    <div class="avatar d-flex justify-content-center align-items-center">
-                                                        <img src="<?php echo BASE_URL ?>/upload/<?php echo $image ?>" alt="">
-                                                    </div>
-                                                    <span class="full-name"><?php echo $fullName ?></span>
-                                                    <?php
-                                                } else {
-                                                    ?>
-                                                        <i class="fa fa-user-circle" style="margin-right: 8px; font-size: 19px"></i>
-                                                        <span>Account</span>
-                                                    <?php
-                                                }
-                                                    ?>
-
-                                            </a>
                                             <?php
                                             if (Session::isLogin()) {
-                                                $userId = Session::getUserId();
+                                                $image = Session::getImg();
+                                                $fullName = Session::getFullName();
                                             ?>
-                                                <ul class="account_selection">
-                                                    <li><a href="<?php echo BASE_URL . '/user/profile/' . $userId ?>"><i class=" fa fa-user" aria-hidden="true"></i>
-                                                            Information</a>
-                                                    </li>
-                                                    <li><a href="<?php echo BASE_URL . '/purchaseOrder' ?>"><i class=" fa fa-user" aria-hidden="true"></i>
-                                                            Purchase order</a>
-                                                    </li>
-
-                                                    <li><a href="<?php echo BASE_URL ?>/login/logout"><i class="fa fa-arrow-left" aria-hidden="true"></i>
-                                                            Logout</a>
-                                                    </li>
-                                                </ul>
+                                                <div class="avatar d-flex justify-content-center align-items-center">
+                                                    <img src="<?php echo BASE_URL ?>/upload/<?php echo $image ?>" alt="">
+                                                </div>
+                                                <span class="full-name"><?php echo $fullName ?></span>
                                             <?php
                                             } else {
                                             ?>
-                                                <ul class="account_selection">
-                                                    <li><a href="<?php echo BASE_URL ?>/login"><i class="fa fa-sign-in" aria-hidden="true"></i>
-                                                            Login</a></li>
-                                                    <li><a href="<?php echo BASE_URL ?>/login?register"><i class="fa fa-user-plus" aria-hidden="true"></i>
-                                                            Register</a>
-                                                    </li>
-                                                </ul>
+                                                <i class="fa fa-user-circle" style="margin-right: 8px; font-size: 19px"></i>
+                                                <span>Account</span>
                                             <?php
                                             }
                                             ?>
+
+                                        </a>
+                                        <?php
+                                        if (Session::isLogin()) {
+                                            $userId = Session::getUserId();
+                                        ?>
+                                            <ul class="account_selection">
+                                                <li><a href="<?php echo BASE_URL . '/user/profile/' . $userId ?>"><i class=" fa fa-user" aria-hidden="true"></i>
+                                                        Information</a>
+                                                </li>
+                                                <li><a href="<?php echo BASE_URL . '/purchaseOrder' ?>"><i class=" fa fa-user" aria-hidden="true"></i>
+                                                        Purchase order</a>
+                                                </li>
+
+                                                <li><a href="<?php echo BASE_URL ?>/login/logout"><i class="fa fa-arrow-left" aria-hidden="true"></i>
+                                                        Logout</a>
+                                                </li>
+                                            </ul>
+                                        <?php
+                                        } else {
+                                        ?>
+                                            <ul class="account_selection">
+                                                <li><a href="<?php echo BASE_URL ?>/login"><i class="fa fa-sign-in" aria-hidden="true"></i>
+                                                        Login</a></li>
+                                                <li><a href="<?php echo BASE_URL ?>/login?register"><i class="fa fa-user-plus" aria-hidden="true"></i>
+                                                        Register</a>
+                                                </li>
+                                            </ul>
+                                        <?php
+                                        }
+                                        ?>
 
                                     </li>
                                 </ul>
@@ -225,11 +230,11 @@ if (session_status() == PHP_SESSION_NONE) {
                         if (Session::isLogin()) {
                         ?>
                             <ul class="menu_selection">
-                                <li><a href="<?php echo BASE_URL . '/auth/user_info' ?>"><i class=" fa fa-user" aria-hidden="true"></i>
+                                <li><a href="<?php echo BASE_URL . '/user/profile/' . $userId ?>"><i class=" fa fa-user" aria-hidden="true"></i>
                                         Information</a>
                                 </li>
-                                <li><a href="<?php echo BASE_URL . '/auth/change_password' ?>"><i class=" fa fa-user" aria-hidden="true"></i>
-                                        Change Password</a>
+                                <li><a href="<?php echo BASE_URL . '/purchaseOrder' ?>"><i class=" fa fa-user" aria-hidden="true"></i>
+                                        Purchase order</a>
                                 </li>
                                 <li><a href="<?php echo BASE_URL ?>/login/logout"><i class="fa fa-arrow-left" aria-hidden="true"></i>
                                         Logout</a>
@@ -239,9 +244,9 @@ if (session_status() == PHP_SESSION_NONE) {
                         } else {
                         ?>
                             <ul class="menu_selection">
-                                <li><a href="<?php echo BASE_URL ?>/login" onclick="onLogin()"><i class="fa fa-sign-in" aria-hidden="true"></i>
+                                <li><a href="<?php echo BASE_URL ?>/login" ><i class="fa fa-sign-in" aria-hidden="true"></i>
                                         Login</a></li>
-                                <li><a href="#" onclick="onRegister()"><i class="fa fa-user-plus" aria-hidden="true"></i>
+                                <li><a href="<?php echo BASE_URL ?>/login?register"><i class="fa fa-user-plus" aria-hidden="true"></i>
                                         Register</a>
                                 </li>
                             </ul>
@@ -250,9 +255,8 @@ if (session_status() == PHP_SESSION_NONE) {
                         ?>
 
                     </li>
-                    <li class="menu_item"><a href="<?php echo BASE_URL ?>">home</a></li>
+                    <li class="menu_item"><a href="<?php echo BASE_URL ?>/">home</a></li>
                     <li class="menu_item"><a href="<?php echo BASE_URL ?>/shop">shop</a></li>
-                    <li class="menu_item"><a href="<?php echo BASE_URL ?>/purchaseOrder">purchase order</a></li>
                     <li class="menu_item"><a href="<?php echo BASE_URL ?>/about">about</a></li>
                     <li class="menu_item"><a href="<?php echo BASE_URL ?>/contact">contact</a></li>
                 </ul>

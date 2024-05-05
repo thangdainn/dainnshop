@@ -35,7 +35,7 @@
                     <div class="benefit_icon"><i class="fa fa-clock-o" aria-hidden="true"></i></div>
                     <div class="benefit_content">
                         <h6>opening all week</h6>
-                        <p>8AM - 09PM</p>
+                        <p>8AM - 9PM</p>
                     </div>
                 </div>
             </div>
@@ -72,7 +72,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="footer__about">
                     <div class="footer__logo">
-                        <a href="#"><img src="public/user/images/logo/dainn.png" alt="" style="width: 32%;"></a>
+                        <a href="#"><img src="<?php echo BASE_URL ?>/public/user/images/logo/dainn.png" alt="" style="width: 32%;"></a>
                     </div>
                     <p>The customer is at the heart of our unique business model, which includes design.</p>
                 </div>
@@ -94,7 +94,7 @@
                     <ul>
                         <li><a href="#">Facebook</a></li>
                         <li><a href="#">LinkedIn</a></li>
-                        <li><a href="#">Youtubene</a></li>
+                        <li><a href="#">Youtube</a></li>
                     </ul>
                 </div>
             </div>
@@ -138,6 +138,8 @@ if (strpos($currentURL, '/shop') !== false) {
 } elseif (strpos($currentURL, '/contact') !== false) {
     echo '<script src="' . BASE_URL . '/public/user/js/contact_custom.js"></script>';
     echo '<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>';
+} elseif (strpos($currentURL, '/about') !== false) {
+    echo '<script src="' . BASE_URL . '/public/user/js/single_custom.js"></script>';
 } elseif (strpos($currentURL, '/user') !== false) {
     echo '<script src="' . BASE_URL . '/public/user/js/profile.js"></script>';
 } elseif (strpos($currentURL, '/index') !== false || strpos($currentURL, '/') !== false) {

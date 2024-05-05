@@ -9,11 +9,15 @@
                     <li><a href="<?php echo BASE_URL ?>">Home</a></li>
                     <li class="active"><a href="<?php echo BASE_URL ?>/shop"><i class="fa fa-angle-right" aria-hidden="true"></i>Shop</a></li>
                 </ul>
+                <button id="filter-button"><i class="fa fa-filter"></i></button>
+
             </div>
 
             <!-- Sidebar -->
 
-            <div class="sidebar">
+            <!-- HTML -->
+            <div id="filters" class="sidebar">
+                <button id="close-button"><i class="fa fa-times"></i></button>
                 <div class="sidebar_section">
                     <div class="sidebar_title">
                         <a>
@@ -136,7 +140,7 @@
                                     echo "<h5>No products found.</h5>";
                                 } else {
                                     foreach ($products as $key => $product) {
-                                        
+
                                 ?>
                                         <div data-value="<?php echo $product['id'] ?>" class="product-item">
                                             <div class="product product_filter">
@@ -201,4 +205,31 @@
 </div>
 <script>
     var url_page = base_url + "/product/paging";
+    $('#filter-button').click(function() {
+        var filters = $('#filters');
+        if (filters.css('display') === 'none') {
+            filters.css('display', 'block');
+            setTimeout(function() {
+                filters.css('transform', 'translateX(0)');
+            }, 0);
+        }
+    });
+
+    $('#close-button').click(function() {
+        var filters = $('#filters');
+        filters.css('transform', 'translateX(-100%)');
+        setTimeout(function() {
+            filters.css('display', 'none');
+        }, 500);
+    });
+    $(window).resize(function() {
+        var filters = $('#filters');
+        if ($(window).width() > 473) {
+            filters.css('display', 'block');
+            filters.css('transform', 'translateX(0)');
+        } else {
+            filters.css('display', 'none');
+            filters.css('transform', 'translateX(-100%)');
+        }
+    });
 </script>

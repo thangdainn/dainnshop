@@ -250,6 +250,11 @@
   h6 {
     font-size: 12px;
   }
+
+  .hero__slider.owl-carousel .owl-nav div {
+    left: 15px;
+    top: 80%;
+  }
   .main_slider_content h6 {
     margin-bottom: 20px;
   }
@@ -355,9 +360,39 @@
 ************/
 
 @media only screen and (max-width: 479px) {
-  .logo_container a {
+  .hero__items {
+    height: auto;
+    padding-top: 70px;
+    padding-bottom: 18px;
+  }
+  .hero__slider.owl-carousel .owl-nav .owl-prev {
+    left: 15px;
+    top: 80%;
+  }
+  .hero__slider.owl-carousel .owl-nav div.owl-next {
+    left: 137px;
+    right: 0;
+  }
+  .hero__text h2 {
+    font-size: 36px;
+    line-height: 48px;
+  }
+  .hero__social {
+    margin-top: 145px;
+  }
+
+  .hero__text .primary-btn {
+    padding: 8px 14px;
+    font-size: 11px;
+  }
+
+  /* .search input {
     font-size: 12px;
   }
+
+  .logo_container a {
+    font-size: 13px !important;
+  } */
   .hamburger_container {
     margin-left: 25px;
   }
@@ -396,6 +431,9 @@
     height: 30px;
     font-size: 12px;
   }
+  /* #btn_search {
+    height: auto;
+  } */
   .checkout_items {
     width: 15px;
     height: 15px;
@@ -413,6 +451,24 @@
   .main_slider_content h1 {
     font-size: 24px;
   }
+
+  .banner__item.banner__item--middle {
+    margin-top: 20px;
+  }
+
+  .banner__item__text {
+    left: 26px;
+  }
+
+  .banner__item__text h2 {
+    font-size: 20px;
+    line-height: 20px;
+  }
+
+  .banner__item.banner__item--last {
+    margin-top: 54px;
+  }
+
   .shop_now_button {
     margin-top: 15px;
     width: 100px;
@@ -435,7 +491,7 @@
     margin-top: 70px;
   }
   .product-item {
-    width: 100%;
+    width: 45%;
     height: auto;
   }
   .product {
@@ -474,7 +530,7 @@
   }
 
   .product_slider_item .product-item {
-    width: 100%;
+    width: 87%;
     height: auto;
   }
   .product_slider_item .product-item:hover::after {
@@ -551,6 +607,19 @@
     margin-top: 5px;
     margin-bottom: 30px;
   }
+/* 
+  .footer__widget ul li a,
+  .footer__about p,
+  .footer__widget .footer__newslatter p {
+    font-size: 12px !important;
+  }
+  .footer__widget ul li {
+    line-height: 24px !important;
+  }
+  .footer__widget h6 {
+    font-size: 13px !important;
+    margin-bottom: 8px !important;
+  } */
 }
 
 /************
