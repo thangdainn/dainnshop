@@ -72,7 +72,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="footer__about">
                     <div class="footer__logo">
-                        <a href="#"><img src="public/user/images/logo/dainn.png" alt="" style="width: 32%;"></a>
+                        <a href="#"><img src="<?php echo BASE_URL ?>/public/user/images/logo/dainn.png" alt="" style="width: 32%;"></a>
                     </div>
                     <p>The customer is at the heart of our unique business model, which includes design.</p>
                 </div>
