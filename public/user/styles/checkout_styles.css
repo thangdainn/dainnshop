@@ -1010,7 +1010,11 @@ section
 	margin-bottom: 0;
 }
 
-.checkout__total__products li span {
+.checkout__total__products li span.product-name {
+	color: #111111;
+	float: left;
+}
+.checkout__total__products li span.product-total {
 	color: #111111;
 	float: right;
 }

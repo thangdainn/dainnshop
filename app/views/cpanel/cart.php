@@ -61,8 +61,8 @@
 								<td class="product_quantity">
 									<input class="quantity_input" type="number" value="<?php echo $cart['amount'] ?>" min="1">
 								</td>
-								<td class="product_price"><?php echo $cart['cost'] ?></td>
-								<td class="total_money"><?php echo $totalMoney; ?></td>
+								<td class="product_price">$<?php echo $cart['cost'] ?></td>
+								<td class="total_money">$<?php echo $totalMoney; ?></td>
 								<td class="product_action">
 									<button class="btn delete_btn" id="delete">Delete</button>
 									<!-- <button class="btn update_btn" id="update">Update</button> -->
@@ -80,7 +80,7 @@
 							<td>&nbsp;</td>
 							<td>&nbsp;</td>
 							<td>&nbsp;</td>
-							<td class="total_cart"><?php echo $totalFinal; ?></td>
+							<td class="total_cart">$<?php echo $totalFinal; ?></td>
 							<td>&nbsp;</td>
 						</tr>
 					</tbody>
@@ -151,9 +151,15 @@
 					$('.delete_btn').click(function(e) {
 						var cartId = $(this).closest('tr').find('#cart-id').val();
 						var userId = checkLogin();
-
-						if (confirm("Are you sure you want to delete this product in your cart?")) {
-							$.ajax({
+						Swal.fire({
+							title: "Are you sure you want to delete this product in your cart?",
+							showDenyButton: true,
+							// showCancelButton: true,
+							confirmButtonText: "Delete",
+							denyButtonText: `No`
+						}).then((result) => {
+							if (result.isConfirmed) {
+								$.ajax({
 								url: base_url + "/cart/deleteCart",
 								type: "POST",
 								dataType: "html",
@@ -171,7 +177,29 @@
 									alert('An error occurred while deleting the product. Please try again later.');
 								}
 							});
-						}
+								Swal.fire("Saved!", "", "success");
+							}
+						});
+						// if (confirm("Are you sure you want to delete this product in your cart?")) {
+						// 	$.ajax({
+						// 		url: base_url + "/cart/deleteCart",
+						// 		type: "POST",
+						// 		dataType: "html",
+						// 		data: {
+						// 			cartId: cartId,
+						// 			userId: userId
+						// 		},
+						// 		success: function(response) {
+						// 			console.log(response);
+						// 			$('.cart_table tbody').html(response);
+						// 			// // row.remove();
+						// 			eventHandler();
+						// 		},
+						// 		error: function(jqXHR, textStatus, errorThrown) {
+						// 			alert('An error occurred while deleting the product. Please try again later.');
+						// 		}
+						// 	});
+						// }
 					});
 				}
 
