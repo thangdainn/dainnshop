@@ -1,4 +1,4 @@
-        <footer class="footer pt-5">
+        <footer class="footer pt-5 py-4">
             <div class="container-fluid">
                 <div class="row align-items-center justify-content-lg-between">
                     <div class="col-lg-12">

@@ -9,7 +9,9 @@ include ('../includes/header.php');
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>Add Brand</h4>
+                    <h3>Add Brand
+                        <a href="brand.php" class="btn btn-primary float-end"><i class="fa fa-reply"></i>Back</a>
+                    </h3>
                 </div>
                 <div class="card-body">
                     <form action="../controllers/code.php" method="POST" enctype="multipart/form-data">
