@@ -8,13 +8,13 @@ include ('../includes/header.php');
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="card">
+            <div class="card my-4">
                 <div class="card-header">
                     <h4>Orders</h4>
                 </div>
-                <div class="card-body" id="">
-                    <table class="table table-bordered table-striped">
-                        <thead>
+                <div class="card-body table-responsive" id="">
+                    <table class="table table-bordered table-striped align-items-center mb-0 table-shopping" style="display: block; height: 500px; overflow-y: scroll;width: 100%;table-layout:auto;">
+                        <thead style="position: sticky; top: -0.1px; background: white;z-index: 10;">
                             <tr>
                                 <th>ID</th>
                                 <th>User ID</th>
@@ -36,19 +36,13 @@ include ('../includes/header.php');
                                             <tr>
                                                 <td> <?= $item['id'];?> </td>
                                                 <td> <?= $item['user_id'];?> </td>
-                                                <td> <?= $item['resipient_name'];?> </td>
-                                                <td> <?= $item['create_at'];?> </td>
-                                                <td> 
+                                                <td style="min-width:17.3rem;"> <?= $item['resipient_name'];?> </td>
+                                                <td style="min-width:17.3rem;"> <?= $item['create_at'];?> </td>
+                                                <td style="min-width:17.3rem;"> 
                                                     <?php 
                                                     switch ($item['id_order_status']) {
                                                         case '1':
                                                             echo "Chờ duyệt";
-                                                            break;
-                                                        case '2':
-                                                            echo "Đã duyệt";
-                                                            break;
-                                                        case '3':
-                                                            echo "Đang chuẩn bị hàng";
                                                             break;
                                                         case '4':
                                                             echo "Hủy đơn";

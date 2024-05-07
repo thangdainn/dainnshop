@@ -1,0 +1,10 @@
+body{
+    background-image: url("../../../upload/images/sam-hull-KCJKsJPe9pQ-unsplash.jpg");
+    height: 100vh !important;
+    width: 100% !important;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+

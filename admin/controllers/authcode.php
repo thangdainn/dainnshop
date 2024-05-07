@@ -36,7 +36,7 @@ if(isset($_POST['login_btn']))
         if (password_verify($_POST['password'], $stored_hashed_password)) {
             $_SESSION['role_id'] = $role_id;
 
-            if($role_id == 8)
+            if($role_id == 8 || $role_id == 3)
             {
                 redirect("../views/index.php","Logged In Successfully");
             }

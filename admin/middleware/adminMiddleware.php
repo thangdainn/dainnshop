@@ -3,7 +3,7 @@ include ('../models/myfunctions.php');
 
 if(isset($_SESSION['auth']))
 {
-    if($_SESSION['role_id'] != 8)
+    if($_SESSION['role_id'] != 8 && $_SESSION['role_id'] != 3)
     {
         redirect("../views/login.php","Login to continue");
         exit();
@@ -11,7 +11,7 @@ if(isset($_SESSION['auth']))
 }
 else
 {
-    redirect("../views/login.php","Login to continue");
+    redirect("../views/index.php","Logged in successfully");
     exit();
 }
 ?>

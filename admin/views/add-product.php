@@ -9,7 +9,9 @@ include ('../includes/header.php');
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>Add Product</h4>
+                    <h3>Add Product
+                        <a href="products.php" class="btn btn-primary float-end"><i class="fa fa-reply"></i>Back</a>
+                    </h3>
                 </div>
                 <div class="card-body">
                     <form action="../controllers/code.php" method="POST" enctype="multipart/form-data">
@@ -23,7 +25,7 @@ include ('../includes/header.php');
                                 <input type="file" required name="img" class="form-control mb-2">
                             </div>
                             <div class="col-md-12">
-                                <label class="mb-0">Upload Additional Images (must be 2)</label>
+                                <label class="mb-0">Upload Additional Images (must be 3)</label>
                                 <div class="form-group">
                                     <input type="file" name="additional_images[]" class="form-control mb-2" multiple>
                                 </div>
@@ -63,7 +65,7 @@ include ('../includes/header.php');
                                     ?>
                                 </select>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <label class="mb-0"> Select Brand</label>
                                 <select name="brand_id" class="form-select mb-2" >
                                     <option selected> Select Brand</option>
@@ -86,7 +88,7 @@ include ('../includes/header.php');
                                     ?>
                                 </select>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <label class="mb-0">Select Type</label>
                                 <select name="type" class="form-select mb-2" >
                                     <option selected>Select Type</option>
@@ -95,12 +97,8 @@ include ('../includes/header.php');
                                     <option value="sale">Sale</option>
                                 </select>
                             </div>
-                            <div class="col-md-6">
-                                <label class="mb-0">Status</label> <br>
-                                <input type="checkbox" name="status">
-                            </div>
                             <div class="col-md-12" >
-                                <button type="submit" class="btn btn-primary" name="add_product_btn">Save</button>
+                                <button type="submit" class="btn btn-primary mt-2" name="add_product_btn">Save</button>
                             </div>
                         </div>
                     </form>

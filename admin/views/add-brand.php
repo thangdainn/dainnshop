@@ -9,25 +9,23 @@ include ('../includes/header.php');
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>Add Brand</h4>
+                    <h3>Add Brand
+                        <a href="brand.php" class="btn btn-primary float-end"><i class="fa fa-reply"></i>Back</a>
+                    </h3>
                 </div>
                 <div class="card-body">
                     <form action="../controllers/code.php" method="POST" enctype="multipart/form-data">
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <label class="mb-0">Name</label>
                                 <input type="text" required name="name" placeholder="Enter Brand Name" class="form-control mb-2">
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <label class="mb-0">Upload Image</label>
                                 <input type="file" required name="image" class="form-control mb-2">
                             </div>
-                            <div class="col-md-6">
-                                <label class="mb-0">Status</label> <br>
-                                <input type="checkbox" name="status">
-                            </div>
                             <div class="col-md-12">
-                                <button type="submit" class="btn btn-primary" name="add_brand_btn">Save</button>
+                                <button type="submit" class="btn btn-primary mt-2" name="add_brand_btn">Save</button>
                             </div>
                         </div>
                     </form>
