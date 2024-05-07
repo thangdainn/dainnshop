@@ -102,6 +102,38 @@
                         <span class="nav-link-text ms-1">Orders</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                <a class="nav-link text-white <?= $page == "role.php" || $page == "add-role.php" || $page == "edit-role.php"? 'active bg-gradient-primary':''; ?>" href="../views/role.php">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="material-icons opacity-10">table_view</i>
+                    </div>
+                <span class="nav-link-text ms-1">Management Roles</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white <?= $page == "user.php" || $page == "add-user.php" || $page == "edit-user.php"? 'active bg-gradient-primary':''; ?>" href="../views/user.php">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="material-icons opacity-10">table_view</i>
+                    </div>
+                <span class="nav-link-text ms-1">Management Users</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white <?= $page == "size.php" || $page == "add-size.php" || $page == "edit-size.php"? 'active bg-gradient-primary':''; ?>" href="../views/size.php">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="material-icons opacity-10">table_view</i>
+                    </div>
+                <span class="nav-link-text ms-1">Management Sizes</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white <?= $page == "statistical.php"? 'active bg-gradient-primary':''; ?>" href="../views/statistical.php">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="material-icons opacity-10">table_view</i>
+                    </div>
+                <span class="nav-link-text ms-1">Statistical</span>
+                </a>
+            </li>
                 </ul>
             </div>
             <?php

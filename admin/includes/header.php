@@ -23,6 +23,22 @@
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/alertify.min.css" />
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/themes/bootstrap.min.css" />
 
+
+
+  <?php
+  $currentURL = $_SERVER['REQUEST_URI'];
+  if (strpos($currentURL, '/statistical') !== false) {
+    // echo '<link rel="stylesheet" type="text/css" href="../assets/vendors/bootstrap/dist/css/bootstrap.min.css">';
+    echo '<link rel="stylesheet" type="text/css" href="../assets/vendors/font-awesome/css/font-awesome.min.css">';
+    echo '<link rel="stylesheet" type="text/css" href="../assets/vendors/nprogress/nprogress.css">';
+    // echo '<link rel="stylesheet" type="text/css" href="../assets/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css">';
+    echo '<link rel="stylesheet" type="text/css" href="../assets/vendors/bootstrap-daterangepicker/daterangepicker.css">';
+    echo '<link rel="stylesheet" type="text/css" href="../assets/css/statistic.css">';
+    // echo '<link rel="stylesheet" type="text/css" href="../assets/build/css/custom.min.css">';
+    echo '<script src="../assets/vendors/jquery/dist/jquery.min.js"></script>';
+  }
+  ?>
+
   <style>
     .form-control {
       border: 1px solid #e91e63 !important;
