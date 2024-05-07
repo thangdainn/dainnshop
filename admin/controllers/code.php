@@ -68,10 +68,9 @@ if (isset($_POST['add_category_btn'])) {
     $image = $category_data['image'];
 
     $delete_query = "UPDATE categories SET status='0' WHERE id='$category_id' ";
-    $delete_query_run = mysqli_query($con,$delete_query);
+    $delete_query_run = mysqli_query($con, $delete_query);
 
-    if($delete_query_run)
-    {
+    if ($delete_query_run) {
         // redirect("category.php?id=$category_id", "Category deleted successfully");
         echo 200;
     } else {
@@ -143,10 +142,9 @@ if (isset($_POST['add_brand_btn'])) {
     $image = $brand_data['image'];
 
     $delete_query = "UPDATE brands SET status='0' WHERE id='$brand_id' ";
-    $delete_query_run = mysqli_query($con,$delete_query);
+    $delete_query_run = mysqli_query($con, $delete_query);
 
-    if($delete_query_run)
-    {
+    if ($delete_query_run) {
         // redirect("category.php?id=$category_id", "Category deleted successfully");
         echo 200;
     } else {
@@ -163,7 +161,7 @@ if (isset($_POST['add_brand_btn'])) {
     $brand_id = $_POST['brand_id'];
     $type = $_POST['type'];
     $status = '1';
-  
+
     $path = "../../upload/images";
 
     $img_ext = pathinfo($img, PATHINFO_EXTENSION);
@@ -224,7 +222,7 @@ if (isset($_POST['add_brand_btn'])) {
     $category_id = $_POST['category_id'];
     $brand_id = $_POST['brand_id'];
     $type = $_POST['type'];
-    
+
     $path = "../../upload/images";
 
     $new_img = $_FILES['img']['name'];
@@ -240,7 +238,7 @@ if (isset($_POST['add_brand_btn'])) {
 
     $update_product_query = "UPDATE products SET name='$name', img='$update_filename', description='$description', price='$price',
       sale='$sale', category_id='$category_id', brand_id='$brand_id', type='$type' WHERE id='$product_id'";
-    
+
     $update_product_query_run = mysqli_query($con, $update_product_query);
 
     if ($update_product_query_run) {
@@ -307,10 +305,7 @@ if (isset($_POST['add_brand_btn'])) {
     } else {
         echo 500; // Product deletion failed
     }
-}
-
-else if(isset($_POST['add_product_sizes_btn']))
-{
+} else if (isset($_POST['add_product_sizes_btn'])) {
     $product_id = $_POST['product_id'];
     $size_id = $_POST['size_id'];
     $quantity = $_POST['quantity'];
@@ -421,6 +416,6 @@ else if(isset($_POST['add_product_sizes_btn']))
 //         echo 500;
 //     }
 // }
-else{
+else {
     header('Location: ../views/index.php');
 }
