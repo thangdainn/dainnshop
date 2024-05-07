@@ -27,32 +27,30 @@
                                 <div class="col-lg-12">
                                     <div class="checkout__input">
                                         <p>Full Name<span>*</span></p>
-                                        <input type="text" name="full-name">
+                                        <input type="text" name="full-name" placeholder="Your full name" require>
+                                        <i class="fa fa-check-circle"></i>
+                                        <i class="fa fa-exclamation-circle"></i>
+                                        <small>Error Message</small>
                                     </div>
                                 </div>
                             </div>
                             <div class="checkout__input">
                                 <p>Address<span>*</span></p>
-                                <input type="text" class="checkout__input__add" name="address">
+                                <input type="text" class="checkout__input__add" placeholder="Your address" name="address" require>
+                                <i class="fa fa-check-circle"></i>
+                                <i class="fa fa-exclamation-circle"></i>
+                                <small>Error Message</small>
                             </div>
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="checkout__input">
                                         <p>Phone<span>*</span></p>
-                                        <input type="text" name="phone">
+                                        <input type="text" name="phone" placeholder="Your phone" require>
+                                        <i class="fa fa-check-circle"></i>
+                                        <i class="fa fa-exclamation-circle"></i>
+                                        <small>Error Message</small>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="checkout__input__checkbox">
-                                <label for="diff-acc">
-                                    Note about your order, e.g, special noe for delivery
-                                    <input type="checkbox" id="diff-acc">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                            <div class="checkout__input">
-                                <p>Order notes<span>*</span></p>
-                                <input name="note" type="text" placeholder="Notes about your order, e.g. special notes for delivery.">
                             </div>
                         </div>
                         <div class="col-lg-5 col-md-6">
@@ -70,7 +68,7 @@
                                         <li>
                                             <!-- <?php echo $num ?>. -->
                                             <span class="product-name"><?php echo $num . ". " . $cart['product_name'] ?></span>
-                                            <span class="product-total">$<?php echo $totalMoney ?></span>
+                                            <span>$</span><span class="product-total"><?php echo $totalMoney ?></span>
                                             <input type="hidden" id="product-id" value="<?php echo $cart['product_id'];
                                                                                         ?>">
                                             <input type="hidden" id="product-size-id" value="<?php echo $cart['size_id'];
@@ -112,61 +110,142 @@
 
     <script>
         $('document').ready(function() {
-            var paymentMethod = '';
 
-            $(".single-checkbox").change(function() {
-                // Kiểm tra xem checkbox này có được chọn không
-                if ($(this).is(":checked")) {
-                    // Lấy giá trị của checkbox đã được chọn
-                    $(".single-checkbox").not(this).prop("checked", false);
-                    paymentMethod = $(this).val();
+            var paymentMethod = '';
+            function checkCheckbox() {
+                var isCheckboxChecked = false;
+
+                $(".single-checkbox").change(function() {
+                    if ($(this).is(":checked")) {
+                        $(".single-checkbox").not(this).prop("checked", false);
+                        paymentMethod = $(this).val();
+                    }
+                });
+
+                if (paymentMethod) {
+                    isCheckboxChecked = true;
                 }
-            });
+
+                if (!isCheckboxChecked) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: "Please select a payment method!",
+                    });
+                }
+
+                return isCheckboxChecked;
+            }
+
+            function checkInput(name, phone, address) {
+                var fullnameInput = $('input[name="full-name"]');
+                var phoneInput = $('input[name="phone"]');
+                var addressInput = $('input[name="address"]');
+
+                var phoneRegex = /^0\d{9}$/;
+                if (name === "") {
+                    setErrorFor(fullnameInput, "Please enter a name");
+                    return false;
+                } else {
+                    setSuccessFor(fullnameInput);
+                }
+
+                if (address === "") {
+                    setErrorFor(addressInput, "Please enter a address");
+                    return false;
+                } else {
+                    setSuccessFor(addressInput);
+                }
+
+                if (phone === "") {
+                    setErrorFor(phoneInput, "Please enter a phone");
+                    return false;
+                } else if (!isPhone(phone)) {
+                    setErrorFor(phoneInput, "Phone number is invalid");
+                    return false;
+                } else {
+                    setSuccessFor(phoneInput);
+                }
+
+
+                return true;
+            }
+
+            function setErrorFor(input, message) {
+                var checkoutInput = $(input).parent();
+                var small = checkoutInput.find('small');
+
+                small.text(message);
+
+                checkoutInput.addClass('error');
+
+            }
+
+            function setSuccessFor(input) {
+                var checkoutInput = $(input).parent();
+                console.log(checkoutInput);
+
+                checkoutInput.addClass('success');
+
+            }
+
+            function isPhone(a) {
+                return a.match(/^\d{10}$/);
+            }
+
             $('.site-btn').click(function(e) {
                 e.preventDefault();
 
                 console.log(paymentMethod);
-                var fullname = $('input[name="full-name"]').val();
-                var phone = $('input[name="phone"]').val();
-                var address = $('input[name="address"]').val();
-                var note = $('input[name="note"]').val();
+                var fullname = $('input[name="full-name"]').val().trim();
+                var phone = $('input[name="phone"]').val().trim();
+                var address = $('input[name="address"]').val().trim();
 
                 var products_detail = []
-                $('.checkout__total__products li').each(function() {
-                    var productTotal = $(this).find('.product-total').text();
-                    var productId = $(this).find('#product-id').val();
-                    var sizeId = $(this).find('#product-size-id').val();
-                    var productQuantity = $(this).find('#product-quantity').val();
-                    products_detail.push({
-                        product_id: productId,
-                        size_id: sizeId,
-                        total: productTotal,
-                        quantity: productQuantity
+                if (checkInput(fullname, phone, address) === true && checkCheckbox() === true) {
+                    $('.checkout__total__products li').each(function() {
+                        var productTotal = $(this).find('.product-total').text();
+                        var productId = $(this).find('#product-id').val();
+                        var sizeId = $(this).find('#product-size-id').val();
+                        var productQuantity = $(this).find('#product-quantity').val();
+                        products_detail.push({
+                            product_id: productId,
+                            size_id: sizeId,
+                            total: productTotal,
+                            quantity: productQuantity
+                        });
                     });
-                });
 
-                $.ajax({
-                    type: "POST",
-                    dataType: "html",
-                    url: base_url + "/checkout/addOrder",
-                    data: {
-                        fullName: fullname,
-                        phone: phone,
-                        address: address,
-                        note: note,
-                        paymentMethod: paymentMethod,
-                        products: products_detail
-                    },
-                    success: function(reponse) {
-                        console.log(reponse);
-                        alert('Order successfully');
-                        window.location = base_url;
-                    },
-                    error: function(xhr, status, error) {
-                        console.error(error);
-                        alert('Failed to place order. Please try again.');
-                    }
-                })
+                    $.ajax({
+                        type: "POST",
+                        dataType: "html",
+                        url: base_url + "/checkout/addOrder",
+                        data: {
+                            fullName: fullname,
+                            phone: phone,
+                            address: address,
+                            paymentMethod: paymentMethod,
+                            products: products_detail
+                        },
+                        success: function(reponse) {
+                            Swal.fire({
+                                title: "You have successfully placed an order!",
+                                text: "Click ok to exit",
+                                icon: "success"
+                            });
+                            console.log(reponse);
+                            setTimeout(function() {
+                                window.location.href = base_url;
+                            }, 3000);
+                        },
+                        error: function(xhr, status, error) {
+                            console.error(error);
+                            alert('Failed to place order. Please try again.');
+                        }
+                    });
+                }
+
+
             })
         })
     </script>

@@ -328,6 +328,9 @@ jQuery(document).ready(function ($) {
         //   alert("Add to cart failed");
         // }
         showNotification();
+        setTimeout(function() {
+          window.location.href = base_url + "/shop";
+        }, 1000);
       },
     });
   }
@@ -338,11 +341,10 @@ jQuery(document).ready(function ($) {
       url: url,
       data: data,
       success: function (response) {
-        if (response.status === "success") {
-          alert("Add to cart successfully");
-        } else {
-          alert("Add to cart failed");
-        }
+        showNotification();
+        setTimeout(function() {
+          window.location.href = base_url + "/cart";
+        }, 1000);
       },
     });
   }
@@ -370,7 +372,7 @@ jQuery(document).ready(function ($) {
         productId: productId,
         sizeId: sizeId,
         quantity: quantity,
-        action: "buy_now",
+        // action: "buy_now",
       };
       buyNowAjax(data);
     });
@@ -395,18 +397,6 @@ jQuery(document).ready(function ($) {
         sizeId: sizeId,
         quantity: quantity,
       };
-      if (checkLogin() == 0) {
-        let existingCartItems = getLocalStorageCartItems();
-
-        if (!Array.isArray(existingCartItems)) {
-          existingCartItems = [];
-        }
-    
-        existingCartItems.push(data);
-    
-        setLocalStorageCartItems(existingCartItems);
-        // return;
-      }
       addToCartAjax(data);
     });
   }

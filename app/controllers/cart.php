@@ -44,10 +44,12 @@ class cart extends Controller
                     $cartModel->updateCart($existingCartItem[0]['amount'], $existingCartItem[0]['id']);
                 } else {
                     $cartModel->addCart($userId, $productId, $quantity, $sizeId);
+                    $_SESSION['totalQuantity'] = isset($_SESSION['totalQuantity']) ? $_SESSION['totalQuantity'] + 1 : 1;
                 }
                 $message["status"] = true;
             }
-            $_SESSION['totalQuantity'] = isset($_SESSION['totalQuantity']) ? $_SESSION['totalQuantity'] + 1 : 1;
+            $this->load->view("header");
+            header("Location: " . BASE_URL . "/shop");
         }
     }
 
@@ -85,6 +87,7 @@ class cart extends Controller
             if (!isset($_SESSION['cart'])) {
                 $_SESSION['cart'] = array();
             }
+            $_SESSION['totalQuantity'] = isset($_SESSION['totalQuantity']) ? $_SESSION['totalQuantity'] + 1 : 1;
             $_SESSION['cart'][] = $cartItem;
         }
     }
@@ -131,6 +134,7 @@ class cart extends Controller
         if ($_SESSION['totalQuantity'] < 0) {
             $_SESSION['totalQuantity'] = 0;
         }
+        $this->load->view("header");
     }
 
     public function render($carts)
@@ -152,8 +156,8 @@ class cart extends Controller
                 <td class="product_quantity">
 					<input class="quantity_input" type="number" value="' . $cart['amount'] . '" min="1">
 				</td>
-				<td class="product_price">' . $cart['cost'] . '</td>
-				<td class="total_money">' . $totalMoney . ' </td>
+				<td>$<span class="product_price">' .$cart['cost'] .'</span></td>
+				<td>$<span class="total_money">'. $totalMoney .'</span</td>
 				<td class="product_action">
 					<button class="btn delete_btn" id="delete">Delete</button>
 				</td>
@@ -174,26 +178,26 @@ class cart extends Controller
         echo $html;
     }
 
-    public function onUserLogin($userId)
-    {
-        $cartModel = $this->load->model("CartModel");
+    // public function onUserLogin($userId)
+    // {
+    //     $cartModel = $this->load->model("CartModel");
 
-        if (isset($_SESSION['cart'])) {
-            foreach ($_SESSION['cart'] as $sessionCartItem) {
-                $dbCartItem = $cartModel->findCartItem($userId, $sessionCartItem['product_id'], $sessionCartItem['size_id']);
+    //     if (isset($_SESSION['cart'])) {
+    //         foreach ($_SESSION['cart'] as $sessionCartItem) {
+    //             $dbCartItem = $cartModel->findCartItem($userId, $sessionCartItem['product_id'], $sessionCartItem['size_id']);
 
-                if ($dbCartItem) {
-                    $newQuantity = $dbCartItem['amount'] + $sessionCartItem['amount'];
-                    $cartModel->updateCart($newQuantity, $dbCartItem['id']);
-                } else {
-                    $cartModel->addCart($userId, $sessionCartItem['product_id'], $sessionCartItem['amount'], $sessionCartItem['size_id']);
-                }
-            }
+    //             if ($dbCartItem) {
+    //                 $newQuantity = $dbCartItem['amount'] + $sessionCartItem['amount'];
+    //                 $cartModel->updateCart($newQuantity, $dbCartItem['id']);
+    //             } else {
+    //                 $cartModel->addCart($userId, $sessionCartItem['product_id'], $sessionCartItem['amount'], $sessionCartItem['size_id']);
+    //             }
+    //         }
 
-            // Clear the session cart
-            unset($_SESSION['cart']);
-        }
-    }
+    //         // Clear the session cart
+    //         unset($_SESSION['cart']);
+    //     }
+    // }
 
     public function totalQuantity () {
         $totalQuantity = 0;
@@ -219,7 +223,6 @@ class cart extends Controller
 
     public function cart()
     {
-        $totalQuantity = 0;
         $this->load->view("header");
         if (Session::isLogin()) {
             $userID = Session::getUserId();
@@ -233,14 +236,13 @@ class cart extends Controller
                 unset($_SESSION['cart']);
             }
             $total = $cartModel->getTotalQuantityForUser($userID);
-            $totalQuantity = $total[0]['total'];
+            $_SESSION['totalQuantity'] = $total[0]['total'];
             $this->load->view("cpanel/cart", $data);
         } else {
             $carts = isset($_SESSION['cart']) ? $_SESSION['cart'] : array();
-            $totalQuantity = count($carts);
+            $_SESSION['totalQuantity'] = count($carts);
             $this->load->view("cpanel/cart", ['carts' => $carts]);
         }
-        $_SESSION['totalQuantity'] = $totalQuantity;
         $this->load->view("footer");
     }
 }

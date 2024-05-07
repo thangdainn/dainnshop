@@ -61,8 +61,8 @@
 								<td class="product_quantity">
 									<input class="quantity_input" type="number" value="<?php echo $cart['amount'] ?>" min="1">
 								</td>
-								<td class="product_price">$<?php echo $cart['cost'] ?></td>
-								<td class="total_money">$<?php echo $totalMoney; ?></td>
+								<td>$<span class="product_price"><?php echo $cart['cost'] ?></span></td>
+								<td>$<span class="total_money"><?php echo $totalMoney; ?></span></td>
 								<td class="product_action">
 									<button class="btn delete_btn" id="delete">Delete</button>
 									<!-- <button class="btn update_btn" id="update">Update</button> -->
@@ -160,23 +160,26 @@
 						}).then((result) => {
 							if (result.isConfirmed) {
 								$.ajax({
-								url: base_url + "/cart/deleteCart",
-								type: "POST",
-								dataType: "html",
-								data: {
-									cartId: cartId,
-									userId: userId
-								},
-								success: function(response) {
-									console.log(response);
-									$('.cart_table tbody').html(response);
-									// // row.remove();
-									eventHandler();
-								},
-								error: function(jqXHR, textStatus, errorThrown) {
-									alert('An error occurred while deleting the product. Please try again later.');
-								}
-							});
+									url: base_url + "/cart/deleteCart",
+									type: "POST",
+									dataType: "html",
+									data: {
+										cartId: cartId,
+										userId: userId
+									},
+									success: function(response) {
+										console.log(response);
+										$('.cart_table tbody').html(response);
+										// // row.remove();
+										eventHandler();
+										setTimeout(function() {
+											window.location.href = base_url + "/cart";
+										}, 1000);
+									},
+									error: function(jqXHR, textStatus, errorThrown) {
+										alert('An error occurred while deleting the product. Please try again later.');
+									}
+								});
 								Swal.fire("Saved!", "", "success");
 							}
 						});

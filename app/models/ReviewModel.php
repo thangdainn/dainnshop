@@ -14,6 +14,12 @@ class ReviewModel extends Model
         return $result;
     }
 
+    public function addReview($productId, $userId, $name, $email, $message, $star) {
+        $sql = "INSERT INTO `reviews` (`product_id`, `user_id`, `name`, `email`, `message`, `star`, `status`) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $result = $this->db->execute($sql, $productId, $userId, $name, $email, $message, $star, 1);
+        return $result;
+    }
+
     public function findByProduct_Id($id)
     {
         $sql = "SELECT * FROM reviews r 

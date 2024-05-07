@@ -17,13 +17,12 @@ class checkout extends Controller
         $address = $_POST['address'];
         $phone = $_POST['phone'];
         $products = $_POST['products'];
-        $note = $_POST['note'];
         $paymentMethod = $_POST['paymentMethod'];
 
         Session::init();
         $userID = Session::getUserId();
         $checkOutModel = $this->load->model("CheckOutModel");
-        $orderId = $checkOutModel->addOrder($userID, $fullName, $phone, $address, $note, $paymentMethod);
+        $orderId = $checkOutModel->addOrder($userID, $fullName, $phone, $address, $paymentMethod);
         
         foreach($products as $product ) {
             $productId = $product['product_id'];
@@ -36,6 +35,7 @@ class checkout extends Controller
 
         $cartModel = $this->load->model("CartModel");
         $cartModel->deleteCartByUserId($userID);
+        $_SESSION['totalQuantity'] = 0;
     }
 
     public function checkout() {
