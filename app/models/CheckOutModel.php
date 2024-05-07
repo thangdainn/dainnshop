@@ -7,9 +7,9 @@ class CheckOutModel extends Model
         parent::__construct();
     }
 
-    public function addOrder($userId, $fullName, $phone, $address, $note, $paymentMethod) {
-        $sql = 'INSERT INTO `order`(`user_id`, `resipient_name`, `resipient_phonenumber`, `delivery_address`, `id_order_status`, `note`, `payment_method`) VALUES (?,?,?,?,?,?,?)';
-        $result = $this->db->execute($sql, $userId, $fullName, $phone, $address, 1,$note, $paymentMethod);
+    public function addOrder($userId, $fullName, $phone, $address, $paymentMethod) {
+        $sql = 'INSERT INTO `order`(`user_id`, `resipient_name`, `resipient_phonenumber`, `delivery_address`, `id_order_status`, `payment_method`) VALUES (?,?,?,?,?,?)';
+        $result = $this->db->execute($sql, $userId, $fullName, $phone, $address, 1,$paymentMethod);
         $order_id = $this->db->lastInsertId();
         return $order_id;
     } 

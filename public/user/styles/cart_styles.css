@@ -331,7 +331,7 @@ section {
 }
 
 .cart_container {
-	margin-top: 148px;
+	margin-top: 120px;
 	padding-bottom: 80px;
 	border-bottom: solid 1px #ebebeb;
 }
@@ -342,6 +342,10 @@ section {
 
 #payment-button {
   margin-left: auto;
+}
+
+#payment-button {
+	margin-left: auto;
 }
 
 .cart_container .payment_btn {
@@ -420,6 +424,10 @@ section {
 
 .product_link {
   color: #fe4c50;
+}
+
+.product_link {
+	color: #fe4c50;
 }
 
 .cart_buttons {
