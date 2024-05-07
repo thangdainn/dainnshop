@@ -18,6 +18,7 @@ if (isset($_POST['add_user_btn'])) {
         }
         $password = password_hash($password, PASSWORD_DEFAULT);
 
+
         $user_query_run = insertUser($fullname, $email, $phone, $password, $role_id);
 
         if ($user_query_run) {
