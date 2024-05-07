@@ -38,10 +38,6 @@ include ('../includes/header.php');
                                                 <input type="hidden" name="old-image" value="<?= $data['image']; ?>">
                                                 <img src="../../upload/images/<?= $data['image']; ?>" height="50px" width="50px" alt="">
                                             </div>
-                                            <div class="col-md-6">
-                                                <label for="">Status</label>
-                                                <input type="checkbox" <?= $data['status'] ? "checked":"" ?> name="status">
-                                            </div>
                                             <div class="col-md-12">
                                                 <button type="submit" class="btn btn-primary" name="update_category_btn">Update</button>
                                             </div>

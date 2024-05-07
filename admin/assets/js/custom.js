@@ -63,7 +63,7 @@ $(document).ready(function() {
                         success: function (response) {
                             if(response == 200) 
                             {
-                                swal("Success", "Product deleted successfully!", "success");
+                                swal("Success", "Category deleted successfully!", "success");
                                 $("#category_table").load(location.href + " #category_table");
                             }
                             else if(response == 500)

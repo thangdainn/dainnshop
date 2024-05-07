@@ -45,25 +45,16 @@ include ('../includes/header.php');
                                                     $count = 0;
                                                     ?>
                                                         <div class="col-md-12">
-                                                            <label class="mb-0">Upload Additional Images (2 Images) </label>
+                                                            <label class="mb-0">Upload Additional Images (3 Images) </label>
                                                             <input type="hidden" name="image-old-image[]" value="<?= $item['image']; ?>">
                                                             <input type="file" name="additional_images[]" class="form-control mb-2" multiple>
                                                             <label class="mb-0">Current Additional Images</label>
                                                             <?php
                                                             foreach($images_images as $item)
                                                             {
-                                                                if($count == 0)
-                                                                {
-                                                                    $count++;
-                                                                    continue;
-                                                                }
-                                                                else
-                                                                {
                                                                     ?>
                                                                         <img src="../../upload/images/<?= $item['image']; ?>" alt="Product Image" height="50px" width="50px" >
                                                                     <?php
-                                                                }
-                                                                
                                                             }
                                                             ?>
                                                         </div>
@@ -136,10 +127,6 @@ include ('../includes/header.php');
                                                     <option value="normal" <?= $data['type'] == "normal"?'selected':'' ?> >Normal</option>
                                                     <option value="sale" <?= $data['type'] == "sale"?'selected':'' ?> >Sale</option>
                                                 </select>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label class="mb-0">Status</label> <br>
-                                                <input type="checkbox" <?= $data['status'] ? "checked":"" ?> name="status">
                                             </div>
                                             <div class="col-md-12" >
                                                 <button type="submit" class="btn btn-primary" name="update_product_btn">Update</button>

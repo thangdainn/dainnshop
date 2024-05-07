@@ -1,0 +1,5 @@
+input:focus,
+input:valid{
+    color: #e91e63;
+    border: 1px solid #e91e63;
+}

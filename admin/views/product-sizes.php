@@ -23,7 +23,6 @@ include ('../includes/header.php');
                                 <th>Size</th>
                                 <th>Quantity</th>
                                 <th>Edit</th>
-                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -42,20 +41,15 @@ include ('../includes/header.php');
                                         ?>
                                             <tr>
                                                 <td> <?= $item['product_id'];?> </td>
-                                                <td style="min-width:17.3rem;"> <?= $item['pname'];?> </td>
+                                                <td style="min-width:25.3rem;"> <?= $item['pname'];?> </td>
                                                 <td style="min-width:17.3rem;">
                                                     <img src="../../upload/images/<?= $item['pimg']; ?>" width="50px" height="50px" alt="<?= $item['pname'];?>">
                                                 </td>
-                                                <td style="min-width:6.3rem;"> <?= $item['sname'];?> </td>
+                                                <td style="min-width:8.3rem;"> <?= $item['sname'];?> </td>
 
-                                                <td> <?= $item['quantity'];?> </td>
-                                                <td>
+                                                <td style="min-width:8.3rem;"> <?= $item['quantity'];?> </td>
+                                                <td style="min-width:8.3rem;">
                                                     <a href="edit-product-sizes.php?pid=<?= $item['product_id'];?>&sid=<?= $item['size_id'];?>" class="btn btn-primary">Edit</a>
-                                                </td>
-                                                <td>
-                                                    <button type="button" class="btn btn-danger delete_product_sizes_btn" 
-                                                            value="<?= $item['product_id']; ?>|<?= $item['size_id'];?>"
-                                                            name="delete_product_sizes_btn">Delete</button>
                                                 </td>
                                             </tr>
                                         <?php

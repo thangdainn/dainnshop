@@ -17,6 +17,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
   <!-- CSS Files -->
   <link id="pagestyle" href="../assets/css/material-dashboard.min.css" rel="stylesheet" />
+  <link id="pagestyle" href="../assets/css/custom.css" rel="stylesheet" />
 
   <!-- Alertify Js -->
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/alertify.min.css"/>
@@ -24,7 +25,12 @@
 
   <style>
     .form-control {
-      border: 1px solid #b3a1a1 !important;
+      border: 1px solid #e91e63 !important;
+      padding: 8px 10px;
+    }
+
+    .form-select {
+      border: 1px solid #e91e63 !important;
       padding: 8px 10px;
     }
   </style>

@@ -109,7 +109,7 @@ $data = mysqli_fetch_array($orderData);
                                                         <?= $item['name']; ?>
                                                     </td>
                                                     <td class="align-middle">
-                                                        <?= $item['total']; ?>
+                                                        $<?= $item['total']; ?>
                                                     </td>
                                                     <td class="align-middle">
                                                         <?= $item['quantity']; ?>
@@ -132,17 +132,20 @@ $data = mysqli_fetch_array($orderData);
                                             $totalPrice += $item['total'];
                                         }
                                     ?>
-                                    <?= $totalPrice ?>
+                                    $<?= $totalPrice ?>
                                 </span>
                             </h5>
+                            <hr>
+                            <label class="fw-bold">Payment Method</label>
+                            <div class="border p-1 mb-3">
+                                <?= $data['payment_method'] ?>
+                            </div>
                             <label class="fw-bold">Status</label>
                             <div class="mb-3">
                                 <form action="../controllers/code.php" method="POST">
                                     <input type="hidden" name="id" value="<?= $data['id']; ?>" >
                                     <select name="order_status" id="" class="form-select">
                                         <option value="1" <?= $data['id_order_status'] == '1'?"selected":"" ?>>Chờ duyệt</option>
-                                        <option value="2" <?= $data['id_order_status'] == '2'?"selected":"" ?>>Đã duyệt</option>
-                                        <option value="3" <?= $data['id_order_status'] == '3'?"selected":"" ?>>Đang chuẩn bị hàng</option>
                                         <option value="4" <?= $data['id_order_status'] == '4'?"selected":"" ?>>Hủy đơn</option>
                                         <option value="5" <?= $data['id_order_status'] == '5'?"selected":"" ?>>Đang giao</option>
                                         <option value="6" <?= $data['id_order_status'] == '6'?"selected":"" ?>>Thành công</option>

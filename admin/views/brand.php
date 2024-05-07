@@ -46,13 +46,32 @@ include('../models/adminconfig.php');
                                                 <td style="min-width:10rem;">
                                                     <a href="edit-brand.php?id=<?= $item['id'];?>" class="btn btn-primary">Edit</a>
                                                 </td>
-                                                <td style="min-width:10rem;">
-                                                    <!-- <form action="code.php" method="POST">
-                                                        <input type="hidden" name="category_id" value="<?= $item['id'];?>">
-                                                        <button type="submit" class="btn btn-danger" name="delete_category_btn">Delete</button>
-                                                    </form> -->
-                                                    <button type="button" class="btn btn-danger delete_brand_btn" value="<?= $item['id'];?>" >Delete</button>
-                                                </td>
+                                                <?php
+                                                    if($item['status'] == 0)
+                                                    {
+                                                        ?>
+                                                            <td style="min-width:10rem;">
+                                                                <!-- <form action="code.php" method="POST">
+                                                                    <input type="hidden" name="category_id" value="<?= $item['id'];?>">
+                                                                    <button type="submit" class="btn btn-danger" name="delete_category_btn">Delete</button>
+                                                                </form> -->
+                                                                <button type="button" class="btn btn-danger delete_brand_btn" value="<?= $item['id'];?>" style="  pointer-events: none;cursor: not-allowed;opacity: 0.65;filter: alpha(opacity=65);-webkit-box-shadow: none;box-shadow: none;">Delete</button>
+                                                            </td>
+                                                        <?php
+                                                    }
+                                                    else 
+                                                    {
+                                                        ?>
+                                                        <td style="min-width:10rem;">
+                                                            <!-- <form action="code.php" method="POST">
+                                                                <input type="hidden" name="category_id" value="<?= $item['id'];?>">
+                                                                <button type="submit" class="btn btn-danger" name="delete_category_btn">Delete</button>
+                                                            </form> -->
+                                                            <button type="button" class="btn btn-danger delete_brand_btn" value="<?= $item['id'];?>" >Delete</button>
+                                                        </td>
+                                                        <?php
+                                                    }
+                                                ?>
                                             </tr>
                                         <?php
                                     }

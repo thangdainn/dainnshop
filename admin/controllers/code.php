@@ -7,7 +7,7 @@ if(isset($_POST['add_category_btn']))
 {
     $name = $_POST['name'];
     $image = $_FILES['image']['name'];
-    $status = isset($_POST['status']) ? '1':'0';
+    $status = '1';
 
     $path = "../../upload/images";
 
@@ -35,7 +35,6 @@ else if(isset($_POST['update_category_btn']))
     $category_id = $_POST['category_id'];
     $name = $_POST['name'];
     $new_image = $_FILES['image']['name'];
-    $status = isset($_POST['status']) ? '1':'0';
 
     $old_image = $_POST['old-image'];
 
@@ -52,7 +51,7 @@ else if(isset($_POST['update_category_btn']))
         $update_filename = $old_image;
     }
 
-    $update_query = "UPDATE categories SET name='$name', image='$update_filename', status='$status' WHERE id='$category_id' ";
+    $update_query = "UPDATE categories SET name='$name', image='$update_filename' WHERE id='$category_id' ";
 
     $update_query_run = mysqli_query($con, $update_query);
 
@@ -83,15 +82,11 @@ else if(isset($_POST['delete_category_btn']))
 
     $image = $category_data['image'];
 
-    $delete_query = "DELETE FROM categories WHERE id='$category_id' ";
+    $delete_query = "UPDATE categories SET status='0' WHERE id='$category_id' ";
     $delete_query_run = mysqli_query($con,$delete_query);
 
     if($delete_query_run)
     {
-        if(file_exists("../../upload/images/".$image))
-        {
-            unlink("../../upload/images/".$image);
-        }
         // redirect("category.php?id=$category_id", "Category deleted successfully");
         echo 200;
     }
@@ -106,7 +101,7 @@ if(isset($_POST['add_brand_btn']))
 {
     $name = $_POST['name'];
     $image = $_FILES['image']['name'];
-    $status = isset($_POST['status']) ? '1':'0';
+    $status = '1';
 
     $path = "../../upload/images";
 
@@ -134,7 +129,6 @@ else if(isset($_POST['update_brand_btn']))
     $brand_id = $_POST['brand_id'];
     $name = $_POST['name'];
     $new_image = $_FILES['image']['name'];
-    $status = isset($_POST['status']) ? '1':'0';
 
     $old_image = $_POST['old-image'];
 
@@ -151,7 +145,7 @@ else if(isset($_POST['update_brand_btn']))
         $update_filename = $old_image;
     }
 
-    $update_query = "UPDATE brands SET name='$name', image='$update_filename', status='$status' WHERE id='$brand_id' ";
+    $update_query = "UPDATE brands SET name='$name', image='$update_filename' WHERE id='$brand_id' ";
 
     $update_query_run = mysqli_query($con, $update_query);
 
@@ -182,15 +176,11 @@ else if(isset($_POST['delete_brand_btn']))
 
     $image = $brand_data['image'];
 
-    $delete_query = "DELETE FROM brands WHERE id='$brand_id' ";
+    $delete_query = "UPDATE brands SET status='0' WHERE id='$brand_id' ";
     $delete_query_run = mysqli_query($con,$delete_query);
 
     if($delete_query_run)
     {
-        if(file_exists("../../upload/images/".$image))
-        {
-            unlink("../../upload/images/".$image);
-        }
         // redirect("category.php?id=$category_id", "Category deleted successfully");
         echo 200;
     }
@@ -211,7 +201,7 @@ else if(isset($_POST['add_product_btn']))
     $category_id = $_POST['category_id'];
     $brand_id = $_POST['brand_id'];
     $type = $_POST['type'];
-    $status = isset($_POST['status']) ? '1' : '0';
+    $status = '1';
   
     $path = "../../upload/images";
   
@@ -275,7 +265,6 @@ else if(isset($_POST['update_product_btn']))
     $category_id = $_POST['category_id'];
     $brand_id = $_POST['brand_id'];
     $type = $_POST['type'];
-    $status = isset($_POST['status']) ? '1' : '0';
     
     $path = "../../upload/images";
     
@@ -291,7 +280,7 @@ else if(isset($_POST['update_product_btn']))
     }
     
     $update_product_query = "UPDATE products SET name='$name', img='$update_filename', description='$description', price='$price',
-      sale='$sale', category_id='$category_id', brand_id='$brand_id', status='$status', type='$type' WHERE id='$product_id'";
+      sale='$sale', category_id='$category_id', brand_id='$brand_id', type='$type' WHERE id='$product_id'";
     
     $update_product_query_run = mysqli_query($con, $update_product_query);
     
@@ -348,42 +337,21 @@ else if(isset($_POST['delete_product_btn']))
 {
     $product_id = mysqli_real_escape_string($con, $_POST['product_id']);
 
-    // 1. Delete images first (assuming foreign key relationship with products table)
-    $delete_images_query = "DELETE FROM images WHERE product_id = '$product_id'";
-    $delete_images_run = mysqli_query($con, $delete_images_query);
+    $product_query = "SELECT * FROM products WHERE id='$product_id'";
+    $product_query_run = mysqli_query($con, $product_query);
+    $product_data = mysqli_fetch_array($product_query_run);
 
-    // 2. Check if deleting images was successful
-    if ($delete_images_run) {
-        // 3. Now proceed with deleting the product
-        $product_query = "SELECT * FROM products WHERE id='$product_id'";
-        $product_query_run = mysqli_query($con, $product_query);
-        $product_data = mysqli_fetch_array($product_query_run);
+    // Now proceed with deleting the product
+    $delete_query = "UPDATE products SET status='0' WHERE id='$product_id'";
+    $delete_query_run = mysqli_query($con, $delete_query);
 
-        // 4. Get all image paths for the product
-        $get_images_query = "SELECT image FROM images WHERE product_id = '$product_id'";
-        $get_images_run = mysqli_query($con, $get_images_query);
-
-        // 5. Loop through each image path and unlink the file
-        while ($image_data = mysqli_fetch_array($get_images_run)) {
-            $image_path = "../../upload/images/" . $image_data['image'];
-            if (file_exists($image_path)) {
-                unlink($image_path);
-            }
-        }
-
-        // 6. Now proceed with deleting the product
-        $delete_query = "DELETE FROM products WHERE id='$product_id'";
-        $delete_query_run = mysqli_query($con, $delete_query);
-
-        if ($delete_query_run) {
-            echo 200; // Success
-        } else {
-            echo 500; // Product deletion failed
-        }
+    if ($delete_query_run) {
+        echo 200; // Success
     } else {
-        echo 500; // Image deletion failed
+        echo 500; // Product deletion failed
     }
 }
+
 else if(isset($_POST['add_product_sizes_btn']))
 {
     $product_id = $_POST['product_id'];
@@ -480,29 +448,29 @@ else if(isset($_POST['update_order_btn']))
 
     redirect("../views/view-order.php?id=$order_id", "Order status updated succesfully!");
 }
-else if(isset($_POST['delete_product_sizes_btn']))
-{
-    $product_id = mysqli_real_escape_string($con, $_POST['product_id']);
-    $size_id = mysqli_real_escape_string($con, $_POST['size_id']);
+// else if(isset($_POST['delete_product_sizes_btn']))
+// {
+//     $product_id = mysqli_real_escape_string($con, $_POST['product_id']);
+//     $size_id = mysqli_real_escape_string($con, $_POST['size_id']);
 
-    $product_sizes_query = "SELECT * FROM products_size WHERE product_id='$product_id' AND size_id='$size_id' ";
-    $product_sizes_query_run = mysqli_query($con,$product_sizes_query);
-    $product_sizes_data = mysqli_fetch_array($product_sizes_query_run);
+//     $product_sizes_query = "SELECT * FROM products_size WHERE product_id='$product_id' AND size_id='$size_id' ";
+//     $product_sizes_query_run = mysqli_query($con,$product_sizes_query);
+//     $product_sizes_data = mysqli_fetch_array($product_sizes_query_run);
 
-    $delete_query = "DELETE FROM products_size WHERE product_id='$product_id' AND size_id='$size_id' ";
-    $delete_query_run = mysqli_query($con,$delete_query);
+//     $delete_query = "DELETE FROM products_size WHERE product_id='$product_id' AND size_id='$size_id' ";
+//     $delete_query_run = mysqli_query($con,$delete_query);
 
-    if($delete_query_run)
-    {
-        // redirect("products.php?id=$category_id", "Category deleted successfully");
-        echo 200;
-    }
-    else
-    {
-        // redirect("products.php?id=$category_id", "Something went wrong");
-        echo 500;
-    }
-}
+//     if($delete_query_run)
+//     {
+//         // redirect("products.php?id=$category_id", "Category deleted successfully");
+//         echo 200;
+//     }
+//     else
+//     {
+//         // redirect("products.php?id=$category_id", "Something went wrong");
+//         echo 500;
+//     }
+// }
 else{
     header('Location: ../views/index.php');
 }

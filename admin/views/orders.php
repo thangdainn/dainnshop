@@ -44,12 +44,6 @@ include ('../includes/header.php');
                                                         case '1':
                                                             echo "Chờ duyệt";
                                                             break;
-                                                        case '2':
-                                                            echo "Đã duyệt";
-                                                            break;
-                                                        case '3':
-                                                            echo "Đang chuẩn bị hàng";
-                                                            break;
                                                         case '4':
                                                             echo "Hủy đơn";
                                                             break;
