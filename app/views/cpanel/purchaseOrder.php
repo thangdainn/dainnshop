@@ -175,6 +175,7 @@
                                 console.error(error);
                             }
                         });
+                        Swal.fire("Saved!", "", "success");
                     }
                 });
             });
