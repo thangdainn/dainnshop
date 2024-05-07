@@ -380,7 +380,7 @@
     flex-direction: column;
   }
 
-  .btn_cancel {
+  .btn_cancel, .btn_review  {
     margin-left: 0;
     margin-top: 10px;
   }
