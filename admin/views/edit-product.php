@@ -96,7 +96,7 @@ include ('../includes/header.php');
                                                     ?>
                                                 </select>
                                             </div>
-                                            <div class="col-md-12">
+                                            <div class="col-md-6">
                                                 <label class="mb-0"> Select Brand</label>
                                                 <select name="brand_id" class="form-select mb-2" >
                                                     <option selected> Select Brand</option>
@@ -119,7 +119,7 @@ include ('../includes/header.php');
                                                     ?>
                                                 </select>
                                             </div>
-                                            <div class="col-md-12">
+                                            <div class="col-md-6">
                                                 <label class="mb-0">Select Type</label>
                                                 <select name="type" class="form-select mb-2" >
                                                     <option selected>Select Type</option>
