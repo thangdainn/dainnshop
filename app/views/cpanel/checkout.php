@@ -57,14 +57,14 @@
                             <div class="checkout__order">
                                 <h4 class="order__title">Your order</h4>
                                 <div class="checkout__order__products">Product <span>Total</span></div>
-                                <?php
-                                $num = 1;
-                                $totalFinal = 0;
-                                foreach ($carts as $cart) {
-                                    $totalMoney = $cart['cost'] * $cart['amount'];
-                                    $totalFinal += $totalMoney;
-                                ?>
-                                    <ul class="checkout__total__products">
+                                <ul class="checkout__total__products">
+                                    <?php
+                                    $num = 1;
+                                    $totalFinal = 0;
+                                    foreach ($carts as $cart) {
+                                        $totalMoney = $cart['cost'] * $cart['amount'];
+                                        $totalFinal += $totalMoney;
+                                    ?>
                                         <li>
                                             <!-- <?php echo $num ?>. -->
                                             <span class="product-name"><?php echo $num . ". " . $cart['product_name'] ?></span>
@@ -76,11 +76,11 @@
                                             <input type="hidden" id="product-quantity" value="<?php echo $cart['amount'];
                                                                                                 ?>">
                                         </li>
-                                    </ul>
-                                <?php
-                                    $num++;
-                                }
-                                ?>
+                                    <?php
+                                        $num++;
+                                    }
+                                    ?>
+                                </ul>
                                 <ul class="checkout__total__all">
                                     <li>Total <span>$<?php echo $totalFinal ?></span></li>
                                 </ul>

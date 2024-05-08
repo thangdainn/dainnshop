@@ -397,6 +397,18 @@ jQuery(document).ready(function ($) {
         sizeId: sizeId,
         quantity: quantity,
       };
+      if (checkLogin() == 0) {
+        let existingCartItems = getLocalStorageCartItems();
+
+        if (!Array.isArray(existingCartItems)) {
+          existingCartItems = [];
+        }
+    
+        existingCartItems.push(data);
+    
+        setLocalStorageCartItems(existingCartItems);
+        // return;
+      }
       addToCartAjax(data);
     });
   }
