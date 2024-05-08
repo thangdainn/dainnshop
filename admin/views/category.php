@@ -1,7 +1,8 @@
 <?php
-include('../models/adminconfig.php');
+
 include('../middleware/adminMiddleware.php');
 include ('../includes/header.php');
+include('../models/adminconfig.php');
 ?>
 
 <div class="container">
@@ -52,6 +53,10 @@ include ('../includes/header.php');
                                                     {
                                                         ?>
                                                         <td style="min-width:10rem;">
+                                                            <!-- <form action="code.php" method="POST">
+                                                                <input type="hidden" name="category_id" value="<?= $item['id'];?>">
+                                                                <button type="submit" class="btn btn-danger" name="delete_category_btn">Delete</button>
+                                                            </form> -->
                                                             <button type="button" class="btn btn-danger delete_category_btn" value="<?= $item['id'];?>" style="  pointer-events: none;cursor: not-allowed;opacity: 0.65;filter: alpha(opacity=65);-webkit-box-shadow: none;box-shadow: none;">Delete</button>
                                                         </td>
                                                         <?php

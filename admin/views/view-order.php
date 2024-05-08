@@ -82,8 +82,8 @@ $data = mysqli_fetch_array($orderData);
                         <div class="col-md-6">
                             <h4>Order Details</h4>
                             <hr>
-                            <table class="table">
-                                <thead>
+                            <table class="table align-items-center" style="display: block; height: 200px; overflow-y: scroll;table-layout:auto;">
+                                <thead style="position: sticky; top: -0.1px; background: white;z-index: 10;">
                                     <tr>
                                         <th>Product</th>
                                         <th>Price</th>
