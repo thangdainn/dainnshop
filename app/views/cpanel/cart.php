@@ -81,11 +81,11 @@
 						?>
 						<tr>
 							<td>&nbsp;</td>
-							<td>Total cart</td>
+							<td></td>
 							<td>&nbsp;</td>
 							<td>&nbsp;</td>
 							<td>&nbsp;</td>
-							<td>&nbsp;</td>
+							<td class="total-payment">Total price:</td>
 							<td class="total_cart">$<?php echo $totalFinal; ?></td>
 							<td>&nbsp;</td>
 						</tr>
