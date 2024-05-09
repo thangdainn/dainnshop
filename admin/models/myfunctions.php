@@ -49,7 +49,7 @@ function getAllOrders()
     global $con;
 
     $status = mysqli_real_escape_string($con, 6); // Escape the status value
-    $query = "SELECT * FROM `order` WHERE id_order_status!='$status'";  // Escape table name with backticks
+    $query = "SELECT * FROM `order`";  // Escape table name with backticks
     return $query_run = mysqli_query($con, $query);
 }
 
@@ -188,7 +188,7 @@ function findProductByFilters($categoryId, $fromDate, $toDate)
                 JOIN order_detail od ON p.id = od.product_id 
                 JOIN `order` o ON od.order_id = o.id 
                 JOIN categories c ON p.category_id = c.id 
-                WHERE p.status = 1";
+                WHERE p.status = 1 AND o.id_order_status = 6";
     if ($categoryId != 0) {
         $query .= " AND c.id = '$categoryId'";
     }

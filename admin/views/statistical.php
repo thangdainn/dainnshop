@@ -10,12 +10,12 @@ include('../includes/header.php');
         <div class="col-md-12">
             <div class="row">
                 <div class="col-lg-12 position-relative z-index-2">
-                    <div class="card card-plain mb-4">
+                    <div class="card card-plain mb-4" style="background-color: #fff; margin-right: 24px;border: 1px solid rgba(0, 0, 0, .1);">
                         <div class="card-body p-3">
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="d-flex flex-column h-100">
-                                        <h2 class="font-weight-bolder mb-0">Statistics</h2>
+                                        <h4 class="font-weight-bolder mb-0">Statistics</h4>
                                     </div>
 
                                 </div>

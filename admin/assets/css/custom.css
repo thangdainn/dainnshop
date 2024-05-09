@@ -1,5 +1,39 @@
-input:focus,
-input:valid{
-    color: #e91e63;
-    border: 1px solid #e91e63;
+body {
+  font-size: 13px !important;
+}
+
+.btn {
+  --bs-btn-border-radius: 0.15rem;
+}
+
+.btn-primary,
+.bg-primary {
+  background-color: #fe4c50 !important;
+}
+
+.bg-gradient-primary {
+  background-image: linear-gradient(195deg, #fe4c50, #c3544b);
+}
+
+.btn {
+  --bs-btn-padding-x: 1rem;
+  --bs-btn-padding-y: 0.325rem;
+  margin-bottom: 0;
+}
+
+.form-control {
+  border: 1px solid #ccc !important;
+  padding: 8px 10px;
+}
+
+.form-select {
+  border: 1px solid #ccc !important;
+  padding: 8px 10px;
+}
+.border-radius-xl {
+  border-radius: 0.25rem;
+}
+.card {
+  --bs-card-border-radius: 0.25rem;
+  --bs-card-inner-border-radius: 0.25rem;
 }

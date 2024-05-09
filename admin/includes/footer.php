@@ -21,8 +21,22 @@
             </div>
         </footer>
         </main>
-
-        <script src="../assets/js/jquery-3.7.1.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('#myTable').DataTable();
+                $('#myTable').css("height", "auto")
+                $("#myTable_length").remove();
+                $("#myTable_filter").remove();
+                $("#myTable_paginate").remove();
+                $("#myTable_info").remove();
+            })
+            $("table").css("overflow-y", "");
+            $("#myTable").css("border-bottom", "none");
+            if ($("#viewOrder").length > 0) {
+                $("#viewOrder").css("overflow-y", "scroll");
+            }
+        </script>
+        <!-- <script src="../assets/js/jquery-3.7.1.min.js"></script> -->
         <script src="../assets/js/bootstrap.bundle.min.js"></script>
         <script src="../assets/js/perfect-scrollbar.min.js"></script>
         <script src="../assets/js/smooth-scrollbar.min.js"></script>
@@ -34,7 +48,7 @@
         <?php
         $currentURL = $_SERVER['REQUEST_URI'];
         if (strpos($currentURL, '/statistical') !== false) {
-            // echo '<script src="../assets/vendors/jquery/dist/jquery.min.js"></script>';
+            echo '<script src="../assets/vendors/jquery/dist/jquery.min.js"></script>';
             echo '<script src="../assets/vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>';
             echo '<script src="../assets/vendors/fastclick/lib/fastclick.js"></script>';
             echo '<script src="../assets/vendors/nprogress/nprogress.js"></script>';

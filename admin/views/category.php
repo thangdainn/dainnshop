@@ -7,15 +7,15 @@ include ('../includes/header.php');
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="card my-4">
+            <div class="card ">
                 <div class="card-header">
-                    <h3>Categories
-                        <a href="add-category.php" class="btn btn-primary float-end"><i class="material-icons opacity-10">add</i>Add Category</a>
-                    </h3>
+                    <h4>Categories
+                        <a href="add-category.php" class="btn btn-info float-end"><i class="material-icons opacity-10">add</i>Add Category</a>
+                    </h4>
                     
                 </div>
                 <div class="card-body table-responsive" id="category_table">
-                    <table class="table table-bordered table-striped align-items-center mb-0 table-shopping" style="display: block; height: 500px; overflow-y: scroll;width: 100%;table-layout:auto;">
+                    <table id="myTable" class="table table-bordered table-striped align-items-center mb-0 table-shopping" style="display: block; height: 500px; overflow-y: scroll;width: 100%;table-layout:auto;">
                         <thead style="position: sticky; top: -0.1px; background: white;z-index: 10;">
                             <tr>
                                 <th>ID</th>
@@ -36,7 +36,7 @@ include ('../includes/header.php');
                                     {
                                         ?>
                                             <tr>
-                                                <td style="min-width:10.1rem;"> <?= $item['id'];?> </td>
+                                                <td > <?= $item['id'];?> </td>
                                                 <td style="min-width:18.3rem;"> <?= $item['name'];?> </td>
                                                 <td style="min-width:12.9rem;">
                                                     <img src="../../upload/images/<?= $item['image'];?>" width="50px" height="50px" alt="<?= $item['name'];?>">
@@ -45,7 +45,7 @@ include ('../includes/header.php');
                                                     <?= $item['status'] == '0'? "Hidden":"Visible" ?>
                                                 </td>
                                                 <td style="min-width:10rem;">
-                                                    <a href="edit-category.php?id=<?= $item['id'];?>" class="btn btn-primary">Edit</a>
+                                                    <a href="edit-category.php?id=<?= $item['id'];?>" class="btn btn-success">Edit</a>
                                                 </td>
                                                 <?php
                                                     if($item['status'] == 0)

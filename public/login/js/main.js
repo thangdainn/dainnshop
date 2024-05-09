@@ -50,12 +50,19 @@
     $.each(formData, function (i, v) {
       data[v.name] = v.value;
     });
+    let params = new URLSearchParams(window.location.search);
+    if (params.has("cart")) {
+      showForm(formRegister);
+    } else {
+      showForm(formLogin);
+    }
 
     let url = base_url + "/login/authentication";
-    login(data, url);
+
+    login(data, url, params.has("cart") ? true : false);
   });
 
-  function login(data, url) {
+  function login(data, url, cart = false) {
     $.ajax({
       url: url,
       type: "POST",
@@ -72,7 +79,7 @@
           });
 
           setTimeout(() => {
-            window.location.href = base_url;
+            window.location.href = cart ? (base_url + "/cart") : base_url;
           }, 1500);
         } else {
           $(".error.login").text(message.msg);
