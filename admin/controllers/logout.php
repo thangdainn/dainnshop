@@ -10,4 +10,4 @@ if (isset($_SESSION['auth']) || isset($_SESSION['role_id'])) {
     $_SESSION['message'] = 'Logged out successfully';
 }
 
-header('Location: ../views/login.php')
+header('Location: ../views/login.php');
