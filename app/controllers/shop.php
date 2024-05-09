@@ -38,8 +38,8 @@ class shop extends Controller
 
         $totalPage = ceil($productModel->countFindAll($keyword) / $limit);
         $data['totalPage'] = $totalPage;
-
         $this->load->view("cpanel/shop", $data);
-        $this->load->view("footer");
+        $this->setTotalItemCart($data);
+        $this->load->view("footer", $data);
     }
 }

@@ -173,6 +173,8 @@ class purchaseOrder extends Controller
         $orderModel = $this->load->model("PurchaseOrderModel");
         $data['orders'] = $orderModel->findByUserId($userID);
         $this->load->view("cpanel/purchaseOrder", $data);
-        $this->load->view("footer");
+        $this->setTotalItemCart($data);
+
+        $this->load->view("footer", $data);
     }
 }

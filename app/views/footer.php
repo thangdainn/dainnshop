@@ -1,5 +1,7 @@
 <!-- Benefit -->
-
+<script>
+	$("#checkout_items").text(<?php echo $totalQuantity ?>);
+</script>
 <div class="benefit">
     <div class="container">
         <div class="row benefit_row">

@@ -31,7 +31,9 @@ class user extends Controller
         $userModel = $this->load->model("UserModel");
         $data['user'] = $userModel->findById($id);
         $this->load->view("cpanel/profile", $data);
-        $this->load->view("footer");
+        $this->setTotalItemCart($data);
+
+        $this->load->view("footer", $data);
     }
 
     public function updateProfile()

@@ -1,7 +1,7 @@
 <?php
 include('../models/adminconfig.php');
 include('../middleware/adminMiddleware.php');
-include ('../includes/header.php');
+include('../includes/header.php');
 ?>
 
 <div class="container">
@@ -16,11 +16,11 @@ include ('../includes/header.php');
                 <div class="card-body">
                     <form action="../controllers/code.php" method="POST" enctype="multipart/form-data">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-6 mb-3">
                                 <label class="mb-0">Name</label>
                                 <input type="text" required name="name" placeholder="Enter Category Name" class="form-control mb-2">
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 mb-3">
                                 <label class="mb-0">Upload Image</label>
                                 <input type="file" required name="image" class="form-control mb-2">
                             </div>
@@ -36,4 +36,4 @@ include ('../includes/header.php');
 </div>
 </div>
 
-<?php include ('../includes/footer.php'); ?>
+<?php include('../includes/footer.php'); ?>

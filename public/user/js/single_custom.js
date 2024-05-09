@@ -321,16 +321,13 @@ jQuery(document).ready(function ($) {
       url: url,
       data: data,
       success: function (response) {
-        // let message = JSON.parse(response);
-        // if (message.status) {
-        //   showNotification();
-        // } else {
-        //   alert("Add to cart failed");
-        // }
-        showNotification();
-        setTimeout(function() {
-          window.location.href = base_url + "/shop";
-        }, 1000);
+        let message = JSON.parse(response);
+        if (message.status) {
+          showNotification();
+          $("#checkout_items").text(message.totalItem);
+        } else {
+          alert("Add to cart failed");
+        }
       },
     });
   }
@@ -341,10 +338,10 @@ jQuery(document).ready(function ($) {
       url: url,
       data: data,
       success: function (response) {
-        showNotification();
-        setTimeout(function() {
+        // showNotification();
+        setTimeout(function () {
           window.location.href = base_url + "/cart";
-        }, 1000);
+        }, 500);
       },
     });
   }
@@ -353,10 +350,6 @@ jQuery(document).ready(function ($) {
     $(".buy_now_button").on("click", function (e) {
       e.preventDefault();
       let userId = checkLogin();
-      if (checkLogin() == 0) {
-        window.location.href = base_url + "/login";
-        return;
-      }
 
       let productId = $("#product_id").val();
       let sizeElm = $(".product_size ul li.active");
@@ -397,6 +390,18 @@ jQuery(document).ready(function ($) {
         sizeId: sizeId,
         quantity: quantity,
       };
+      if (checkLogin() == 0) {
+        let existingCartItems = getLocalStorageCartItems();
+
+        if (!Array.isArray(existingCartItems)) {
+          existingCartItems = [];
+        }
+
+        existingCartItems.push(data);
+
+        setLocalStorageCartItems(existingCartItems);
+        // return;
+      }
       addToCartAjax(data);
     });
   }
@@ -438,7 +443,6 @@ jQuery(document).ready(function ($) {
       return [];
     }
   }
-
 
   function setLocalStorageCartItems(cartItems) {
     try {

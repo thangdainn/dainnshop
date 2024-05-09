@@ -12,7 +12,8 @@ class checkout extends Controller
         $this->checkout();
     }
 
-    public function addOrder() {
+    public function addOrder()
+    {
         $fullName = $_POST['fullName'];
         $address = $_POST['address'];
         $phone = $_POST['phone'];
@@ -23,8 +24,8 @@ class checkout extends Controller
         $userID = Session::getUserId();
         $checkOutModel = $this->load->model("CheckOutModel");
         $orderId = $checkOutModel->addOrder($userID, $fullName, $phone, $address, $paymentMethod);
-        
-        foreach($products as $product ) {
+
+        foreach ($products as $product) {
             $productId = $product['product_id'];
             $sizeId = $product['size_id'];
             $total = $product['total'];
@@ -38,15 +39,17 @@ class checkout extends Controller
         $_SESSION['totalQuantity'] = 0;
     }
 
-    public function checkout() {
-        {
+    public function checkout()
+    { {
             Session::init();
             $userID = Session::getUserId();
             $this->load->view("header");
             $cartModel = $this->load->model("CartModel");
             $data['carts'] = $cartModel->findByUserId($userID);
             $this->load->view("cpanel/checkout", $data);
-            $this->load->view("footer");
+            $this->setTotalItemCart($data);
+
+            $this->load->view("footer", $data);
         }
     }
 }

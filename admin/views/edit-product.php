@@ -28,11 +28,11 @@ include ('../includes/header.php');
                                     <form action="../controllers/code.php" method="POST" enctype="multipart/form-data">
                                         <div class="row">
                                             <input type="hidden" name="product_id" value="<?= $data['id']; ?>">
-                                            <div class="col-md-12">
+                                            <div class="col-md-12 mb-3">
                                                 <label class="mb-0">Name</label>
                                                 <input type="text" required name="name" value="<?= $data['name']; ?>" placeholder="Enter Product Name" class="form-control mb-2">
                                             </div>
-                                            <div class="col-md-12">
+                                            <div class="col-md-12 mb-3">
                                                 <label class="mb-0">Upload Image (1 Image)</label>
                                                 <input type="hidden" name="old-img" value="<?= $data['img']; ?>">
                                                 <input type="file" name="img" class="form-control mb-2">
@@ -44,7 +44,7 @@ include ('../includes/header.php');
                                                 {
                                                     $count = 0;
                                                     ?>
-                                                        <div class="col-md-12">
+                                                        <div class="col-md-12 mb-3">
                                                             <label class="mb-0">Upload Additional Images (3 Images) </label>
                                                             <input type="hidden" name="image-old-image[]" value="<?= $item['image']; ?>">
                                                             <input type="file" name="additional_images[]" class="form-control mb-2" multiple>
@@ -61,19 +61,19 @@ include ('../includes/header.php');
                                                     <?php
                                                 }
                                             ?>
-                                            <div class="col-md-12">
+                                            <div class="col-md-12 mb-3">
                                                 <label class="mb-0">Description</label>
                                                 <textarea required name="description" placeholder="Enter description" rows="3" class="form-control mb-2"><?= $data['description']; ?></textarea>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-6 mb-3">
                                                 <label class="mb-0">Price</label>
                                                 <input type="text" required name="price" value="<?= $data['price']; ?>" placeholder="Enter Price" class="form-control mb-2">
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-6 mb-3">
                                                 <label class="mb-0">Sale Price</label>
                                                 <input type="text" required name="sale" value="<?= $data['sale']; ?>" placeholder="Enter Sale Price" class="form-control mb-2">
                                             </div>
-                                            <div class="col-md-12">
+                                            <div class="col-md-12 mb-3">
                                                 <label class="mb-0">Select Category</label>
                                                 <select name="category_id" class="form-select mb-2" >
                                                     <option selected> Select Category</option>
@@ -96,7 +96,7 @@ include ('../includes/header.php');
                                                     ?>
                                                 </select>
                                             </div>
-                                            <div class="col-md-12">
+                                            <div class="col-md-12 mb-3">
                                                 <label class="mb-0"> Select Brand</label>
                                                 <select name="brand_id" class="form-select mb-2" >
                                                     <option selected> Select Brand</option>
@@ -119,7 +119,7 @@ include ('../includes/header.php');
                                                     ?>
                                                 </select>
                                             </div>
-                                            <div class="col-md-12">
+                                            <div class="col-md-12 mb-3">
                                                 <label class="mb-0">Select Type</label>
                                                 <select name="type" class="form-select mb-2" >
                                                     <option selected>Select Type</option>

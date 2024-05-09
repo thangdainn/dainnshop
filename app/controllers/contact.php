@@ -15,6 +15,8 @@ class contact extends Controller
     {
         $this->load->view("header");
         $this->load->view("cpanel/contact");
-        $this->load->view("footer");
+        $this->setTotalItemCart($data);
+
+        $this->load->view("footer", $data);
     }
 }

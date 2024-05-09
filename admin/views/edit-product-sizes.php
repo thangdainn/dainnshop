@@ -28,7 +28,7 @@ include ('../includes/header.php');
                                 <div class="card-body">
                                     <form action="../controllers/code.php" method="POST" enctype="multipart/form-data">
                                         <div class="row">
-                                            <div class="col-md-12">
+                                            <div class="col-md-12 mb-3">
                                                 <label class="mb-0">Product Name</label>
                                                 <div class="border p-1 mb-3">
                                                     <?php
@@ -51,7 +51,7 @@ include ('../includes/header.php');
                                                     ?>
                                                 </div>
                                             </div>
-                                            <div class="col-md-12">
+                                            <div class="col-md-12 mb-3">
                                                 <label class="mb-0">Product Size</label>
                                                 <div class="border p-1 mb-3">
                                                     <?php
@@ -74,7 +74,7 @@ include ('../includes/header.php');
                                                     ?>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-6 mb-3">
                                                 <label class="mb-0">Quantity</label>
                                                 <input type="text" required name="quantity" value="<?= $data['quantity']; ?>" placeholder="Enter Quantity" class="form-control mb-2">
                                             </div>
