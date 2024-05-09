@@ -165,6 +165,7 @@ h6 {
   text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
 }
 
+
 h1::selection,
 h2::selection,
 h3::selection,
@@ -289,6 +290,7 @@ section {
   width: 100%;
   overflow: hidden;
 }
+/* 
 /* 
 /*********************************
 4. Breadcrumbs

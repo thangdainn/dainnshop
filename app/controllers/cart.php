@@ -3,6 +3,10 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
+if (!isset($_SESSION)) {
+    session_start();
+}
+
 
 class cart extends Controller
 {
@@ -140,16 +144,6 @@ class cart extends Controller
             $_SESSION['totalQuantity'] = 0;
         }
         $this->load->view("header");
-    }
-
-        if ($_SESSION['totalQuantity'] < 0) {
-            $_SESSION['totalQuantity'] = 0;
-        }
-    }
-
-        if ($_SESSION['totalQuantity'] < 0) {
-            $_SESSION['totalQuantity'] = 0;
-        }
     }
 
     public function render($carts)
