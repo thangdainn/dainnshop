@@ -1,8 +1,9 @@
 $(document).ready(function () {
   $(document).on("click", ".delete_product_btn", function (e) {
     e.preventDefault();
-
+    var btn = $(this);
     var id = $(this).val();
+    var row = $(this).closest("tr");
     // alert(id);
 
     swal({
@@ -23,7 +24,9 @@ $(document).ready(function () {
           success: function (response) {
             if (response == 200) {
               swal("Success", "Product deleted successfully!", "success");
-              $("#products_table").load(location.href + " #products_table");
+              // $("#products_table").load(location.href + " #products_table");
+              btn.prop("disabled", true);
+              btn.closest("tr").find("td:eq(3)").text("Hidden");
             } else if (response == 500) {
               swal("Error!", "Something went wrong!", "error");
             }
@@ -35,8 +38,9 @@ $(document).ready(function () {
 
   $(document).on("click", ".delete_category_btn", function (e) {
     e.preventDefault();
-
+    var btn = $(this);
     var id = $(this).val();
+    var row = $(this).closest("tr");
     // alert(id);
 
     swal({
@@ -49,7 +53,7 @@ $(document).ready(function () {
       if (willDelete) {
         $.ajax({
           method: "POST",
-          url: "code.php",
+          url: "../../admin/controllers/code.php",
           data: {
             category_id: id,
             delete_category_btn: true,
@@ -57,7 +61,9 @@ $(document).ready(function () {
           success: function (response) {
             if (response == 200) {
               swal("Success", "Category deleted successfully!", "success");
-              $("#category_table").load(location.href + " #category_table");
+              // $("#category_table").load(location.href + " #category_table");
+              btn.prop("disabled", true);
+              btn.closest("tr").find("td:eq(3)").text("Hidden");
             } else if (response == 500) {
               swal("Error!", "Something went wrong!", "error");
             }
@@ -70,7 +76,9 @@ $(document).ready(function () {
   $(document).on("click", ".delete_brand_btn", function (e) {
     e.preventDefault();
 
+    var btn = $(this);
     var id = $(this).val();
+    var row = $(this).closest("tr");
     // alert(id);
 
     swal({
@@ -91,7 +99,9 @@ $(document).ready(function () {
           success: function (response) {
             if (response == 200) {
               swal("Success", "Brand deleted successfully!", "success");
-              $("#brand_table").load(location.href + " #brand_table");
+              // $("#brand_table").load(location.href + " #brand_table");
+              btn.prop("disabled", true);
+              btn.closest("tr").find("td:eq(3)").text("Hidden");
             } else if (response == 500) {
               swal("Error!", "Something went wrong!", "error");
             }

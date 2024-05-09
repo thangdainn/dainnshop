@@ -9,12 +9,12 @@ include('../includes/header.php');
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h3>Users
-                        <a href="add-user.php" class="btn btn-primary float-end"><i class="material-icons opacity-10">add</i>Add User</a>
-                    </h3>
+                    <h4>Users
+                        <a href="add-user.php" class="btn btn-info float-end"><i class="material-icons opacity-10">add</i>Add User</a>
+                    </h4>
                 </div>
                 <div class="card-body" id="user_table">
-                    <table class="table table-bordered table-striped">
+                    <table id="myTable" class="table table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -48,7 +48,7 @@ include('../includes/header.php');
                                             <?= $item['status'] == '0' ? "Hidden" : "Visible" ?>
                                         </td>
                                         <td>
-                                            <a href="edit-user.php?id=<?= $item['id']; ?>" class="btn btn-primary">Edit</a>
+                                            <a href="edit-user.php?id=<?= $item['id']; ?>" class="btn btn-success">Edit</a>
                                         </td>
                                         <td>
                                             <button type="button" class="btn btn-danger delete_user_btn" value="<?= $item['id']; ?>" <?= $item['status'] == '0' ? "disabled" : ""; ?>>Delete</button>

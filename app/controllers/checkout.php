@@ -47,7 +47,9 @@ class checkout extends Controller
             $cartModel = $this->load->model("CartModel");
             $data['carts'] = $cartModel->findByUserId($userID);
             $this->load->view("cpanel/checkout", $data);
-            $this->load->view("footer");
+            $this->setTotalItemCart($data);
+
+            $this->load->view("footer", $data);
         }
     }
 }

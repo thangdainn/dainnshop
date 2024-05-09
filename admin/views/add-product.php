@@ -16,33 +16,33 @@ include('../includes/header.php');
                 <div class="card-body">
                     <form action="../controllers/code.php" method="POST" enctype="multipart/form-data">
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-12 mb-3">
                                 <label class="mb-0">Name</label>
                                 <input type="text" required name="name" placeholder="Enter Product Name" class="form-control mb-2">
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-12 mb-3">
                                 <label class="mb-0">Upload Main Image</label>
                                 <input type="file" required name="img" class="form-control mb-2">
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-12 mb-3">
                                 <label class="mb-0">Upload Additional Images (must be 3)</label>
                                 <div class="form-group">
                                     <input type="file" name="additional_images[]" class="form-control mb-2" multiple>
                                 </div>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-12 mb-3">
                                 <label class="mb-0">Description</label>
                                 <textarea required name="description" placeholder="Enter description" rows="3" class="form-control mb-2"></textarea>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 mb-3">
                                 <label class="mb-0">Price</label>
                                 <input type="text" required name="price" placeholder="Enter Price" class="form-control mb-2">
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 mb-3">
                                 <label class="mb-0">Sale Price</label>
                                 <input type="text" required name="sale" placeholder="Enter Sale Price" class="form-control mb-2">
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-12 mb-3">
                                 <label class="mb-0">Select Category</label>
                                 <select name="category_id" class="form-select mb-2">
                                     <option selected> Select Category</option>
@@ -61,7 +61,7 @@ include('../includes/header.php');
                                     ?>
                                 </select>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 mb-3">
                                 <label class="mb-0"> Select Brand</label>
                                 <select name="brand_id" class="form-select mb-2">
                                     <option selected> Select Brand</option>
@@ -80,7 +80,7 @@ include('../includes/header.php');
                                     ?>
                                 </select>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 mb-3">
                                 <label class="mb-0">Select Type</label>
                                 <select name="type" class="form-select mb-2">
                                     <option selected>Select Type</option>

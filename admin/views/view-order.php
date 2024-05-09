@@ -27,9 +27,9 @@ $data = mysqli_fetch_array($orderData);
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header bg-primary">
-                    <span class="text-white fs-3"> View Order</span>
-                    <a href="orders.php" class="btn btn-warning float-end"><i class="fa fa-reply"> </i> Back </a>
+                <div class="card-header" style="padding: 1.5rem 1rem 1rem;background-color: #3f4349;">
+                    <span class="text-white fs-3">View Order</span>
+                    <a href="orders.php" class="btn btn-white float-end"><i class="fa fa-reply"> </i> Back </a>
                 </div>
                 <div class="card-body">
                     <div class="row">
@@ -67,19 +67,13 @@ $data = mysqli_fetch_array($orderData);
                                         <?= $data['delivery_address']; ?>
                                     </div>
                                 </div>
-                                <div class="col-md-12 mb-2">
-                                    <label class="fw-bold">Note</label>
-                                    <div class="border p-1">
-                                        <?= $data['note']; ?>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <h4>Order Details</h4>
                             <hr>
-                            <table class="table">
-                                <thead>
+                            <table id="viewOrder" class="table" style="display: block; max-height: 300px; overflow-y: scroll !important;width: 100%;table-layout:auto;">
+                                <thead style="position: sticky; top: -0.1px; background: white;z-index: 10;">
                                     <tr>
                                         <th>Product</th>
                                         <th>Price</th>
@@ -138,10 +132,10 @@ $data = mysqli_fetch_array($orderData);
                                 <form action="../controllers/code.php" method="POST">
                                     <input type="hidden" name="id" value="<?= $data['id']; ?>">
                                     <select name="order_status" id="" class="form-select">
-                                        <option value="1" <?= $data['id_order_status'] == '1' ? "selected" : "" ?>>Chờ duyệt</option>
-                                        <option value="4" <?= $data['id_order_status'] == '4' ? "selected" : "" ?>>Hủy đơn</option>
-                                        <option value="5" <?= $data['id_order_status'] == '5' ? "selected" : "" ?>>Đang giao</option>
-                                        <option value="6" <?= $data['id_order_status'] == '6' ? "selected" : "" ?>>Thành công</option>
+                                        <option value="1" <?= $data['id_order_status'] == '1' ? "selected" : "" ?>>To Confirm</option>
+                                        <option value="4" <?= $data['id_order_status'] == '4' ? "selected" : "" ?>>Canceled</option>
+                                        <option value="5" <?= $data['id_order_status'] == '5' ? "selected" : "" ?>>To Ship</option>
+                                        <option value="6" <?= $data['id_order_status'] == '6' ? "selected" : "" ?>>Completed</option>
                                     </select>
                                     <button type="submit" class="btn btn-primary mt-2 float-end" name="update_order_btn">Update Status</button>
                                 </form>

@@ -16,6 +16,8 @@ class about extends Controller
     {
         $this->load->view("header");
         $this->load->view("cpanel/about");
-        $this->load->view("footer");
+        $this->setTotalItemCart($data);
+
+        $this->load->view("footer", $data);
     }
 }

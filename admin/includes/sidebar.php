@@ -16,91 +16,31 @@ $role_id = $_SESSION['role_id'];
         </a>
     </div>
     <hr class="horizontal light mt-0 mb-2">
-    <?php
-    if ($role_id == 8) {
-    ?>
-        <div class="collapse navbar-collapse  w-auto  max-height-vh-100" id="sidenav-collapse-main">
-            <ul class="navbar-nav">
+
+    <div class="collapse navbar-collapse  w-auto  max-height-vh-100" id="sidenav-collapse-main">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link text-white <?= $page == "index.php" ? 'active bg-gradient-primary' : ''; ?>" href="../views/index.php">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="material-icons opacity-10">dashboard</i>
+                    </div>
+                    <span class="nav-link-text ms-1">DASHBOARD</span>
+                </a>
+            </li>
+            <?php
+            if ($role_id == 3 || $role_id == 8) {
+            ?>
                 <li class="nav-item">
-                    <a class="nav-link text-white <?= $page == "index.php" ? 'active bg-gradient-primary' : ''; ?>" href="../views/index.php">
-                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="material-icons opacity-10">dashboard</i>
-                        </div>
-                        <span class="nav-link-text ms-1">DASHBOARD</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white <?= $page == "category.php" ? 'active bg-gradient-primary' : ''; ?>" href="../views/category.php">
-                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="material-icons opacity-10">table_view</i>
-                        </div>
-                        <span class="nav-link-text ms-1">All Categories</span>
-                    </a>
-                </li>
-                <!-- <li class="nav-item">
-                        <a class="nav-link text-white <?= $page == "add-category.php" ? 'active bg-gradient-primary' : ''; ?>" href="../views/add-category.php">
-                            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                                <i class="material-icons opacity-10">add</i>
-                            </div>
-                        <span class="nav-link-text ms-1">Add Category</span>
-                        </a>
-                    </li> -->
-                <li class="nav-item">
-                    <a class="nav-link text-white <?= $page == "brand.php" ? 'active bg-gradient-primary' : ''; ?>" href="../views/brand.php">
+                    <a class="nav-link text-white <?= $page == "orders.php" || $page == "view-order.php" ? 'active bg-gradient-primary' : ''; ?>" href="../views/orders.php">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">table_view</i>
                         </div>
-                        <span class="nav-link-text ms-1">All Brands</span>
+                        <span class="nav-link-text ms-1">Management Orders</span>
                     </a>
                 </li>
-                <!-- <li class="nav-item">
-                        <a class="nav-link text-white <?= $page == "add-brand.php" ? 'active bg-gradient-primary' : ''; ?>" href="../views/add-brand.php">
-                            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                                <i class="material-icons opacity-10">add</i>
-                            </div>
-                        <span class="nav-link-text ms-1">Add Brand</span>
-                        </a>
-                    </li> -->
-                <li class="nav-item">
-                    <a class="nav-link text-white <?= $page == "products.php" ? 'active bg-gradient-primary' : ''; ?>" href="../views/products.php">
-                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="material-icons opacity-10">table_view</i>
-                        </div>
-                        <span class="nav-link-text ms-1">All Products</span>
-                    </a>
-                </li>
-                <!-- <li class="nav-item">
-                        <a class="nav-link text-white <?= $page == "add-product.php" ? 'active bg-gradient-primary' : ''; ?>" href="../views/add-product.php">
-                            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                                <i class="material-icons opacity-10">add</i>
-                            </div>
-                        <span class="nav-link-text ms-1">Add Products</span>
-                        </a>
-                    </li> -->
-                <li class="nav-item">
-                    <a class="nav-link text-white <?= $page == "product-sizes.php" ? 'active bg-gradient-primary' : ''; ?>" href="../views/product-sizes.php">
-                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="material-icons opacity-10">table_view</i>
-                        </div>
-                        <span class="nav-link-text ms-1">All Product Sizes</span>
-                    </a>
-                </li>
-                <!-- <li class="nav-item">
-                        <a class="nav-link text-white <?= $page == "add-product-sizes.php" ? 'active bg-gradient-primary' : ''; ?>" href="../views/add-product-sizes.php">
-                            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                                <i class="material-icons opacity-10">add</i>
-                            </div>
-                        <span class="nav-link-text ms-1">Add Product Sizes</span>
-                        </a>
-                    </li> -->
-                <li class="nav-item">
-                    <a class="nav-link text-white <?= $page == "orders.php" ? 'active bg-gradient-primary' : ''; ?>" href="../views/orders.php">
-                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="material-icons opacity-10">table_view</i>
-                        </div>
-                        <span class="nav-link-text ms-1">Orders</span>
-                    </a>
-                </li>
+            <?php
+            } if ($role_id == 8) {
+            ?>
                 <li class="nav-item">
                     <a class="nav-link text-white <?= $page == "role.php" || $page == "add-role.php" || $page == "edit-role.php" ? 'active bg-gradient-primary' : ''; ?>" href="../views/role.php">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -118,6 +58,22 @@ $role_id = $_SESSION['role_id'];
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link text-white <?= $page == "category.php" || $page == "add-category.php" || $page == "edit-category.php" ? 'active bg-gradient-primary' : ''; ?>" href="../views/category.php">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">table_view</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Management Categories</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white <?= $page == "brand.php" || $page == "add-brand.php" || $page == "edit-brand.php" ? 'active bg-gradient-primary' : ''; ?>" href="../views/brand.php">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">table_view</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Management Brands</span>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link text-white <?= $page == "size.php" || $page == "add-size.php" || $page == "edit-size.php" ? 'active bg-gradient-primary' : ''; ?>" href="../views/size.php">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">table_view</i>
@@ -126,6 +82,25 @@ $role_id = $_SESSION['role_id'];
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link text-white <?= $page == "products.php" || $page == "add-product.php" || $page == "edit-product.php" ? 'active bg-gradient-primary' : ''; ?>" href="../views/products.php">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">table_view</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Management Products</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white <?= $page == "product-sizes.php" || $page == "add-product-size.php" || $page == "edit-product-size.php" ? 'active bg-gradient-primary' : ''; ?>" href="../views/product-sizes.php">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">table_view</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Management Product Sizes</span>
+                    </a>
+                </li>
+
+
+
+                <li class="nav-item">
                     <a class="nav-link text-white <?= $page == "statistical.php" ? 'active bg-gradient-primary' : ''; ?>" href="../views/statistical.php">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">table_view</i>
@@ -133,38 +108,15 @@ $role_id = $_SESSION['role_id'];
                         <span class="nav-link-text ms-1">Statistical</span>
                     </a>
                 </li>
-            </ul>
-        </div>
-    <?php
-    } else if ($role_id == 3) {
-    ?>
-        <div class="collapse navbar-collapse  w-auto  max-height-vh-100" id="sidenav-collapse-main">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link text-white <?= $page == "index.php" ? 'active bg-gradient-primary' : ''; ?>" href="../views/index.php">
-                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="material-icons opacity-10">dashboard</i>
-                        </div>
-                        <span class="nav-link-text ms-1">DASHBOARD</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white <?= $page == "orders.php" ? 'active bg-gradient-primary' : ''; ?>" href="../views/orders.php">
-                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="material-icons opacity-10">table_view</i>
-                        </div>
-                        <span class="nav-link-text ms-1">Orders</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    <?php
-    }
-    ?>
+            <?php
+            }
+            ?>
+        </ul>
+    </div>
 
-    <div class="sidenav-footer position-absolute w-100 bottom-0 ">
+    <div class="sidenav-footer position-absolute w-100 ">
         <div class="mx-3">
-            <a class="btn bg-gradient-primary mt-4 w-100" href="../controllers/logout.php" type="button"> Logout </a>
+            <a class="btn bg-gradient-primary w-100" href="../controllers/logout.php" type="button"> Logout </a>
         </div>
     </div>
 </aside>

@@ -6,10 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
   <title>
-    DAINNSHOP ADMIN
+    Dainn Shop Admin
   </title>
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+  <link rel="icon" type="image/png" href="../assets/logo/favicon.ico" />
 
   <!-- Font Awesome Icons -->
   <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
@@ -23,7 +24,9 @@
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/alertify.min.css" />
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/themes/bootstrap.min.css" />
 
-
+  <!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
+  <!-- <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script> -->
+  <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css"> -->
 
   <?php
   $currentURL = $_SERVER['REQUEST_URI'];
@@ -36,20 +39,14 @@
     echo '<link rel="stylesheet" type="text/css" href="../assets/css/statistic.css">';
     // echo '<link rel="stylesheet" type="text/css" href="../assets/build/css/custom.min.css">';
     echo '<script src="../assets/vendors/jquery/dist/jquery.min.js"></script>';
+  } else {
+
+    echo '<script src="https://code.jquery.com/jquery-3.5.1.js"></script>';
+    echo '<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>';
+    echo '<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">';
   }
   ?>
 
-  <style>
-    .form-control {
-      border: 1px solid #e91e63 !important;
-      padding: 8px 10px;
-    }
-
-    .form-select {
-      border: 1px solid #e91e63 !important;
-      padding: 8px 10px;
-    }
-  </style>
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">

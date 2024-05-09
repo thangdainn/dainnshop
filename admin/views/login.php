@@ -2,14 +2,12 @@
 
 session_start();
 
-if (isset($_SESSION['auth']) and $_SESSION['role_id'] == 8) {
-    $_SESSION['message'] = 'You are already logged in';
-    header('Location: index.php');
-    exit();
-} else if (isset($_SESSION['auth']) and $_SESSION['role_id'] == 3) {
-    $_SESSION['message'] = 'You are already logged in';
-    header('Location: index.php');
-    exit();
+if (isset($_SESSION['auth'])) {
+    if (isset($_SESSION['role_id']) && ($_SESSION['role_id'] == 8 || $_SESSION['role_id'] == 3)) {
+        $_SESSION['message'] = 'You are already logged in';
+        header('Location: index.php');
+        exit();
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -25,8 +23,9 @@ if (isset($_SESSION['auth']) and $_SESSION['role_id'] == 8) {
     <link id="pagestyle" href="../assets/css/login.css" rel="stylesheet" />
 
     <title>
-        DAINNSHOP ADMIN
+        Dainn Shop Admin
     </title>
+    <link rel="icon" type="image/png" href="../assets/logo/favicon.ico" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 

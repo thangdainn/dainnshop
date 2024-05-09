@@ -17,7 +17,9 @@ class product extends Controller
     {
         $this->load->view("header");
         $this->load->view("cpanel/productDetail");
-        $this->load->view("footer");
+        $this->setTotalItemCart($data);
+
+        $this->load->view("footer", $data);
     }
     public function detail($id)
     {
@@ -39,7 +41,9 @@ class product extends Controller
         $data['userReviews'] = $userModel->findByProduct_Id($id);
 
         $this->load->view("cpanel/productDetail", $data);
-        $this->load->view("footer");
+        $this->setTotalItemCart($data);
+
+        $this->load->view("footer", $data);
     }
 
     public function paging()

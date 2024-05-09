@@ -3,6 +3,11 @@
 <?php endif; ?>
 <!-- Cart -->
 <input id="user-id" type="hidden" value="<?php echo Session::isLogin() ? Session::getUserId() : 0 ?>">
+
+<script>
+	console.log("<?php echo $totalQuantity ?>")
+	$("#checkout_items").text(<?php echo $totalQuantity ?>);
+</script>
 <div class="container cart_container">
 	<div class="row">
 		<div class="col">
@@ -87,7 +92,7 @@
 				</table>
 				<div class="cart_buttons">
 					<div id="payment-button">
-						<a href="<?php echo Session::isLogin() ? BASE_URL . '/checkout' : BASE_URL . '/login'; ?>" class="btn payment_btn">Checkout</a>
+						<a href="<?php echo Session::isLogin() ? BASE_URL . '/checkout' : BASE_URL . '/login?cart'; ?>" class="btn payment_btn">Checkout</a>
 					</div>
 				</div>
 			<?php
@@ -140,7 +145,7 @@
 									console.log('totalMoney:', totalMoney); // Debugging line
 									totalFinal += totalMoney;
 								});
-								$('.total_cart').last().text(totalFinal); // Update the total final money
+								$('.total_cart').last().text("$" + totalFinal); // Update the total final money
 								eventHandler();
 							}
 						});

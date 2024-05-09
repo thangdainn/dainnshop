@@ -68,9 +68,8 @@
                                         <li>
                                             <!-- <?php echo $num ?>. -->
                                             <span class="product-name"><?php echo $num . ". " . $cart['product_name'] ?></span>
-                                            <span>$</span><span class="product-total"><?php echo $totalMoney ?></span>
-                                            <input type="hidden" id="product-id" value="<?php echo $cart['product_id'];
-                                                                                        ?>">
+                                            <span class="product-total">$<?php echo $totalMoney ?></span>
+                                            <input type="hidden" id="product-id" value="<?php echo $cart['product_id'] ?>">
                                             <input type="hidden" id="product-size-id" value="<?php echo $cart['size_id'];
                                                                                                 ?>">
                                             <input type="hidden" id="product-quantity" value="<?php echo $cart['amount'];
@@ -112,19 +111,18 @@
         $('document').ready(function() {
 
             var paymentMethod = '';
+            $('input[type="checkbox"]').on('change', function() {
+                $('input[type="checkbox"]').not(this).prop('checked', false);
+                paymentMethod = $('input[type="checkbox"]:checked').val();
+            });
+
 
             function checkCheckbox() {
                 var isCheckboxChecked = false;
 
-                $(".single-checkbox").change(function() {
-                    if ($(this).is(":checked")) {
-                        $(".single-checkbox").not(this).prop("checked", false);
-                        paymentMethod = $(this).val();
-                    }
-                });
-
                 if (paymentMethod) {
                     isCheckboxChecked = true;
+
                 }
 
                 if (!isCheckboxChecked) {
@@ -183,15 +181,15 @@
             }
 
             function setSuccessFor(input) {
-                var checkoutInput = $(input).parent();
-                console.log(checkoutInput);
+                // var checkoutInput = $(input).parent();
+                // console.log(checkoutInput);
 
-                checkoutInput.addClass('success');
+                // checkoutInput.addClass('success');
 
             }
 
             function isPhone(a) {
-                return a.match(/^\d{10}$/);
+                return a.match(phoneRegex);
             }
 
             $('.site-btn').click(function(e) {
@@ -206,17 +204,19 @@
                 if (checkInput(fullname, phone, address) === true && checkCheckbox() === true) {
                     $('.checkout__total__products li').each(function() {
                         var productTotal = $(this).find('.product-total').text();
+                        var number = parseInt(productTotal.replace('$', ''));
+                        // var productTotal = $(this).find('.product-total').text();
                         var productId = $(this).find('#product-id').val();
                         var sizeId = $(this).find('#product-size-id').val();
                         var productQuantity = $(this).find('#product-quantity').val();
                         products_detail.push({
                             product_id: productId,
                             size_id: sizeId,
-                            total: productTotal,
+                            total: number,
                             quantity: productQuantity
                         });
                     });
-
+                    console.table(products_detail)
                     $.ajax({
                         type: "POST",
                         dataType: "html",
@@ -236,7 +236,7 @@
                             });
                             console.log(reponse);
                             setTimeout(function() {
-                                window.location.href = base_url;
+                                // window.location.href = base_url;
                             }, 3000);
                         },
                         error: function(xhr, status, error) {

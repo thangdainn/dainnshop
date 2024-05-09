@@ -63,7 +63,21 @@
                                     <td><?php echo $order['resipient_name'] ?> </td>
                                     <td><?php echo $order['resipient_phonenumber'] ?></td>
                                     <td><?php echo $order['delivery_address'] ?></td>
-                                    <td class="actions"><a href="#" data-id="<?php echo $order['id'] ?>" class="btn btn_detail">View Details</a></td>
+                                    <td class="actions"><a href="#" data-id="<?php echo $order['id'] ?>" class="btn btn_detail">View Details</a>
+                                        <?php 
+                                        if ($order['id_order_status'] == 1) {
+                                            ?>
+                                            <a href="#" data-id="<?php echo $order['id'] ?>" class="btn btn_cancel">Cancel</a>
+                                        <?php
+                                        }
+                                        if ($order['id_order_status'] == 6) {
+                                            ?>
+                                            <a href="#" data-id="<?php echo $order['id'] ?>" class="btn btn_review">Cancel</a>
+                                        <?php
+                                        }
+                                        ?>
+                                    </td>
+
                                 </tr>
                             <?php
                             }

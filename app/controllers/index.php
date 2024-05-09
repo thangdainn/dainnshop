@@ -20,9 +20,9 @@ class index extends Controller
         $productNewList = $this->load->model("ProductModel");
         $data['productNewList'] = $productNewList->findTop10ByCreateAt();
         $data['productBestSellerList'] = $productNewList->findTop10ByOrder();
-
         $this->load->view("cpanel/home", $data);
-        $this->load->view("footer");
+        $this->setTotalItemCart($data);
+        $this->load->view("footer", $data);
     }
     public function notFound()
     {

@@ -42,7 +42,7 @@ if(isset($_POST['login_btn']))
             }
             else
             {
-                redirect("../views/login.php","Account Does Not Have Dashboard Permissions");
+                redirect("../views/login.php","Account Does Not Have Permissions");
             }
         } else {
             redirect("../views/login.php","Invalid Credentials");
