@@ -129,6 +129,11 @@ include('../includes/header.php');
     $('#category_id').change(function() {
         loadData();
     });
+    $(document).ready(function() {
+        init_flot_chart();
+        init_daterangepicker();
+    });
+    // init_flot_chart();
 
     function init_flot_chart(data = [0]) {
         if (typeof $.plot === "undefined") {
@@ -165,24 +170,13 @@ include('../includes/header.php');
         //     ]);
         // }
         if (data == 0) {
-            for (var i = 0; i < 30; i++) {
+            for (var i = 0; i < 2; i++) {
                 chart_plot_02_data.push([
                     new Date(Date.today().add(i).days()).getTime(),
-                    randNum() + i + i + 10,
+                    0,
                 ]);
             }
         } else {
-            // data.forEach((item, index) => {
-            //     let timestamp = new Date(item.create_at).getTime();
-
-            //     if (index > 0 && new Date(data[index - 1].create_at).getTime() == timestamp) {
-            //         let lastItem = chart_plot_02_data[chart_plot_02_data.length - 1];
-            //         chart_plot_02_data[chart_plot_02_data.length - 1] = lastItem[1] + item.netSales;
-            //         console.log("lastItem", lastItem);
-            //     } else {
-            //         chart_plot_02_data.push([timestamp, item.netSales]);
-            //     }
-            // });
             data.forEach((item, index) => {
                 let timestamp = new Date(item.create_at).getTime();
 
