@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 16, 2024 at 03:01 AM
+-- Generation Time: May 13, 2024 at 05:22 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -89,41 +89,11 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `name`, `image`, `status`, `create_at`, `update_at`) VALUES
-(1, 'T-shirt', 'adidas-d2m-3s-gm2135-1.jpg', 1, '2023-03-20 13:30:00', '2023-03-20 13:30:00'),
+(1, 'T-shirt', '1715401731.jpg', 1, '2023-03-20 13:30:00', '2023-03-20 13:30:00'),
 (2, 'Hoodie', 'images/sp3/ao-hoodie-lifestyle-nam-adidas-hl6925-1.jpg', 1, '2023-03-20 13:30:00', '2023-03-27 14:59:53'),
-(3, 'Shirt', 'images/categories/ao-thun-lifestyle-nam-puma-classics-logo-metallic-534711-01-1.jpg', 1, '2023-03-20 13:30:00', '2023-03-27 15:00:33'),
-(4, 'Polo', 'images/categories/nike-dq1011-824-1.jpg', 1, '2023-03-20 13:30:00', '2023-03-27 15:00:17'),
-(15, 'Jacket', 'images/categories/ao-hoodie-lifestyle-nam-adidas-hl6925-1.jpg', 1, '2023-03-29 16:39:38', '2023-03-30 16:30:10');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `contacts`
---
-
-CREATE TABLE `contacts` (
-  `id` int NOT NULL,
-  `name` varchar(100) DEFAULT NULL,
-  `email` varchar(100) DEFAULT NULL,
-  `message` text,
-  `status` int DEFAULT NULL COMMENT '1:Chưa xử lý 2:Đang xử lý 3:Đã xử lý',
-  `note` text,
-  `create_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
-
---
--- Dumping data for table `contacts`
---
-
-INSERT INTO `contacts` (`id`, `name`, `email`, `message`, `status`, `note`, `create_at`) VALUES
-(2, 'TienHai', 'tienhai488@gmai.com', 'Vui lòng liên hệ với chúng tôi', 1, 'Chưa xử lý', '2023-04-02 11:06:44'),
-(3, 'MinhLam', 'minhlam@gmal.com', 'chung tôi đâ đen day', 1, 'Chưa xử lý', '2023-04-02 11:07:23'),
-(5, 'TIenhai', 'tienhaile488@gmail.com', 'chao buoi toi', 1, 'Chưa xử lý', '2023-05-07 23:21:21'),
-(6, 'Tienhai', 'tienhaile488@gmail.com', 'cahho buoi sang', 1, 'Chưa xử lý', '2023-05-07 23:23:51'),
-(7, 'tienhai', 'tienhaile488@gmail.com', 'chao buoi san', 1, 'Chưa xử lý', '2023-05-07 23:24:10'),
-(8, 'tienhai', 'tienhaile488@gmail.com', 'chao buoi sang', 1, 'Chưa xử lý', '2023-05-07 23:24:31'),
-(9, 'tienhai', 'tienhaile488@gmail.com', 'chao dfsfdasfsad', 1, 'Chưa xử lý', '2023-05-07 23:24:52'),
-(10, 'hai tien', 'tienhaile488@gmail.com', 'daffffffffff', 1, 'Chưa xử lý', '2023-05-07 23:25:46');
+(3, 'Shirt', '1715401628.jpg', 1, '2023-03-20 13:30:00', '2023-03-27 15:00:33'),
+(4, 'Polo', '1715401758.jpg', 1, '2023-03-20 13:30:00', '2023-03-27 15:00:17'),
+(15, 'Jacket', '1715401806.jpg', 1, '2023-03-29 16:39:38', '2023-03-30 16:30:10');
 
 -- --------------------------------------------------------
 
@@ -144,123 +114,89 @@ CREATE TABLE `images` (
 --
 
 INSERT INTO `images` (`id`, `product_id`, `image`, `create_at`, `update_at`) VALUES
-(1, 1, 'images/product_image/adidas-d2m-3s-gm2135-2.jpg', '2023-03-29 22:04:45', NULL),
-(2, 1, 'images/product_image/adidas-d2m-3s-gm2135-3.jpg', '2023-03-29 22:04:45', NULL),
-(3, 1, 'images/product_image/adidas-d2m-3s-gm2135-4.jpg', '2023-03-29 22:04:45', NULL),
-(4, 1, 'images/product_image/adidas-d2m-3s-gm2135-5.jpg', '2023-03-29 22:04:45', NULL),
-(22, 21, 'images/product_image/adidas-d2m-3s-gm2135-2.jpg', '2023-03-29 22:04:45', NULL),
-(23, 21, 'images/product_image/adidas-d2m-3s-gm2135-3.jpg', '2023-03-29 22:04:45', NULL),
-(24, 21, 'images/product_image/adidas-d2m-3s-gm2135-4.jpg', '2023-03-29 22:04:45', NULL),
-(25, 21, 'images/product_image/adidas-d2m-3s-gm2135-5.jpg', '2023-03-29 22:04:45', NULL),
-(26, 34, 'images/sp4/reebok-re-basic-ss-tee-hm2865-2.jpg', '2023-05-07 21:40:00', NULL),
-(27, 34, 'images/sp4/reebok-re-basic-ss-tee-hm2865-3.jpg', '2023-05-07 21:40:00', NULL),
-(28, 34, 'images/sp4/reebok-re-basic-ss-tee-hm2865-4.jpg', '2023-05-07 21:40:00', NULL),
-(29, 35, 'images/sp6/ao-so-mi-coc-tay-adidas-originals-hs9471-mau-den-xam-2.jpg', '2023-05-07 21:46:30', NULL),
-(30, 35, 'images/sp6/ao-so-mi-coc-tay-adidas-originals-hs9471-mau-den-xam-3.jpg', '2023-05-07 21:46:30', NULL),
-(31, 35, 'images/sp6/ao-so-mi-coc-tay-adidas-originals-hs9471-mau-den-xam-4.jpg', '2023-05-07 21:46:30', NULL),
-(32, 36, 'images/sp7/nike-dq1011-824-2.jpg', '2023-05-07 21:48:52', NULL),
-(33, 36, 'images/sp7/nike-dq1011-824-3.jpg', '2023-05-07 21:48:52', NULL),
-(34, 36, 'images/sp7/nike-dq1011-824-4.jpg', '2023-05-07 21:48:52', NULL),
-(35, 25, 'images/sp8/ao-hoodie-adidas-tokyo-brand-carrier-pullover-h64727-mau-den-size-l-2.jpg', '2023-05-07 21:51:28', NULL),
-(36, 25, 'images/sp8/ao-hoodie-adidas-tokyo-brand-carrier-pullover-h64727-mau-den-size-l-3.jpg', '2023-05-07 21:51:28', NULL),
-(37, 25, 'images/sp8/ao-hoodie-adidas-tokyo-brand-carrier-pullover-h64727-mau-den-size-l-4.jpg', '2023-05-07 21:51:28', NULL),
 (38, 33, 'images/sp9/ao-ba-lo-chay-bo-nam-nike-cz9180-010-2.jpg', '2023-05-07 21:53:38', NULL),
 (39, 33, 'images/sp9/ao-ba-lo-chay-bo-nam-nike-cz9180-010-3.jpg', '2023-05-07 21:53:38', NULL),
 (40, 33, 'images/sp9/ao-ba-lo-chay-bo-nam-nike-cz9180-010-4.jpg', '2023-05-07 21:53:38', NULL),
-(41, 32, 'images/sp10/adidas-m-ti-tee-hc2760-den-2.jpg', '2023-05-07 21:55:07', NULL),
-(42, 32, 'images/sp10/adidas-m-ti-tee-hc2760-den-3.jpg', '2023-05-07 21:55:07', NULL),
-(43, 32, 'images/sp10/adidas-m-ti-tee-hc2760-den-4.jpg', '2023-05-07 21:55:07', NULL),
-(44, 31, 'images/sp11/ao-thun-lifestyle-nam-adidas-m-feelcozy-swt-h12221-2.jpg', '2023-05-07 21:57:06', NULL),
-(45, 31, 'images/sp11/ao-thun-lifestyle-nam-adidas-m-feelcozy-swt-h12221-3.jpg', '2023-05-07 21:57:06', NULL),
-(46, 31, 'images/sp11/ao-thun-lifestyle-nam-adidas-m-feelcozy-swt-h12221-4.jpg', '2023-05-07 21:57:06', NULL),
-(47, 30, 'images/sp12/ao-polo-gucci-with-pocket-713997-xjetr-9088-mau-trang-2.jpg', '2023-05-07 21:59:14', NULL),
-(48, 30, 'images/sp12/ao-polo-gucci-with-pocket-713997-xjetr-9088-mau-trang-3.jpg', '2023-05-07 21:59:14', NULL),
-(49, 30, 'images/sp12/ao-polo-gucci-with-pocket-713997-xjetr-9088-mau-trang-4.jpg', '2023-05-07 21:59:14', NULL),
 (50, 29, 'images/sp13/ao-nike-sportswear-men-s-hoodie-midnight-navy-cw4319-400-mau-xanh-navy-2.jpg', '2023-05-07 22:02:43', NULL),
 (51, 29, 'images/sp13/ao-nike-sportswear-men-s-hoodie-midnight-navy-cw4319-400-mau-xanh-navy-3.jpg', '2023-05-07 22:02:43', NULL),
 (52, 29, 'images/sp13/ao-nike-sportswear-men-s-hoodie-midnight-navy-cw4319-400-mau-xanh-navy-4.jpg', '2023-05-07 22:02:43', NULL),
-(56, 27, 'images/sp15/ao-hoodie-puma-power-knit-trainning-hoodie-black-518978-01-mau-den-size-m-2.jpg', '2023-05-07 22:05:45', NULL),
-(57, 27, 'images/sp15/ao-hoodie-puma-power-knit-trainning-hoodie-black-518978-01-mau-den-size-m-3.jpg', '2023-05-07 22:05:45', NULL),
-(58, 27, 'images/sp15/ao-hoodie-puma-power-knit-trainning-hoodie-black-518978-01-mau-den-size-m-4.jpg', '2023-05-07 22:05:45', NULL),
-(59, 28, 'images/sp14/ao-thun-lifestyle-nam-nike-dr8055-100-1.jpg', '2023-05-07 22:06:33', NULL),
-(60, 28, 'images/sp14/ao-thun-lifestyle-nam-nike-dr8055-100-2.jpg', '2023-05-07 22:06:33', NULL),
-(61, 28, 'images/sp14/ao-thun-lifestyle-nam-nike-dr8055-100-3.jpg', '2023-05-07 22:06:33', NULL),
-(62, 26, 'images/sp16/ao-hoodie-lifestyle-nam-adidas-hl6925-2.jpg', '2023-05-07 22:07:57', NULL),
-(63, 26, 'images/sp16/ao-hoodie-lifestyle-nam-adidas-hl6925-3.jpg', '2023-05-07 22:07:57', NULL),
-(64, 26, 'images/sp16/ao-hoodie-lifestyle-nam-adidas-hl6925-4.jpg', '2023-05-07 22:07:57', NULL),
-(65, 23, 'images/sp17/adidas-m-ti-tee-hc2760-den-2.jpg', '2023-05-07 22:09:18', NULL),
-(66, 23, 'images/sp17/adidas-m-ti-tee-hc2760-den-3.jpg', '2023-05-07 22:09:18', NULL),
-(67, 23, 'images/sp17/adidas-m-ti-tee-hc2760-den-4.jpg', '2023-05-07 22:09:18', NULL),
-(68, 22, 'images/sp18/adidas-d4r-tee-men-hk7117-2.jpg', '2023-05-07 22:10:46', NULL),
-(69, 22, 'images/sp18/adidas-d4r-tee-men-hk7117-3.jpg', '2023-05-07 22:10:46', NULL),
-(70, 22, 'images/sp18/adidas-d4r-tee-men-hk7117-4.jpg', '2023-05-07 22:10:46', NULL),
-(71, 37, 'images/sp19/ao-nike-sportswear-men-s-pullover-hoodie-tokyo-color-cw0308-100-mau-trang-2.jpg', '2023-05-07 22:15:11', NULL),
-(72, 37, 'images/sp19/ao-nike-sportswear-men-s-pullover-hoodie-tokyo-color-cw0308-100-mau-trang-3.jpg', '2023-05-07 22:15:11', NULL),
-(73, 37, 'images/sp19/ao-nike-sportswear-men-s-pullover-hoodie-tokyo-color-cw0308-100-mau-trang-4.jpg', '2023-05-07 22:15:11', NULL),
-(74, 38, 'images/sp20/ao-so-mi-gucci-white-cotton-snake-embroidered-collar-duke-shirt-4.jpg', '2023-05-07 22:18:10', NULL),
-(75, 38, 'images/sp20/ao-so-mi-gucci-white-cotton-snake-embroidered-collar-duke-shirt-3.jpg', '2023-05-07 22:18:10', NULL),
-(76, 38, 'images/sp20/ao-so-mi-gucci-white-cotton-snake-embroidered-collar-duke-shirt-1.jpg', '2023-05-07 22:18:10', NULL),
-(78, 39, 'images/sp14/team-4.jpg', '2023-05-08 14:10:20', NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `modules`
---
-
-CREATE TABLE `modules` (
-  `name` varchar(50) NOT NULL,
-  `title` varchar(100) NOT NULL,
-  `actions` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
-
---
--- Dumping data for table `modules`
---
-
-INSERT INTO `modules` (`name`, `title`, `actions`) VALUES
-('groups', 'Nhóm người dùng', '{\"add\":\"Thêm\",\"update\":\"Sửa\",\"delete\":\"Xóa\",\"permission\":\"Phân quyền\"}'),
-('products', 'Sản phẩm', '{\"add\":\"Thêm\",\"update\":\"Sửa\",\"delete\":\"Xóa\"}'),
-('users', 'Người dùng', '{\"add\":\"Thêm\",\"update\":\"Sửa\",\"delete\":\"Xóa\"}'),
-('bill', 'Hóa đơn', '{\"update\":\"Sửa\"}'),
-('contacts', 'Liên hệ', '{\"update\":\"Sửa\",\"delete\":\"Xóa\"}'),
-('reviews', 'Đánh giá', '{\"update\":\"Sửa\",\"delete\":\"Xóa\"}'),
-('options', 'Cài đặt chung', '{\"update\":\"Sửa\"}'),
-('dashboard', 'Thống kê', '{\"view\":\"Xem\"}');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `options`
---
-
-CREATE TABLE `options` (
-  `id` int NOT NULL,
-  `opt_key` varchar(100) DEFAULT NULL,
-  `opt_value` text,
-  `name` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
-
---
--- Dumping data for table `options`
---
-
-INSERT INTO `options` (`id`, `opt_key`, `opt_value`, `name`) VALUES
-(1, 'general_hotline', '0987982144', 'Liên hệ'),
-(2, 'general_address', 'tienhai488@gmail.com', 'Địa chỉ'),
-(3, 'general_email', 'tienhai488@gmail.com', 'Email'),
-(4, 'general_delivery', 'Miễn phí vận chuyển, bảo đảm đổi trả hoặc hoàn tiền trong 30 ngày.', 'Giao hàng'),
-(5, 'general_facebook', 'https://www.facebook.com/', 'Facebook'),
-(6, 'general_twitter', 'https://www.twitter.com/', 'Twitter'),
-(7, 'general_youtube', 'https://www.youtube.com/', 'Youtube'),
-(8, 'general_instagram', 'https://www.instagram.com/', 'Instagram'),
-(9, 'general_footer', '{\"title_1\":\"Male Fashion\",\"des_1\":\"The customer is at the heart of our unique business model, which includes design.\",\"title_2\":\"SHOPPING\",\"name_quicklink\":[\"Clothing Store  \",\"Trending Shoes\",\"Accessories\",\"Sale\"],\"link_quicklink\":[\"#\",\"#\",\"#\",\"#\"],\"title_3\":\"SHOPPING\",\"name_quicklink2\":[\"Contact Us\",\"Payment Methods\",\"Delivary\",\"Return &#38; Exchanges\"],\"link_quicklink2\":[\"#\",\"#\",\"#\",\"#\"],\"title_4\":\"NEWLETTER\",\"des_4\":\"Consectetur adipiscing elit. Vestibulum vel sapien et lacus tempus varius. In finibus lorem vel.\",\"copy_right\":\"Copyright \\u00a9 20232020 All rights reserved | This template is made with  by Colorlib\"}', 'Footer'),
-(10, 'general_country', '1', 'Số quốc gia'),
-(11, 'general_happy_customer', '90', 'Tỉ lệ khách hài lòng'),
-(12, 'general_clients', '150', 'Số lượng khách hàng'),
-(13, 'general_partner', '{\"heading_1\":\"PARTNER\",\"heading_2\":\"Happy Clients\",\"image\":[\"images\\/client-1.png\",\"images\\/client-2.png\",\"images\\/client-3.png\",\"images\\/client-4.png\",\"images\\/client-5.png\",\"images\\/client-6.png\"],\"link\":[\"#\",\"#\",\"#\",\"#\",\"#\",\"#\"]}', 'Thiết lập đối tác'),
-(14, 'general_our_team', '{\"heading_1\":\"OUR TEAM\",\"heading_2\":\"Meet Our Team\",\"name\":[\"NgocHuy\",\"TienHai\",\"HongSon\",\"DienTam\"],\"position\":[\"Founder\",\"Dev\",\"Dev\",\"Dev\"],\"image\":[\"images\\/our_team\\/team-1.jpg\",\"images\\/our_team\\/team-2.jpg\",\"images\\/our_team\\/team-3.jpg\",\"images\\/our_team\\/team-4.jpg\"]}', 'Thành viên'),
-(15, 'general_advertise', '{\"title\":[\"Summer Collection\",\"Summer Collection\"],\"header\":[\"Fall - Winter Collections 2030\",\"Fall - Winter Collections 2030\"],\"image\":[\"images\\/hero-1.jpg\",\"images\\/hero-2.jpg\"],\"description\":[\"&#60;p&#62;A specialist label creating luxury essentials. Ethically crafted with an unwavering commitment to exceptional quality.&#60;\\/p&#62;&#13;&#10;\",\"&#60;p&#62;A specialist label creating luxury essentials. Ethically crafted with an unwavering commitment to exceptional quality.&#60;\\/p&#62;&#13;&#10;\"]}', 'Quảng cáo');
+(87, 2, '1715359374_0.jpg', '2024-05-10 23:42:54', '2024-05-10 23:42:54'),
+(88, 2, '1715359374_1.jpg', '2024-05-10 23:42:54', '2024-05-10 23:42:54'),
+(89, 2, '1715359374_2.jpg', '2024-05-10 23:42:54', '2024-05-10 23:42:54'),
+(90, 3, '1715359444_0.jpg', '2024-05-10 23:44:04', '2024-05-10 23:44:04'),
+(91, 3, '1715359444_1.jpg', '2024-05-10 23:44:04', '2024-05-10 23:44:04'),
+(92, 3, '1715359444_2.jpg', '2024-05-10 23:44:04', '2024-05-10 23:44:04'),
+(94, 1, '1715359624_0.jpg', '2024-05-10 23:47:04', '2024-05-10 23:47:04'),
+(95, 1, '1715359624_1.jpg', '2024-05-10 23:47:04', '2024-05-10 23:47:04'),
+(96, 1, '1715359624_2.jpg', '2024-05-10 23:47:04', '2024-05-10 23:47:04'),
+(97, 5, '1715359833_0.jpg', '2024-05-10 23:50:33', '2024-05-10 23:50:33'),
+(98, 5, '1715359833_1.jpg', '2024-05-10 23:50:33', '2024-05-10 23:50:33'),
+(99, 5, '1715359833_2.jpg', '2024-05-10 23:50:33', '2024-05-10 23:50:33'),
+(102, 6, '1715392033_0.jpg', '2024-05-11 08:47:13', '2024-05-11 08:47:13'),
+(103, 6, '1715392033_1.jpg', '2024-05-11 08:47:13', '2024-05-11 08:47:13'),
+(112, 8, '1715401333_0.jpg', '2024-05-11 11:22:13', '2024-05-11 11:22:13'),
+(113, 8, '1715401333_1.jpg', '2024-05-11 11:22:13', '2024-05-11 11:22:13'),
+(116, 10, '1715401975_0.jpg', '2024-05-11 11:32:55', '2024-05-11 11:32:55'),
+(117, 10, '1715401975_1.jpg', '2024-05-11 11:32:55', '2024-05-11 11:32:55'),
+(118, 9, '1715402131_0.jpg', '2024-05-11 11:35:31', '2024-05-11 11:35:31'),
+(119, 9, '1715402131_1.jpg', '2024-05-11 11:35:31', '2024-05-11 11:35:31'),
+(120, 11, '1715402263_0.jpg', '2024-05-11 11:37:43', '2024-05-11 11:37:43'),
+(121, 11, '1715402263_1.jpg', '2024-05-11 11:37:43', '2024-05-11 11:37:43'),
+(122, 12, '1715402339_0.jpg', '2024-05-11 11:38:59', '2024-05-11 11:38:59'),
+(123, 12, '1715402339_1.jpg', '2024-05-11 11:38:59', '2024-05-11 11:38:59'),
+(124, 13, '1715402438_0.jpg', '2024-05-11 11:40:38', '2024-05-11 11:40:38'),
+(125, 13, '1715402438_1.jpg', '2024-05-11 11:40:38', '2024-05-11 11:40:38'),
+(126, 22, '1715402534_0.jpg', '2024-05-11 11:42:14', '2024-05-11 11:42:14'),
+(127, 22, '1715402534_1.jpg', '2024-05-11 11:42:14', '2024-05-11 11:42:14'),
+(128, 23, '1715402584_0.jpg', '2024-05-11 11:43:04', '2024-05-11 11:43:04'),
+(129, 23, '1715402584_1.jpg', '2024-05-11 11:43:04', '2024-05-11 11:43:04'),
+(132, 26, '1715402776_0.jpg', '2024-05-11 11:46:16', '2024-05-11 11:46:16'),
+(133, 26, '1715402776_1.jpg', '2024-05-11 11:46:16', '2024-05-11 11:46:16'),
+(134, 27, '1715402859_0.jpg', '2024-05-11 11:47:39', '2024-05-11 11:47:39'),
+(135, 27, '1715402859_1.jpg', '2024-05-11 11:47:39', '2024-05-11 11:47:39'),
+(136, 28, '1715403053_0.jpg', '2024-05-11 11:50:53', '2024-05-11 11:50:53'),
+(137, 28, '1715403053_1.jpg', '2024-05-11 11:50:53', '2024-05-11 11:50:53'),
+(138, 30, '1715403217_0.jpg', '2024-05-11 11:53:37', '2024-05-11 11:53:37'),
+(139, 30, '1715403217_1.jpg', '2024-05-11 11:53:37', '2024-05-11 11:53:37'),
+(140, 31, '1715403328_0.jpg', '2024-05-11 11:55:28', '2024-05-11 11:55:28'),
+(141, 31, '1715403328_1.jpg', '2024-05-11 11:55:28', '2024-05-11 11:55:28'),
+(142, 32, '1715403479_0.jpg', '2024-05-11 11:57:59', '2024-05-11 11:57:59'),
+(143, 32, '1715403479_1.jpg', '2024-05-11 11:57:59', '2024-05-11 11:57:59'),
+(144, 34, '1715403659_0.jpg', '2024-05-11 12:00:59', '2024-05-11 12:00:59'),
+(145, 34, '1715403659_1.jpg', '2024-05-11 12:00:59', '2024-05-11 12:00:59'),
+(146, 35, '1715403726_0.jpg', '2024-05-11 12:02:06', '2024-05-11 12:02:06'),
+(147, 35, '1715403726_1.jpg', '2024-05-11 12:02:06', '2024-05-11 12:02:06'),
+(148, 36, '1715403815_0.jpg', '2024-05-11 12:03:35', '2024-05-11 12:03:35'),
+(149, 36, '1715403815_1.jpg', '2024-05-11 12:03:35', '2024-05-11 12:03:35'),
+(150, 37, '1715403928_0.jpg', '2024-05-11 12:05:28', '2024-05-11 12:05:28'),
+(151, 37, '1715403928_1.jpg', '2024-05-11 12:05:28', '2024-05-11 12:05:28'),
+(152, 38, '1715403979_0.jpg', '2024-05-11 12:06:19', '2024-05-11 12:06:19'),
+(153, 38, '1715403979_1.jpg', '2024-05-11 12:06:19', '2024-05-11 12:06:19'),
+(154, 39, '1715404074_0.jpg', '2024-05-11 12:07:54', '2024-05-11 12:07:54'),
+(155, 39, '1715404074_1.jpg', '2024-05-11 12:07:54', '2024-05-11 12:07:54'),
+(156, 40, '1715404173.jpg', '2024-05-11 12:09:33', '2024-05-11 12:09:33'),
+(157, 40, '1715404173_0.jpg', '2024-05-11 12:09:33', '2024-05-11 12:09:33'),
+(158, 40, '1715404173_1.jpg', '2024-05-11 12:09:33', '2024-05-11 12:09:33'),
+(159, 41, '1715404257.jpg', '2024-05-11 12:10:57', '2024-05-11 12:10:57'),
+(160, 41, '1715404257_0.jpg', '2024-05-11 12:10:57', '2024-05-11 12:10:57'),
+(161, 41, '1715404257_1.jpg', '2024-05-11 12:10:57', '2024-05-11 12:10:57'),
+(165, 43, '1715404418.jpg', '2024-05-11 12:13:38', '2024-05-11 12:13:38'),
+(166, 43, '1715404418_0.jpg', '2024-05-11 12:13:38', '2024-05-11 12:13:38'),
+(167, 43, '1715404418_1.jpg', '2024-05-11 12:13:38', '2024-05-11 12:13:38'),
+(172, 47, '1715404759_0.png', '2024-05-11 12:19:19', '2024-05-11 12:19:19'),
+(173, 47, '1715404759_1.png', '2024-05-11 12:19:19', '2024-05-11 12:19:19'),
+(174, 21, '1715406041_0.jpg', '2024-05-11 12:40:41', '2024-05-11 12:40:41'),
+(175, 21, '1715406041_1.jpg', '2024-05-11 12:40:41', '2024-05-11 12:40:41'),
+(176, 46, '1715408336_0.png', '2024-05-11 13:18:56', '2024-05-11 13:18:56'),
+(177, 46, '1715408336_1.png', '2024-05-11 13:18:56', '2024-05-11 13:18:56'),
+(178, 45, '1715408361_0.png', '2024-05-11 13:19:21', '2024-05-11 13:19:21'),
+(179, 45, '1715408361_1.png', '2024-05-11 13:19:21', '2024-05-11 13:19:21'),
+(180, 44, '1715408378_0.png', '2024-05-11 13:19:38', '2024-05-11 13:19:38'),
+(181, 44, '1715408378_1.png', '2024-05-11 13:19:38', '2024-05-11 13:19:38'),
+(182, 42, '1715409284_0.jpg', '2024-05-11 13:34:44', '2024-05-11 13:34:44'),
+(183, 42, '1715409284_1.jpg', '2024-05-11 13:34:44', '2024-05-11 13:34:44'),
+(184, 25, '1715422649_0.jpg', '2024-05-11 17:17:29', '2024-05-11 17:17:29'),
+(185, 25, '1715422649_1.jpg', '2024-05-11 17:17:29', '2024-05-11 17:17:29');
 
 -- --------------------------------------------------------
 
@@ -277,31 +213,26 @@ CREATE TABLE `order` (
   `note` varchar(100) DEFAULT NULL,
   `id_order_status` int NOT NULL,
   `create_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `update_at` datetime DEFAULT CURRENT_TIMESTAMP
+  `update_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `payment_method` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `order`
 --
 
-INSERT INTO `order` (`id`, `user_id`, `resipient_name`, `resipient_phonenumber`, `delivery_address`, `note`, `id_order_status`, `create_at`, `update_at`) VALUES
-(5, 9, 'MinhLam', '0987654321', 'tuy phuoc binh dinh', 'ok', 4, '2023-03-29 19:23:42', '2023-04-10 15:43:45'),
-(6, 10, 'Tienhai', '0987982144', 'q8 tphcm', 'ok', 6, '2023-01-22 19:24:11', '2023-03-30 08:28:42'),
-(11, 3, 'haile', '0987654321', 'ok !', 'huy don vi mot so li do', 2, '2023-01-29 21:16:53', '2023-04-17 13:24:45'),
-(13, 3, 'Tien Hai Le', '0987982144', '', 'dang giao', 5, '2023-04-14 09:52:11', '2023-04-17 13:25:02'),
-(14, 3, 'Tien Hai Le', '0987982144', '', '', 1, '2023-04-14 10:04:43', NULL),
-(15, 3, 'Tien Hai Le', '0987982144', 'Biinh Dinh Viet Nam', '', 4, '2023-04-14 10:59:27', NULL),
-(16, 3, 'Tien Hai Le', '0987982144', 'viet nam viet na', '', 4, '2023-04-14 11:00:17', NULL),
-(17, 3, 'Tien Hai Le', '0987982144', 'viet nam viet na', 'chu y', 4, '2023-04-14 11:01:53', '2023-04-17 13:25:15'),
-(18, 3, 'Tien Hai Le', '0987982144', 'sdfaaaaaaaaafdasfd', '', 4, '2023-04-14 15:57:35', NULL),
-(19, 9, 'Minh Lam ', '0987654321', 'Tuy phuoc binh dinh', '', 1, '2023-05-07 20:07:46', NULL),
-(20, 37, 'Le Tien Hai', '0987654321', 'Ho Chi Minh Viet Nam', 'ok', 6, '2023-05-07 22:12:40', '2023-05-07 23:03:23'),
-(21, 37, 'Le Tien Hai', '0987654321', 'Ho Chi Minh Viet Nam', 'nguoi dung tu y huy', 6, '2023-05-07 23:13:07', '2023-05-07 23:15:43'),
-(22, 10, 'Le Tien Hai', '0987654321', 'Ho Chi Minh Viet Nam', '.', 1, '2023-05-08 09:54:55', NULL),
-(23, 9, 'Le Tien Hai', '0987654321', 'Ho Chi Minh Viet Nam', '.', 6, '2023-05-08 09:55:55', '2023-05-08 10:19:53'),
-(24, 9, 'Le Tien Hai', '0987654321', 'Ho Chi Minh Viet Nam', '', 1, '2023-05-08 11:17:41', NULL),
-(25, 9, 'Le Tien Hai', '0987654321', 'Ho Chi Minh Viet Nam', '', 1, '2023-05-08 11:22:55', NULL),
-(26, 9, 'Le Tien Hai', '0987654321', 'Ho Chi Minh Viet Nam', '', 1, '2023-05-08 11:31:33', NULL);
+INSERT INTO `order` (`id`, `user_id`, `resipient_name`, `resipient_phonenumber`, `delivery_address`, `note`, `id_order_status`, `create_at`, `update_at`, `payment_method`) VALUES
+(66, 45, 'sfsaw', '0333207334', 'wfwqf', NULL, 6, '2024-02-08 14:16:57', '2024-05-08 14:16:57', 'mobile wallet'),
+(67, 45, 'wdwdw', '0123123123', 'wdwdw', NULL, 4, '2024-05-08 14:22:48', '2024-05-08 14:22:48', 'mobile wallet'),
+(68, 45, 'dwdw', '0333207334', 'dwdwdwd', NULL, 6, '2024-04-08 14:30:03', '2024-05-08 14:30:03', 'cash'),
+(100, 45, 'fefef', '0333207334', 'efefe', NULL, 4, '2024-05-11 15:23:29', '2024-05-11 15:23:29', 'credit'),
+(101, 45, 'thang', '0333207334', 'thu duc', NULL, 4, '2024-05-11 15:25:13', '2024-05-11 15:25:13', 'mobile wallet'),
+(102, 45, 'thang', '0333207334', 'thu duc', NULL, 4, '2024-05-11 15:52:15', '2024-05-11 15:52:15', 'mobile wallet'),
+(103, 45, 'duc thang', '0333207334', 'thu duc', NULL, 4, '2024-05-11 16:03:53', '2024-05-11 16:03:53', 'cash'),
+(104, 45, 'ducthang', '0333207334', '1fsff', NULL, 4, '2024-05-11 16:12:06', '2024-05-11 16:12:06', 'cash'),
+(105, 45, 'rg', '0333207334', 'reg', NULL, 4, '2024-05-11 16:14:31', '2024-05-11 16:14:31', 'credit'),
+(106, 45, 'wdwd', '0333207334', 'wdwdw', NULL, 6, '2024-05-11 16:17:24', '2024-05-11 16:17:24', 'credit'),
+(107, 45, 'thang dz', '0333207334', 'thu duc', NULL, 1, '2024-05-11 16:41:13', '2024-05-11 16:41:13', 'credit');
 
 -- --------------------------------------------------------
 
@@ -315,49 +246,32 @@ CREATE TABLE `order_detail` (
   `product_id` int NOT NULL,
   `size_id` int NOT NULL,
   `total` int DEFAULT NULL,
-  `quantity` int NOT NULL
+  `quantity` int NOT NULL,
+  `isReviewed` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `order_detail`
 --
 
-INSERT INTO `order_detail` (`id`, `order_id`, `product_id`, `size_id`, `total`, `quantity`) VALUES
-(8, 5, 1, 3, 600, 2),
-(10, 6, 7, 1, 6000, 5),
-(11, 5, 12, 2, 200, 2),
-(14, 6, 7, 3, 4800, 4),
-(17, 5, 13, 4, 49000, 10),
-(20, 11, 2, 2, 15000, 30),
-(21, 11, 8, 3, 10500, 15),
-(22, 11, 11, 4, 2000, 10),
-(27, 13, 2, 2, 46500, 93),
-(28, 13, 12, 2, 100, 1),
-(29, 15, 12, 3, 500, 5),
-(30, 16, 12, 5, 100, 1),
-(31, 17, 12, 3, 100, 1),
-(32, 18, 2, 2, 4000, 8),
-(33, 18, 2, 3, 500, 1),
-(34, 18, 2, 4, 500, 1),
-(35, 18, 12, 3, 100, 1),
-(36, 19, 2, 4, 500, 1),
-(37, 20, 1, 3, 5400, 18),
-(38, 20, 2, 2, 500, 1),
-(39, 21, 1, 2, 5400, 18),
-(40, 21, 2, 2, 4000, 8),
-(41, 22, 2, 3, 500, 1),
-(42, 23, 2, 1, 500, 1),
-(43, 23, 2, 2, 500, 1),
-(44, 23, 2, 3, 500, 1),
-(45, 23, 12, 4, 900, 9),
-(47, 24, 28, 4, 2800, 4),
-(48, 24, 36, 2, 3000, 5),
-(49, 24, 37, 4, 4800, 4),
-(50, 24, 38, 4, 32000, 8),
-(51, 25, 22, 3, 500, 1),
-(52, 25, 27, 3, 4800, 4),
-(53, 25, 35, 3, 9000, 3),
-(54, 26, 7, 5, 21600, 18);
+INSERT INTO `order_detail` (`id`, `order_id`, `product_id`, `size_id`, `total`, `quantity`, `isReviewed`) VALUES
+(57, 66, 8, 3, 800, 1, 0),
+(58, 66, 21, 2, 600, 1, 0),
+(59, 66, 2, 2, 800, 1, 0),
+(60, 66, 3, 2, 1800, 2, 0),
+(61, 66, 3, 5, 900, 1, 0),
+(62, 67, 3, 2, 900, 1, 0),
+(63, 68, 2, 2, 800, 1, 0),
+(95, 100, 42, 3, 1960, 2, 0),
+(96, 101, 42, 3, 1960, 2, 0),
+(97, 102, 42, 3, 1960, 2, 0),
+(98, 103, 42, 3, 2940, 3, 0),
+(99, 104, 42, 3, 1960, 2, 0),
+(100, 105, 42, 3, 1960, 2, 0),
+(101, 106, 42, 3, 1960, 2, 1),
+(102, 107, 1, 2, 1497, 3, 0),
+(103, 107, 2, 2, 1600, 2, 0),
+(104, 107, 3, 4, 2700, 3, 0);
 
 -- --------------------------------------------------------
 
@@ -378,12 +292,10 @@ CREATE TABLE `order_status` (
 --
 
 INSERT INTO `order_status` (`id`, `name`, `description`, `create_at`, `update_at`) VALUES
-(1, 'Chờ duyệt', 'Chờ người bán duyệt đơn hàng', '2023-03-22 10:51:30', NULL),
-(2, 'Đã duyệt', 'duyệt', '2023-03-22 10:51:38', '2023-03-22 10:51:56'),
-(3, 'Đang chuẩn bị hàng', 'Đang chuẩn bị đơn hàng', '2023-05-07 23:17:15', NULL),
-(4, 'Hủy đơn', 'Đơn hàng bị hủy bỏ&#13;&#10;', '2023-03-30 08:26:35', NULL),
-(5, 'Đang giao', 'Đang được giao', '2023-03-30 08:26:56', NULL),
-(6, 'Thành công', 'Giao hàng thành công', '2023-03-30 08:27:30', NULL);
+(1, 'To Confirm', 'To Confirm', '2024-05-08 13:53:57', '2024-05-08 13:53:57'),
+(4, 'Canceled', 'Canceled', '2024-05-08 13:53:57', '2024-05-08 13:53:57'),
+(5, 'To Ship', 'To Ship', '2024-05-08 13:53:57', '2024-05-08 13:53:57'),
+(6, 'Completed', 'Completed', '2024-05-08 13:53:57', '2024-05-08 13:53:57');
 
 -- --------------------------------------------------------
 
@@ -411,36 +323,43 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `img`, `description`, `price`, `sale`, `category_id`, `brand_id`, `status`, `type`, `create_at`, `update_at`) VALUES
-(1, 'Áo Addidas D2M', 'adidas-d2m-3s-gm2135-1.jpg', '&#60;p&#62;Mặc l&#38;ecirc;n tự tin thoải m&#38;aacute;i sẵn s&#38;agrave;ng t&#38;ecirc; t&#38;aacute;i&#60;/p&#62;&#13;&#10;', 600, 100, 1, 1, 1, 'new', '2023-03-20 13:30:00', '2023-05-06 10:44:01'),
-(2, 'Áo Thun Adidas D4R Xanh', 'adidas-d4r-tee-men-hk7117-1.jpg', 'Tuy không xinh nhưng biết thế nào là ảo', 800, 500, 1, 1, 1, 'new', '2023-03-20 13:30:00', '2023-05-08 10:12:21'),
-(3, 'Áo Thun Adidas HC2760 Đen', 'adidas-m-ti-tee-hc2760-den-1.jpg', 'Đen như cuộc tình của anh và em', 900, 800, 1, 1, 1, 'normal', '2023-03-20 13:30:00', '2023-03-20 13:30:00'),
-(5, 'Áo Hoodie Adidas Tokyo Carrier Pullover', 'images/categories/ao-hoodie-lifestyle-nam-adidas-hl6925-1.jpg', '&#60;p&#62;Kẻ si t&#38;igrave;nh trong cuộc t&#38;igrave;nh tay ba&#60;/p&#62;&#13;&#10;', 1500, 1200, 2, 1, 1, 'sale', '2023-03-20 13:30:00', '2023-03-27 15:03:27'),
-(6, 'Áo Hoodie Lifestyle HL6925 Adidas', 'ao-hoodie-lifestyle-nam-adidas-hl6925-1.jpg', 'Hoodie của anh, hóa đơn của em', 1200, 800, 2, 1, 1, 'sale', '2023-03-20 13:30:00', '2023-03-20 13:30:00'),
-(7, 'Áo Hoodie Puma Power Knit Training', 'images/categories/ao-thun-lifestyle-nam-puma-classics-logo-metallic-534711-01-1.jpg', '&#60;p&#62;Pu em như con ruồi, để ma em đuổi anh đi&#60;/p&#62;&#13;&#10;', 1700, 1200, 2, 3, 1, 'sale', '2023-03-20 13:30:00', '2023-05-08 11:22:00'),
-(8, 'Áo Hoodie Nike Sportwear Midnight Navy', 'images/categories/ao-thun-lifestyle-nam-nike-dr8055-100-3.jpg', '&#60;p&#62;Nữa đ&#38;ecirc;m bật dậy nhắn em 1 c&#38;acirc;u, anh y&#38;ecirc;u em như cọc t&#38;igrave;m tr&#38;acirc;u&#60;/p&#62;&#13;&#10;', 800, 700, 2, 2, 1, 'normal', '2023-03-20 13:30:00', '2023-03-27 15:05:37'),
-(9, 'Áo Hoodie Nike Pullover Tokyo', 'images/sp1/adidas-d4r-tee-men-hk7117-1.jpg', '&#60;p&#62;Tokyo ở Nhật, c&#38;ograve;n em ở trong tim anh&#60;/p&#62;&#13;&#10;', 1900, 1500, 2, 2, 1, 'normal', '2023-03-20 13:30:00', '2023-03-27 15:07:52'),
-(10, 'Áo Polo Gucci With Pocket', 'images/sp2/ao-thun-lifestyle-nam-adidas-hl9386-1.jpg', '&#60;p&#62;Anh l&#38;agrave; ch&#38;agrave;ng trai Đ&#38;ocirc;n Chề c&#38;ograve;n em l&#38;agrave; c&#38;ocirc; g&#38;aacute;i Gu Ch&#38;igrave; của anh&#60;/p&#62;&#13;&#10;', 3000, 2800, 4, 4, 1, 'normal', '2023-03-20 13:30:00', '2023-03-27 15:08:19'),
-(11, 'Áo Sơ Mi Adidas Short Sleeve Xanh Olive', 'images/categories/ao-thun-lifestyle-nam-adidas-m-feelcozy-swt-h12221-1.jpg', '&#60;p&#62;Anh mặc sơ mi đi l&#38;agrave;m tr&#38;acirc;u l&#38;agrave;m ngựa, em mặc &#38;aacute;o crop-top đi l&#38;agrave;m ghệ người ta&#60;/p&#62;&#13;&#10;', 400, 200, 3, 1, 1, 'normal', '2023-03-20 13:30:00', '2023-03-27 15:07:19'),
-(12, 'Áo Sơ Mi Cộc Tay Adidas Màu Đen Xám', 'images/categories/adidas-m-ti-tee-hc2760-den-1.jpg', '&#60;p&#62;Em dạo n&#38;agrave;y c&#38;oacute; c&#38;ograve;n xem phim một m&#38;igrave;nh, em dạo n&#38;agrave;y c&#38;oacute; c&#38;ograve;n y&#38;ecirc;u người kh&#38;aacute;c kh&#38;ocirc;ng&#60;/p&#62;&#13;&#10;', 300, 100, 3, 1, 1, 'new', '2023-03-20 13:30:00', '2023-03-27 15:07:01'),
-(13, 'Áo Sơ Mi Gucci Cotton Trắng', 'images/categories/ao-ba-lo-chay-bo-nam-nike-cz9180-010-5.jpg', '&#60;p&#62;&#38;Aacute;o n&#38;agrave;y tuy rẻ nhưng vẫn mắc hơn lương t&#38;acirc;m của m&#60;/p&#62;&#13;&#10;', 5000, 4900, 3, 4, 1, 'sale', '2023-03-20 13:30:00', '2023-03-27 15:06:28'),
-(21, 'Áo Addidas D2M', 'adidas-d2m-3s-gm2135-1.jpg', '&#60;p&#62;Mặc l&#38;ecirc;n tự tin thoải m&#38;aacute;i sẵn s&#38;agrave;ng t&#38;ecirc; t&#38;aacute;i&#60;/p&#62;&#13;&#10;', 600, 300, 1, 1, 1, 'new', '2023-03-20 13:30:00', '2023-03-29 22:04:45'),
-(22, 'Áo Thun Adidas D4R Xanh', 'images/sp18/adidas-d4r-tee-men-hk7117-1.jpg', '&#60;p&#62;Xanh Xanh Long Lanh, Mặc V&#38;agrave;o Y&#38;ecirc;u Anh&#60;/p&#62;&#13;&#10;&#13;&#10;&#60;p&#62;h&#38;atilde;y mua ngay n&#38;egrave;&#60;/p&#62;&#13;&#10;', 800, 500, 1, 1, 1, 'new', '2023-03-20 13:30:00', '2023-05-07 22:10:46'),
-(23, 'Áo Thun Adidas HC2760 Đen', 'images/sp17/adidas-m-ti-tee-hc2760-den-1.jpg', '&#60;p&#62;&#38;Aacute;o Thun Thoải M&#38;aacute;i, Chưa Mặc Đ&#38;atilde; Kho&#38;aacute;i&#60;/p&#62;&#13;&#10;', 900, 800, 1, 1, 1, 'normal', '2023-03-20 13:30:00', '2023-05-07 22:09:18'),
-(25, 'Áo Hoodie Adidas Tokyo Carrier Pullover', 'images/sp8/ao-hoodie-adidas-tokyo-brand-carrier-pullover-h64727-mau-den-size-l-1.jpg', '&#60;p&#62;Hoodie Tokyo Carrier Pullover ho&#38;agrave;n to&#38;agrave;n mới đến từ nh&#38;agrave; Adidas, h&#38;atilde;y mua ngay trước khi ch&#38;aacute;y h&#38;agrave;ng&#60;/p&#62;&#13;&#10;', 1500, 1200, 2, 1, 1, 'sale', '2023-03-20 13:30:00', '2023-05-07 21:51:28'),
-(26, 'Áo Hoodie Lifestyle HL6925 Adidas', 'images/sp16/ao-hoodie-lifestyle-nam-adidas-hl6925-1.jpg', '&#60;p&#62;Được l&#38;agrave;m từ t&#38;igrave;nh y&#38;ecirc;u v&#38;ocirc; v&#38;agrave;n của nh&#38;agrave; thiết kế&#60;/p&#62;&#13;&#10;', 1200, 800, 2, 1, 1, 'sale', '2023-03-20 13:30:00', '2023-05-07 22:07:57'),
-(27, 'Áo Hoodie Puma Power Knit Training', 'images/sp15/ao-hoodie-puma-power-knit-trainning-hoodie-black-518978-01-mau-den-size-m-1.jpg', '&#60;p&#62;Hoodie mới đến từ nh&#38;agrave; Puma h&#38;atilde;y bấm n&#38;uacute;t mua ngay để sỡ hữu&#60;/p&#62;&#13;&#10;', 1700, 1200, 2, 3, 1, 'sale', '2023-03-20 13:30:00', '2023-05-07 22:05:45'),
-(28, 'Áo Thun Life Style Nike DR8055', 'images/sp14/ao-thun-lifestyle-nam-nike-dr8055-100-4.jpg', '&#60;p&#62;&#38;Aacute;o thun thoải m&#38;aacute;i, m&#38;aacute;t mẻ đến từ Nike&#60;/p&#62;&#13;&#10;', 800, 700, 2, 2, 1, 'normal', '2023-03-20 13:30:00', '2023-05-07 22:06:33'),
-(29, 'Áo Hoodie Nike Midnight Navy Nike', 'images/sp13/ao-nike-sportswear-men-s-hoodie-midnight-navy-cw4319-400-mau-xanh-navy-1.jpg', '&#60;p&#62;M&#38;agrave;u xanh độc đ&#38;aacute;o khiến ch&#38;agrave;ng nổi bật giữa đ&#38;aacute;m đ&#38;ocirc;ng&#60;/p&#62;&#13;&#10;', 1900, 1500, 2, 2, 1, 'normal', '2023-03-20 13:30:00', '2023-05-07 22:02:43'),
-(30, 'Áo Polo Gucci With Pocket', 'images/sp12/ao-polo-gucci-with-pocket-713997-xjetr-9088-mau-trang-1.jpg', '&#60;p&#62;Thời thượng chưa bao giờ rẻ đến vậy, h&#38;atilde;y mua ng&#38;agrave;y trước khi ch&#38;aacute;y&#38;nbsp;&#60;/p&#62;&#13;&#10;', 3000, 2800, 4, 4, 1, 'normal', '2023-03-20 13:30:00', '2023-05-07 21:59:14'),
-(31, 'Áo Sơ Mi Adidas Short Sleeve Xanh Olive', 'images/sp11/ao-thun-lifestyle-nam-adidas-m-feelcozy-swt-h12221-1.jpg', '&#60;p&#62;M&#38;aacute;t mẻ nhưng tinh tế, đơn giản nhưng độc đ&#38;aacute;o, h&#38;atilde;y mua ngay nh&#38;eacute;&#60;/p&#62;&#13;&#10;', 400, 200, 3, 1, 1, 'normal', '2023-03-20 13:30:00', '2023-05-07 21:57:06'),
-(32, 'Áo Sơ Mi Cộc Tay Adidas Màu Đen Xám', 'images/sp10/adidas-m-ti-tee-hc2760-den-1.jpg', '&#60;p&#62;Đơn giản, tinh tế đ&#38;oacute; l&#38;agrave; những g&#38;igrave; m&#38;agrave; người thiết kế muốn hướng đến&#38;nbsp;&#60;/p&#62;&#13;&#10;', 300, 100, 3, 1, 1, 'new', '2023-03-20 13:30:00', '2023-05-07 21:55:07'),
-(33, 'Áo Sơ Mi Gucci Cotton Trắng', 'images/sp9/ao-ba-lo-chay-bo-nam-nike-cz9180-010-1.jpg', '&#60;p&#62;Kiểu d&#38;aacute;ng mới mẻ ph&#38;ugrave; hợp với người đ&#38;agrave;n &#38;ocirc;ng khỏe khoắn&#60;/p&#62;&#13;&#10;', 5000, 4900, 3, 4, 1, 'sale', '2023-03-20 13:30:00', '2023-05-07 21:53:38'),
-(34, 'Áo Reebook ReBasic HM2856', 'images/sp4/reebok-re-basic-ss-tee-hm2865-1.jpg', '&#60;p&#62;Mỏng nhẹ tho&#38;aacute;ng kh&#38;iacute; ph&#38;ugrave; hợp với c&#38;aacute;nh đ&#38;agrave;n &#38;ocirc;ng lịch l&#38;atilde;m.&#38;nbsp;&#60;/p&#62;&#13;&#10;', 2000, 1300, 1, 5, 1, 'new', '2023-05-07 21:40:00', NULL),
-(35, 'Áo Sơ Mi Adidas Cộc Tay Originals HS9471 Đen Xám', 'images/sp6/ao-so-mi-coc-tay-adidas-originals-hs9471-mau-den-xam-1.jpg', '&#60;p&#62;Được sản xuất từ nguy&#38;ecirc;n liệu tự nhiện, gi&#38;uacute;p bảo vệ m&#38;ocirc;i trường v&#38;agrave; ho&#38;agrave;n to&#38;agrave;n m&#38;aacute;t mẻ&#60;/p&#62;&#13;&#10;', 4000, 3000, 3, 1, 1, 'sale', '2023-05-07 21:46:30', NULL),
-(36, 'Áo Nike Hồng Nam Tính', 'images/sp7/nike-dq1011-824-1.jpg', '&#60;p&#62;Ai n&#38;oacute;i m&#38;agrave;u hồng chỉ d&#38;agrave;nh cho phụ nữ th&#38;ocirc;i, h&#38;atilde;y mua ngay mẫu &#38;aacute;o hồng ho&#38;agrave;n to&#38;agrave;n mới đến từ Nike&#60;/p&#62;&#13;&#10;', 1000, 600, 1, 2, 1, 'new', '2023-05-07 21:48:52', NULL),
-(37, 'Hoodie Nike Thể Thao Pullover  Tokyo Trăng', 'images/sp19/ao-nike-sportswear-men-s-pullover-hoodie-tokyo-color-cw0308-100-mau-trang-1.jpg', '&#60;p&#62;Vừa nh&#38;igrave;n đ&#38;atilde; đẹp, kh&#38;ocirc;ng cần g&#38;igrave; hết chỉ với chiếc Hoodie n&#38;agrave;y l&#38;agrave; c&#38;oacute; thể tự tin ra đường&#60;/p&#62;&#13;&#10;', 1400, 1200, 2, 2, 1, 'new', '2023-05-07 22:15:11', NULL),
-(38, 'Áo Sơ Mi Gucci Embroidered Cotten Trắng', 'images/sp20/ao-so-mi-gucci-white-cotton-snake-embroidered-collar-duke-shirt-2.jpg', '&#60;p&#62;Si&#38;ecirc;u phẩm đến từ Gucci, chỉ với ch&#38;uacute;t đỉnh l&#38;agrave; c&#38;oacute; thể sỡ hữu&#60;/p&#62;&#13;&#10;', 5000, 4000, 3, 4, 1, 'sale', '2023-05-07 22:18:10', '2023-05-08 11:06:10'),
-(39, 'abcxyz', 'images/sp14/team-4.jpg', '&#60;p&#62;abc&#60;/p&#62;&#13;&#10;', 500, 100, 1, 2, 1, 'normal', '2023-05-08 14:09:56', '2023-05-08 14:13:56');
+(1, 'Shirt BrandLove', '1715357716.jpg', 'Shirt BrandLove\r\n', 600, 499, 3, 1, 1, 'sale', '2023-03-20 13:30:00', '2023-05-06 10:44:01'),
+(2, 'Shirt Adidas D4R Blue', 'adidas-d4r-tee-men-hk7117-1.jpg', 'Shirt Adidas D4R Blue', 800, 500, 1, 1, 1, 'new', '2023-03-20 13:30:00', '2023-05-08 10:12:21'),
+(3, 'Shirt Adidas HC2760 Black', 'adidas-m-ti-tee-hc2760-den-1.jpg', 'Shirt', 900, 800, 1, 1, 1, 'normal', '2023-03-20 13:30:00', '2023-03-20 13:30:00'),
+(5, 'Hoodie Tokyo Carrier Pullover', '1715405961.jpg', 'Hoodie Adidas Tokyo Carrier Pullover', 1500, 1200, 2, 1, 1, 'normal', '2023-03-20 13:30:00', '2023-03-27 15:03:27'),
+(6, 'Hoodie Lifestyle HL6925', '1715392033.jpg', 'Hoodie Lifestyle HL6925 Adidas', 1200, 800, 2, 1, 1, 'normal', '2023-03-20 13:30:00', '2023-03-20 13:30:00'),
+(8, 'Shirt Sportwear Midnight Navy', '1715402954.jpg', 'Shirt Nike Sportwear Midnight Navy', 800, 700, 3, 2, 1, 'normal', '2023-03-20 13:30:00', '2023-03-27 15:05:37'),
+(9, 'Jacket Adidas GAMEDAY', '1715402131.jpg', 'Jacket Adidas GAMEDAY\r\n', 1900, 1500, 15, 1, 1, 'normal', '2023-03-20 13:30:00', '2023-03-27 15:07:52'),
+(10, 'Polo Gucci With Pocket', '1715401975.jpg', 'Polo Gucci With Pocket\r\n', 3000, 2800, 4, 4, 1, 'normal', '2023-03-20 13:30:00', '2023-03-27 15:08:19'),
+(11, 'Hoodie Street NEUCLASSIC', '1715402263.jpg', 'Hoodie Street NEUCLASSIC\r\n', 400, 200, 2, 1, 1, 'normal', '2023-03-20 13:30:00', '2023-03-27 15:07:19'),
+(12, 'Shirt City Escape', '1715402339.jpg', 'Shirt City Escape\r\n', 300, 100, 3, 1, 1, 'new', '2023-03-20 13:30:00', '2023-03-27 15:07:01'),
+(13, 'Shirt Puma Cotton White', '1715402438.jpg', 'Shirt Puma Cotton White\r\n', 500, 490, 3, 3, 1, 'normal', '2023-03-20 13:30:00', '2023-03-27 15:06:28'),
+(21, 'Shirt Addidas D2M', '1715406041.jpg', 'Shirt Addidas D2M\r\n', 350, 300, 3, 1, 1, 'normal', '2023-03-20 13:30:00', '2023-03-29 22:04:45'),
+(22, 'Shirt Adidas D4R Green', '1715402534.jpg', 'Shirt Adidas D4R Green\r\n', 800, 500, 3, 1, 1, 'new', '2023-03-20 13:30:00', '2023-05-07 22:10:46'),
+(23, 'Shirt Adidas Traning Supply', '1715402584.jpg', 'Shirt Adidas Traning Supply\r\n', 900, 800, 3, 1, 1, 'normal', '2023-03-20 13:30:00', '2023-05-07 22:09:18'),
+(25, 'Shirt Carrier Pullover', '1715422649.jpg', 'Shirt Carrier Pullover\r\n', 289, 200, 3, 5, 0, 'normal', '2023-03-20 13:30:00', '2023-05-07 21:51:28'),
+(26, 'Shirt Adidas Lifestyle HL6925', '1715402776.jpg', 'Shirt Adidas Lifestyle HL6925\r\n', 1200, 800, 3, 1, 1, 'normal', '2023-03-20 13:30:00', '2023-05-07 22:07:57'),
+(27, 'Hoodie Power Knit Training', '1715402859.jpg', 'Hoodie Puma Power Knit Training\r\n', 1700, 1200, 2, 3, 1, 'normal', '2023-03-20 13:30:00', '2023-05-07 22:05:45'),
+(28, 'Shirt Adidas Studio Lounge', '1715403053.jpg', 'Shirt Adidas Studio Lounge', 800, 700, 3, 1, 1, 'normal', '2023-03-20 13:30:00', '2023-05-07 22:06:33'),
+(29, 'Hoodie Nike Midnight Navy', 'images/sp13/ao-nike-sportswear-men-s-hoodie-midnight-navy-cw4319-400-mau-xanh-navy-1.jpg', 'Hoodie Nike Midnight Navy\r\n', 1900, 1500, 2, 2, 1, 'normal', '2023-03-20 13:30:00', '2023-05-07 22:02:43'),
+(30, 'Jacket Adidas Bonded SST', '1715403217.jpg', 'Jacket Adidas Bonded SST\r\n', 3000, 2800, 15, 1, 1, 'new', '2023-03-20 13:30:00', '2023-05-07 21:59:14'),
+(31, 'Jacket Short Sleeve Olive', 'images/sp11/ao-thun-lifestyle-nam-adidas-m-feelcozy-swt-h12221-1.jpg', 'Jacket Adidas Short Sleeve Olive\r\n', 900, 849, 15, 1, 1, 'normal', '2023-03-20 13:30:00', '2023-05-07 21:57:06'),
+(32, 'Jacket FIREBIRD CLASSICS', '1715403479.jpg', 'Jacket FIREBIRD CLASSICS ADICOLOR\r\n', 1100, 999, 15, 1, 1, 'new', '2023-03-20 13:30:00', '2023-05-07 21:55:07'),
+(33, 'Polo Cotton Black', 'images/sp9/ao-ba-lo-chay-bo-nam-nike-cz9180-010-1.jpg', 'Polo Cotton Black\r\n', 200, 100, 4, 2, 1, 'sale', '2023-03-20 13:30:00', '2023-05-07 21:53:38'),
+(34, 'Shirt ReBasic HM2856', 'images/sp4/reebok-re-basic-ss-tee-hm2865-1.jpg', 'Shirt Reebook ReBasic HM2856\r\n', 550, 400, 3, 5, 1, 'new', '2023-05-07 21:40:00', NULL),
+(35, 'T-Shirt Originals HS9471', '1715403726.jpg', 'T-Shirt Originals HS9471\r\n', 650, 500, 1, 1, 1, 'normal', '2023-05-07 21:46:30', NULL),
+(36, 'Shirt Pink HS128', 'images/sp7/nike-dq1011-824-1.jpg', 'Shirt Pink HS128\r\n', 300, 200, 3, 2, 1, 'new', '2023-05-07 21:48:52', NULL),
+(37, 'Hoodie Sport Pullover Tokyo', '1715403928.jpg', 'Hoodie Sport Pullover Tokyo\r\n', 1400, 1200, 2, 2, 1, 'normal', '2023-05-07 22:15:11', NULL),
+(38, 'T-Shirt Embroidered Cotten', '1715403979.jpg', 'T-Shirt Gucci Embroidered Cotten\r\n', 700, 600, 1, 4, 1, 'sale', '2023-05-07 22:18:10', '2023-05-08 11:06:10'),
+(39, 'Jacket Tiro Suit-up', '1715404074.jpg', 'Jacket Tiro Suit-up\r\n', 500, 100, 15, 1, 1, 'normal', '2023-05-08 14:09:56', '2023-05-08 14:13:56'),
+(40, 'JERSEY SWEATSHIRT', '1715404173.jpg', 'JERSEY SWEATSHIRT WITH EMBROIDERY', 680, 599, 15, 4, 1, 'new', '2024-05-11 12:09:33', '2024-05-11 12:09:33'),
+(41, 'JERSEY SHIRT PRINT', '1715404257.jpg', 'JERSEY T-SHIRT WITH GUCCI PRINT', 450, 300, 3, 4, 1, 'new', '2024-05-11 12:10:57', '2024-05-11 12:10:57'),
+(42, 'DENIM JACKET GG EMBOSSED', '1715404356.jpg', 'DENIM JACKET WITH GG EMBOSSED DETAIL', 980, 890, 15, 5, 1, 'new', '2024-05-11 12:12:36', '2024-05-11 12:12:36'),
+(43, 'Jacket CB WV TT', '1715404418.jpg', 'Jacket CB WV TT', 1090, 980, 15, 1, 1, 'new', '2024-05-11 12:13:38', '2024-05-11 12:13:38'),
+(44, 'NSW CLUB HOODIE FZ BB', '1715408378.png', 'NSW CLUB HOODIE FZ BB', 650, 599, 2, 2, 1, 'new', '2024-05-11 12:14:48', '2024-05-11 12:14:48'),
+(45, 'Polo Slim-Fit', '1715408361.png', 'Polo Slim-Fit', 390, 350, 4, 2, 1, 'new', '2024-05-11 12:15:40', '2024-05-11 12:15:40'),
+(46, ' Polo Sportswear', '1715408336.png', ' Polo Sportswear', 290, 200, 4, 2, 1, 'new', '2024-05-11 12:16:20', '2024-05-11 12:16:20'),
+(47, 'Run Stripe Jacket', '1715404759.png', 'Run Stripe Jacket', 700, 600, 15, 2, 1, 'new', '2024-05-11 12:17:13', '2024-05-11 12:17:13');
 
 -- --------------------------------------------------------
 
@@ -462,19 +381,19 @@ CREATE TABLE `products_size` (
 
 INSERT INTO `products_size` (`product_id`, `size_id`, `quantity`, `create_at`, `update_at`) VALUES
 (1, 1, 30, '2023-03-29 22:04:45', NULL),
-(1, 2, 27, '2023-03-29 22:04:45', '2023-05-07 23:15:29'),
+(1, 2, 24, '2023-03-29 22:04:45', '2024-05-11 09:41:13'),
 (1, 3, 32, '2023-03-29 22:04:45', '2023-05-07 22:13:49'),
 (1, 4, 30, '2023-03-29 22:04:45', NULL),
 (1, 5, 30, '2023-03-29 22:04:45', NULL),
 (2, 1, 1, NULL, NULL),
-(2, 2, 103, NULL, '2023-05-07 23:15:29'),
+(2, 2, 101, NULL, '2024-05-11 09:41:13'),
 (2, 3, -1, NULL, NULL),
 (2, 4, 0, NULL, NULL),
 (2, 5, 6, NULL, NULL),
-(3, 1, 8, NULL, NULL),
-(3, 2, 9, NULL, NULL),
-(3, 3, 10, NULL, NULL),
-(3, 4, 0, NULL, NULL),
+(3, 1, 42, NULL, '2024-05-11 09:14:31'),
+(3, 2, 42, NULL, '2024-05-11 09:03:53'),
+(3, 3, 42, NULL, '2024-05-11 08:52:15'),
+(3, 4, 39, NULL, '2024-05-11 09:41:13'),
 (3, 5, 11, NULL, NULL),
 (5, 1, 19, NULL, NULL),
 (5, 2, 20, NULL, NULL),
@@ -486,11 +405,6 @@ INSERT INTO `products_size` (`product_id`, `size_id`, `quantity`, `create_at`, `
 (6, 3, 26, NULL, NULL),
 (6, 4, 27, NULL, NULL),
 (6, 5, 28, NULL, NULL),
-(7, 1, 30, NULL, NULL),
-(7, 2, 0, NULL, NULL),
-(7, 3, 5, NULL, NULL),
-(7, 4, 0, NULL, NULL),
-(7, 5, 7, NULL, NULL),
 (8, 1, 16, NULL, NULL),
 (8, 2, 0, NULL, NULL),
 (8, 3, 115, NULL, '2023-04-10 21:52:03'),
@@ -603,7 +517,35 @@ INSERT INTO `products_size` (`product_id`, `size_id`, `quantity`, `create_at`, `
 (38, 2, 23, '2023-05-07 22:18:10', NULL),
 (38, 3, 10, '2023-05-07 22:18:10', NULL),
 (38, 4, 14, '2023-05-07 22:18:10', NULL),
-(38, 5, 13, '2023-05-07 22:18:10', NULL);
+(38, 5, 13, '2023-05-07 22:18:10', NULL),
+(39, 2, 41, '2024-05-11 13:26:18', '2024-05-11 13:26:18'),
+(39, 3, 21, '2024-05-11 13:26:57', '2024-05-11 13:26:57'),
+(39, 4, 20, '2024-05-11 13:27:05', '2024-05-11 13:27:05'),
+(39, 8, 2, '2024-05-11 13:27:22', '2024-05-11 13:27:22'),
+(40, 2, 22, '2024-05-11 13:25:44', '2024-05-11 13:25:44'),
+(40, 3, 14, '2024-05-11 13:25:53', '2024-05-11 13:25:53'),
+(40, 4, 6, '2024-05-11 13:26:01', '2024-05-11 13:26:01'),
+(40, 5, 2, '2024-05-11 13:26:07', '2024-05-11 13:26:07'),
+(41, 2, 39, '2024-05-11 13:24:59', '2024-05-11 13:24:59'),
+(41, 3, 13, '2024-05-11 13:25:20', '2024-05-11 13:25:20'),
+(41, 4, 2, '2024-05-11 13:25:28', '2024-05-11 13:25:28'),
+(42, 3, 10, '2024-05-11 13:22:42', '2024-05-11 09:17:24'),
+(42, 4, 13, '2024-05-11 13:22:53', '2024-05-11 13:22:53'),
+(43, 2, 31, '2024-05-11 13:21:54', '2024-05-11 13:21:54'),
+(43, 3, 15, '2024-05-11 13:22:03', '2024-05-11 13:22:03'),
+(43, 4, 13, '2024-05-11 13:22:12', '2024-05-11 13:22:12'),
+(43, 5, 5, '2024-05-11 13:22:19', '2024-05-11 13:22:19'),
+(44, 2, 22, '2024-05-11 13:21:31', '2024-05-11 13:21:31'),
+(44, 3, 13, '2024-05-11 13:21:23', '2024-05-11 13:21:23'),
+(44, 4, 8, '2024-05-11 13:21:42', '2024-05-11 13:21:42'),
+(45, 1, 23, '2024-05-11 13:20:55', '2024-05-11 13:20:55'),
+(45, 2, 55, '2024-05-11 13:21:03', '2024-05-11 13:21:03'),
+(45, 4, 5, '2024-05-11 13:21:12', '2024-05-11 13:21:12'),
+(46, 2, 9, '2024-05-11 13:20:41', '2024-05-11 13:20:41'),
+(46, 3, 12, '2024-05-11 13:20:49', '2024-05-11 13:20:49'),
+(47, 2, 32, '2024-05-11 13:14:15', '2024-05-11 13:14:15'),
+(47, 3, 22, '2024-05-11 13:14:26', '2024-05-11 13:14:26'),
+(47, 4, 21, '2024-05-11 13:14:50', '2024-05-11 13:14:50');
 
 -- --------------------------------------------------------
 
@@ -620,7 +562,7 @@ CREATE TABLE `reviews` (
   `message` text,
   `star` int DEFAULT NULL,
   `status` int DEFAULT '1' COMMENT '0: An 1:Hien Thi',
-  `create_at` datetime DEFAULT NULL
+  `create_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
@@ -635,7 +577,9 @@ INSERT INTO `reviews` (`id`, `product_id`, `user_id`, `name`, `email`, `message`
 (12, 1, 45, 'PTTK_Tuan3', 'tienhai9a2@gmail.com', 'tienhai9a2@gmail.com', 5, 1, '2023-04-03 21:02:24'),
 (28, 12, 45, 'haile@gmail.com', 'haile@gmail.com', 'haile@gmail.com', 5, 1, '2023-04-14 18:27:39'),
 (29, 12, 45, 'TienHai', 'tienhai@gmail.com', 'Binh luan danh gia san pham', 5, 1, '2023-04-14 19:57:26'),
-(34, 12, 9, 'TienHai488', 'tienhai4888@gmail.com', 'Binh luan cho san pham tesst chuc nawng', 3, 1, '2023-04-14 20:43:25');
+(34, 12, 9, 'TienHai488', 'tienhai4888@gmail.com', 'Binh luan cho san pham tesst chuc nawng', 3, 1, '2023-04-14 20:43:25'),
+(35, 12, 9, 'TienHai488', 'tienhai4888@gmail.com', 'Binh luan cho san pham tesst chuc nawng', 3, 1, '2024-05-06 15:08:41'),
+(36, 42, 45, 'ducthang', 'thanngit@gmail.com', 'so beautiful', 4, 1, '2024-05-11 16:56:37');
 
 -- --------------------------------------------------------
 
@@ -657,39 +601,9 @@ CREATE TABLE `roles` (
 --
 
 INSERT INTO `roles` (`id`, `name`, `permission`, `status`, `create_at`, `update_at`) VALUES
-(2, 'Người dùng', '{\"groups\":[\"view\",\"add\",\"update\",\"delete\"],\"products\":[\"view\",\"add\"],\"users\":[\"view\",\"add\"],\"bill\":[\"view\",\"update\"]}', 1, '2023-03-17 11:18:31', '2023-03-26 21:43:20'),
-(3, 'Xử lý đơn hàng', NULL, 1, '2023-03-17 11:18:43', '2023-03-26 21:09:57'),
-(5, 'Quản lý ', '{\"groups\":[\"view\"],\"products\":[\"add\"],\"users\":[\"update\"],\"bill\":[\"view\",\"update\"]}', 1, '2023-03-17 11:19:13', '2023-03-26 21:03:40'),
-(7, 'Nhân Viên', '{\"groups\":[\"update\"],\"users\":[\"add\"],\"bill\":[\"update\"],\"contacts\":[\"update\"],\"reviews\":[\"update\",\"delete\"]}', 1, '2023-04-01 17:56:34', '2023-05-06 10:49:33'),
-(8, 'Admin', '{\"groups\":[\"add\",\"update\",\"delete\",\"permission\"],\"products\":[\"add\",\"update\",\"delete\"],\"users\":[\"add\",\"update\",\"delete\"],\"bill\":[\"update\"],\"contacts\":[\"update\",\"delete\"],\"reviews\":[\"update\",\"delete\"],\"options\":[\"update\"],\"dashboard\":[\"view\"]}', 1, '2023-04-01 20:31:31', '2023-04-02 08:59:41'),
-(10, 'Bán hàng', NULL, 1, '2023-05-08 10:07:15', NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `roles`
---
-
-CREATE TABLE `roles` (
-  `id` int NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `permission` text,
-  `status` int NOT NULL DEFAULT '1',
-  `create_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `update_at` datetime DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
-
---
--- Dumping data for table `roles`
---
-
-INSERT INTO `roles` (`id`, `name`, `permission`, `status`, `create_at`, `update_at`) VALUES
-(2, 'Người dùng', '{\"groups\":[\"view\",\"add\",\"update\",\"delete\"],\"products\":[\"view\",\"add\"],\"users\":[\"view\",\"add\"],\"bill\":[\"view\",\"update\"]}', 1, '2023-03-17 11:18:31', '2023-03-26 21:43:20'),
-(3, 'Xử lý đơn hàng', NULL, 1, '2023-03-17 11:18:43', '2023-03-26 21:09:57'),
-(5, 'Quản lý ', '{\"groups\":[\"view\"],\"products\":[\"add\"],\"users\":[\"update\"],\"bill\":[\"view\",\"update\"]}', 1, '2023-03-17 11:19:13', '2023-03-26 21:03:40'),
-(7, 'Nhân Viên', '{\"groups\":[\"update\"],\"users\":[\"add\"],\"bill\":[\"update\"],\"contacts\":[\"update\"],\"reviews\":[\"update\",\"delete\"]}', 1, '2023-04-01 17:56:34', '2023-05-06 10:49:33'),
-(8, 'Admin', '{\"groups\":[\"add\",\"update\",\"delete\",\"permission\"],\"products\":[\"add\",\"update\",\"delete\"],\"users\":[\"add\",\"update\",\"delete\"],\"bill\":[\"update\"],\"contacts\":[\"update\",\"delete\"],\"reviews\":[\"update\",\"delete\"],\"options\":[\"update\"],\"dashboard\":[\"view\"]}', 1, '2023-04-01 20:31:31', '2023-04-02 08:59:41'),
-(10, 'Bán hàng', NULL, 1, '2023-05-08 10:07:15', NULL);
+(2, 'User', 'User', 1, '2023-03-17 11:18:31', '2024-05-08 08:50:28'),
+(3, 'Process Orders', '{\"order\":[\"update\"]}', 1, '2023-03-17 11:18:43', '2024-05-11 09:23:29'),
+(8, 'Administrator', '{\"roles\":[\"add\",\"update\",\"delete\",\"permission\"],\"products\":[\"add\",\"update\",\"delete\"],\"users\":[\"add\",\"update\",\"delete\"],\"orders\":[\"update\"]}', 1, '2023-04-01 20:31:31', '2023-04-02 08:59:41');
 
 -- --------------------------------------------------------
 
@@ -711,11 +625,12 @@ CREATE TABLE `sizes` (
 --
 
 INSERT INTO `sizes` (`id`, `name`, `description`, `status`, `create_at`, `update_at`) VALUES
-(1, 'S', '[value-3]', 1, NULL, NULL),
-(2, 'M', '[value-3]', 1, NULL, NULL),
-(3, 'L', '[value-3]', 1, NULL, NULL),
-(4, 'XL', '[value-3]', 1, NULL, NULL),
-(5, '2XL', '[value-3]', 1, NULL, NULL);
+(1, 'S', 'S : Length 65 Width 50 | 1m36 - 1m49, 45 - 58Kg', 1, NULL, NULL),
+(2, 'M', 'M : Length 69 Width 53 | 1m50 - 1m63, 45 - 58Kg', 1, NULL, NULL),
+(3, 'L', 'L : Length 73 Width 56 | 1m60 - 1m73, 50 - 65Kg', 1, NULL, NULL),
+(4, 'XL', 'XL: Length: 77 Width: 59 | 1m74 - 1m8, 65Kg - 80Kg', 1, NULL, NULL),
+(5, '2XL', '2XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg', 1, NULL, NULL),
+(8, '3XL', '3XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg', 0, '2024-05-07 07:16:26', '2024-05-07 00:16:48');
 
 -- --------------------------------------------------------
 
@@ -742,15 +657,15 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `fullname`, `email`, `phone`, `password`, `image`, `status`, `type`, `role_id`, `create_at`, `update_at`) VALUES
-(3, 'Tien Hai Le', 'tienhai4888@gmail.com', '0987982144', '$2y$10$EOKveHmiOhJhwzp04D1nMuD4eeGJ0P7TKTsn9oGJHeIxWylm5Cht6', 'images/avatar/default.png', 1, 'member', 8, '2023-03-17 11:05:40', '2023-04-17 16:38:48'),
-(9, 'Minh Lam ', 'minhlam@gmail.com', '0987654321', '$2y$10$OcKwsA8ONsFm4ihM1mR8m.gVLCS3terEbozObJ5Jc89dsfOw8tI1O', 'images/avatar/default.png', 1, 'user', 2, '2023-03-18 21:48:44', '2023-05-08 13:13:10'),
-(10, 'TienHai', 'tienhai@gmail.com', '0987654321', '$2y$10$ilv4fmfcw0cfkdtcUou9xu0joh3KlGC08pEzuoNQKEc6iwNHtPgZm', 'images/avatar/default.png', 1, 'user', 3, '2023-03-18 21:50:14', '2023-03-19 09:57:31'),
+(3, 'Administrators', 'admin@gmail.com', '0333207334', '$2y$10$Wm/iV7Uml8hcsIJOQDJ53OzxfT05mUHlN9QsMGZPEJ4lUfNN3lS5i', 'images/avatar/6638ed5fdd2823.75382897_1715006815.png', 1, 'member', 8, '2023-03-17 11:05:40', '2024-05-06 15:48:04'),
+(9, 'Minh Lam ', 'minhlam@gmail.com', '0987654321', '$2y$10$vWrayaQfHe0cb9M98DJh6OBBO7Gf.FILnxHlbDYW1GJvG3kZ./962', 'images/avatar/6638eeb22fb739.79708398_1715007154.png', 1, 'user', 3, '2023-03-18 21:48:44', '2024-05-06 14:52:34'),
+(10, 'TienHai', 'tienhai@gmail.com', '0987654321', '$2y$10$ilv4fmfcw0cfkdtcUou9xu0joh3KlGC08pEzuoNQKEc6iwNHtPgZm', 'images/avatar/default.png', 1, 'user', 3, '2023-03-18 21:50:14', '2024-05-06 16:11:37'),
 (37, 'TienHai', 'tienhai488@gmail.com', '0987654321', '$2y$10$G6GZk.UtbjfwMqDBBXyaEetxOuR1Q2LC1EFbtfM4ykXlRau0xeK62', 'images/avatar/default.png', 1, 'user', 2, '2023-03-31 16:54:53', '2023-03-31 21:22:18'),
-(38, 'Minh Lam', 'minhlam2@gmail.com', '0987654321', '$2y$10$uIcF8Q7uXNj7kI/Dc7qhEefwMSa4SZ61q5riSj1QklBx6/2p6O.ei', 'images/avatar/default.png', 1, 'member', 7, '2023-04-01 17:18:32', '2023-04-01 23:00:49'),
-(45, 'ducthang', 'thanngit@gmail.com', '0123123123', '$2y$10$sdvKfv5Tu6hXbbJfOTsHj.Gy4osCNG2uEYO7gjGTKJBpcz8GuZJr6', 'images/avatar/default.png', 1, 'user', 2, '2023-10-19 10:49:41', NULL),
-(46, 'ducthang', '3121560085@sv.sgu.edu.vn', NULL, '$2y$10$KhWZMCIUoVrqg8XejPtX8ee1oLkB4Ojusscz888TMR5GMPCbqL0ma', 'images/avatar/default.png', 1, 'user', 2, '2024-03-13 16:16:06', '2024-03-13 16:16:06'),
-(47, 'ducthang', 'wdw@gmail.com', NULL, '$2y$10$Lry7g1my2Tm9QWPymlAU/emV77GZt6nFVYsfYiIHPMH6kzPpXF2Bi', 'images/avatar/default.png', 1, 'user', 2, '2024-03-13 16:18:20', '2024-03-13 16:18:20'),
-(49, 'Học tập', 'thdddanngit@gmail.com', NULL, '$2y$10$Gh4Q7fm2pFUmcni7EE/YWeUluTtG8f6gjlfZFhVHBcEcbr9w8XQeG', 'images/avatar/default.png', 1, 'user', 2, '2024-03-13 19:16:16', '2024-03-13 19:16:16');
+(45, 'ducthang', 'thanngit@gmail.com', '0123123123', '$2y$10$zIttZ3qWteOyBc6wJB56tekkiwblqbDNxrUT6Rb/D3G9SmoSp.oSi', 'images/avatar/65f91f62623ce2.97199938_1710825314.jpg', 1, 'user', 3, '2023-10-19 10:49:41', '2024-05-06 13:01:31'),
+(46, 'ducthangedu', '3121560085@sv.sgu.edu.vn', '0123123123', '$2y$10$KhWZMCIUoVrqg8XejPtX8ee1oLkB4Ojusscz888TMR5GMPCbqL0ma', 'images/avatar/default.png', 1, 'user', 2, '2024-03-13 16:16:06', '2024-03-13 16:16:06'),
+(47, 'ducthang', 'wdw@gmail.com', NULL, '$2y$10$Lry7g1my2Tm9QWPymlAU/emV77GZt6nFVYsfYiIHPMH6kzPpXF2Bi', 'images/avatar/default.png', 0, 'user', 2, '2024-03-13 16:18:20', '2024-03-13 16:18:20'),
+(49, 'Học tập', 'thdddanngit@gmail.com', NULL, '$2y$10$Gh4Q7fm2pFUmcni7EE/YWeUluTtG8f6gjlfZFhVHBcEcbr9w8XQeG', 'images/avatar/default.png', 0, 'user', 2, '2024-03-13 19:16:16', '2024-03-13 19:16:16'),
+(50, 'chi tai', 'tailuongbr13@gmail.com', '000002222', '$2y$10$c2XukQssI9WOOHy.XsLFLecinGwpMqjxW7kEHEDbQLTZtUNZkW72e', 'images/avatar/default.png', 1, 'user', 2, '2024-05-06 18:06:39', '2024-05-06 18:06:39');
 
 --
 -- Indexes for dumped tables
@@ -778,23 +693,11 @@ ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `contacts`
---
-ALTER TABLE `contacts`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `images`
 --
 ALTER TABLE `images`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_image_product` (`product_id`);
-
---
--- Indexes for table `options`
---
-ALTER TABLE `options`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `order`
@@ -849,12 +752,6 @@ ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `roles`
---
-ALTER TABLE `roles`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `sizes`
 --
 ALTER TABLE `sizes`
@@ -882,7 +779,7 @@ ALTER TABLE `brands`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=163;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -891,70 +788,58 @@ ALTER TABLE `categories`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT for table `contacts`
---
-ALTER TABLE `contacts`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
-
---
--- AUTO_INCREMENT for table `options`
---
-ALTER TABLE `options`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=186;
 
 --
 -- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
 
 --
 -- AUTO_INCREMENT for table `order_detail`
 --
 ALTER TABLE `order_detail`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
 
 --
 -- AUTO_INCREMENT for table `order_status`
 --
 ALTER TABLE `order_status`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `sizes`
 --
 ALTER TABLE `sizes`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- Constraints for dumped tables
@@ -973,21 +858,6 @@ ALTER TABLE `cart`
 --
 ALTER TABLE `images`
   ADD CONSTRAINT `fk_image_product` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE;
-
---
--- Constraints for table `order`
---
-ALTER TABLE `order`
-  ADD CONSTRAINT `fk_bill_order_status` FOREIGN KEY (`id_order_status`) REFERENCES `order_status` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `fk_bill_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
-
---
--- Constraints for table `order_detail`
---
-ALTER TABLE `order_detail`
-  ADD CONSTRAINT `fk_bill_detail_product` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `fk_bill_detail_size` FOREIGN KEY (`size_id`) REFERENCES `sizes` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `fk_detail_bill_bill` FOREIGN KEY (`order_id`) REFERENCES `order` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `order`
