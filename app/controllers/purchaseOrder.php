@@ -41,15 +41,15 @@ class purchaseOrder extends Controller
                     <td><img class="product_image" src="' . BASE_URL . '/upload/images/' . $item['product_image'] . '" alt="Product Image"></td>
                     <td>' . $item['size'] . '</td>
                     <td>' . $item['quantity'] . '</td>
-                    <td>' . $item['total'] . '$</td>
+                    <td>$' . $item['total'] . '</td>
                 </tr>';
             }
-            $html .= '<tr>
-                    <td>Total Cost</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>' . $totalCost . '$</td>
+            $html .= '<tr style="font-weight: 700;">
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>Total:</td>
+                    <td style="color: red;">$' . $totalCost . '</td>
                 </tr>';
             echo $html;
         } else {

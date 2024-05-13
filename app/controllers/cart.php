@@ -47,7 +47,6 @@ class cart extends Controller
                 if ($existingCartItem) {
                     $existingCartItem[0]['amount'] += $quantity;
                     $cartModel->updateCart($existingCartItem[0]['amount'], $existingCartItem[0]['id']);
-
                 } else {
                     $cartModel->addCart($userId, $productId, $quantity, $sizeId);
                     // $_SESSION['totalQuantity'] = isset($_SESSION['totalQuantity']) ? $_SESSION['totalQuantity'] + 1 : 1;
@@ -176,13 +175,13 @@ class cart extends Controller
         $html .= '
 		    <tr>
                 <td>&nbsp;</td>
-                <td>Total cart</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td class="total_cart">' . $totalFinal . '</td>
-                <td>&nbsp;</td>
+				<td></td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td class="total-payment">Total price:</td>
+				<td class="total_cart">' . $totalFinal . '</td>
+				<td>&nbsp;</td>
 		    </tr>';
         echo $html;
     }

@@ -26,7 +26,10 @@ include ('../includes/header.php');
                                     </h4>
                                 </div>
                                 <div class="card-body">
-                                    <form action="../controllers/code.php" method="POST" enctype="multipart/form-data">
+                                    <form action="../controllers/code.php" method="POST">
+                                        <input type="hidden" name="product_id" value="<?= $product_id ?>">
+                                        <input type="hidden" name="size_id" value="<?= $size_id ?>">
+
                                         <div class="row">
                                             <div class="col-md-12 mb-3">
                                                 <label class="mb-0">Product Name</label>

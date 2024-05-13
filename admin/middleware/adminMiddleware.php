@@ -8,6 +8,10 @@ if(isset($_SESSION['auth']))
         redirect("../views/login.php","Login to continue");
         exit();
     } 
+} else if (!isset($_SESSION['auth']))
+{
+    redirect("../views/login.php","Login to continue");
+    exit();
 }
 else
 {

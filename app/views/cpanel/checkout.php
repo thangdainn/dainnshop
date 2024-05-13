@@ -14,7 +14,10 @@
 
         </div>
     </div>
-
+    <script>
+        console.log("<?php echo $totalQuantity ?>")
+        $("#checkout_items").text(<?php echo $totalQuantity ?>);
+    </script>
     <!-- Checkout Section -->
     <section class="checkout spad">
         <div class="checkout__content">
@@ -27,27 +30,27 @@
                                 <div class="col-lg-12">
                                     <div class="checkout__input">
                                         <p>Full Name<span>*</span></p>
-                                        <input type="text" name="full-name" placeholder="Your full name" require>
-                                        <i class="fa fa-check-circle"></i>
-                                        <i class="fa fa-exclamation-circle"></i>
+                                        <input type="text" name="full-name" require>
+                                        <!-- <i class="fa fa-check-circle"></i>
+                                        <i class="fa fa-exclamation-circle"></i> -->
                                         <small>Error Message</small>
                                     </div>
                                 </div>
                             </div>
                             <div class="checkout__input">
                                 <p>Address<span>*</span></p>
-                                <input type="text" class="checkout__input__add" placeholder="Your address" name="address" require>
-                                <i class="fa fa-check-circle"></i>
-                                <i class="fa fa-exclamation-circle"></i>
+                                <input type="text" class="checkout__input__add" name="address" require>
+                                <!-- <i class="fa fa-check-circle"></i>
+                                <i class="fa fa-exclamation-circle"></i> -->
                                 <small>Error Message</small>
                             </div>
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="checkout__input">
                                         <p>Phone<span>*</span></p>
-                                        <input type="text" name="phone" placeholder="Your phone" require>
-                                        <i class="fa fa-check-circle"></i>
-                                        <i class="fa fa-exclamation-circle"></i>
+                                        <input type="text" name="phone" require>
+                                        <!-- <i class="fa fa-check-circle"></i>
+                                        <i class="fa fa-exclamation-circle"></i> -->
                                         <small>Error Message</small>
                                     </div>
                                 </div>
@@ -80,11 +83,9 @@
                                     }
                                     ?>
                                 </ul>
-                                <ul class="checkout__total__all">
-                                    <li>Total <span>$<?php echo $totalFinal ?></span></li>
-                                </ul>
 
-                                <div class="checkout-payment__checkbox">
+
+                                <div class="checkout-payment__checkbox" style="border-top: 1px solid #d7d7d7; padding: 16px 0;">
                                     <div class="checkout-payment__checkbox-item">
                                         <input type="checkbox" id="checkbox1" name="checkbox" value="credit" class="single-checkbox">
                                         <label for="checkbox1">Credit or Debit Card</label>
@@ -98,6 +99,9 @@
                                         <label for="checkbox3">Mobile Wallet</label>
                                     </div>
                                 </div>
+                                <ul class="checkout__total__all">
+                                    <li>Total <span>$<?php echo $totalFinal ?></span></li>
+                                </ul>
                                 <button type="submit" class="site-btn">PLACE ORDER</button>
                             </div>
                         </div>
@@ -141,7 +145,6 @@
                 var phoneInput = $('input[name="phone"]');
                 var addressInput = $('input[name="address"]');
 
-                var phoneRegex = /^0\d{9}$/;
                 if (name === "") {
                     setErrorFor(fullnameInput, "Please enter a name");
                     return false;
@@ -189,6 +192,8 @@
             }
 
             function isPhone(a) {
+                let phoneRegex = /^0\d{9}$/;
+
                 return a.match(phoneRegex);
             }
 
@@ -219,8 +224,10 @@
                     console.table(products_detail)
                     $.ajax({
                         type: "POST",
-                        dataType: "html",
-                        url: base_url + "/checkout/addOrder",
+                        // dataType: "html",
+                        // contentType: false,
+                        // processData: false,
+                        url: base_url + "/checkout/add",
                         data: {
                             fullName: fullname,
                             phone: phone,
@@ -228,16 +235,26 @@
                             paymentMethod: paymentMethod,
                             products: products_detail
                         },
-                        success: function(reponse) {
-                            Swal.fire({
-                                title: "You have successfully placed an order!",
-                                text: "Click ok to exit",
-                                icon: "success"
-                            });
-                            console.log(reponse);
-                            setTimeout(function() {
-                                // window.location.href = base_url;
-                            }, 3000);
+                        success: function(response) {
+                            let message = JSON.parse(response);
+                            if (!message.status) {
+                                Swal.fire({
+                                    icon: "error",
+                                    title: "Oops...",
+                                    text: "Failed to place order. Please try again!",
+                                });
+                                return;
+                            } else {
+                                Swal.fire({
+                                    title: "You have successfully placed an order!",
+                                    text: "Click ok to exit",
+                                    icon: "success"
+                                });
+                                setTimeout(function() {
+                                    window.location.href = base_url + "/cart";
+                                }, 3000);
+                            }
+
                         },
                         error: function(xhr, status, error) {
                             console.error(error);

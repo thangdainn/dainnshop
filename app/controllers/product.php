@@ -52,16 +52,18 @@ class product extends Controller
         $limit = $_POST['limit'];
         $keyword = $_POST['keyword'];
         $categoryId = $_POST['categoryId'];
-        if (isset($_POST['brandIds'])) {
-            $brandIds = $_POST['brandIds'];
-        } else {
-            $brandIds = null;
-        }
-        if (isset($_POST['sizeIds'])) {
-            $sizeIds = $_POST['sizeIds'];
-        } else {
-            $sizeIds = null;
-        }
+        // if (isset($_POST['brandIds'])) {
+        //     $brandIds = $_POST['brandIds'];
+        // } else {
+        //     $brandIds = null;
+        // }
+        $brandIds = isset($_POST['brandIds']) ? $_POST['brandIds'] : null;
+        // if (isset($_POST['sizeIds'])) {
+        //     $sizeIds = $_POST['sizeIds'];
+        // } else {
+        //     $sizeIds = null;
+        // }
+        $sizeIds = isset($_POST['sizeIds']) ? $_POST['sizeIds'] : null;
         $sortBy = $_POST['sortBy'];
         // echo $sortBy;
         switch ($sortBy) {
@@ -69,10 +71,10 @@ class product extends Controller
                 $sortBy = "p.create_at DESC";
                 break;
             case 'Price: Low to Hight':
-                $sortBy = "p.sale ASC";
+                $sortBy = "p.price ASC";
                 break;
             case 'Price: Hight to Low':
-                $sortBy = "p.sale DESC";
+                $sortBy = "p.price DESC";
                 break;
             default:
                 $sortBy = null;

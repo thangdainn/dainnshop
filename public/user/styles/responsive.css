@@ -495,7 +495,7 @@
     height: auto;
   }
   .product {
-    height: auto;
+    height: 100%;
   }
   .product_name a {
     font-size: 12px;

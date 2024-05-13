@@ -37,3 +37,8 @@ body {
   --bs-card-border-radius: 0.25rem;
   --bs-card-inner-border-radius: 0.25rem;
 }
+.navbar-vertical.navbar-expand-xs .navbar-collapse {
+  display: block;
+  overflow: auto;
+  height: calc(100vh - 166px) !important;
+}

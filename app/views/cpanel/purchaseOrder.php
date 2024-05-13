@@ -64,14 +64,14 @@
                                     <td><?php echo $order['resipient_phonenumber'] ?></td>
                                     <td><?php echo $order['delivery_address'] ?></td>
                                     <td class="actions"><a href="#" data-id="<?php echo $order['id'] ?>" class="btn btn_detail">View Details</a>
-                                        <?php 
+                                        <?php
                                         if ($order['id_order_status'] == 1) {
-                                            ?>
+                                        ?>
                                             <a href="#" data-id="<?php echo $order['id'] ?>" class="btn btn_cancel">Cancel</a>
                                         <?php
                                         }
                                         if ($order['id_order_status'] == 6) {
-                                            ?>
+                                        ?>
                                             <a href="#" data-id="<?php echo $order['id'] ?>" class="btn btn_review">Cancel</a>
                                         <?php
                                         }
@@ -167,6 +167,7 @@
                 e.preventDefault();
                 var orderId = $(this).data('id');
                 var $row = $(this).closest('tr');
+                var $button = $(this);
                 Swal.fire({
                     title: "Are you sure you want to cancel this cart?",
                     showDenyButton: true,
@@ -183,13 +184,15 @@
                                 orderId: orderId
                             },
                             success: function(response) {
-                                $row.remove();
+                                $button.remove();
+                                Swal.fire("Saved!", "", "success");
+
                             },
                             error: function(xhr, status, error) {
                                 console.error(error);
                             }
                         });
-                        Swal.fire("Saved!", "", "success");
+
                     }
                 });
             });

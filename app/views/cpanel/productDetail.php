@@ -145,7 +145,7 @@
 					<ul class="tabs d-flex flex-sm-row flex-column align-items-left align-items-md-center justify-content-center">
 						<li class="tab active" data-active-tab="tab_1"><span>Description</span></li>
 						<!-- <li class="tab" data-active-tab="tab_2"><span>Additional Information</span></li> -->
-						<li class="tab" data-active-tab="tab_3"><span>Reviews</span></li>
+						<li class="tab" data-active-tab="tab_3"><span>Reviews (<?php echo count($reviews) ?>)</span></li>
 					</ul>
 				</div>
 			</div>
@@ -158,9 +158,9 @@
 				<div id="tab_1" class="tab_container active">
 					<!-- <div class="row"> -->
 					<div class=" desc_col">
-						<div class="tab_title">
+						<!-- <div class="tab_title">
 							<h4>Description</h4>
-						</div>
+						</div> -->
 						<div class="tab_text_block">
 							<p><?php echo $product['description'] ?></p>
 						</div>
@@ -175,13 +175,13 @@
 						<!-- User Reviews -->
 
 						<div class="col-lg-12 reviews_col">
-							<div class="tab_title reviews_title">
-								<h4>Reviews (<?php echo count($reviews) ?>)</h4>
-							</div>
+							<!-- <div class="tab_title reviews_title">
+								<h4>Reviews</h4>
+							</div> -->
 							<?php
 							if (count($reviews) <= 0) {
 							?>
-								<h5 class="text-center">No rating yet</h5>
+								<p class="">No review yet</p>
 								<?php
 							} else {
 								foreach ($reviews as $key => $review) {

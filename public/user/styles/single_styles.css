@@ -241,7 +241,6 @@ section {
   overflow: hidden;
 }
 
-
 .red_button {
   display: -webkit-inline-box;
   display: -moz-inline-box;
@@ -364,6 +363,8 @@ section {
 }
 .single_product_thumbnails ul li img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .image_col {
   padding-right: 30px;
@@ -696,13 +697,14 @@ section {
 .user_pic {
   width: 70px;
   height: 70px;
-  background: #ebebeb;
   border-radius: 50%;
+  background: #ebebeb;
 }
 
 .user_pic img {
   width: 100%;
   height: 100%;
+  border-radius: 50%;
   object-fit: cover;
 }
 .user_rating .star_rating {

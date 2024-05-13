@@ -30,7 +30,7 @@
 
   <?php
   $currentURL = $_SERVER['REQUEST_URI'];
-  if (strpos($currentURL, '/statistical') !== false) {
+  if (strpos($currentURL, '/statistical') !== false || strpos($currentURL, '/statisticalTopSale') !== false) {
     // echo '<link rel="stylesheet" type="text/css" href="../assets/vendors/bootstrap/dist/css/bootstrap.min.css">';
     echo '<link rel="stylesheet" type="text/css" href="../assets/vendors/font-awesome/css/font-awesome.min.css">';
     echo '<link rel="stylesheet" type="text/css" href="../assets/vendors/nprogress/nprogress.css">';
@@ -40,7 +40,6 @@
     // echo '<link rel="stylesheet" type="text/css" href="../assets/build/css/custom.min.css">';
     echo '<script src="../assets/vendors/jquery/dist/jquery.min.js"></script>';
   } else {
-
     echo '<script src="https://code.jquery.com/jquery-3.5.1.js"></script>';
     echo '<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>';
     echo '<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">';

@@ -94,7 +94,7 @@ $role_id = $_SESSION['role_id'];
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">table_view</i>
                         </div>
-                        <span class="nav-link-text ms-1">Management Product Sizes</span>
+                        <span class="nav-link-text ms-1">Management Variable</span>
                     </a>
                 </li>
 
@@ -106,6 +106,14 @@ $role_id = $_SESSION['role_id'];
                             <i class="material-icons opacity-10">table_view</i>
                         </div>
                         <span class="nav-link-text ms-1">Statistical</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white <?= $page == "statisticalTopSale.php" ? 'active bg-gradient-primary' : ''; ?>" href="../views/statisticalTopSale.php">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">table_view</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Statistical Top Sales</span>
                     </a>
                 </li>
             <?php

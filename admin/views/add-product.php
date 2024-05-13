@@ -22,12 +22,12 @@ include('../includes/header.php');
                             </div>
                             <div class="col-md-12 mb-3">
                                 <label class="mb-0">Upload Main Image</label>
-                                <input type="file" required name="img" class="form-control mb-2">
+                                <input type="file" accept=".jpg, .png" required name="img" class="form-control mb-2">
                             </div>
                             <div class="col-md-12 mb-3">
-                                <label class="mb-0">Upload Additional Images (must be 3)</label>
+                                <label class="mb-0">Upload Additional Images (must be 2)</label>
                                 <div class="form-group">
-                                    <input type="file" name="additional_images[]" class="form-control mb-2" multiple>
+                                    <input type="file" accept=".jpg, .png" name="additional_images[]" class="form-control mb-2" multiple>
                                 </div>
                             </div>
                             <div class="col-md-12 mb-3">

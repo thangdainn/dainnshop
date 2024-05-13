@@ -178,9 +178,10 @@
 										$('.cart_table tbody').html(response);
 										// // row.remove();
 										eventHandler();
-										setTimeout(function() {
-											window.location.href = base_url + "/cart";
-										}, 1000);
+										$("#checkout_items").text(parseInt($("#checkout_items").text()) > 0 ? parseInt($("#checkout_items").text()) - 1 : 0);
+										// setTimeout(function() {
+										// 	window.location.href = base_url + "/cart";
+										// }, 1000);
 									},
 									error: function(jqXHR, textStatus, errorThrown) {
 										alert('An error occurred while deleting the product. Please try again later.');

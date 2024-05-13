@@ -12,8 +12,10 @@ class checkout extends Controller
         $this->checkout();
     }
 
-    public function addOrder()
+    public function add()
     {
+        // $message = array();
+        $message['status'] = false;
         $fullName = $_POST['fullName'];
         $address = $_POST['address'];
         $phone = $_POST['phone'];
@@ -23,6 +25,8 @@ class checkout extends Controller
         Session::init();
         $userID = Session::getUserId();
         $checkOutModel = $this->load->model("CheckOutModel");
+        $productSizeModel = $this->load->model("ProductSizeModel");
+
         $orderId = $checkOutModel->addOrder($userID, $fullName, $phone, $address, $paymentMethod);
 
         foreach ($products as $product) {
@@ -32,11 +36,17 @@ class checkout extends Controller
             $quantity = $product['quantity'];
 
             $checkOutModel->addOrderDetail($orderId, $productId, $sizeId, $total, $quantity);
+            $currenDate = date("Y-m-d H:i:s");
+            $productSize = $productSizeModel->findByProduct_IdAndSize_Id($productId, $sizeId);
+            $newQuantity = $productSize['quantity'] - $quantity;
+            $productSizeModel->updateQuantity($newQuantity, $productId, $sizeId,  $currenDate);
+            $message['status'] = true;
         }
 
         $cartModel = $this->load->model("CartModel");
         $cartModel->deleteCartByUserId($userID);
         $_SESSION['totalQuantity'] = 0;
+        echo json_encode($message);
     }
 
     public function checkout()
@@ -46,10 +56,11 @@ class checkout extends Controller
             $this->load->view("header");
             $cartModel = $this->load->model("CartModel");
             $data['carts'] = $cartModel->findByUserId($userID);
+            $total = $cartModel->getTotalQuantityForUser($userID);
+            $data['totalQuantity'] = $total[0]['total'];
             $this->load->view("cpanel/checkout", $data);
-            $this->setTotalItemCart($data);
 
-            $this->load->view("footer", $data);
+            $this->load->view("footer");
         }
     }
 }

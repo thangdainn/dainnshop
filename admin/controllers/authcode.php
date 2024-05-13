@@ -1,13 +1,12 @@
 <?php
-    include('../models/adminconfig.php');
-    // include(APP_NAME . 'admin/models/dbcon.php');
-    // include(APP_NAME . 'admin/models/myfunctions.php');
+include('../models/adminconfig.php');
+// include(APP_NAME . 'admin/models/dbcon.php');
+// include(APP_NAME . 'admin/models/myfunctions.php');
 
-    include('../models/dbcon.php');
-    include('../models/myfunctions.php');
+include('../models/dbcon.php');
+include('../models/myfunctions.php');
 
-if(isset($_POST['login_btn']))
-{
+if (isset($_POST['login_btn'])) {
     $email = mysqli_real_escape_string($con, $_POST['email']);
 
     // Hash the entered password
@@ -18,9 +17,8 @@ if(isset($_POST['login_btn']))
     mysqli_stmt_execute($stmt);
     $login_query_run = mysqli_stmt_get_result($stmt);
 
-    if(mysqli_num_rows($login_query_run) > 0)
-    {
-        $_SESSION['auth'] = true;
+    if (mysqli_num_rows($login_query_run) > 0) {
+        $_SESSION['auth'] = false;
 
         $userdata = mysqli_fetch_array($login_query_run);
         $username = $userdata['fullname'];
@@ -36,16 +34,15 @@ if(isset($_POST['login_btn']))
         if (password_verify($_POST['password'], $stored_hashed_password)) {
             $_SESSION['role_id'] = $role_id;
 
-            if($role_id == 8 || $role_id == 3)
-            {
-                redirect("../views/index.php","Logged In Successfully");
-            }
-            else
-            {
-                redirect("../views/login.php","Account Does Not Have Permissions");
+            if ($role_id == 8 || $role_id == 3) {
+                $_SESSION['auth'] = true;
+
+                redirect("../views/index.php", "Logged In Successfully");
+            } else {
+                redirect("../views/login.php", "Account Does Not Have Permissions");
             }
         } else {
-            redirect("../views/login.php","Invalid Credentials");
+            redirect("../views/login.php", "Invalid Credentials");
         }
     }
     mysqli_stmt_close($stmt);

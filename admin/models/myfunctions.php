@@ -49,7 +49,7 @@ function getAllOrders()
     global $con;
 
     $status = mysqli_real_escape_string($con, 6); // Escape the status value
-    $query = "SELECT * FROM `order`";  // Escape table name with backticks
+    $query = "SELECT * FROM `order` ORDER BY create_at DESC";  // Escape table name with backticks
     return $query_run = mysqli_query($con, $query);
 }
 
@@ -194,5 +194,18 @@ function findProductByFilters($categoryId, $fromDate, $toDate)
     }
     $query .= " AND DATE(o.create_at) > '$fromDate' AND DATE(o.create_at) < '$toDate' 
                 GROUP BY p.id, p.name, p.img, o.create_at ORDER BY o.create_at ASC";
+    return mysqli_query($con, $query);
+}
+
+function findTop10SaleProduct($fromDate, $toDate)
+{
+    global $con;
+    $query = "SELECT p.id, p.name, p.img, SUM(od.total) as netSales, COUNT(o.id) as totalOrder 
+                FROM `products` p 
+                INNER JOIN order_detail od ON p.id = od.product_id 
+                INNER JOIN `order` o ON od.order_id = o.id 
+                WHERE p.status = 1 AND o.id_order_status = 6";
+    $query .= " AND DATE(o.create_at) > '$fromDate' AND DATE(o.create_at) < '$toDate' 
+                GROUP BY p.id, p.name, p.img ORDER BY SUM(od.total) DESC LIMIT 0, 10";
     return mysqli_query($con, $query);
 }

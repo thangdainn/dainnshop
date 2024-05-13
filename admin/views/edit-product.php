@@ -35,19 +35,19 @@ include ('../includes/header.php');
                                             <div class="col-md-12 mb-3">
                                                 <label class="mb-0">Upload Image (1 Image)</label>
                                                 <input type="hidden" name="old-img" value="<?= $data['img']; ?>">
-                                                <input type="file" name="img" class="form-control mb-2">
+                                                <input type="file" accept=".jpg, .png" name="img" class="form-control mb-2">
                                                 <label class="mb-0">Current Image</label>
                                                 <img src="../../upload/images/<?= $data['img']; ?>" alt="Product Image" height="50px" width="50px" >
                                             </div>
                                             <?php
-                                                if(mysqli_num_rows($images_images) > 0)
+                                                if(mysqli_num_rows($images_images) >= 0)
                                                 {
                                                     $count = 0;
                                                     ?>
                                                         <div class="col-md-12 mb-3">
-                                                            <label class="mb-0">Upload Additional Images (3 Images) </label>
+                                                            <label class="mb-0">Upload Additional Images (2 Images) </label>
                                                             <input type="hidden" name="image-old-image[]" value="<?= $item['image']; ?>">
-                                                            <input type="file" name="additional_images[]" class="form-control mb-2" multiple>
+                                                            <input type="file" accept=".jpg, .png" name="additional_images[]" class="form-control mb-2" multiple>
                                                             <label class="mb-0">Current Additional Images</label>
                                                             <?php
                                                             foreach($images_images as $item)

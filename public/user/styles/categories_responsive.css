@@ -419,10 +419,10 @@
   }
   .product-item {
     width: 45%;
-    height: auto;
+    height: 232px;
   }
   .product {
-    height: auto;
+    height: 100%;
   }
   .product_name a {
     font-size: 12px;

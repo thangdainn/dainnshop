@@ -35,15 +35,12 @@
 				<h1>Contact Us</h1>
 				<p>There are many ways to contact us. You may drop us a line, give us a call or send an email, choose what suits you the most.</p>
 				<div>
-					<p>(800) 686-6688</p>
-					<p>info.deercreative@gmail.com</p>
+					<p>(+84) 333207334</p>
+					<p>thanngit@gmail.com</p>
 				</div>
 				<div>
-					<p>mm</p>
-				</div>
-				<div>
-					<p>Open hours: 8.00-18.00 Mon-Fri</p>
-					<p>Sunday: Closed</p>
+					<p>Open: 8.00-18.00 Mon-Fri</p>
+					<p>Close: Sunday</p>
 				</div>
 			</div>
 

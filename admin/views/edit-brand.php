@@ -33,7 +33,7 @@ include ('../includes/header.php');
                                             </div>
                                             <div class="col-md-12 mb-3">
                                                 <label for="">Upload Image</label>
-                                                <input type="file" name="image" class="form-control">
+                                                <input type="file" accept=".jpg, .png" name="image" class="form-control">
                                                 <label for="">Current Image</label>
                                                 <input type="hidden" name="old-image" value="<?= $data['image']; ?>">
                                                 <img src="../../upload/images/<?= $data['image']; ?>" height="50px" width="50px" alt="">

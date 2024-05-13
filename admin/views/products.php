@@ -41,7 +41,7 @@ include('../includes/header.php');
                                             <img src="../../upload/images/<?= $item['img']; ?>" width="50px" height="50px" alt="<?= $item['name']; ?>">
                                         </td>
                                         <td style="min-width:6.9rem;"> $<?= $item['price']; ?> </td>
-                                        <td style="min-width:6.9rem;"> $<?= $item['type']; ?> </td>
+                                        <td style="min-width:6.9rem;"> <?= $item['type']; ?> </td>
 
                                         <td style="min-width:6.9rem;">
                                             <?= $item['status'] == '0' ? "Hidden" : "Visible" ?>

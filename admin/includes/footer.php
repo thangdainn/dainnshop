@@ -23,7 +23,9 @@
         </main>
         <script>
             $(document).ready(function() {
-                $('#myTable').DataTable();
+                $('#myTable').DataTable({
+                    "paging": false,
+                });
                 $('#myTable').css("height", "auto")
                 $("#myTable_length").remove();
                 $("#myTable_filter").remove();

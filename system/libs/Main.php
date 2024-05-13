@@ -28,6 +28,9 @@ class Main
                 $this->controllerPath .= "admin/";
                 unset($this->url[0]);
                 $this->url = array_values($this->url);
+                header("Location:" . BASE_URL . "/admin/views/login.php");
+                
+                exit();
             }
         } else {
             unset($this->url);

@@ -9,8 +9,8 @@ include('../includes/header.php');
         <div class="col-md-12">
             <div class="card ">
                 <div class="card-header">
-                    <h4>Product Sizes
-                        <a href="add-product-sizes.php" class="btn btn-info float-end"><i class="material-icons opacity-10">add</i>Add Sizes</a>
+                    <h4>Variable
+                        <a href="add-product-sizes.php" class="btn btn-info float-end"><i class="material-icons opacity-10">add</i>Add</a>
                     </h4>
                 </div>
                 <div class="card-body table-responsive" id="product_sizes_table">

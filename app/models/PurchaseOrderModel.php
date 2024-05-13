@@ -9,14 +9,14 @@ class PurchaseOrderModel extends Model
 
     public function findAll()
     {
-        $sql = "SELECT * FROM `order`";
+        $sql = "SELECT * FROM `order` ORDER BY create_at DESC";
         $result = $this->db->select($sql);
         return $result;
     }
 
     public function findByUserId($id)
     {
-        $sql = "SELECT * FROM `order` WHERE user_id = ?";
+        $sql = "SELECT * FROM `order` WHERE user_id = ? ORDER BY create_at DESC";
         $result = $this->db->select($sql, $id);
         return $result;
     }
@@ -25,10 +25,10 @@ class PurchaseOrderModel extends Model
     {
         $sql = '';
         if ($orderStatusId == 0) {
-            $sql = "SELECT * FROM `order` WHERE user_id = ?";
+            $sql = "SELECT * FROM `order` WHERE user_id = ? ORDER BY create_at DESC";
             $result = $this->db->select($sql, $userId);
         } else {
-            $sql = "SELECT * FROM `order` WHERE user_id = ? AND id_order_status = ?";
+            $sql = "SELECT * FROM `order` WHERE user_id = ? AND id_order_status = ? ORDER BY create_at DESC";
             $result = $this->db->select($sql, $userId, $orderStatusId);
         }
         return $result;

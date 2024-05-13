@@ -181,8 +181,8 @@ if (isset($_POST['add_brand_btn'])) {
             // Upload and insert main image
             move_uploaded_file($_FILES['img']['tmp_name'], $path . '/' . $filename);
 
-            $image_query = "INSERT INTO `images` (product_id, image) VALUES ('$product_id','$filename')";
-            mysqli_query($con, $image_query);
+            // $image_query = "INSERT INTO `images` (product_id, image) VALUES ('$product_id','$filename')";
+            // mysqli_query($con, $image_query);
 
             // Handle additional images (if any)
             if (isset($_FILES['additional_images']) && !empty($_FILES['additional_images']['name'][0])) {
@@ -243,8 +243,7 @@ if (isset($_POST['add_brand_btn'])) {
 
     if ($update_product_query_run) {
 
-        $delete_existing_query = "DELETE FROM images WHERE product_id = '$product_id'";
-        mysqli_query($con, $delete_existing_query);
+
         // Update main image
         if ($_FILES['img']['name'] != "") {
             move_uploaded_file($_FILES['img']['tmp_name'], $path . '/' . $update_filename);
@@ -252,13 +251,14 @@ if (isset($_POST['add_brand_btn'])) {
                 unlink("../../upload/images/" . $old_img);
             }
             // Insert new record for main image
-            $insert_main_image_query = "INSERT INTO images (product_id, image) VALUES ('$product_id', '$update_filename')";
-            $insert_main_image_result = mysqli_query($con, $insert_main_image_query);
+            // $insert_main_image_query = "INSERT INTO images (product_id, image) VALUES ('$product_id', '$update_filename')";
+            // $insert_main_image_result = mysqli_query($con, $insert_main_image_query);
         }
 
         // Handle additional images
-        if ($additional_images !== null) {
-
+        if ($additional_images != null && count($additional_images['name']) == 2) {
+            $delete_existing_query = "DELETE FROM images WHERE product_id = '$product_id'";
+            mysqli_query($con, $delete_existing_query);
             $total_additional_images = count($additional_images['name']);
 
             // if ($total_additional_images > 0) {
@@ -283,6 +283,8 @@ if (isset($_POST['add_brand_btn'])) {
                     echo "Error adding additional image";
                 }
             }
+        } else {
+            redirect("../views/edit-product.php?id=$product_id", "Additional images must be exactly 2");
         }
 
         redirect("../views/edit-product.php?id=$product_id", "Product updated successfully");
@@ -373,15 +375,15 @@ if (isset($_POST['add_brand_btn'])) {
     $size_id = $_POST['size_id'];
     $quantity = $_POST['quantity'];
 
-    $update_product_sizes_query = "UPDATE products_size SET product_id='$product_id', size_id='$size_id', quantity='$quantity'
+    $update_product_sizes_query = "UPDATE products_size SET quantity='$quantity'
     WHERE product_id='$product_id' AND size_id='$size_id'";
 
     $update_product_sizes_query_run = mysqli_query($con, $update_product_sizes_query);
 
     if ($update_product_sizes_query_run) {
-        redirect("../views/edit-product-sizes.php?pid=$product_id?sid=$size_id", "Product updated successfully");
+        redirect("../views/edit-product-sizes.php?pid=$product_id&sid=$size_id", "Product updated successfully");
     } else {
-        redirect("../views/edit-product-sizes.php?pid=$product_id?sid=$size_id", "Something went wrong");
+        redirect("../views/edit-product-sizes.php?pid=$product_id&sid=$size_id", "Something went wrong");
     }
 } else if (isset($_POST['update_order_btn'])) {
     $order_id = $_POST['id'];
