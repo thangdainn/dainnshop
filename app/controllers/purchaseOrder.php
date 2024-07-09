@@ -19,6 +19,13 @@ class purchaseOrder extends Controller
             $orderId = $_POST['orderId'];
             $orderModel = $this->load->model("PurchaseOrderModel");
             $orderModel->cancelOrder($orderId);
+            $productSizeModel = $this->load->model("ProductSizeModel");
+            $order = $orderModel->getDetailByOrderId($orderId);
+            foreach ($order as $item) {
+                $productSize = $productSizeModel->findByProduct_IdAndSize_Id($item['product_id'], $item['size_id']);
+                $newQuantity = $productSize['quantity'] + $item['quantity'];
+                $productSizeModel->updateQuantity($newQuantity, $item['product_id'], $item['id'], date("Y-m-d H:i:s"));
+            }
         } else {
             echo "Error: Missing orderId";
         }
@@ -153,13 +160,19 @@ class purchaseOrder extends Controller
                     $html .= '<a href="#" data-id="' . $order['id'] . '" class="btn btn_cancel">Cancel</a>';
                 }
                 if ($order['id_order_status'] == 6) {
-                    $html .= '<a href="#" data-id="' . $order['id'] . '" class="btn btn_review">Review</a>';
+                    $details = $orderModel->viewDetailByOrderId($order["id"]);
+                    foreach ($details as $detail) {
+                        if ($detail["is_reviewed"] == 0) {
+                            $html .= '<a href="#" data-id="' . $order['id'] . '" class="btn btn_review">Review</a>';
+                            break;
+                        }
+                    }
                 }
                 '</td>
                 </tr>';
             }
         } else {
-            $html .= '<span class="order_none">No cart here</span>';
+            $html .= '<span class="order_none">No order list.</span>';
         }
         echo $html;
     }

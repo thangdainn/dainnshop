@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 13, 2024 at 05:22 PM
+-- Generation Time: May 22, 2024 at 12:36 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -41,8 +41,8 @@ CREATE TABLE `brands` (
 --
 
 INSERT INTO `brands` (`id`, `name`, `image`, `status`, `create_at`, `update_at`) VALUES
-(1, 'Addidas', 'adidas.jpg', 1, '2023-03-20 13:30:00', '2023-03-27 14:58:38'),
-(2, 'Nike', 'nike.jpg', 1, '2023-03-20 13:30:00', '2023-03-20 13:30:00'),
+(1, 'Addidas', '1715659584.png', 1, '2023-03-20 13:30:00', '2023-03-27 14:58:38'),
+(2, 'Nike', '1715659597.png', 1, '2023-03-20 13:30:00', '2023-03-20 13:30:00'),
 (3, 'Puma', 'puma.jpg', 1, '2023-03-20 13:30:00', '2023-03-20 13:30:00'),
 (4, 'Gucci', 'gucci.jpg', 1, '2023-03-20 13:30:00', '2023-03-20 13:30:00'),
 (5, 'Reebok', 'reebok.jpg', 1, '2023-03-20 13:30:00', '2023-03-20 13:30:00');
@@ -61,13 +61,6 @@ CREATE TABLE `cart` (
   `size_id` int NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
-
---
--- Dumping data for table `cart`
---
-
-INSERT INTO `cart` (`id`, `user_id`, `product_id`, `amount`, `size_id`, `created_at`) VALUES
-(41, 3, 5, 1, 5, '2023-04-24 07:19:23');
 
 -- --------------------------------------------------------
 
@@ -222,7 +215,7 @@ CREATE TABLE `order` (
 --
 
 INSERT INTO `order` (`id`, `user_id`, `resipient_name`, `resipient_phonenumber`, `delivery_address`, `note`, `id_order_status`, `create_at`, `update_at`, `payment_method`) VALUES
-(66, 45, 'sfsaw', '0333207334', 'wfwqf', NULL, 6, '2024-02-08 14:16:57', '2024-05-08 14:16:57', 'mobile wallet'),
+(66, 45, 'sfsaw', '0333207334', 'wfwqf', NULL, 5, '2024-02-08 14:16:57', '2024-05-08 14:16:57', 'mobile wallet'),
 (67, 45, 'wdwdw', '0123123123', 'wdwdw', NULL, 4, '2024-05-08 14:22:48', '2024-05-08 14:22:48', 'mobile wallet'),
 (68, 45, 'dwdw', '0333207334', 'dwdwdwd', NULL, 6, '2024-04-08 14:30:03', '2024-05-08 14:30:03', 'cash'),
 (100, 45, 'fefef', '0333207334', 'efefe', NULL, 4, '2024-05-11 15:23:29', '2024-05-11 15:23:29', 'credit'),
@@ -232,7 +225,11 @@ INSERT INTO `order` (`id`, `user_id`, `resipient_name`, `resipient_phonenumber`,
 (104, 45, 'ducthang', '0333207334', '1fsff', NULL, 4, '2024-05-11 16:12:06', '2024-05-11 16:12:06', 'cash'),
 (105, 45, 'rg', '0333207334', 'reg', NULL, 4, '2024-05-11 16:14:31', '2024-05-11 16:14:31', 'credit'),
 (106, 45, 'wdwd', '0333207334', 'wdwdw', NULL, 6, '2024-05-11 16:17:24', '2024-05-11 16:17:24', 'credit'),
-(107, 45, 'thang dz', '0333207334', 'thu duc', NULL, 1, '2024-05-11 16:41:13', '2024-05-11 16:41:13', 'credit');
+(107, 45, 'thang dz', '0333207334', 'thu duc', NULL, 4, '2024-05-11 16:41:13', '2024-05-11 16:41:13', 'credit'),
+(108, 3, 'admin', '0333207334', 'wdwd', NULL, 1, '2024-05-15 12:30:04', '2024-05-15 12:30:04', 'cash'),
+(109, 45, 'thang', '0333207334', 'wdwd', NULL, 6, '2024-05-15 12:30:32', '2024-05-15 12:30:32', 'cash'),
+(110, 45, 'thang', '0333207334', 'fff', NULL, 1, '2024-05-15 13:26:13', '2024-05-15 13:26:13', 'cash'),
+(111, 45, 'abc', '0333207334', 'wdasdsda', NULL, 1, '2024-05-15 14:31:24', '2024-05-15 14:31:24', 'cash');
 
 -- --------------------------------------------------------
 
@@ -255,13 +252,13 @@ CREATE TABLE `order_detail` (
 --
 
 INSERT INTO `order_detail` (`id`, `order_id`, `product_id`, `size_id`, `total`, `quantity`, `isReviewed`) VALUES
-(57, 66, 8, 3, 800, 1, 0),
+(57, 66, 8, 3, 800, 1, 1),
 (58, 66, 21, 2, 600, 1, 0),
 (59, 66, 2, 2, 800, 1, 0),
 (60, 66, 3, 2, 1800, 2, 0),
 (61, 66, 3, 5, 900, 1, 0),
 (62, 67, 3, 2, 900, 1, 0),
-(63, 68, 2, 2, 800, 1, 0),
+(63, 68, 2, 2, 800, 1, 1),
 (95, 100, 42, 3, 1960, 2, 0),
 (96, 101, 42, 3, 1960, 2, 0),
 (97, 102, 42, 3, 1960, 2, 0),
@@ -271,7 +268,12 @@ INSERT INTO `order_detail` (`id`, `order_id`, `product_id`, `size_id`, `total`, 
 (101, 106, 42, 3, 1960, 2, 1),
 (102, 107, 1, 2, 1497, 3, 0),
 (103, 107, 2, 2, 1600, 2, 0),
-(104, 107, 3, 4, 2700, 3, 0);
+(104, 107, 3, 4, 2700, 3, 0),
+(105, 108, 5, 5, 1500, 1, 0),
+(106, 108, 2, 1, 800, 1, 0),
+(107, 109, 2, 1, 800, 1, 1),
+(108, 110, 1, 1, 1497, 3, 0),
+(109, 111, 1, 5, 2994, 6, 0);
 
 -- --------------------------------------------------------
 
@@ -323,43 +325,43 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `img`, `description`, `price`, `sale`, `category_id`, `brand_id`, `status`, `type`, `create_at`, `update_at`) VALUES
-(1, 'Shirt BrandLove', '1715357716.jpg', 'Shirt BrandLove\r\n', 600, 499, 3, 1, 1, 'sale', '2023-03-20 13:30:00', '2023-05-06 10:44:01'),
-(2, 'Shirt Adidas D4R Blue', 'adidas-d4r-tee-men-hk7117-1.jpg', 'Shirt Adidas D4R Blue', 800, 500, 1, 1, 1, 'new', '2023-03-20 13:30:00', '2023-05-08 10:12:21'),
-(3, 'Shirt Adidas HC2760 Black', 'adidas-m-ti-tee-hc2760-den-1.jpg', 'Shirt', 900, 800, 1, 1, 1, 'normal', '2023-03-20 13:30:00', '2023-03-20 13:30:00'),
-(5, 'Hoodie Tokyo Carrier Pullover', '1715405961.jpg', 'Hoodie Adidas Tokyo Carrier Pullover', 1500, 1200, 2, 1, 1, 'normal', '2023-03-20 13:30:00', '2023-03-27 15:03:27'),
-(6, 'Hoodie Lifestyle HL6925', '1715392033.jpg', 'Hoodie Lifestyle HL6925 Adidas', 1200, 800, 2, 1, 1, 'normal', '2023-03-20 13:30:00', '2023-03-20 13:30:00'),
-(8, 'Shirt Sportwear Midnight Navy', '1715402954.jpg', 'Shirt Nike Sportwear Midnight Navy', 800, 700, 3, 2, 1, 'normal', '2023-03-20 13:30:00', '2023-03-27 15:05:37'),
-(9, 'Jacket Adidas GAMEDAY', '1715402131.jpg', 'Jacket Adidas GAMEDAY\r\n', 1900, 1500, 15, 1, 1, 'normal', '2023-03-20 13:30:00', '2023-03-27 15:07:52'),
-(10, 'Polo Gucci With Pocket', '1715401975.jpg', 'Polo Gucci With Pocket\r\n', 3000, 2800, 4, 4, 1, 'normal', '2023-03-20 13:30:00', '2023-03-27 15:08:19'),
-(11, 'Hoodie Street NEUCLASSIC', '1715402263.jpg', 'Hoodie Street NEUCLASSIC\r\n', 400, 200, 2, 1, 1, 'normal', '2023-03-20 13:30:00', '2023-03-27 15:07:19'),
-(12, 'Shirt City Escape', '1715402339.jpg', 'Shirt City Escape\r\n', 300, 100, 3, 1, 1, 'new', '2023-03-20 13:30:00', '2023-03-27 15:07:01'),
-(13, 'Shirt Puma Cotton White', '1715402438.jpg', 'Shirt Puma Cotton White\r\n', 500, 490, 3, 3, 1, 'normal', '2023-03-20 13:30:00', '2023-03-27 15:06:28'),
-(21, 'Shirt Addidas D2M', '1715406041.jpg', 'Shirt Addidas D2M\r\n', 350, 300, 3, 1, 1, 'normal', '2023-03-20 13:30:00', '2023-03-29 22:04:45'),
-(22, 'Shirt Adidas D4R Green', '1715402534.jpg', 'Shirt Adidas D4R Green\r\n', 800, 500, 3, 1, 1, 'new', '2023-03-20 13:30:00', '2023-05-07 22:10:46'),
-(23, 'Shirt Adidas Traning Supply', '1715402584.jpg', 'Shirt Adidas Traning Supply\r\n', 900, 800, 3, 1, 1, 'normal', '2023-03-20 13:30:00', '2023-05-07 22:09:18'),
-(25, 'Shirt Carrier Pullover', '1715422649.jpg', 'Shirt Carrier Pullover\r\n', 289, 200, 3, 5, 0, 'normal', '2023-03-20 13:30:00', '2023-05-07 21:51:28'),
-(26, 'Shirt Adidas Lifestyle HL6925', '1715402776.jpg', 'Shirt Adidas Lifestyle HL6925\r\n', 1200, 800, 3, 1, 1, 'normal', '2023-03-20 13:30:00', '2023-05-07 22:07:57'),
-(27, 'Hoodie Power Knit Training', '1715402859.jpg', 'Hoodie Puma Power Knit Training\r\n', 1700, 1200, 2, 3, 1, 'normal', '2023-03-20 13:30:00', '2023-05-07 22:05:45'),
-(28, 'Shirt Adidas Studio Lounge', '1715403053.jpg', 'Shirt Adidas Studio Lounge', 800, 700, 3, 1, 1, 'normal', '2023-03-20 13:30:00', '2023-05-07 22:06:33'),
-(29, 'Hoodie Nike Midnight Navy', 'images/sp13/ao-nike-sportswear-men-s-hoodie-midnight-navy-cw4319-400-mau-xanh-navy-1.jpg', 'Hoodie Nike Midnight Navy\r\n', 1900, 1500, 2, 2, 1, 'normal', '2023-03-20 13:30:00', '2023-05-07 22:02:43'),
-(30, 'Jacket Adidas Bonded SST', '1715403217.jpg', 'Jacket Adidas Bonded SST\r\n', 3000, 2800, 15, 1, 1, 'new', '2023-03-20 13:30:00', '2023-05-07 21:59:14'),
-(31, 'Jacket Short Sleeve Olive', 'images/sp11/ao-thun-lifestyle-nam-adidas-m-feelcozy-swt-h12221-1.jpg', 'Jacket Adidas Short Sleeve Olive\r\n', 900, 849, 15, 1, 1, 'normal', '2023-03-20 13:30:00', '2023-05-07 21:57:06'),
-(32, 'Jacket FIREBIRD CLASSICS', '1715403479.jpg', 'Jacket FIREBIRD CLASSICS ADICOLOR\r\n', 1100, 999, 15, 1, 1, 'new', '2023-03-20 13:30:00', '2023-05-07 21:55:07'),
-(33, 'Polo Cotton Black', 'images/sp9/ao-ba-lo-chay-bo-nam-nike-cz9180-010-1.jpg', 'Polo Cotton Black\r\n', 200, 100, 4, 2, 1, 'sale', '2023-03-20 13:30:00', '2023-05-07 21:53:38'),
-(34, 'Shirt ReBasic HM2856', 'images/sp4/reebok-re-basic-ss-tee-hm2865-1.jpg', 'Shirt Reebook ReBasic HM2856\r\n', 550, 400, 3, 5, 1, 'new', '2023-05-07 21:40:00', NULL),
-(35, 'T-Shirt Originals HS9471', '1715403726.jpg', 'T-Shirt Originals HS9471\r\n', 650, 500, 1, 1, 1, 'normal', '2023-05-07 21:46:30', NULL),
-(36, 'Shirt Pink HS128', 'images/sp7/nike-dq1011-824-1.jpg', 'Shirt Pink HS128\r\n', 300, 200, 3, 2, 1, 'new', '2023-05-07 21:48:52', NULL),
-(37, 'Hoodie Sport Pullover Tokyo', '1715403928.jpg', 'Hoodie Sport Pullover Tokyo\r\n', 1400, 1200, 2, 2, 1, 'normal', '2023-05-07 22:15:11', NULL),
-(38, 'T-Shirt Embroidered Cotten', '1715403979.jpg', 'T-Shirt Gucci Embroidered Cotten\r\n', 700, 600, 1, 4, 1, 'sale', '2023-05-07 22:18:10', '2023-05-08 11:06:10'),
-(39, 'Jacket Tiro Suit-up', '1715404074.jpg', 'Jacket Tiro Suit-up\r\n', 500, 100, 15, 1, 1, 'normal', '2023-05-08 14:09:56', '2023-05-08 14:13:56'),
-(40, 'JERSEY SWEATSHIRT', '1715404173.jpg', 'JERSEY SWEATSHIRT WITH EMBROIDERY', 680, 599, 15, 4, 1, 'new', '2024-05-11 12:09:33', '2024-05-11 12:09:33'),
-(41, 'JERSEY SHIRT PRINT', '1715404257.jpg', 'JERSEY T-SHIRT WITH GUCCI PRINT', 450, 300, 3, 4, 1, 'new', '2024-05-11 12:10:57', '2024-05-11 12:10:57'),
-(42, 'DENIM JACKET GG EMBOSSED', '1715404356.jpg', 'DENIM JACKET WITH GG EMBOSSED DETAIL', 980, 890, 15, 5, 1, 'new', '2024-05-11 12:12:36', '2024-05-11 12:12:36'),
-(43, 'Jacket CB WV TT', '1715404418.jpg', 'Jacket CB WV TT', 1090, 980, 15, 1, 1, 'new', '2024-05-11 12:13:38', '2024-05-11 12:13:38'),
-(44, 'NSW CLUB HOODIE FZ BB', '1715408378.png', 'NSW CLUB HOODIE FZ BB', 650, 599, 2, 2, 1, 'new', '2024-05-11 12:14:48', '2024-05-11 12:14:48'),
-(45, 'Polo Slim-Fit', '1715408361.png', 'Polo Slim-Fit', 390, 350, 4, 2, 1, 'new', '2024-05-11 12:15:40', '2024-05-11 12:15:40'),
-(46, ' Polo Sportswear', '1715408336.png', ' Polo Sportswear', 290, 200, 4, 2, 1, 'new', '2024-05-11 12:16:20', '2024-05-11 12:16:20'),
-(47, 'Run Stripe Jacket', '1715404759.png', 'Run Stripe Jacket', 700, 600, 15, 2, 1, 'new', '2024-05-11 12:17:13', '2024-05-11 12:17:13');
+(1, 'Shirt BrandLove', '1715357716.jpg', 'Over 30 years, Dainn has expanded from its Ho Chi Minh City origins into a global community; working with generations of artists, photographers, designers, musicians, filmmakers, and writers who defied conventions and contributed to its unique identity and attitude.\r\n<br/>\r\nS : Length 65 Width 50 | 1m36 - 1m49, 45 - 58Kg\r\n<br/>\r\nM : Length 69 Width 53 | 1m50 - 1m63, 45 - 58Kg\r\n<br/>\r\nL : Length 73 Width 56 | 1m60 - 1m73, 50 - 65Kg\r\n<br/>\r\nXL: Length: 77 Width: 59 | 1m74 - 1m8, 65Kg - 80Kg\r\n<br/>\r\n2XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg\r\n<br/>\r\n3XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg', 600, 499, 3, 1, 1, 'sale', '2023-03-20 13:30:00', '2023-05-06 10:44:01'),
+(2, 'Shirt Adidas D4R Blue', 'adidas-d4r-tee-men-hk7117-1.jpg', 'Over 30 years, Dainn has expanded from its Ho Chi Minh City origins into a global community; working with generations of artists, photographers, designers, musicians, filmmakers, and writers who defied conventions and contributed to its unique identity and attitude.\r\n<br/>\r\nS : Length 65 Width 50 | 1m36 - 1m49, 45 - 58Kg\r\n<br/>\r\nM : Length 69 Width 53 | 1m50 - 1m63, 45 - 58Kg\r\n<br/>\r\nL : Length 73 Width 56 | 1m60 - 1m73, 50 - 65Kg\r\n<br/>\r\nXL: Length: 77 Width: 59 | 1m74 - 1m8, 65Kg - 80Kg\r\n<br/>\r\n2XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg\r\n<br/>\r\n3XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg', 800, 500, 1, 1, 1, 'new', '2023-03-20 13:30:00', '2023-05-08 10:12:21'),
+(3, 'Shirt Adidas HC2760 Black', 'adidas-m-ti-tee-hc2760-den-1.jpg', 'Over 30 years, Dainn has expanded from its Ho Chi Minh City origins into a global community; working with generations of artists, photographers, designers, musicians, filmmakers, and writers who defied conventions and contributed to its unique identity and attitude.\r\n<br/>\r\nS : Length 65 Width 50 | 1m36 - 1m49, 45 - 58Kg\r\n<br/>\r\nM : Length 69 Width 53 | 1m50 - 1m63, 45 - 58Kg\r\n<br/>\r\nL : Length 73 Width 56 | 1m60 - 1m73, 50 - 65Kg\r\n<br/>\r\nXL: Length: 77 Width: 59 | 1m74 - 1m8, 65Kg - 80Kg\r\n<br/>\r\n2XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg\r\n<br/>\r\n3XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg', 900, 800, 1, 1, 1, 'normal', '2023-03-20 13:30:00', '2023-03-20 13:30:00'),
+(5, 'Hoodie Tokyo Carrier Pullover', '1715405961.jpg', 'Over 30 years, Dainn has expanded from its Ho Chi Minh City origins into a global community; working with generations of artists, photographers, designers, musicians, filmmakers, and writers who defied conventions and contributed to its unique identity and attitude.\r\n<br/>\r\nS : Length 65 Width 50 | 1m36 - 1m49, 45 - 58Kg\r\n<br/>\r\nM : Length 69 Width 53 | 1m50 - 1m63, 45 - 58Kg\r\n<br/>\r\nL : Length 73 Width 56 | 1m60 - 1m73, 50 - 65Kg\r\n<br/>\r\nXL: Length: 77 Width: 59 | 1m74 - 1m8, 65Kg - 80Kg\r\n<br/>\r\n2XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg\r\n<br/>\r\n3XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg', 1500, 1200, 2, 1, 1, 'normal', '2023-03-20 13:30:00', '2023-03-27 15:03:27'),
+(6, 'Hoodie Lifestyle HL6925', '1715392033.jpg', 'Over 30 years, Dainn has expanded from its Ho Chi Minh City origins into a global community; working with generations of artists, photographers, designers, musicians, filmmakers, and writers who defied conventions and contributed to its unique identity and attitude.\r\n<br/>\r\nS : Length 65 Width 50 | 1m36 - 1m49, 45 - 58Kg\r\n<br/>\r\nM : Length 69 Width 53 | 1m50 - 1m63, 45 - 58Kg\r\n<br/>\r\nL : Length 73 Width 56 | 1m60 - 1m73, 50 - 65Kg\r\n<br/>\r\nXL: Length: 77 Width: 59 | 1m74 - 1m8, 65Kg - 80Kg\r\n<br/>\r\n2XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg\r\n<br/>\r\n3XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg', 1200, 800, 2, 1, 1, 'normal', '2023-03-20 13:30:00', '2023-03-20 13:30:00'),
+(8, 'Shirt Sportwear Midnight Navy', '1715402954.jpg', 'Over 30 years, Dainn has expanded from its Ho Chi Minh City origins into a global community; working with generations of artists, photographers, designers, musicians, filmmakers, and writers who defied conventions and contributed to its unique identity and attitude.\r\n<br/>\r\nS : Length 65 Width 50 | 1m36 - 1m49, 45 - 58Kg\r\n<br/>\r\nM : Length 69 Width 53 | 1m50 - 1m63, 45 - 58Kg\r\n<br/>\r\nL : Length 73 Width 56 | 1m60 - 1m73, 50 - 65Kg\r\n<br/>\r\nXL: Length: 77 Width: 59 | 1m74 - 1m8, 65Kg - 80Kg\r\n<br/>\r\n2XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg\r\n<br/>\r\n3XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg', 800, 700, 3, 2, 1, 'normal', '2023-03-20 13:30:00', '2023-03-27 15:05:37'),
+(9, 'Jacket Adidas GAMEDAY', '1715402131.jpg', 'Over 30 years, Dainn has expanded from its Ho Chi Minh City origins into a global community; working with generations of artists, photographers, designers, musicians, filmmakers, and writers who defied conventions and contributed to its unique identity and attitude.\r\n<br/>\r\nS : Length 65 Width 50 | 1m36 - 1m49, 45 - 58Kg\r\n<br/>\r\nM : Length 69 Width 53 | 1m50 - 1m63, 45 - 58Kg\r\n<br/>\r\nL : Length 73 Width 56 | 1m60 - 1m73, 50 - 65Kg\r\n<br/>\r\nXL: Length: 77 Width: 59 | 1m74 - 1m8, 65Kg - 80Kg\r\n<br/>\r\n2XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg\r\n<br/>\r\n3XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg', 1900, 1500, 15, 1, 1, 'normal', '2023-03-20 13:30:00', '2023-03-27 15:07:52'),
+(10, 'Polo Gucci With Pocket', '1715401975.jpg', 'Over 30 years, Dainn has expanded from its Ho Chi Minh City origins into a global community; working with generations of artists, photographers, designers, musicians, filmmakers, and writers who defied conventions and contributed to its unique identity and attitude.\r\n<br/>\r\nS : Length 65 Width 50 | 1m36 - 1m49, 45 - 58Kg\r\n<br/>\r\nM : Length 69 Width 53 | 1m50 - 1m63, 45 - 58Kg\r\n<br/>\r\nL : Length 73 Width 56 | 1m60 - 1m73, 50 - 65Kg\r\n<br/>\r\nXL: Length: 77 Width: 59 | 1m74 - 1m8, 65Kg - 80Kg\r\n<br/>\r\n2XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg\r\n<br/>\r\n3XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg', 3000, 2800, 4, 4, 1, 'normal', '2023-03-20 13:30:00', '2023-03-27 15:08:19'),
+(11, 'Hoodie Street NEUCLASSIC', '1715402263.jpg', 'Over 30 years, Dainn has expanded from its Ho Chi Minh City origins into a global community; working with generations of artists, photographers, designers, musicians, filmmakers, and writers who defied conventions and contributed to its unique identity and attitude.\r\n<br/>\r\nS : Length 65 Width 50 | 1m36 - 1m49, 45 - 58Kg\r\n<br/>\r\nM : Length 69 Width 53 | 1m50 - 1m63, 45 - 58Kg\r\n<br/>\r\nL : Length 73 Width 56 | 1m60 - 1m73, 50 - 65Kg\r\n<br/>\r\nXL: Length: 77 Width: 59 | 1m74 - 1m8, 65Kg - 80Kg\r\n<br/>\r\n2XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg\r\n<br/>\r\n3XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg', 400, 200, 2, 1, 1, 'normal', '2023-03-20 13:30:00', '2023-03-27 15:07:19'),
+(12, 'Shirt City Escape', '1715402339.jpg', 'Over 30 years, Dainn has expanded from its Ho Chi Minh City origins into a global community; working with generations of artists, photographers, designers, musicians, filmmakers, and writers who defied conventions and contributed to its unique identity and attitude.\r\n<br/>\r\nS : Length 65 Width 50 | 1m36 - 1m49, 45 - 58Kg\r\n<br/>\r\nM : Length 69 Width 53 | 1m50 - 1m63, 45 - 58Kg\r\n<br/>\r\nL : Length 73 Width 56 | 1m60 - 1m73, 50 - 65Kg\r\n<br/>\r\nXL: Length: 77 Width: 59 | 1m74 - 1m8, 65Kg - 80Kg\r\n<br/>\r\n2XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg\r\n<br/>\r\n3XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg', 300, 100, 3, 1, 1, 'new', '2023-03-20 13:30:00', '2023-03-27 15:07:01'),
+(13, 'Shirt Puma Cotton White', '1715402438.jpg', 'Over 30 years, Dainn has expanded from its Ho Chi Minh City origins into a global community; working with generations of artists, photographers, designers, musicians, filmmakers, and writers who defied conventions and contributed to its unique identity and attitude.\r\n<br/>\r\nS : Length 65 Width 50 | 1m36 - 1m49, 45 - 58Kg\r\n<br/>\r\nM : Length 69 Width 53 | 1m50 - 1m63, 45 - 58Kg\r\n<br/>\r\nL : Length 73 Width 56 | 1m60 - 1m73, 50 - 65Kg\r\n<br/>\r\nXL: Length: 77 Width: 59 | 1m74 - 1m8, 65Kg - 80Kg\r\n<br/>\r\n2XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg\r\n<br/>\r\n3XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg', 500, 490, 3, 3, 1, 'normal', '2023-03-20 13:30:00', '2023-03-27 15:06:28'),
+(21, 'Shirt Addidas D2M', '1715406041.jpg', 'Over 30 years, Dainn has expanded from its Ho Chi Minh City origins into a global community; working with generations of artists, photographers, designers, musicians, filmmakers, and writers who defied conventions and contributed to its unique identity and attitude.\r\n<br/>\r\nS : Length 65 Width 50 | 1m36 - 1m49, 45 - 58Kg\r\n<br/>\r\nM : Length 69 Width 53 | 1m50 - 1m63, 45 - 58Kg\r\n<br/>\r\nL : Length 73 Width 56 | 1m60 - 1m73, 50 - 65Kg\r\n<br/>\r\nXL: Length: 77 Width: 59 | 1m74 - 1m8, 65Kg - 80Kg\r\n<br/>\r\n2XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg\r\n<br/>\r\n3XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg', 350, 300, 3, 1, 1, 'normal', '2023-03-20 13:30:00', '2023-03-29 22:04:45'),
+(22, 'Shirt Adidas D4R Green', '1715402534.jpg', 'Over 30 years, Dainn has expanded from its Ho Chi Minh City origins into a global community; working with generations of artists, photographers, designers, musicians, filmmakers, and writers who defied conventions and contributed to its unique identity and attitude.\r\n<br/>\r\nS : Length 65 Width 50 | 1m36 - 1m49, 45 - 58Kg\r\n<br/>\r\nM : Length 69 Width 53 | 1m50 - 1m63, 45 - 58Kg\r\n<br/>\r\nL : Length 73 Width 56 | 1m60 - 1m73, 50 - 65Kg\r\n<br/>\r\nXL: Length: 77 Width: 59 | 1m74 - 1m8, 65Kg - 80Kg\r\n<br/>\r\n2XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg\r\n<br/>\r\n3XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg', 800, 500, 3, 1, 1, 'new', '2023-03-20 13:30:00', '2023-05-07 22:10:46'),
+(23, 'Shirt Adidas Traning Supply', '1715402584.jpg', 'Over 30 years, Dainn has expanded from its Ho Chi Minh City origins into a global community; working with generations of artists, photographers, designers, musicians, filmmakers, and writers who defied conventions and contributed to its unique identity and attitude.\r\n<br/>\r\nS : Length 65 Width 50 | 1m36 - 1m49, 45 - 58Kg\r\n<br/>\r\nM : Length 69 Width 53 | 1m50 - 1m63, 45 - 58Kg\r\n<br/>\r\nL : Length 73 Width 56 | 1m60 - 1m73, 50 - 65Kg\r\n<br/>\r\nXL: Length: 77 Width: 59 | 1m74 - 1m8, 65Kg - 80Kg\r\n<br/>\r\n2XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg\r\n<br/>\r\n3XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg', 900, 800, 3, 1, 1, 'normal', '2023-03-20 13:30:00', '2023-05-07 22:09:18'),
+(25, 'Shirt Carrier Pullover', '1715422649.jpg', 'Over 30 years, Dainn has expanded from its Ho Chi Minh City origins into a global community; working with generations of artists, photographers, designers, musicians, filmmakers, and writers who defied conventions and contributed to its unique identity and attitude.\r\n<br/>\r\nS : Length 65 Width 50 | 1m36 - 1m49, 45 - 58Kg\r\n<br/>\r\nM : Length 69 Width 53 | 1m50 - 1m63, 45 - 58Kg\r\n<br/>\r\nL : Length 73 Width 56 | 1m60 - 1m73, 50 - 65Kg\r\n<br/>\r\nXL: Length: 77 Width: 59 | 1m74 - 1m8, 65Kg - 80Kg\r\n<br/>\r\n2XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg\r\n<br/>\r\n3XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg', 289, 200, 3, 5, 0, 'normal', '2023-03-20 13:30:00', '2023-05-07 21:51:28'),
+(26, 'Shirt Adidas Lifestyle HL6925', '1715402776.jpg', 'Over 30 years, Dainn has expanded from its Ho Chi Minh City origins into a global community; working with generations of artists, photographers, designers, musicians, filmmakers, and writers who defied conventions and contributed to its unique identity and attitude.\r\n<br/>\r\nS : Length 65 Width 50 | 1m36 - 1m49, 45 - 58Kg\r\n<br/>\r\nM : Length 69 Width 53 | 1m50 - 1m63, 45 - 58Kg\r\n<br/>\r\nL : Length 73 Width 56 | 1m60 - 1m73, 50 - 65Kg\r\n<br/>\r\nXL: Length: 77 Width: 59 | 1m74 - 1m8, 65Kg - 80Kg\r\n<br/>\r\n2XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg\r\n<br/>\r\n3XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg', 1200, 800, 3, 1, 1, 'normal', '2023-03-20 13:30:00', '2023-05-07 22:07:57'),
+(27, 'Hoodie Power Knit Training', '1715402859.jpg', 'Over 30 years, Dainn has expanded from its Ho Chi Minh City origins into a global community; working with generations of artists, photographers, designers, musicians, filmmakers, and writers who defied conventions and contributed to its unique identity and attitude.\r\n<br/>\r\nS : Length 65 Width 50 | 1m36 - 1m49, 45 - 58Kg\r\n<br/>\r\nM : Length 69 Width 53 | 1m50 - 1m63, 45 - 58Kg\r\n<br/>\r\nL : Length 73 Width 56 | 1m60 - 1m73, 50 - 65Kg\r\n<br/>\r\nXL: Length: 77 Width: 59 | 1m74 - 1m8, 65Kg - 80Kg\r\n<br/>\r\n2XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg\r\n<br/>\r\n3XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg', 1700, 1200, 2, 3, 1, 'normal', '2023-03-20 13:30:00', '2023-05-07 22:05:45'),
+(28, 'Shirt Adidas Studio Lounge', '1715403053.jpg', 'Over 30 years, Dainn has expanded from its Ho Chi Minh City origins into a global community; working with generations of artists, photographers, designers, musicians, filmmakers, and writers who defied conventions and contributed to its unique identity and attitude.\r\n<br/>\r\nS : Length 65 Width 50 | 1m36 - 1m49, 45 - 58Kg\r\n<br/>\r\nM : Length 69 Width 53 | 1m50 - 1m63, 45 - 58Kg\r\n<br/>\r\nL : Length 73 Width 56 | 1m60 - 1m73, 50 - 65Kg\r\n<br/>\r\nXL: Length: 77 Width: 59 | 1m74 - 1m8, 65Kg - 80Kg\r\n<br/>\r\n2XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg\r\n<br/>\r\n3XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg', 800, 700, 3, 1, 1, 'normal', '2023-03-20 13:30:00', '2023-05-07 22:06:33'),
+(29, 'Hoodie Nike Midnight Navy', 'images/sp13/ao-nike-sportswear-men-s-hoodie-midnight-navy-cw4319-400-mau-xanh-navy-1.jpg', 'Over 30 years, Dainn has expanded from its Ho Chi Minh City origins into a global community; working with generations of artists, photographers, designers, musicians, filmmakers, and writers who defied conventions and contributed to its unique identity and attitude.\r\n<br/>\r\nS : Length 65 Width 50 | 1m36 - 1m49, 45 - 58Kg\r\n<br/>\r\nM : Length 69 Width 53 | 1m50 - 1m63, 45 - 58Kg\r\n<br/>\r\nL : Length 73 Width 56 | 1m60 - 1m73, 50 - 65Kg\r\n<br/>\r\nXL: Length: 77 Width: 59 | 1m74 - 1m8, 65Kg - 80Kg\r\n<br/>\r\n2XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg\r\n<br/>\r\n3XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg', 1900, 1500, 2, 2, 1, 'normal', '2023-03-20 13:30:00', '2023-05-07 22:02:43'),
+(30, 'Jacket Adidas Bonded SST', '1715403217.jpg', 'Over 30 years, Dainn has expanded from its Ho Chi Minh City origins into a global community; working with generations of artists, photographers, designers, musicians, filmmakers, and writers who defied conventions and contributed to its unique identity and attitude.\r\n<br/>\r\nS : Length 65 Width 50 | 1m36 - 1m49, 45 - 58Kg\r\n<br/>\r\nM : Length 69 Width 53 | 1m50 - 1m63, 45 - 58Kg\r\n<br/>\r\nL : Length 73 Width 56 | 1m60 - 1m73, 50 - 65Kg\r\n<br/>\r\nXL: Length: 77 Width: 59 | 1m74 - 1m8, 65Kg - 80Kg\r\n<br/>\r\n2XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg\r\n<br/>\r\n3XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg', 3000, 2800, 15, 1, 1, 'new', '2023-03-20 13:30:00', '2023-05-07 21:59:14'),
+(31, 'Jacket Short Sleeve Olive', 'images/sp11/ao-thun-lifestyle-nam-adidas-m-feelcozy-swt-h12221-1.jpg', 'Over 30 years, Dainn has expanded from its Ho Chi Minh City origins into a global community; working with generations of artists, photographers, designers, musicians, filmmakers, and writers who defied conventions and contributed to its unique identity and attitude.\r\n<br/>\r\nS : Length 65 Width 50 | 1m36 - 1m49, 45 - 58Kg\r\n<br/>\r\nM : Length 69 Width 53 | 1m50 - 1m63, 45 - 58Kg\r\n<br/>\r\nL : Length 73 Width 56 | 1m60 - 1m73, 50 - 65Kg\r\n<br/>\r\nXL: Length: 77 Width: 59 | 1m74 - 1m8, 65Kg - 80Kg\r\n<br/>\r\n2XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg\r\n<br/>\r\n3XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg', 900, 849, 15, 1, 1, 'normal', '2023-03-20 13:30:00', '2023-05-07 21:57:06'),
+(32, 'Jacket FIREBIRD CLASSICS', '1715403479.jpg', 'Over 30 years, Dainn has expanded from its Ho Chi Minh City origins into a global community; working with generations of artists, photographers, designers, musicians, filmmakers, and writers who defied conventions and contributed to its unique identity and attitude.\r\n<br/>\r\nS : Length 65 Width 50 | 1m36 - 1m49, 45 - 58Kg\r\n<br/>\r\nM : Length 69 Width 53 | 1m50 - 1m63, 45 - 58Kg\r\n<br/>\r\nL : Length 73 Width 56 | 1m60 - 1m73, 50 - 65Kg\r\n<br/>\r\nXL: Length: 77 Width: 59 | 1m74 - 1m8, 65Kg - 80Kg\r\n<br/>\r\n2XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg\r\n<br/>\r\n3XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg', 1100, 999, 15, 1, 1, 'new', '2023-03-20 13:30:00', '2023-05-07 21:55:07'),
+(33, 'Polo Cotton Black', 'images/sp9/ao-ba-lo-chay-bo-nam-nike-cz9180-010-1.jpg', 'Over 30 years, Dainn has expanded from its Ho Chi Minh City origins into a global community; working with generations of artists, photographers, designers, musicians, filmmakers, and writers who defied conventions and contributed to its unique identity and attitude.\r\n<br/>\r\nS : Length 65 Width 50 | 1m36 - 1m49, 45 - 58Kg\r\n<br/>\r\nM : Length 69 Width 53 | 1m50 - 1m63, 45 - 58Kg\r\n<br/>\r\nL : Length 73 Width 56 | 1m60 - 1m73, 50 - 65Kg\r\n<br/>\r\nXL: Length: 77 Width: 59 | 1m74 - 1m8, 65Kg - 80Kg\r\n<br/>\r\n2XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg\r\n<br/>\r\n3XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg', 200, 100, 4, 2, 1, 'sale', '2023-03-20 13:30:00', '2023-05-07 21:53:38'),
+(34, 'Shirt ReBasic HM2856', 'images/sp4/reebok-re-basic-ss-tee-hm2865-1.jpg', 'Over 30 years, Dainn has expanded from its Ho Chi Minh City origins into a global community; working with generations of artists, photographers, designers, musicians, filmmakers, and writers who defied conventions and contributed to its unique identity and attitude.\r\n<br/>\r\nS : Length 65 Width 50 | 1m36 - 1m49, 45 - 58Kg\r\n<br/>\r\nM : Length 69 Width 53 | 1m50 - 1m63, 45 - 58Kg\r\n<br/>\r\nL : Length 73 Width 56 | 1m60 - 1m73, 50 - 65Kg\r\n<br/>\r\nXL: Length: 77 Width: 59 | 1m74 - 1m8, 65Kg - 80Kg\r\n<br/>\r\n2XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg\r\n<br/>\r\n3XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg', 550, 400, 3, 5, 1, 'new', '2023-05-07 21:40:00', NULL),
+(35, 'T-Shirt Originals HS9471', '1715403726.jpg', 'Over 30 years, Dainn has expanded from its Ho Chi Minh City origins into a global community; working with generations of artists, photographers, designers, musicians, filmmakers, and writers who defied conventions and contributed to its unique identity and attitude.\r\n<br/>\r\nS : Length 65 Width 50 | 1m36 - 1m49, 45 - 58Kg\r\n<br/>\r\nM : Length 69 Width 53 | 1m50 - 1m63, 45 - 58Kg\r\n<br/>\r\nL : Length 73 Width 56 | 1m60 - 1m73, 50 - 65Kg\r\n<br/>\r\nXL: Length: 77 Width: 59 | 1m74 - 1m8, 65Kg - 80Kg\r\n<br/>\r\n2XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg\r\n<br/>\r\n3XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg', 650, 500, 1, 1, 1, 'normal', '2023-05-07 21:46:30', NULL),
+(36, 'Shirt Pink HS128', 'images/sp7/nike-dq1011-824-1.jpg', 'Over 30 years, Dainn has expanded from its Ho Chi Minh City origins into a global community; working with generations of artists, photographers, designers, musicians, filmmakers, and writers who defied conventions and contributed to its unique identity and attitude.\r\n<br/>\r\nS : Length 65 Width 50 | 1m36 - 1m49, 45 - 58Kg\r\n<br/>\r\nM : Length 69 Width 53 | 1m50 - 1m63, 45 - 58Kg\r\n<br/>\r\nL : Length 73 Width 56 | 1m60 - 1m73, 50 - 65Kg\r\n<br/>\r\nXL: Length: 77 Width: 59 | 1m74 - 1m8, 65Kg - 80Kg\r\n<br/>\r\n2XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg\r\n<br/>\r\n3XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg', 300, 200, 3, 2, 1, 'new', '2023-05-07 21:48:52', NULL),
+(37, 'Hoodie Sport Pullover Tokyo', '1715403928.jpg', 'Over 30 years, Dainn has expanded from its Ho Chi Minh City origins into a global community; working with generations of artists, photographers, designers, musicians, filmmakers, and writers who defied conventions and contributed to its unique identity and attitude.\r\n<br/>\r\nS : Length 65 Width 50 | 1m36 - 1m49, 45 - 58Kg\r\n<br/>\r\nM : Length 69 Width 53 | 1m50 - 1m63, 45 - 58Kg\r\n<br/>\r\nL : Length 73 Width 56 | 1m60 - 1m73, 50 - 65Kg\r\n<br/>\r\nXL: Length: 77 Width: 59 | 1m74 - 1m8, 65Kg - 80Kg\r\n<br/>\r\n2XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg\r\n<br/>\r\n3XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg', 1400, 1200, 2, 2, 1, 'normal', '2023-05-07 22:15:11', NULL),
+(38, 'T-Shirt Embroidered Cotten', '1715403979.jpg', 'Over 30 years, Dainn has expanded from its Ho Chi Minh City origins into a global community; working with generations of artists, photographers, designers, musicians, filmmakers, and writers who defied conventions and contributed to its unique identity and attitude.\r\n<br/>\r\nS : Length 65 Width 50 | 1m36 - 1m49, 45 - 58Kg\r\n<br/>\r\nM : Length 69 Width 53 | 1m50 - 1m63, 45 - 58Kg\r\n<br/>\r\nL : Length 73 Width 56 | 1m60 - 1m73, 50 - 65Kg\r\n<br/>\r\nXL: Length: 77 Width: 59 | 1m74 - 1m8, 65Kg - 80Kg\r\n<br/>\r\n2XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg\r\n<br/>\r\n3XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg', 700, 600, 1, 4, 1, 'sale', '2023-05-07 22:18:10', '2023-05-08 11:06:10'),
+(39, 'Jacket Tiro Suit-up', '1715404074.jpg', 'Over 30 years, Dainn has expanded from its Ho Chi Minh City origins into a global community; working with generations of artists, photographers, designers, musicians, filmmakers, and writers who defied conventions and contributed to its unique identity and attitude.\r\n<br/>\r\nS : Length 65 Width 50 | 1m36 - 1m49, 45 - 58Kg\r\n<br/>\r\nM : Length 69 Width 53 | 1m50 - 1m63, 45 - 58Kg\r\n<br/>\r\nL : Length 73 Width 56 | 1m60 - 1m73, 50 - 65Kg\r\n<br/>\r\nXL: Length: 77 Width: 59 | 1m74 - 1m8, 65Kg - 80Kg\r\n<br/>\r\n2XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg\r\n<br/>\r\n3XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg', 500, 100, 15, 1, 1, 'normal', '2023-05-08 14:09:56', '2023-05-08 14:13:56'),
+(40, 'JERSEY SWEATSHIRT', '1715404173.jpg', 'Over 30 years, Dainn has expanded from its Ho Chi Minh City origins into a global community; working with generations of artists, photographers, designers, musicians, filmmakers, and writers who defied conventions and contributed to its unique identity and attitude.\r\n<br/>\r\nS : Length 65 Width 50 | 1m36 - 1m49, 45 - 58Kg\r\n<br/>\r\nM : Length 69 Width 53 | 1m50 - 1m63, 45 - 58Kg\r\n<br/>\r\nL : Length 73 Width 56 | 1m60 - 1m73, 50 - 65Kg\r\n<br/>\r\nXL: Length: 77 Width: 59 | 1m74 - 1m8, 65Kg - 80Kg\r\n<br/>\r\n2XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg\r\n<br/>\r\n3XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg', 680, 599, 15, 4, 1, 'new', '2024-05-11 12:09:33', '2024-05-11 12:09:33'),
+(41, 'JERSEY SHIRT PRINT', '1715404257.jpg', 'Over 30 years, Dainn has expanded from its Ho Chi Minh City origins into a global community; working with generations of artists, photographers, designers, musicians, filmmakers, and writers who defied conventions and contributed to its unique identity and attitude.\r\n<br/>\r\nS : Length 65 Width 50 | 1m36 - 1m49, 45 - 58Kg\r\n<br/>\r\nM : Length 69 Width 53 | 1m50 - 1m63, 45 - 58Kg\r\n<br/>\r\nL : Length 73 Width 56 | 1m60 - 1m73, 50 - 65Kg\r\n<br/>\r\nXL: Length: 77 Width: 59 | 1m74 - 1m8, 65Kg - 80Kg\r\n<br/>\r\n2XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg\r\n<br/>\r\n3XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg', 450, 300, 3, 4, 1, 'new', '2024-05-11 12:10:57', '2024-05-11 12:10:57'),
+(42, 'DENIM JACKET GG EMBOSSED', '1715404356.jpg', 'Over 30 years, Dainn has expanded from its Ho Chi Minh City origins into a global community; working with generations of artists, photographers, designers, musicians, filmmakers, and writers who defied conventions and contributed to its unique identity and attitude.\r\n<br/>\r\nS : Length 65 Width 50 | 1m36 - 1m49, 45 - 58Kg\r\n<br/>\r\nM : Length 69 Width 53 | 1m50 - 1m63, 45 - 58Kg\r\n<br/>\r\nL : Length 73 Width 56 | 1m60 - 1m73, 50 - 65Kg\r\n<br/>\r\nXL: Length: 77 Width: 59 | 1m74 - 1m8, 65Kg - 80Kg\r\n<br/>\r\n2XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg\r\n<br/>\r\n3XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg', 980, 890, 15, 5, 1, 'new', '2024-05-11 12:12:36', '2024-05-11 12:12:36'),
+(43, 'Jacket CB WV TT', '1715404418.jpg', 'Over 30 years, Dainn has expanded from its Ho Chi Minh City origins into a global community; working with generations of artists, photographers, designers, musicians, filmmakers, and writers who defied conventions and contributed to its unique identity and attitude.\r\n<br/>\r\nS : Length 65 Width 50 | 1m36 - 1m49, 45 - 58Kg\r\n<br/>\r\nM : Length 69 Width 53 | 1m50 - 1m63, 45 - 58Kg\r\n<br/>\r\nL : Length 73 Width 56 | 1m60 - 1m73, 50 - 65Kg\r\n<br/>\r\nXL: Length: 77 Width: 59 | 1m74 - 1m8, 65Kg - 80Kg\r\n<br/>\r\n2XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg\r\n<br/>\r\n3XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg', 1090, 980, 15, 1, 1, 'new', '2024-05-11 12:13:38', '2024-05-11 12:13:38'),
+(44, 'NSW CLUB HOODIE FZ BB', '1715408378.png', 'Over 30 years, Dainn has expanded from its Ho Chi Minh City origins into a global community; working with generations of artists, photographers, designers, musicians, filmmakers, and writers who defied conventions and contributed to its unique identity and attitude.\r\n<br/>\r\nS : Length 65 Width 50 | 1m36 - 1m49, 45 - 58Kg\r\n<br/>\r\nM : Length 69 Width 53 | 1m50 - 1m63, 45 - 58Kg\r\n<br/>\r\nL : Length 73 Width 56 | 1m60 - 1m73, 50 - 65Kg\r\n<br/>\r\nXL: Length: 77 Width: 59 | 1m74 - 1m8, 65Kg - 80Kg\r\n<br/>\r\n2XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg\r\n<br/>\r\n3XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg', 650, 599, 2, 2, 1, 'new', '2024-05-11 12:14:48', '2024-05-11 12:14:48'),
+(45, 'Polo Slim-Fit', '1715408361.png', 'Over 30 years, Dainn has expanded from its Ho Chi Minh City origins into a global community; working with generations of artists, photographers, designers, musicians, filmmakers, and writers who defied conventions and contributed to its unique identity and attitude.\r\n<br/>\r\nS : Length 65 Width 50 | 1m36 - 1m49, 45 - 58Kg\r\n<br/>\r\nM : Length 69 Width 53 | 1m50 - 1m63, 45 - 58Kg\r\n<br/>\r\nL : Length 73 Width 56 | 1m60 - 1m73, 50 - 65Kg\r\n<br/>\r\nXL: Length: 77 Width: 59 | 1m74 - 1m8, 65Kg - 80Kg\r\n<br/>\r\n2XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg\r\n<br/>\r\n3XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg', 390, 350, 4, 2, 1, 'new', '2024-05-11 12:15:40', '2024-05-11 12:15:40'),
+(46, ' Polo Sportswear', '1715408336.png', 'Over 30 years, Dainn has expanded from its Ho Chi Minh City origins into a global community; working with generations of artists, photographers, designers, musicians, filmmakers, and writers who defied conventions and contributed to its unique identity and attitude.\r\n<br/>\r\nS : Length 65 Width 50 | 1m36 - 1m49, 45 - 58Kg\r\n<br/>\r\nM : Length 69 Width 53 | 1m50 - 1m63, 45 - 58Kg\r\n<br/>\r\nL : Length 73 Width 56 | 1m60 - 1m73, 50 - 65Kg\r\n<br/>\r\nXL: Length: 77 Width: 59 | 1m74 - 1m8, 65Kg - 80Kg\r\n<br/>\r\n2XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg\r\n<br/>\r\n3XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg', 290, 200, 4, 2, 1, 'new', '2024-05-11 12:16:20', '2024-05-11 12:16:20'),
+(47, 'Run Stripe Jacket', '1715404759.png', 'Over 30 years, Dainn has expanded from its Ho Chi Minh City origins into a global community; working with generations of artists, photographers, designers, musicians, filmmakers, and writers who defied conventions and contributed to its unique identity and attitude.\r\n<br/>\r\nS : Length 65 Width 50 | 1m36 - 1m49, 45 - 58Kg\r\n<br/>\r\nM : Length 69 Width 53 | 1m50 - 1m63, 45 - 58Kg\r\n<br/>\r\nL : Length 73 Width 56 | 1m60 - 1m73, 50 - 65Kg\r\n<br/>\r\nXL: Length: 77 Width: 59 | 1m74 - 1m8, 65Kg - 80Kg\r\n<br/>\r\n2XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg\r\n<br/>\r\n3XL: Length: 80 Width: 61 | 1m8 - 1m84, 80Kg - 95Kg', 700, 600, 15, 2, 1, 'new', '2024-05-11 12:17:13', '2024-05-11 12:17:13');
 
 -- --------------------------------------------------------
 
@@ -380,12 +382,12 @@ CREATE TABLE `products_size` (
 --
 
 INSERT INTO `products_size` (`product_id`, `size_id`, `quantity`, `create_at`, `update_at`) VALUES
-(1, 1, 30, '2023-03-29 22:04:45', NULL),
+(1, 1, 27, '2023-03-29 22:04:45', '2024-05-15 06:26:13'),
 (1, 2, 24, '2023-03-29 22:04:45', '2024-05-11 09:41:13'),
 (1, 3, 32, '2023-03-29 22:04:45', '2023-05-07 22:13:49'),
 (1, 4, 30, '2023-03-29 22:04:45', NULL),
-(1, 5, 30, '2023-03-29 22:04:45', NULL),
-(2, 1, 1, NULL, NULL),
+(1, 5, 24, '2023-03-29 22:04:45', '2024-05-15 07:31:24'),
+(2, 1, 0, NULL, '2024-05-15 05:30:32'),
 (2, 2, 101, NULL, '2024-05-11 09:41:13'),
 (2, 3, -1, NULL, NULL),
 (2, 4, 0, NULL, NULL),
@@ -399,7 +401,7 @@ INSERT INTO `products_size` (`product_id`, `size_id`, `quantity`, `create_at`, `
 (5, 2, 20, NULL, NULL),
 (5, 3, 0, NULL, NULL),
 (5, 4, 21, NULL, NULL),
-(5, 5, 22, NULL, NULL),
+(5, 5, 21, NULL, '2024-05-15 05:30:04'),
 (6, 1, 24, NULL, NULL),
 (6, 2, 25, NULL, NULL),
 (6, 3, 26, NULL, NULL),
@@ -579,7 +581,10 @@ INSERT INTO `reviews` (`id`, `product_id`, `user_id`, `name`, `email`, `message`
 (29, 12, 45, 'TienHai', 'tienhai@gmail.com', 'Binh luan danh gia san pham', 5, 1, '2023-04-14 19:57:26'),
 (34, 12, 9, 'TienHai488', 'tienhai4888@gmail.com', 'Binh luan cho san pham tesst chuc nawng', 3, 1, '2023-04-14 20:43:25'),
 (35, 12, 9, 'TienHai488', 'tienhai4888@gmail.com', 'Binh luan cho san pham tesst chuc nawng', 3, 1, '2024-05-06 15:08:41'),
-(36, 42, 45, 'ducthang', 'thanngit@gmail.com', 'so beautiful', 4, 1, '2024-05-11 16:56:37');
+(36, 42, 45, 'ducthang', 'thanngit@gmail.com', 'so beautiful', 4, 1, '2024-05-11 16:56:37'),
+(37, 2, 45, 'ducthang', 'thanngit@gmail.com', 'ffffffff', 5, 1, '2024-05-15 13:18:49'),
+(38, 2, 45, 'ducthang', 'thanngit@gmail.com', 'fff', 4, 1, '2024-05-15 13:20:32'),
+(39, 8, 45, 'ducthang', 'thanngit@gmail.com', 'vvv', 4, 1, '2024-05-15 13:22:46');
 
 -- --------------------------------------------------------
 
@@ -658,14 +663,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `fullname`, `email`, `phone`, `password`, `image`, `status`, `type`, `role_id`, `create_at`, `update_at`) VALUES
 (3, 'Administrators', 'admin@gmail.com', '0333207334', '$2y$10$Wm/iV7Uml8hcsIJOQDJ53OzxfT05mUHlN9QsMGZPEJ4lUfNN3lS5i', 'images/avatar/6638ed5fdd2823.75382897_1715006815.png', 1, 'member', 8, '2023-03-17 11:05:40', '2024-05-06 15:48:04'),
-(9, 'Minh Lam ', 'minhlam@gmail.com', '0987654321', '$2y$10$vWrayaQfHe0cb9M98DJh6OBBO7Gf.FILnxHlbDYW1GJvG3kZ./962', 'images/avatar/6638eeb22fb739.79708398_1715007154.png', 1, 'user', 3, '2023-03-18 21:48:44', '2024-05-06 14:52:34'),
-(10, 'TienHai', 'tienhai@gmail.com', '0987654321', '$2y$10$ilv4fmfcw0cfkdtcUou9xu0joh3KlGC08pEzuoNQKEc6iwNHtPgZm', 'images/avatar/default.png', 1, 'user', 3, '2023-03-18 21:50:14', '2024-05-06 16:11:37'),
-(37, 'TienHai', 'tienhai488@gmail.com', '0987654321', '$2y$10$G6GZk.UtbjfwMqDBBXyaEetxOuR1Q2LC1EFbtfM4ykXlRau0xeK62', 'images/avatar/default.png', 1, 'user', 2, '2023-03-31 16:54:53', '2023-03-31 21:22:18'),
-(45, 'ducthang', 'thanngit@gmail.com', '0123123123', '$2y$10$zIttZ3qWteOyBc6wJB56tekkiwblqbDNxrUT6Rb/D3G9SmoSp.oSi', 'images/avatar/65f91f62623ce2.97199938_1710825314.jpg', 1, 'user', 3, '2023-10-19 10:49:41', '2024-05-06 13:01:31'),
-(46, 'ducthangedu', '3121560085@sv.sgu.edu.vn', '0123123123', '$2y$10$KhWZMCIUoVrqg8XejPtX8ee1oLkB4Ojusscz888TMR5GMPCbqL0ma', 'images/avatar/default.png', 1, 'user', 2, '2024-03-13 16:16:06', '2024-03-13 16:16:06'),
-(47, 'ducthang', 'wdw@gmail.com', NULL, '$2y$10$Lry7g1my2Tm9QWPymlAU/emV77GZt6nFVYsfYiIHPMH6kzPpXF2Bi', 'images/avatar/default.png', 0, 'user', 2, '2024-03-13 16:18:20', '2024-03-13 16:18:20'),
-(49, 'Học tập', 'thdddanngit@gmail.com', NULL, '$2y$10$Gh4Q7fm2pFUmcni7EE/YWeUluTtG8f6gjlfZFhVHBcEcbr9w8XQeG', 'images/avatar/default.png', 0, 'user', 2, '2024-03-13 19:16:16', '2024-03-13 19:16:16'),
-(50, 'chi tai', 'tailuongbr13@gmail.com', '000002222', '$2y$10$c2XukQssI9WOOHy.XsLFLecinGwpMqjxW7kEHEDbQLTZtUNZkW72e', 'images/avatar/default.png', 1, 'user', 2, '2024-05-06 18:06:39', '2024-05-06 18:06:39');
+(45, 'ducthang', 'thanngit@gmail.com', '0123123123', '$2y$10$zIttZ3qWteOyBc6wJB56tekkiwblqbDNxrUT6Rb/D3G9SmoSp.oSi', 'images/avatar/65f91f62623ce2.97199938_1710825314.jpg', 1, 'user', 2, '2023-10-19 10:49:41', '2024-05-06 13:01:31'),
+(50, 'chi tai', 'tailuongbr13@gmail.com', '000002222', '$2y$10$c2XukQssI9WOOHy.XsLFLecinGwpMqjxW7kEHEDbQLTZtUNZkW72e', 'images/avatar/default.png', 1, 'user', 3, '2024-05-06 18:06:39', '2024-05-06 18:06:39');
 
 --
 -- Indexes for dumped tables
@@ -779,7 +778,7 @@ ALTER TABLE `brands`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=163;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=168;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -797,13 +796,13 @@ ALTER TABLE `images`
 -- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
 
 --
 -- AUTO_INCREMENT for table `order_detail`
 --
 ALTER TABLE `order_detail`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
 
 --
 -- AUTO_INCREMENT for table `order_status`
@@ -821,7 +820,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `roles`

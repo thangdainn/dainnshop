@@ -72,7 +72,7 @@
                                         }
                                         if ($order['id_order_status'] == 6) {
                                         ?>
-                                            <a href="#" data-id="<?php echo $order['id'] ?>" class="btn btn_review">Cancel</a>
+                                            <a href="#" data-id="<?php echo $order['id'] ?>" class="btn btn_review">Review</a>
                                         <?php
                                         }
                                         ?>
@@ -87,7 +87,9 @@
                 <?php
                 } else {
                 ?>
-                    <span class="order_none">No cart here</span>
+                    <div class="order_none">
+                        <img style="display: block;-webkit-user-select: none;margin: auto;cursor: zoom-in;background-color: hsl(0, 0%, 90%);transition: background-color 300ms;" src="https://cdn.dribbble.com/users/9620200/screenshots/17987839/media/fd60cc8251e50a8c54d3dde620ff9460.jpg?resize=1000x750&amp;vertical=center" width="472" height="329">
+                    </div>
                 <?php
                 }
                 ?>
@@ -268,6 +270,9 @@
                         });
                         console.log(response);
                         $('.modal__review').hide();
+                        setTimeout(function() {
+                            window.location.href = base_url + "/purchaseOrder";
+                        }, 2000);
                     },
                     error: function(xhr, status, error) {
                         console.error(error);

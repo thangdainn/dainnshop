@@ -152,7 +152,7 @@ include('../includes/header.php');
                 chart_plot_02_data.push([item.name, parseInt(item.netSales)]);
             });
             if (chart_plot_02_data.length == 1) {
-                chart_plot_02_data.push(["No product", chart_plot_02_data[0][1]]);
+                chart_plot_02_data.push([chart_plot_02_data[0][0], chart_plot_02_data[0][1]]);
             }
             console.table("chart_plot_02_data", chart_plot_02_data);
         }

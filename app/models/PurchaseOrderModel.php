@@ -36,9 +36,18 @@ class PurchaseOrderModel extends Model
 
     public function viewDetailByOrderId($orderId)
     {
-        $sql = "SELECT p.id as product_id, p.name as product_name, p.img as product_image , s.name as size , od.quantity as quantity , od.total as total, od.isReviewed as is_reviewed
+        $sql = "SELECT p.id as product_id, p.name as product_name, p.img as product_image ,
+                         s.name as size , od.quantity as quantity , od.total as total, od.isReviewed as is_reviewed
         FROM `order_detail` od, `products` p, `sizes` s 
         WHERE od.product_id = p.id and od.size_id = s.id and od.order_id = ?";
+        $result = $this->db->select($sql, $orderId);
+        return $result;
+    }
+    public function getDetailByOrderId($orderId)
+    {
+        $sql = "SELECT p.id as product_id, s.id as size_id, od.quantity
+            FROM `order_detail` od, `products` p, `sizes` s 
+            WHERE od.product_id = p.id and od.size_id = s.id and od.order_id = ?";
         $result = $this->db->select($sql, $orderId);
         return $result;
     }

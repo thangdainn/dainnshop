@@ -181,7 +181,11 @@
 							<?php
 							if (count($reviews) <= 0) {
 							?>
-								<p class="">No review yet</p>
+								<div class="reviews_data_tobe_show new-reviews-cards-container">
+									<div style="text-align:center;margin-top:2em;display:flex;align-items:center;justify-content:center;">
+										<img style="max-width:35%;" src="https://img.pristyncare.com/New%20Homepage%20Images%2Fno%20review%20write.png">
+									</div>
+								</div>
 								<?php
 							} else {
 								foreach ($reviews as $key => $review) {

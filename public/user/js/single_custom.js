@@ -294,13 +294,18 @@ jQuery(document).ready(function ($) {
       $("#exclamation").hide();
       if ($(this).hasClass("active")) {
         $(this).removeClass("active");
-        $(".total_item").text(
-          $(".total_item").data("value") + " pieces available"
-        );
+        let totalItemValue = parseInt($(".total_item").data("value"));
+        $(".total_item").text(totalItemValue + " pieces available");
+        $("#quantity_value").attr("max", totalItemValue);
+        // $(".total_item").attr("data-value", totalItemValue);
       } else {
         sizeElm.removeClass("active");
         $(this).addClass("active");
-        $(".total_item").text($(this).data("value") + " pieces available");
+        let totalItemValue = parseInt($(this).data("value"));
+        console.log(totalItemValue);
+
+        $(".total_item").text(totalItemValue + " pieces available");
+        $("#quantity_value").attr("max", totalItemValue);
       }
       $("#quantity_value").val(1);
     });

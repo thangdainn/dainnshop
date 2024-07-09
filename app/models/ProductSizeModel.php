@@ -18,4 +18,5 @@ class ProductSizeModel extends Model
         $result = $this->db->execute($sql, $quantity, $update_at, $product_id, $size_id);
         return $result;
     }
+    
 }

@@ -39,7 +39,8 @@ $role_id = $_SESSION['role_id'];
                     </a>
                 </li>
             <?php
-            } if ($role_id == 8) {
+            }
+            if ($role_id == 8) {
             ?>
                 <li class="nav-item">
                     <a class="nav-link text-white <?= $page == "role.php" || $page == "add-role.php" || $page == "edit-role.php" ? 'active bg-gradient-primary' : ''; ?>" href="../views/role.php">
@@ -105,7 +106,7 @@ $role_id = $_SESSION['role_id'];
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">table_view</i>
                         </div>
-                        <span class="nav-link-text ms-1">Statistical</span>
+                        <span class="nav-link-text ms-1">Revenue Statistics</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -113,7 +114,7 @@ $role_id = $_SESSION['role_id'];
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">table_view</i>
                         </div>
-                        <span class="nav-link-text ms-1">Statistical Top Sales</span>
+                        <span class="nav-link-text ms-1">Statistics Top Sales</span>
                     </a>
                 </li>
             <?php

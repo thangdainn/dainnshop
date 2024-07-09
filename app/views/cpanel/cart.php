@@ -98,7 +98,7 @@
 				</div>
 			<?php
 			} else {
-				echo '<div class="cart_none">No cart here</div>';
+				echo '<div class="cart_none text-center"><img src="https://d16py1fyt83ijv.cloudfront.net/vedobi/assets/img/empty-cart.webp" alt="Empty Cart" width="450" class="img-fluid"></div>';
 			?>
 				<!-- <table class="table cart_table" id="showLSCartTable">
 					<thead>

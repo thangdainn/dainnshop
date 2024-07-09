@@ -15,7 +15,7 @@ include('../includes/header.php');
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="d-flex flex-column h-100">
-                                        <h4 class="font-weight-bolder mb-0">Statistics</h4>
+                                        <h4 class="font-weight-bolder mb-0">Revenue Statistics</h4>
                                     </div>
 
                                 </div>
