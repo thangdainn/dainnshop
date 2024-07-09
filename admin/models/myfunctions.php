@@ -206,6 +206,6 @@ function findTop10SaleProduct($fromDate, $toDate)
                 INNER JOIN `order` o ON od.order_id = o.id 
                 WHERE p.status = 1 AND o.id_order_status = 6";
     $query .= " AND DATE(o.create_at) > '$fromDate' AND DATE(o.create_at) < '$toDate' 
-                GROUP BY p.id, p.name, p.img ORDER BY SUM(od.id) DESC LIMIT 0, 10";
+                GROUP BY p.id, p.name, p.img ORDER BY COUNT(o.id) DESC LIMIT 0, 10";
     return mysqli_query($con, $query);
 }
